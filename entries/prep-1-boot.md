@@ -50,6 +50,12 @@ Glue: Tailscale, SSH, git + LFS, herdr
 
 ## Why I'm here
 
+On 11.11.2011, [Skyrim](https://elderscrolls.bethesda.net/en/skyrim) came out.
+
+```gallery
+assets/img/memory-2011.jpg | How I remember that night. My own illustration, made with an image model (FLUX.1 dev). It is not Skyrim artwork; The Elder Scrolls V: Skyrim is a trademark of ZeniMax Media / Bethesda Softworks. | Pixel art of a girl at an old monitor at night, a snowy mountain on screen, wiping a tear | 1024 x 576
+```
+
 >> I do like my job, but doing research, I do feel that I've always wanted to make games. Like remembering tearing up on 2011-11-11, and then, like, stopping myself and be like, okay, like, but that's cringe. Like, we all love making games.
 
 Fifteen years later, to the day, the kickoff of this jam was on 11.11.2026. I didn't plan that.
@@ -64,11 +70,16 @@ I'm one of the people who wanted to make concept art, so I know how artists feel
 
 ```timeline
 early days | Drawing, PCs, and a Pokémon fan site made of borrowed HTML and CSS
-11.11.2011 | A game release. Tears, quickly suppressed
+11.11.2011 | Skyrim comes out. Tears, quickly suppressed
 Dundee | Interior design at Duncan of Jordanstone College of Art and Design (University of Dundee). One game jam, one free VR headset
+2019 | First project in Unreal Engine. I never stopped
 since then | Research at a film university. Visual production, AI, lots of literature reviews
 27.10.2026 | "I'm doing the MegaJam."
 ```
+
+![Unreal Engine, with love, since 2019](assets/img/ue-since-2019.svg)
+
+I've been working with Unreal Engine since 2019, and I love it. (Unreal Engine and its logo are trademarks of Epic Games, Inc., shown here only to say what I build with.)
 
 ## Setup: two machines, two agents
 
