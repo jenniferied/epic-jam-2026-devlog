@@ -8,7 +8,7 @@ phase: prep
 status: live
 cover: assets/img/cover-prep-1.jpg
 cover_alt: Pixel art: a woman with a walking boot carries a glowing PC tower out of an office at night, a small green dragon flying beside her
-summary: How a work PC came home with me first, why I'm doing this at all, and the toolchain I set up in the two weeks before the jam.
+summary: How a work PC got kidnapped twice before reaching the office, why I'm doing this at all, and the toolchain I set up in the two weeks before the jam.
 ---
 ```recap
 **Before this entry:** nothing. It starts on 27 October 2026 at 15:53, fifteen days before kickoff.
@@ -17,11 +17,13 @@ summary: How a work PC came home with me first, why I'm doing this at all, and t
 
 ## The kidnapping
 
-The new workstation was meant for the office. Before it went to work, it came home with me.
+The new workstation was meant for the office. It still hasn't arrived there.
 
->> My work PC, because it's not a normal office anyway, so taking it home before taking it to the office, because I waited for long, grueling hours. And then that's my explanation for essentially kidnapping this PC.
+On delivery day I waited for the freight company in the office, from the morning until late in the afternoon, hoping it would show up. It didn't, so I drove to the depot and picked it up myself. By then I was dead, so the PC came home with me instead of staying at work.
 
-Some context for the timing: I «just broke my foot, and after six weeks of sickness, I was at work for two days, no more physio now, back to the gym». And a jam on the calendar.
+>> I was waiting for the spedition for hours in the office before driving to the spedition, after waiting from morning to late afternoon hoping for it to arrive. I then took it home as I was dead.
+
+Then it got kidnapped a second time. I had just broken my foot: «after six weeks of sickness, I was at work for two days, no more physio now, back to the gym». I needed an X-ray back in my home town anyway, so the workstation came along to my parents' place. A fridge that magically refills itself, my cat, and a 5090 under the desk is a pretty good jam environment. After that it finally moves to where it belongs, the office.
 
 ```gallery
 placeholder | The kidnapped workstation. Photo follows. | Photo of the workstation | 1600 x 1200
