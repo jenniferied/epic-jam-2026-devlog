@@ -109,7 +109,7 @@
   "noscript": "Dieses Devlog braucht JavaScript für sein Terminal. Die Einträge liegen als Markdown im Ordner entries.",
   "phase.home": "start",
   "list.homeMeta": "worum es geht",
-  "cover.credit": "Illustration für dieses Devlog, mit einem Bildmodell erzeugt (FLUX.1 dev über fal). Kein Spielinhalt.",
+  "cover.credit": "Illustration für dieses Devlog, mit einem Bildmodell erzeugt (Gemini 2.5 Flash Image über fal). Kein Spielinhalt.",
   "hints": [
     [
       "↑↓",

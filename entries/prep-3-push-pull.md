@@ -7,7 +7,7 @@ day: prep 3
 phase: prep
 status: live
 cover: assets/img/cover-prep-3.jpg
-cover_alt: Pixel art: a figure at a forest crossroads at night, paths leading to a castle, a glowing workshop and a golden trophy
+cover_alt: Pixel art: a woman with a small dragon on her shoulder at a forest fork at night, paths to a castle, a lit house and a golden trophy
 summary: There is no concept yet. There is a pile of directions pulling against each other, and me being overwhelmed at 3 AM, three hours before the start.
 ---
 ```recap
@@ -22,7 +22,7 @@ I'll be honest: there is no concept. I've thought in a lot of directions, they p
 I like small games. I love [Stardew Valley](https://www.stardewvalley.net/), mostly because I can play it with my girlfriend. I used to play Sonic. Both look simple and aren't. Stardew took years, made by one amazing creator, and even that is super complex. Jams are full of small 2D and simple 3D games for a reason.
 
 ```gallery
-assets/img/couch-coop.jpg | Couch co-op, the way I like it. My own illustration, made with an image model (FLUX.1 dev). It is not Stardew Valley artwork; Stardew Valley is made by ConcernedApe. | Pixel art of two women on a couch at night playing a cozy farming game together, a cat asleep beside them | 1024 x 576
+assets/img/couch-coop.jpg | Couch co-op, the way I like it. My own illustration, made with an image model (Gemini 2.5 Flash Image via fal). It is not Stardew Valley artwork; Stardew Valley is made by ConcernedApe. | Pixel art of two women on a couch at night playing a cozy farming game together, a cat asleep beside them | 1344 x 768
 ```
 
 >> Realistically, maybe there is two days of focused work if you are strict, and then obviously you will not hold in your two-day deadline and maybe add one and a half more days of troubleshooting and stuff, and then, yeah, everything will explode anyway.

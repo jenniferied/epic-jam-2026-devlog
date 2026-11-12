@@ -7,7 +7,7 @@ day: prep 1
 phase: prep
 status: live
 cover: assets/img/cover-prep-1.jpg
-cover_alt: Pixel art: a woman with a walking boot carries a glowing PC tower out of an office at night, a small green dragon flying beside her
+cover_alt: Pixel art: a woman in walking boots carries a PC tower away from an office building at night, a small green dragon flying beside her
 summary: How a work PC got kidnapped twice before reaching the office, why I'm doing this at all, and the toolchain I set up in the two weeks before the jam.
 ---
 ```recap
@@ -53,7 +53,7 @@ Glue: Tailscale, SSH, git + LFS, herdr
 On 11.11.2011, [Skyrim](https://elderscrolls.bethesda.net/en/skyrim) came out.
 
 ```gallery
-assets/img/memory-2011.jpg | How I remember that night. My own illustration, made with an image model (FLUX.1 dev). It is not Skyrim artwork; The Elder Scrolls V: Skyrim is a trademark of ZeniMax Media / Bethesda Softworks. | Pixel art of a girl at an old monitor at night, a snowy mountain on screen, wiping a tear | 1024 x 576
+assets/img/memory-2011.jpg | How I remember that night. My own illustration, made with an image model (Gemini 2.5 Flash Image via fal). It is not Skyrim artwork; The Elder Scrolls V: Skyrim is a trademark of ZeniMax Media / Bethesda Softworks. | Pixel art of a girl at an old monitor at night, a snowy mountain on screen, wiping a tear | 1344 x 768
 ```
 
 >> I do like my job, but doing research, I do feel that I've always wanted to make games. Like remembering tearing up on 2011-11-11, and then, like, stopping myself and be like, okay, like, but that's cringe. Like, we all love making games.

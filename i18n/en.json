@@ -109,7 +109,7 @@
   "noscript": "This devlog needs JavaScript for its terminal. The raw entries are plain markdown in the entries folder.",
   "phase.home": "start",
   "list.homeMeta": "what this is",
-  "cover.credit": "Illustration for this devlog, made with an image model (FLUX.1 dev via fal). Not game content.",
+  "cover.credit": "Illustration for this devlog, made with an image model (Gemini 2.5 Flash Image via fal). Not game content.",
   "hints": [
     [
       "↑↓",

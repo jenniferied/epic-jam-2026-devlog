@@ -7,7 +7,7 @@ day: prep 2
 phase: prep
 status: live
 cover: assets/img/cover-prep-2.jpg
-cover_alt: Pixel art: a desk at night with a PC tower, a laptop, a film clapperboard and a small green dragon
+cover_alt: Pixel art: a desk at night with a PC tower and a laptop joined by a cable, a film clapperboard, and a small green dragon asleep on the tower
 summary: One long day of testing everything twice, an agent that went one step too far, deleting it all, the kickoff stream and the theme.
 ---
 ```recap
