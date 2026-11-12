@@ -85,7 +85,7 @@ I've been working with Unreal Engine since 2019, and I love it. (Unreal Engine a
 
 >> I love creating worlds.
 
-The last one was **Dystopian District**, published as PANELGRAD: a small, melancholic snow city of concrete panel blocks, inspired by post-Soviet towns in Eastern Russia and inhabited by anthropomorphic animals. It started from real satellite terrain and OpenStreetMap streets. Houdini turned that into roads, districts and buildings, and Unreal Engine rendered it. That was my master's project at TH OWL, 2025/26. Frames from the final film, one per shot:
+The last one was **Dystopian District**, published as PANELGRAD: a small, melancholic snow city of concrete panel blocks, inspired by post-Soviet towns in Eastern Russia and inhabited by anthropomorphic animals. It started from real satellite terrain and OpenStreetMap streets. Houdini turned that into roads, districts and buildings, and Unreal Engine rendered it. It was a project in the Virtual Worlds module of my master's at TH OWL, 2025/26. Frames from the final film, one per shot:
 
 ```gallery
 assets/img/dd-hero.jpg | Drone over the city at night | Aerial view of a snowy city of lit-up panel blocks at night | 1600 x 674
