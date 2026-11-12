@@ -34,7 +34,7 @@
     document.querySelectorAll("[data-i18n-ph]").forEach((n) => { n.placeholder = t(n.dataset.i18nPh); });
     document.querySelectorAll("[data-i18n-label]").forEach((n) => { n.setAttribute("aria-label", t(n.dataset.i18nLabel)); });
     $("#help-rows").innerHTML = (dict["help.rows"] || []).map(([k, v]) => `<dt>${Md.esc(k)}</dt><dd>${Md.esc(v)}</dd>`).join("");
-    $("#hints").innerHTML = (dict["hints"] || []).map(([k, v]) => `<span><kbd>${Md.esc(k)}</kbd>${Md.esc(v)}</span>`).join("");
+    hintsShown = null;
     $("#btn-prev").setAttribute("aria-label", t("entry.prev")); $("#btn-next").setAttribute("aria-label", t("entry.next"));
     $("#lb-prev").setAttribute("aria-label", t("lightbox.prev"));
     $("#lb-next").setAttribute("aria-label", t("lightbox.next"));
@@ -183,7 +183,15 @@
   const BANNER = "█▀▀ █▀▄ ▀█▀ ▄▀▀      █ ▄▀▄ █▄ ▄█    ▀▀▄ ▄▀▄ ▀▀▄ ▄▀▀\n█▀  █▀   █  █      ▄ █ █▀█ █ ▀ █    ▄▀  █ █ ▄▀  █▀▄\n▀▀▀ ▀   ▀▀▀  ▀▀     ▀  ▀ ▀ ▀   ▀    ▀▀▀  ▀  ▀▀▀  ▀";
 
   // ------------------------------------------------------------ status bar
+  let hintsShown = null;
+  function hints() {
+    const which = zone === "reader" && document.activeElement !== el.list ? "hints.reader" : "hints.list";
+    if (which === hintsShown) return;
+    hintsShown = which;
+    $("#hints").innerHTML = (dict[which] || []).map(([k, v]) => `<span><kbd>${Md.esc(k)}</kbd>${Md.esc(v)}</span>`).join("");
+  }
   function status(mode) {
+    hints();
     if (mode) { el.mode.textContent = mode; el.mode.classList.toggle("insert", mode !== "NORMAL"); }
     el.sbFile.textContent = current && !current.home ? "entries/" + current.file : "README.md";
     const r = el.reader, max = r.scrollHeight - r.clientHeight;
@@ -364,13 +372,13 @@
     const a = ev.target.closest("a[data-i]"); if (!a) return;
     sel = +a.dataset.i; zone = "reader";
   });
-  el.list.addEventListener("focus", () => { zone = "list"; });
+  el.list.addEventListener("focus", () => { zone = "list"; status(); });
   el.reader.addEventListener("click", (ev) => {
     const th = ev.target.closest(".thumb"); if (th) { lbOpen(th.dataset.gallery, th.dataset.index); return; }
     const tr = ev.target.closest(".track[data-src]"); if (tr) { toggleTrack(tr); return; }
     if (ev.target.closest("[data-back]")) { zone = "list"; location.hash = "#/"; }
   });
-  el.reader.addEventListener("focusin", () => { zone = "reader"; });
+  el.reader.addEventListener("focusin", () => { zone = "reader"; status(); });
   el.reader.addEventListener("scroll", () => status(), { passive: true });
 
   // ------------------------------------------------------------ resizable divider

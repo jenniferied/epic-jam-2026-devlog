@@ -1,6 +1,6 @@
 // Minimal markdown renderer for devlog entries, no dependencies.
 // Extras on top of plain markdown:
-//   «text»            inline verbatim quote from the author's dictation (rendered as <q class="voice">)
+//   «text»            inline verbatim quote from the author's dictation (rendered as a highlighter <mark class="voice">)
 //   >> text           block of verbatim dictation
 //   ```specs          "# Section" lines and "key: value" lines -> spec sheet
 //   ```timeline       "when | text" lines -> vertical timeline
@@ -22,7 +22,7 @@
     const codes = [];
     s = esc(s).replace(/`([^`]+)`/g, (_, c) => { codes.push(c); return "\u0000" + (codes.length - 1) + "\u0000"; });
     s = s
-      .replace(/«([^»]+)»/g, '<q class="voice">$1</q>')
+      .replace(/«([^»]+)»/g, '<mark class="voice">$1</mark>')
       .replace(/!\[([^\]]*)\]\(([^)\s]+)\)/g, '<img src="$2" alt="$1" loading="lazy" decoding="async">')
       .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (_, t, h) => {
         const ext = /^https?:/.test(h);
@@ -157,7 +157,7 @@
       if (/^(-{3,}|\*{3,})\s*$/.test(line)) { html += '<hr>'; i++; continue; }
       if (line.startsWith(">>")) {
         const body = until((l) => !l.startsWith(">>")).map((l) => l.replace(/^>>\s?/, ""));
-        html += `<blockquote class="voice-block"><p>${body.map(inline).join("<br>")}</p></blockquote>`;
+        html += `<blockquote class="voice-block"><p><mark class="voice">${body.map(inline).join("<br>")}</mark></p></blockquote>`;
         continue;
       }
       if (line.startsWith(">")) {

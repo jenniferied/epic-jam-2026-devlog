@@ -20,8 +20,8 @@
   "entry.next": "next",
   "entry.minutes": "min read",
   "legend.title": "legend",
-  "legend.voice": "dictated: my own words, transcribed from voice notes",
-  "legend.ai": "plain text: condensed with AI from my notes and the agent logs",
+  "legend.voice": "highlighted: my own words, dictated and transcribed",
+  "legend.ai": "unmarked: written with AI from my notes and the agent logs",
   "legend.log": "timestamps: Europe/Berlin, from git and agent transcripts",
   "home.title": "README",
   "lightbox.close": "Close image",
@@ -110,7 +110,10 @@
   "phase.home": "start",
   "list.homeMeta": "what this is",
   "cover.credit": "Illustration for this devlog, made with an image model (Gemini 2.5 Flash Image via fal). Not game content.",
-  "hints": [
+  "phase.about": "about",
+  "list.pageMeta.profile": "who writes this",
+  "info.label": "What this is",
+  "hints.list": [
     [
       "↑↓",
       "select"
@@ -136,7 +139,30 @@
       "all keys"
     ]
   ],
-  "phase.about": "about",
-  "list.pageMeta.profile": "who writes this",
-  "info.label": "What this is"
+  "hints.reader": [
+    [
+      "↑↓ space",
+      "scroll"
+    ],
+    [
+      "← →",
+      "prev / next"
+    ],
+    [
+      "esc",
+      "list"
+    ],
+    [
+      "/",
+      "filter"
+    ],
+    [
+      ":",
+      "command"
+    ],
+    [
+      "?",
+      "all keys"
+    ]
+  ]
 }
