@@ -1,0 +1,9 @@
+{
+  "name": "epic-jam-2026 / devlog",
+  "short_name": "jam devlog",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#050a08",
+  "theme_color": "#0b1411",
+  "icons": [{ "src": "assets/favicon.svg", "sizes": "any", "type": "image/svg+xml" }]
+}

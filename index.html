@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en" data-theme="forest">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>epic-jam-2026 / devlog</title>
+  <meta name="description" content="A participant's terminal-style devlog for the Epic AI MegaJam 2026: Unreal Engine 5.9, two machines, a handful of AI agents and one small pixel dragon.">
+  <meta name="author" content="Jennifer">
+  <meta name="theme-color" content="#0b1411">
+  <meta name="color-scheme" content="dark light">
+  <link rel="canonical" href="https://jenniferied.github.io/epic-jam-2026-devlog/">
+  <link rel="alternate" type="application/atom+xml" title="epic-jam-2026 / devlog" href="feed.xml">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="site.webmanifest">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="epic-jam-2026 / devlog">
+  <meta property="og:description" content="Terminal-style devlog for the Epic AI MegaJam 2026, written while it happens.">
+  <meta property="og:url" content="https://jenniferied.github.io/epic-jam-2026-devlog/">
+  <meta property="og:image" content="https://jenniferied.github.io/epic-jam-2026-devlog/assets/img/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preload" href="assets/fonts/VT323.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    // set theme and text size before first paint
+    try {
+      var s = JSON.parse(localStorage.getItem("devlog.prefs") || "{}");
+      var th = s.theme || (matchMedia("(prefers-color-scheme: light)").matches ? "paper" : "forest");
+      document.documentElement.dataset.theme = th;
+      if (s.scale) document.documentElement.style.setProperty("--scale", s.scale);
+      if (s.side) document.documentElement.style.setProperty("--side", s.side + "px");
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <a class="skip" href="#reader" data-i18n="skip">Skip to entry</a>
+
+  <div class="term" id="term">
+    <header class="titlebar">
+      <span class="lights" aria-hidden="true"><i></i><i></i><i></i></span>
+      <h1 class="title"><a href="#/" data-i18n="site.title">epic-jam-2026 / devlog</a></h1>
+      <span class="titlebar-tools">
+        <button type="button" class="tb" id="btn-theme" aria-label="theme">◐</button>
+        <button type="button" class="tb" id="btn-lang" aria-label="language">EN</button>
+        <button type="button" class="tb" id="btn-help" aria-label="help">?</button>
+      </span>
+    </header>
+
+    <div class="panes" id="panes">
+      <nav class="side" id="side" aria-labelledby="side-label">
+        <div class="pane-head"><span id="side-label" data-i18n="pane.entries">entries</span><span class="count" id="count"></span></div>
+        <label class="filter">
+          <span class="sr" data-i18n="filter.label">Filter entries</span>
+          <span class="ps1" aria-hidden="true">/</span>
+          <input id="filter" type="search" autocomplete="off" spellcheck="false" data-i18n-ph="filter.placeholder">
+        </label>
+        <ol class="list" id="list" role="listbox" aria-labelledby="side-label" tabindex="0"></ol>
+        <section class="funke" id="funke" aria-live="polite">
+          <p class="funke-bubble"></p>
+          <canvas width="132" height="156" role="img" data-i18n-label="funke.label"></canvas>
+          <div class="funke-status"></div>
+        </section>
+      </nav>
+
+      <div class="divider" id="divider" role="separator" aria-orientation="vertical" tabindex="0" aria-label="Resize sidebar" aria-controls="side"></div>
+
+      <main class="reader" id="reader" tabindex="-1" aria-live="polite">
+        <noscript><p data-i18n="noscript">This devlog needs JavaScript for its terminal. The raw entries are plain markdown in the <a href="entries/">entries</a> folder.</p></noscript>
+      </main>
+    </div>
+
+    <form class="prompt" id="prompt" autocomplete="off">
+      <label for="cmd" class="ps1"><span class="u">funke</span>@<span class="h">epic-jam</span>:<span class="p" id="cwd">~/devlog</span>$</label>
+      <input id="cmd" type="text" spellcheck="false" autocapitalize="off" data-i18n-ph="prompt.placeholder">
+      <output id="cmd-out" class="cmd-out"></output>
+    </form>
+
+    <footer class="statusbar" id="statusbar">
+      <span class="mode" id="mode">NORMAL</span>
+      <span class="sb-file" id="sb-file">~/devlog</span>
+      <span class="sb-fill"></span>
+      <span class="sb-pos" id="sb-pos"></span>
+      <span class="sb-clock" id="sb-clock"></span>
+    </footer>
+  </div>
+
+  <p class="disclaimer"><span data-i18n="site.disclaimer">Unofficial participant devlog. Not affiliated with or endorsed by Epic Games.</span> · <a href="feed.xml" data-i18n="footer.feed">feed</a> · <a href="https://github.com/jenniferied/epic-jam-2026-devlog" data-i18n="footer.source">source</a></p>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" hidden>
+    <figure>
+      <div class="lb-stage"><img id="lb-img" alt=""><div class="ph lb-ph" id="lb-ph" hidden></div></div>
+      <figcaption id="lb-cap"></figcaption>
+    </figure>
+    <button type="button" class="lb-btn lb-prev" id="lb-prev">‹</button>
+    <button type="button" class="lb-btn lb-next" id="lb-next">›</button>
+    <button type="button" class="lb-btn lb-close" id="lb-close">×</button>
+    <span class="lb-count" id="lb-count"></span>
+  </div>
+
+  <div class="help" id="help" role="dialog" aria-modal="true" aria-labelledby="help-title" hidden>
+    <div class="help-box">
+      <h2 id="help-title" data-i18n="help.title">keys</h2>
+      <dl id="help-rows"></dl>
+      <p class="help-close" data-i18n="help.close">press esc to close</p>
+    </div>
+  </div>
+
+  <script src="js/md.js" defer></script>
+  <script src="js/funke.js" defer></script>
+  <script src="js/app.js" defer></script>
+</body>
+</html>

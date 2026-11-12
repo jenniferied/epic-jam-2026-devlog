@@ -1,0 +1,484 @@
+{
+ "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+ "data": {
+  "values": [
+   {
+    "t": "2026-11-11T00:18:00",
+    "who": "me",
+    "type": "decision",
+    "what": "In Claude Code on the Mac, sets the direction for the final two prep days:"
+   },
+   {
+    "t": "2026-11-11T00:26:00",
+    "who": "Claude",
+    "type": "setback",
+    "what": "The Claude Code session on the Mac hit its 5-hour usage limit"
+   },
+   {
+    "t": "2026-11-11T00:37:00",
+    "who": "Codex",
+    "type": "setup",
+    "what": "Takes over on Windows"
+   },
+   {
+    "t": "2026-11-11T00:41:00",
+    "who": "Codex",
+    "type": "milestone",
+    "what": "Repo restructured for two machines with Git LFS for media (fcec475)"
+   },
+   {
+    "t": "2026-11-11T00:46:00",
+    "who": "subagent (codex)",
+    "type": "milestone",
+    "what": "Blender 5.3.0 installed on Windows and macOS"
+   },
+   {
+    "t": "2026-11-11T00:47:00",
+    "who": "subagent (codex)",
+    "type": "milestone",
+    "what": "The 21 demo WAVs match the Unreal import copies byte for byte"
+   },
+   {
+    "t": "2026-11-11T00:48:00",
+    "who": "Codex",
+    "type": "milestone",
+    "what": "Automatic two-way Git sync works: a Windows commit was auto-pulled on the Mac and a Mac co"
+   },
+   {
+    "t": "2026-11-11T01:04:00",
+    "who": "Codex",
+    "type": "research",
+    "what": "Looked up partner perks and redemption deadlines from the jam page at the user's request."
+   },
+   {
+    "t": "2026-11-11T01:06:00",
+    "who": "Codex",
+    "type": "setup",
+    "what": "Prepared a timed Windows packaging probe for UE 5.9 (597e2b5), at the user's request to ma"
+   },
+   {
+    "t": "2026-11-11T01:32:00",
+    "who": "me",
+    "type": "decision",
+    "what": "Asks whether Epic's version control system Lore already works between Mac and Windows, on "
+   },
+   {
+    "t": "2026-11-11T01:32:00",
+    "who": "Codex",
+    "type": "setup",
+    "what": "Herdr 0.9.5 installed as a terminal multiplexer for parallel agent sessions on Windows, at"
+   },
+   {
+    "t": "2026-11-11T01:58:00",
+    "who": "Codex",
+    "type": "milestone",
+    "what": "Lore 0.13.0 CLI round trip between Windows and Mac over Tailscale succeeded: Windows creat"
+   },
+   {
+    "t": "2026-11-11T02:03:00",
+    "who": "me",
+    "type": "decision",
+    "what": "\"In future I don't want to run any commands by hand.\" Agents must reach the Mac themselves"
+   },
+   {
+    "t": "2026-11-11T02:03:00",
+    "who": "Codex",
+    "type": "setback",
+    "what": "SSH to the Mac was rejected because the wrong account name was used"
+   },
+   {
+    "t": "2026-11-11T02:10:00",
+    "who": "me",
+    "type": "decision",
+    "what": "Asks for the Mac SSH access to be documented clearly in AGENTS.md/CLAUDE.md"
+   },
+   {
+    "t": "2026-11-11T02:11:00",
+    "who": "Codex",
+    "type": "research",
+    "what": "Jam schedule converted to Berlin time: kickoff 11 Nov 20:00, build window 12 Nov 06:00 to "
+   },
+   {
+    "t": "2026-11-11T02:14:00",
+    "who": "Codex",
+    "type": "setup",
+    "what": "Several design rounds on a desktop wallpaper showing the jam schedule"
+   },
+   {
+    "t": "2026-11-11T02:25:00",
+    "who": "Codex",
+    "type": "milestone",
+    "what": "Lore test with a real Unreal asset in UE 5.9 (BP_LoreSmoke): the Mac loaded the asset, cha"
+   },
+   {
+    "t": "2026-11-11T03:09:00",
+    "who": "me",
+    "type": "decision",
+    "what": "Retire the old 5.8 test project and build a new UE 5.9 C++ prep project:"
+   },
+   {
+    "t": "2026-11-11T03:11:00",
+    "who": "Codex",
+    "type": "milestone",
+    "what": "Blender MCP produced a test crystal and exported it as FBX"
+   },
+   {
+    "t": "2026-11-11T03:15:00",
+    "who": "subagent (codex)",
+    "type": "milestone",
+    "what": "Prep/JamPrep59 compiles"
+   },
+   {
+    "t": "2026-11-11T03:16:00",
+    "who": "Codex",
+    "type": "milestone",
+    "what": "UE 5.9 C++ prep project committed (a1b26dd)"
+   },
+   {
+    "t": "2026-11-11T03:18:00",
+    "who": "me",
+    "type": "decision",
+    "what": "Wants DLSS for realism"
+   },
+   {
+    "t": "2026-11-11T03:20:00",
+    "who": "subagent (codex)",
+    "type": "setback",
+    "what": "UAT reported the Mac build as successful, but the .app bundle was incomplete"
+   },
+   {
+    "t": "2026-11-11T03:21:00",
+    "who": "me",
+    "type": "decision",
+    "what": "Unsure about the engine: the NVIDIA award might argue for 5.8"
+   },
+   {
+    "t": "2026-11-11T03:21:00",
+    "who": "subagent (codex)",
+    "type": "research",
+    "what": "Official DLSS binaries cover UE 5.5–5.8 only"
+   },
+   {
+    "t": "2026-11-11T03:21:00",
+    "who": "Codex",
+    "type": "milestone",
+    "what": "Mac package of the 5.9 prep project screenshotted (work/prep59/mac-screenshot.png)."
+   },
+   {
+    "t": "2026-11-11T03:21:00",
+    "who": "Codex",
+    "type": "setback",
+    "what": "Codex hit its usage limit, until about 06:02, in the middle of the forum research."
+   },
+   {
+    "t": "2026-11-11T03:34:00",
+    "who": "Claude",
+    "type": "setup",
+    "what": "Herdr shortcut and icon added on the desktop, followed by terminal font changes and commun"
+   },
+   {
+    "t": "2026-11-11T03:39:00",
+    "who": "Claude",
+    "type": "milestone",
+    "what": "Commit 54c9199:"
+   },
+   {
+    "t": "2026-11-11T03:41:00",
+    "who": "me",
+    "type": "decision",
+    "what": "Session handoffs must be clean"
+   },
+   {
+    "t": "2026-11-11T03:42:00",
+    "who": "me",
+    "type": "decision",
+    "what": "Subagents become a general rule, with model tiering for cost: the strongest model for impl"
+   },
+   {
+    "t": "2026-11-11T03:41:00",
+    "who": "Claude",
+    "type": "milestone",
+    "what": "Mac auto-pull agent and its macOS privacy workaround documented (5a846c2)"
+   },
+   {
+    "t": "2026-11-11T03:43:00",
+    "who": "Claude",
+    "type": "setup",
+    "what": "Spawns three parallel subagents: DLSS/ACE research (Sonnet), a UE 5.8 NVIDIA test project "
+   },
+   {
+    "t": "2026-11-11T03:45:00",
+    "who": "subagent (claude)",
+    "type": "research",
+    "what": "docs/nvidia-dlss-ace-research.md (71ea332)"
+   },
+   {
+    "t": "2026-11-11T03:48:00",
+    "who": "me",
+    "type": "decision",
+    "what": "\"Just test whether DLSS or ACE work on 5.9 first"
+   },
+   {
+    "t": "2026-11-11T03:48:00",
+    "who": "Claude",
+    "type": "setup",
+    "what": "Spawns a Fable subagent to compile the official DLSS (5.8) and ACE ASR (5.7) plugins again"
+   },
+   {
+    "t": "2026-11-11T04:06:00",
+    "who": "subagent (claude)",
+    "type": "milestone",
+    "what": "DLSS runs under UE 5.9 in a packaged Windows build"
+   },
+   {
+    "t": "2026-11-11T04:06:00",
+    "who": "subagent (claude)",
+    "type": "milestone",
+    "what": "Hot-plug input layer in JamPrep59 (447b1f3):"
+   },
+   {
+    "t": "2026-11-11T04:06:00",
+    "who": "subagent (claude)",
+    "type": "setback",
+    "what": "The Mac was unreachable over Tailscale"
+   },
+   {
+    "t": "2026-11-11T04:09:00",
+    "who": "subagent (claude)",
+    "type": "milestone",
+    "what": "UE 5.8 NVIDIA test project Prep/JamPrep58 added with DLSS, Frame Generation and ACE ASR (f"
+   },
+   {
+    "t": "2026-11-11T04:14:00",
+    "who": "me",
+    "type": "decision",
+    "what": "DLSS output \"looks off\", so keep evaluating both 5.8 and 5.9"
+   },
+   {
+    "t": "2026-11-11T04:15:00",
+    "who": "Claude",
+    "type": "setup",
+    "what": "Spawns a Fable subagent for a portable graphics-settings module with A/B capture tooling."
+   },
+   {
+    "t": "2026-11-11T04:15:00",
+    "who": "Claude",
+    "type": "setup",
+    "what": "One-step Mac package and smoke script added (2e5b73c)"
+   },
+   {
+    "t": "2026-11-11T04:17:00",
+    "who": "me",
+    "type": "decision",
+    "what": "DLSS needs a fallback where it isn't available, e.g"
+   },
+   {
+    "t": "2026-11-11T04:19:00",
+    "who": "subagent (claude)",
+    "type": "milestone",
+    "what": "JamPrep58 results (f1afbe5)"
+   },
+   {
+    "t": "2026-11-11T04:19:00",
+    "who": "subagent (claude)",
+    "type": "setback",
+    "what": "The JamPrep58 Mac build crashed in engine start-up code in 3 of 10 launches"
+   },
+   {
+    "t": "2026-11-11T04:23:00",
+    "who": "me",
+    "type": "decision",
+    "what": "Package size is not a blocker; \"then it just has to be uploaded differently\""
+   },
+   {
+    "t": "2026-11-11T04:23:00",
+    "who": "Claude",
+    "type": "research",
+    "what": "Rules reading:"
+   },
+   {
+    "t": "2026-11-11T04:23:00",
+    "who": "Claude",
+    "type": "setup",
+    "what": "Spawns a Fable subagent for a functional ACE test in the packaged 5.8 build"
+   },
+   {
+    "t": "2026-11-11T04:24:00",
+    "who": "Claude",
+    "type": "setback",
+    "what": "Tailscale was stopped on the Mac after a reboot"
+   },
+   {
+    "t": "2026-11-11T04:29:00",
+    "who": "me",
+    "type": "decision",
+    "what": "Prep code is not copied into the jam entry"
+   },
+   {
+    "t": "2026-11-11T04:31:00",
+    "who": "subagent (claude)",
+    "type": "milestone",
+    "what": "Mac Development package of JamPrep59 built natively, and the packaged input smoke test pas"
+   },
+   {
+    "t": "2026-11-11T04:37:00",
+    "who": "me",
+    "type": "decision",
+    "what": "Skills should also cover the audio and Blender pipelines."
+   },
+   {
+    "t": "2026-11-11T04:37:00",
+    "who": "Claude",
+    "type": "setup",
+    "what": "Spawns four parallel skill-writing subagents (Opus)."
+   },
+   {
+    "t": "2026-11-11T04:40:00",
+    "who": "subagent (claude)",
+    "type": "milestone",
+    "what": "Skill unreal-input-devices (fb04432)."
+   },
+   {
+    "t": "2026-11-11T04:45:00",
+    "who": "subagent (claude)",
+    "type": "milestone",
+    "what": "Skill unreal-packaging (4795deb, 61b24bf)"
+   },
+   {
+    "t": "2026-11-11T04:48:00",
+    "who": "subagent (claude)",
+    "type": "milestone",
+    "what": "Audio skills updated with a pipeline verified on Windows / UE 5.9 (dedca71): generation th"
+   },
+   {
+    "t": "2026-11-11T04:52:00",
+    "who": "subagent (claude)",
+    "type": "milestone",
+    "what": "Skill blender-to-unreal (420c81e), verified with Blender 5.3 and UE 5.9: scale and axes, I"
+   },
+   {
+    "t": "2026-11-11T04:57:00",
+    "who": "Claude",
+    "type": "milestone",
+    "what": "Skill table in AGENTS.md updated (f748968)."
+   },
+   {
+    "t": "2026-11-11T04:58:00",
+    "who": "subagent (claude)",
+    "type": "milestone",
+    "what": "ACE verified in the packaged UE 5.8 build (f993315):"
+   },
+   {
+    "t": "2026-11-11T04:59:00",
+    "who": "Claude",
+    "type": "setup",
+    "what": "Spawns a Fable subagent to repeat the ACE ASR+TTS test on UE 5.9"
+   },
+   {
+    "t": "2026-11-11T05:00:00",
+    "who": "subagent (claude)",
+    "type": "milestone",
+    "what": "Graphics-settings module verified in packaged 5.8 and 5.9 builds (775f6eb):"
+   },
+   {
+    "t": "2026-11-11T05:01:00",
+    "who": "Claude",
+    "type": "setup",
+    "what": "Spawns a Fable subagent to bring JamPrep58 and JamPrep59 to the same feature level with a "
+   },
+   {
+    "t": "2026-11-11T05:01:00",
+    "who": "me",
+    "type": "decision",
+    "what": "Wants automatic documentation: screenshots with context metadata and occasional short clip"
+   },
+   {
+    "t": "2026-11-11T05:02:00",
+    "who": "Claude",
+    "type": "setup",
+    "what": "Spawns a Fable subagent to build the devlog-capture tool and skill, aimed at the jam's Gla"
+   },
+   {
+    "t": "2026-11-11T05:03:00",
+    "who": "me",
+    "type": "decision",
+    "what": "Rather than a constantly running agent, every agent (Claude, Codex, subagents) documents i"
+   },
+   {
+    "t": "2026-11-11T05:04:00",
+    "who": "me",
+    "type": "decision",
+    "what": "Reconstruct the prep history, including when it began, from existing logs"
+   },
+   {
+    "t": "2026-11-11T05:04:00",
+    "who": "subagent (claude)",
+    "type": "setup",
+    "what": "This timeline and Prep/log/media-candidates.md written from the logs."
+   }
+  ]
+ },
+ "width": "container",
+ "height": 190,
+ "mark": {
+  "type": "tick",
+  "thickness": 3,
+  "size": 22
+ },
+ "encoding": {
+  "x": {
+   "field": "t",
+   "type": "temporal",
+   "timeUnit": "hoursminutes",
+   "title": "11 Nov 2026, Europe/Berlin",
+   "axis": {
+    "format": "%H:%M",
+    "tickCount": 6
+   }
+  },
+  "y": {
+   "field": "who",
+   "type": "nominal",
+   "title": null,
+   "sort": [
+    "me",
+    "Codex",
+    "subagent (codex)",
+    "Claude",
+    "subagent (claude)"
+   ]
+  },
+  "color": {
+   "field": "type",
+   "type": "nominal",
+   "title": "event",
+   "scale": {
+    "domain": [
+     "decision",
+     "milestone",
+     "setback",
+     "research",
+     "setup"
+    ]
+   }
+  },
+  "tooltip": [
+   {
+    "field": "t",
+    "type": "temporal",
+    "timeUnit": "hoursminutes",
+    "title": "time",
+    "format": "%H:%M"
+   },
+   {
+    "field": "who"
+   },
+   {
+    "field": "type"
+   },
+   {
+    "field": "what"
+   }
+  ]
+ }
+}

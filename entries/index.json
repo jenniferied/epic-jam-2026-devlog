@@ -1,0 +1,84 @@
+{
+ "entries": [
+  {
+   "slug": "prep-1-boot",
+   "title": "boot.log: a kidnapped workstation",
+   "date": "2026-10-27",
+   "day": "prep 1",
+   "phase": "prep",
+   "status": "live",
+   "summary": "How a work PC came home with me first, why I'm doing this at all, and the toolchain I set up in the two weeks before the jam.",
+   "file": "prep-1-boot.md"
+  },
+  {
+   "slug": "prep-2-validate",
+   "title": "validate.sh: the night before, and a Director's Cut",
+   "date": "2026-11-11",
+   "day": "prep 2",
+   "phase": "prep",
+   "status": "live",
+   "summary": "One long day of testing everything twice, an agent that went one step too far, deleting it all, the kickoff stream and the theme.",
+   "file": "prep-2-validate.md"
+  },
+  {
+   "slug": "prep-3-push-pull",
+   "title": "push_pull.md: inspiration, not a plan",
+   "date": "2026-11-12",
+   "day": "prep 3",
+   "phase": "prep",
+   "status": "live",
+   "summary": "There is no concept yet. There is a pile of directions pulling against each other, and me being overwhelmed at 3 AM, three hours before the start.",
+   "file": "prep-3-push-pull.md"
+  },
+  {
+   "slug": "day-1",
+   "title": "day-1.log",
+   "date": "2026-11-12",
+   "day": "day 1",
+   "phase": "jam",
+   "status": "draft",
+   "summary": "Jam starts at 06:00. Empty folder, one theme, one dragon.",
+   "file": "day-1.md"
+  },
+  {
+   "slug": "day-2",
+   "title": "day-2.log",
+   "date": "2026-11-13",
+   "day": "day 2",
+   "phase": "jam",
+   "status": "draft",
+   "summary": "Core loop day.",
+   "file": "day-2.md"
+  },
+  {
+   "slug": "day-3",
+   "title": "day-3.log",
+   "date": "2026-11-14",
+   "day": "day 3",
+   "phase": "jam",
+   "status": "draft",
+   "summary": "Make it feel like something.",
+   "file": "day-3.md"
+  },
+  {
+   "slug": "day-4",
+   "title": "day-4.log",
+   "date": "2026-11-15",
+   "day": "day 4",
+   "phase": "jam",
+   "status": "draft",
+   "summary": "Package, debug, submit. Deadline Monday 02:59.",
+   "file": "day-4.md"
+  },
+  {
+   "slug": "post-mortem",
+   "title": "post-mortem.log",
+   "date": "2026-11-16",
+   "day": "post",
+   "phase": "post",
+   "status": "draft",
+   "summary": "After the deadline. What worked, what exploded, what I'd do again.",
+   "file": "post-mortem.md"
+  }
+ ]
+}

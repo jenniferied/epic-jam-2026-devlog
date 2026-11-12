@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>epic-jam-2026 / devlog</title>
+  <subtitle>A participant's devlog for the Epic AI MegaJam 2026</subtitle>
+  <link href="https://jenniferied.github.io/epic-jam-2026-devlog/"/>
+  <link rel="self" href="https://jenniferied.github.io/epic-jam-2026-devlog/feed.xml"/>
+  <id>https://jenniferied.github.io/epic-jam-2026-devlog/</id>
+  <updated>2026-11-12T02:29:29Z</updated>
+  <author><name>Jennifer</name></author>
+  <entry>
+    <title>push_pull.md: inspiration, not a plan</title>
+    <link href="https://jenniferied.github.io/epic-jam-2026-devlog/#/prep-3-push-pull"/>
+    <id>https://jenniferied.github.io/epic-jam-2026-devlog/#/prep-3-push-pull</id>
+    <updated>2026-11-12T12:00:00+01:00</updated>
+    <summary>There is no concept yet. There is a pile of directions pulling against each other, and me being overwhelmed at 3 AM, three hours before the start.</summary>
+  </entry>
+  <entry>
+    <title>validate.sh: the night before, and a Director's Cut</title>
+    <link href="https://jenniferied.github.io/epic-jam-2026-devlog/#/prep-2-validate"/>
+    <id>https://jenniferied.github.io/epic-jam-2026-devlog/#/prep-2-validate</id>
+    <updated>2026-11-11T12:00:00+01:00</updated>
+    <summary>One long day of testing everything twice, an agent that went one step too far, deleting it all, the kickoff stream and the theme.</summary>
+  </entry>
+  <entry>
+    <title>boot.log: a kidnapped workstation</title>
+    <link href="https://jenniferied.github.io/epic-jam-2026-devlog/#/prep-1-boot"/>
+    <id>https://jenniferied.github.io/epic-jam-2026-devlog/#/prep-1-boot</id>
+    <updated>2026-10-27T12:00:00+01:00</updated>
+    <summary>How a work PC came home with me first, why I'm doing this at all, and the toolchain I set up in the two weeks before the jam.</summary>
+  </entry>
+</feed>

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://jenniferied.github.io/epic-jam-2026-devlog/sitemap.xml

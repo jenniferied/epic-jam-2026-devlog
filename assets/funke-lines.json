@@ -1,0 +1,60 @@
+{
+  "motivation": [
+    "One small step now beats the perfect plan later.",
+    "You don't have to do it all. Just the next thing.",
+    "Small and finished beats big and half done.",
+    "What runs today, you can make prettier tomorrow.",
+    "You're doing well. Keep going, at your own pace.",
+    {"t": "Good morning. Pick one goal for today, then off we go.", "mood": ["dawn"]},
+    {"t": "Good evening. What was today's best moment in the project?", "mood": ["evening"]},
+    {"t": "Almost time: {left} until the jam starts. Tools ready?", "phase": ["pre"]},
+    {"t": "Submitted. I'm proud of you. Now celebrate, then sleep.", "phase": ["done"]}
+  ],
+  "dragon": [
+    "I guard your scope. It is my treasure, and it stays small.",
+    "Small fire, big effect. True for features too.",
+    "I didn't eat the bug. But I'll hold it down until you get here.",
+    "Dragons hoard gold. You hoard builds that run. Both are wise.",
+    {"t": "Psst. I'm only dozing. Wake me if something is on fire.", "mood": ["night"]},
+    {"t": "The sun is warm on my scales. Good moment for the hard task.", "mood": ["day"]}
+  ],
+  "design": [
+    "Core loop first: what does the player do every ten seconds?",
+    "Juice turns a mechanic into a feeling: sound, screen shake, a few particles.",
+    "Playtest early. Other hands find in two minutes what you no longer see.",
+    "The theme may surprise. The third idea is often better than the first.",
+    "Cutting is design. Nobody misses what they never saw.",
+    "The first minute decides. Can I do something right away, and do I know why?",
+    "One clear goal and clear feedback are worth more than three systems.",
+    "One mechanic in three situations beats three mechanics in one.",
+    {"t": "The theme is out. Collect ideas tonight, then sleep on them.", "phase": ["pre"]}
+  ],
+  "jam": [
+    "Vertical slice first: start, one full run, end. Then build out.",
+    "Package early. The first build finds the bugs the editor hides.",
+    "Plan to submit with a buffer. Upload and page take longer than you think.",
+    "The video: 30 to 60 seconds, best part first. Record a rough cut early.",
+    "Write decisions into the devlog. The Glass Box lives on honest notes.",
+    "Commit when something works. A clean state is your best insurance.",
+    {"t": "{left} until the deadline. What is the smallest version you'd be proud of?", "phase": ["jam"]},
+    {"t": "{left} left. Cut now, don't build: bugs, build, page, video.", "phase": ["final"]},
+    {"t": "Stay calm. One feature less, one tested build more.", "phase": ["final"]}
+  ],
+  "unreal": [
+    "Test the packaged build, not just the editor. Cook and path errors show up there.",
+    "Before you submit, make a Shipping build and play it through once.",
+    "Lumen costs performance. Check the frame rate in the build and offer a lower setting.",
+    "DLSS needs an NVIDIA card. The TSR fallback has to work without the plugin.",
+    "Plug and unplug the controller, switch windows, open the menu: does input still work?",
+    "Listen to the audio in the build. Levels feel different there than in the editor."
+  ],
+  "break": [
+    "A glass of water. I'll wait here and watch the code.",
+    "Shoulders down, one good stretch. Two minutes is enough.",
+    "Look out of the window for a moment. Your eyes will thank you.",
+    "Have you eaten? Dragons don't work on an empty belly either.",
+    {"t": "It's late. Write down the next step and go to sleep.", "mood": ["late"]},
+    {"t": "Tired decisions cost double tomorrow. Off to bed, I'll keep watch.", "mood": ["late"]},
+    {"t": "Still up? A sip of water, save, commit, lights out.", "mood": ["late", "night"]}
+  ]
+}
