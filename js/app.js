@@ -120,8 +120,7 @@
     const cards = entries.filter((e) => !e.home && !isPage(e)).map((e) => `<a href="#/${e.slug}" class="${e.status === "draft" ? "draft" : ""}"><span class="d">${e.n} · ${Md.esc(e.day)} · ${fmtDate(e.date)}${e.status === "draft" ? " · " + Md.esc(t("status.draft")) : ""}</span><span class="t">${Md.esc(e.title)}</span>${e.summary ? `<span class="s">${Md.esc(e.summary)}</span>` : ""}</a>`).join("");
     el.reader.innerHTML = `<article class="article">
       <div class="crumbs"><span class="ps1">~/devlog $</span> cat README.md</div>
-      <pre class="ascii" aria-hidden="true">${BANNER}</pre>
-      <p class="lead entry-head">${Md.esc(t("site.tagline"))}<span class="blink" aria-hidden="true">█</span></p>
+      <div class="banner-row"><pre class="ascii" aria-hidden="true">${BANNER}</pre><button type="button" class="info" aria-describedby="tagline-tip" aria-label="${Md.esc(t("info.label"))}">i<span class="tip" role="tooltip" id="tagline-tip">${Md.esc(t("site.tagline"))}</span></button></div>
       <div class="prose">${md.html}</div>
       <div class="home-grid">${cards}</div>
       ${legend()}

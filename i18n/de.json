@@ -1,6 +1,6 @@
 {
   "site.title": "epic-jam-2026 / devlog",
-  "site.tagline": "Devlog einer Teilnehmerin am Epic AI MegaJam 2026. Unreal Engine 5.9, zwei Rechner, eine Handvoll Agenten und ein kleiner Drache.",
+  "site.tagline": "Devlog einer Teilnehmerin am Epic AI MegaJam 2026. Unreal Engine, zwei Rechner, eine Handvoll Agenten und ein kleiner Drache.",
   "site.disclaimer": "Inoffizielles Devlog einer Teilnehmerin. Nicht mit Epic Games verbunden oder von Epic unterstützt.",
   "skip": "Zum Eintrag springen",
   "pane.entries": "einträge",
@@ -137,5 +137,6 @@
     ]
   ],
   "phase.about": "profil",
-  "list.pageMeta.profile": "wer hier schreibt"
+  "list.pageMeta.profile": "wer hier schreibt",
+  "info.label": "Worum es geht"
 }

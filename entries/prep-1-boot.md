@@ -42,7 +42,7 @@ Machine: MacBook Pro, Apple M1 Max
 RAM: 64 GB
 Role: native Mac builds, a second pair of hands over SSH
 # software
-Engine: Unreal Engine 5.9 (5.8 kept for comparison)
+Engine: Unreal Engine 5.8 or 5.9, maybe another one. Decided when the jam starts
 3D: Blender 5.3 with the official Blender Lab MCP
 Agents: Claude Code, OpenAI Codex (desktop app)
 Glue: Tailscale, SSH, git + LFS, herdr
