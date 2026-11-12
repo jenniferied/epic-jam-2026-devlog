@@ -135,5 +135,7 @@
       "?",
       "alle tasten"
     ]
-  ]
+  ],
+  "phase.about": "profil",
+  "list.pageMeta.profile": "wer hier schreibt"
 }

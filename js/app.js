@@ -72,6 +72,8 @@
     if (!bodies.has(file)) bodies.set(file, fetch("entries/" + file).then((r) => r.text()).then((x) => Md.frontMatter(x).body));
     return bodies.get(file);
   }
+  // undated pages (kind: page in the front matter) sit in the sequence but are not log entries
+  const isPage = (e) => e.kind === "page";
   const fmtDate = (iso) => new Date(iso + "T12:00:00").toLocaleDateString(root.lang === "de" ? "de-DE" : "en-GB", { weekday: "short", day: "numeric", month: "short" });
 
   // ------------------------------------------------------------ list
@@ -84,7 +86,7 @@
       <li role="option" id="opt-${e.slug}" aria-selected="${i === sel}" class="${i === sel ? "sel" : ""} ${current && current.slug === e.slug ? "open" : ""} ${e.status === "draft" ? "draft" : ""}">
         <a href="#/${e.slug}" tabindex="-1" data-i="${i}">
           <span class="n">${e.n}</span><span class="ph ph-${e.phase}">${Md.esc(t("phase." + e.phase))}</span><span class="t">${Md.esc(e.title)}</span>
-          <span class="meta">${e.home ? Md.esc(t("list.homeMeta")) : Md.esc(e.day) + " · " + fmtDate(e.date)}</span>
+          <span class="meta">${e.home ? Md.esc(t("list.homeMeta")) : isPage(e) ? Md.esc(t("list.pageMeta." + e.slug)) : Md.esc(e.day) + " · " + fmtDate(e.date)}</span>
         </a></li>`).join("") : `<li class="empty">${Md.esc(t("list.empty"))}</li>`;
     if (shown[sel]) el.list.setAttribute("aria-activedescendant", "opt-" + shown[sel].slug);
   }
@@ -115,7 +117,7 @@
     const ctx = { galleries: [] };
     const md = Md.render(await body("readme.md"), ctx);
     galleries = md.galleries;
-    const cards = entries.filter((e) => !e.home).map((e) => `<a href="#/${e.slug}" class="${e.status === "draft" ? "draft" : ""}"><span class="d">${e.n} · ${Md.esc(e.day)} · ${fmtDate(e.date)}${e.status === "draft" ? " · " + Md.esc(t("status.draft")) : ""}</span><span class="t">${Md.esc(e.title)}</span>${e.summary ? `<span class="s">${Md.esc(e.summary)}</span>` : ""}</a>`).join("");
+    const cards = entries.filter((e) => !e.home && !isPage(e)).map((e) => `<a href="#/${e.slug}" class="${e.status === "draft" ? "draft" : ""}"><span class="d">${e.n} · ${Md.esc(e.day)} · ${fmtDate(e.date)}${e.status === "draft" ? " · " + Md.esc(t("status.draft")) : ""}</span><span class="t">${Md.esc(e.title)}</span>${e.summary ? `<span class="s">${Md.esc(e.summary)}</span>` : ""}</a>`).join("");
     el.reader.innerHTML = `<article class="article">
       <div class="crumbs"><span class="ps1">~/devlog $</span> cat README.md</div>
       <pre class="ascii" aria-hidden="true">${BANNER}</pre>
@@ -136,7 +138,7 @@
     const src = await body(e.file);
     const md = Md.render(src, ctx);
     galleries = md.galleries;
-    const draft = e.status === "draft";
+    const draft = e.status === "draft", page = isPage(e);
     if (e.cover) galleries.push([{ src: e.cover, alt: e.cover_alt || "", caption: t("cover.credit"), w: 1024, h: 576 }]);
     const cover = e.cover ? `<figure class="cover"><button class="thumb" type="button" data-gallery="${galleries.length - 1}" data-index="0" aria-label="${Md.esc(e.cover_alt || "")}"><img src="${Md.esc(e.cover)}" alt="${Md.esc(e.cover_alt || "")}" width="1024" height="576" decoding="async" fetchpriority="high"></button></figure>` : "";
     const minutes = Math.max(1, Math.round(src.split(/\s+/).length / 200));
@@ -145,10 +147,10 @@
       ${cover}
       <header class="entry-head">
         <h1>${Md.esc(e.title)}</h1>
-        <p class="sub"><span class="badge ${e.status === "draft" ? "draft" : ""}">${Md.esc(e.day)}</span><span>${fmtDate(e.date)}</span>${draft ? "" : `<span>${minutes} ${Md.esc(t("entry.minutes"))}</span>`}</p>
+        <p class="sub"><span class="badge ${e.status === "draft" ? "draft" : ""}">${Md.esc(e.day)}</span>${page ? "" : `<span>${fmtDate(e.date)}</span>`}${draft || page ? "" : `<span>${minutes} ${Md.esc(t("entry.minutes"))}</span>`}</p>
         ${e.summary ? `<p class="lead">${Md.inline(e.summary)}</p>` : ""}
       </header>
-      ${draft ? `<p class="empty-entry"><span class="blink" aria-hidden="true">█</span></p>` : `<div class="prose">${md.html}</div>${legend()}`}
+      ${draft ? `<p class="empty-entry"><span class="blink" aria-hidden="true">█</span></p>` : `<div class="prose">${md.html}</div>${page ? "" : legend()}`}
       ${pager()}
     </article>`;
     el.reader.scrollTop = 0;
@@ -309,7 +311,7 @@
     switch ((cmd || "").toLowerCase()) {
       case "": break;
       case "help": case "?": out = t("cmd.help"); break;
-      case "ls": case "ll": out = entries.filter((e) => !e.home).map((e) => `${String(e.n).padStart(2)}  ${e.phase.padEnd(4)}  ${e.date}  ${e.status === "draft" ? "-" : "+"}  ${e.slug}`).join("\n"); break;
+      case "ls": case "ll": out = entries.filter((e) => !e.home).map((e) => `${String(e.n).padStart(2)}  ${e.phase.padEnd(5)}  ${e.date}  ${e.status === "draft" ? "-" : "+"}  ${e.slug}`).join("\n"); break;
       case "open": case "cat": case "less": case "cd": {
         if (cmd === "cd" && (!arg || arg === ".." || arg === "~" || arg === "/")) { location.hash = "#/readme"; break; }
         const e = find(arg.replace(/^entries\//, "").replace(/\.md$/, ""));

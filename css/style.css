@@ -388,3 +388,20 @@ q.voice::before, q.voice::after { color: color-mix(in srgb, var(--voice) 60%, tr
   .panes { display: block; }
   .reader { overflow: visible; }
 }
+
+
+/* ------------------------------------------------------------ profile page + publication list */
+.list .ph-about { color: var(--pink); }
+.prose .pubs { font-family: var(--mono); font-size: var(--fs); line-height: 1.35; letter-spacing: 0; }
+.pubs { list-style: none; padding: 0 !important; margin: 1em 0 1.3em; border-top: 1px solid var(--line-2); }
+.pubs li { display: grid; grid-template-columns: 5ch minmax(0, 1fr); gap: 0 14px; margin: 0; padding: 10px 0 11px; border-bottom: 1px dashed var(--line-2); line-height: 1.35; }
+.pubs .yr { color: var(--accent); }
+.pubs .pt { display: block; color: var(--fg); font-family: var(--read); font-size: var(--read-fs); line-height: 1.5; margin-bottom: 3px; text-decoration: none; }
+.pubs a.pt { text-decoration: underline; text-decoration-color: var(--accent-2); }
+.pubs a.pt:hover { color: var(--accent); }
+.pubs .pa, .pubs .pv { display: block; color: var(--dim); }
+.pubs .pa { color: var(--fg); opacity: .85; }
+.pubs .st { display: inline-block; margin-right: 8px; padding: 0 5px; border: 1px solid currentColor; border-radius: 3px; color: var(--voice); font-size: .72em; text-transform: uppercase; letter-spacing: .06em; vertical-align: .08em; }
+.pubs .st-published { color: var(--accent); }
+.pubs .st-thesis { color: var(--violet); }
+@media (max-width: 520px) { .pubs li { grid-template-columns: minmax(0, 1fr); } }

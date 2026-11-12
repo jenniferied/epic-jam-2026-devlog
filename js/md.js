@@ -12,6 +12,7 @@
 //   ```model          "src.glb | caption | alt | poster.jpg" -> interactive 3D viewer, loaded on demand
 //   ```chart          "spec.vl.json | caption" -> numbered figure rendered with Vega-Lite, loaded on demand
 //   ```tracks         "src.mp3 | title | m:ss" lines -> soundtrack player; src "placeholder" -> pending track
+//   ```pubs           "year | title | authors | venue | status | url" lines -> publication list; url optional
 (function (global) {
   "use strict";
 
@@ -107,6 +108,16 @@
         const [src, title = "", len = ""] = split(l);
         const pending = src === "placeholder";
         return `<li class="${pending ? "pending" : ""}"><button type="button" class="track" ${pending ? "disabled" : `data-src="${esc(src)}"`} aria-label="${esc(title)}"><span class="no">${String(i + 1).padStart(2, "0")}</span><span class="state" aria-hidden="true">${pending ? "··" : "▶"}</span><span class="tt">${inline(title)}</span><span class="len">${pending ? "pending" : esc(len)}</span></button><span class="bar" aria-hidden="true"><i></i></span></li>`;
+      }).join("") + "</ol>";
+    },
+    pubs(lines) {
+      return '<ol class="pubs">' + lines.filter((l) => l.trim()).map((l) => {
+        const [year, title = "", authors = "", venue = "", status = "", url = ""] = split(l);
+        const cls = status.toLowerCase().split(/[^a-z]/)[0];
+        const head = url
+          ? `<a class="pt" href="${esc(url)}" target="_blank" rel="noopener">${inline(title)}<span class="ext" aria-hidden="true">↗</span></a>`
+          : `<span class="pt">${inline(title)}</span>`;
+        return `<li><span class="yr">${esc(year)}</span><div>${head}<span class="pa">${inline(authors)}</span><span class="pv">${status ? `<span class="st st-${cls}">${esc(status)}</span>` : ""}${inline(venue)}</span></div></li>`;
       }).join("") + "</ol>";
     },
     todo(lines) {

@@ -135,5 +135,7 @@
       "?",
       "all keys"
     ]
-  ]
+  ],
+  "phase.about": "about",
+  "list.pageMeta.profile": "who writes this"
 }

@@ -11,7 +11,7 @@ from xml.sax.saxutils import escape
 ROOT = Path(__file__).resolve().parent.parent
 BASE = "https://jenniferied.github.io/epic-jam-2026-devlog/"
 FIELDS = ("slug", "title", "date", "day", "phase", "status")
-OPTIONAL = ("summary", "cover", "cover_alt")
+OPTIONAL = ("summary", "cover", "cover_alt", "kind")  # kind: page = undated page, listed but not in the feed
 
 
 def front_matter(text):
@@ -40,7 +40,7 @@ for e in entries:
 (ROOT / "entries" / "index.json").write_text(json.dumps({"entries": entries}, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
 
 now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-live = [e for e in entries if e["status"] == "live"]
+live = [e for e in entries if e["status"] == "live" and e.get("kind") != "page"]
 items = "".join(
     f"""  <entry>
     <title>{escape(e['title'])}</title>
