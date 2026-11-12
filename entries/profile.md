@@ -73,6 +73,7 @@ Virtual Film Production: teaching at TH OWL, 2021–26
 
 ```pubs
 2026 | Sixty-Five Papers in Search of a Field: A Bibliometric Evidence Map of Virtual Production Education Research, 2013–2026 | J. Meier | SIGGRAPH Asia 2026 Educator's Forum, education paper. ACM. | accepted, to appear Dec 2026
+2026 | Learning on the Volume: Workshop-Based Virtual Production Education at an Educational LED Wall | J. Meier, C. Beck, R. Dober, S. Albertz | SIGGRAPH Asia 2026 Educator's Forum, education talk. ACM. | accepted, to appear Dec 2026
 2026 | KI in der Entwicklung von Computer-Rollenspielen: Bildgenerierungs- und Multi-Agenten-Workflows in der Praxis | J. Meier | Master's thesis, TH OWL. | thesis
 2024 | Breaking the Financial Barrier: A Low-Cost Approach to Teaching Virtual Production at Universities | R. Dober, J. Meier, S. Grobler, P. Kaboth, S. Schuh | SIGGRAPH Asia 2024 Educator's Forum, Article 15, 1–3. ACM. | published | https://doi.org/10.1145/3680533.3697067
 ```
