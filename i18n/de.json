@@ -33,11 +33,11 @@
   "help.rows": [
     [
       "j k  ↑ ↓",
-      "durch Einträge gehen, im Eintrag scrollen"
+      "scrollen"
     ],
     [
-      "enter  l",
-      "gewählten Eintrag öffnen"
+      "/  ↑↓  enter",
+      "suchen, auswählen und öffnen"
     ],
     [
       "← →  n p",
@@ -45,7 +45,7 @@
     ],
     [
       "esc  h",
-      "zurück zur Liste"
+      "ins Suchfeld springen"
     ],
     [
       "0 – 9",
@@ -54,10 +54,6 @@
     [
       "g  G",
       "erster / letzter Eintrag"
-    ],
-    [
-      "/",
-      "Einträge filtern"
     ],
     [
       ":",
@@ -113,32 +109,6 @@
   "phase.about": "profil",
   "list.pageMeta.profile": "wer hier schreibt",
   "info.label": "Worum es geht",
-  "hints.list": [
-    [
-      "↑↓",
-      "auswählen"
-    ],
-    [
-      "⏎",
-      "öffnen"
-    ],
-    [
-      "← →",
-      "zurück / weiter"
-    ],
-    [
-      "/",
-      "filtern"
-    ],
-    [
-      ":",
-      "befehl"
-    ],
-    [
-      "?",
-      "alle tasten"
-    ]
-  ],
   "hints.reader": [
     [
       "↑↓ space",
@@ -149,12 +119,8 @@
       "zurück / weiter"
     ],
     [
-      "esc",
-      "liste"
-    ],
-    [
       "/",
-      "filtern"
+      "suchen"
     ],
     [
       ":",
@@ -163,6 +129,20 @@
     [
       "?",
       "alle tasten"
+    ]
+  ],
+  "hints.filter": [
+    [
+      "↑↓",
+      "auswählen"
+    ],
+    [
+      "⏎",
+      "öffnen"
+    ],
+    [
+      "esc",
+      "suche schließen"
     ]
   ]
 }

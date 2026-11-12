@@ -33,11 +33,11 @@
   "help.rows": [
     [
       "j k  ↑ ↓",
-      "move through entries, scroll inside an entry"
+      "scroll"
     ],
     [
-      "enter  l",
-      "open the selected entry"
+      "/  ↑↓  enter",
+      "search, pick and open an entry"
     ],
     [
       "← →  n p",
@@ -45,7 +45,7 @@
     ],
     [
       "esc  h",
-      "back to the list"
+      "jump to the search box"
     ],
     [
       "0 – 9",
@@ -54,10 +54,6 @@
     [
       "g  G",
       "first / last entry"
-    ],
-    [
-      "/",
-      "filter entries"
     ],
     [
       ":",
@@ -113,32 +109,6 @@
   "phase.about": "about",
   "list.pageMeta.profile": "who writes this",
   "info.label": "What this is",
-  "hints.list": [
-    [
-      "↑↓",
-      "select"
-    ],
-    [
-      "⏎",
-      "open"
-    ],
-    [
-      "← →",
-      "prev / next"
-    ],
-    [
-      "/",
-      "filter"
-    ],
-    [
-      ":",
-      "command"
-    ],
-    [
-      "?",
-      "all keys"
-    ]
-  ],
   "hints.reader": [
     [
       "↑↓ space",
@@ -149,12 +119,8 @@
       "prev / next"
     ],
     [
-      "esc",
-      "list"
-    ],
-    [
       "/",
-      "filter"
+      "search"
     ],
     [
       ":",
@@ -163,6 +129,20 @@
     [
       "?",
       "all keys"
+    ]
+  ],
+  "hints.filter": [
+    [
+      "↑↓",
+      "select"
+    ],
+    [
+      "⏎",
+      "open"
+    ],
+    [
+      "esc",
+      "close search"
     ]
   ]
 }

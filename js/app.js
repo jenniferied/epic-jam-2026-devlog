@@ -59,7 +59,7 @@
   }
 
   // ------------------------------------------------------------ data
-  let entries = [], shown = [], sel = 0, current = null, zone = "list";
+  let entries = [], shown = [], sel = 0, current = null, zone = "reader";
   const bodies = new Map();
   let galleries = [];
 
@@ -185,7 +185,7 @@
   // ------------------------------------------------------------ status bar
   let hintsShown = null;
   function hints() {
-    const which = zone === "reader" && document.activeElement !== el.list ? "hints.reader" : "hints.list";
+    const which = document.activeElement === el.filter ? "hints.filter" : "hints.reader";
     if (which === hintsShown) return;
     hintsShown = which;
     $("#hints").innerHTML = (dict[which] || []).map(([k, v]) => `<span><kbd>${Md.esc(k)}</kbd>${Md.esc(v)}</span>`).join("");
@@ -358,13 +358,13 @@
 
   // ------------------------------------------------------------ filter
   el.filter.addEventListener("input", () => { sel = 0; renderList(); });
-  el.filter.addEventListener("focus", () => status("FILTER"));
-  el.filter.addEventListener("blur", () => status("NORMAL"));
+  el.filter.addEventListener("focus", () => { hintsShown = null; status("FILTER"); });
+  el.filter.addEventListener("blur", () => { hintsShown = null; status("NORMAL"); });
   el.filter.addEventListener("keydown", (ev) => {
     if (ev.key === "Enter") { ev.preventDefault(); const e = shown[sel]; el.filter.value = ""; zone = "reader"; renderList(); open(e); el.filter.blur(); }
     else if (ev.key === "ArrowDown") { ev.preventDefault(); move(1); }
     else if (ev.key === "ArrowUp") { ev.preventDefault(); move(-1); }
-    else if (ev.key === "Escape") { el.filter.value = ""; renderList(); el.list.focus(); zone = "list"; }
+    else if (ev.key === "Escape") { el.filter.value = ""; renderList(); el.filter.blur(); zone = "reader"; el.reader.focus({ preventScroll: true }); }
   });
 
   // ------------------------------------------------------------ mouse on list / reader
@@ -419,7 +419,7 @@
     if (typing(ev.target)) return;
     if (ev.target.closest && ev.target.closest(".thumb, .track, model-viewer") && (k === "Enter" || k === " " || k.startsWith("Arrow"))) return;
 
-    const reading = zone === "reader" && current;
+    const reading = document.activeElement !== el.list;
     const scroll = (dy) => el.reader.scrollBy({ top: dy, behavior: "smooth" });
     let handled = true;
     switch (k) {
@@ -432,9 +432,8 @@
       case "ArrowRight": case "n": step(1); break;
       case "ArrowLeft": case "p": step(-1); break;
       case "Escape": case "h": case "Backspace":
-        zone = "list";
         if (matchMedia("(max-width: 760px)").matches) location.hash = "#/";
-        el.list.focus({ preventScroll: true });
+        el.filter.focus();
         break;
       case "g": if (reading) el.reader.scrollTo({ top: 0 }); else move(0, 0); break;
       case "G": if (reading) el.reader.scrollTo({ top: el.reader.scrollHeight }); else move(0, shown.length - 1); break;
@@ -466,6 +465,6 @@
     funke = Funke.mount($("#funke"), { linesUrl: "assets/funke-lines.json", t });
     if (!prefs.greeted) { funke.say(t("funke.hello"), "dragon"); prefs.greeted = 1; save(); }
     clock(); setInterval(clock, 30000);
-    if (!location.hash.replace(/^#\/?/, "")) el.list.focus({ preventScroll: true });
+    el.reader.focus({ preventScroll: true });
   })();
 })();

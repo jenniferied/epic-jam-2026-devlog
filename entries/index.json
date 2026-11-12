@@ -1,17 +1,6 @@
 {
  "entries": [
   {
-   "slug": "profile",
-   "title": "whoami",
-   "date": "2026-11-12",
-   "day": "profile",
-   "phase": "about",
-   "status": "live",
-   "summary": "I research virtual production at Filmuniversität Babelsberg KONRAD WOLF, I trained as an interior designer, and I keep asking what AI does to the making of worlds.",
-   "kind": "page",
-   "file": "profile.md"
-  },
-  {
    "slug": "prep-1-boot",
    "title": "boot.log: a kidnapped workstation",
    "date": "2026-10-27",
@@ -91,6 +80,17 @@
    "phase": "post",
    "status": "draft",
    "file": "post-mortem.md"
+  },
+  {
+   "slug": "profile",
+   "title": "whoami",
+   "date": "2026-11-12",
+   "day": "profile",
+   "phase": "about",
+   "status": "live",
+   "summary": "I research virtual production at Filmuniversität Babelsberg KONRAD WOLF, I trained as an interior designer, and I keep asking what AI does to the making of worlds.",
+   "kind": "page",
+   "file": "profile.md"
   }
  ]
 }

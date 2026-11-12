@@ -417,3 +417,6 @@ mark.voice { color: var(--hl-ink); background: linear-gradient(100deg, transpare
 .banner { margin: 0 0 18px; font: 400 clamp(2.6em, 6.5vw, 4.4em)/.9 var(--display); letter-spacing: .04em; color: var(--accent); text-shadow: var(--glow), 3px 3px 0 color-mix(in srgb, var(--accent) 22%, transparent); }
 .banner-sub { display: block; margin-top: 6px; font-family: var(--mono); font-size: .3em; letter-spacing: .5em; color: var(--dim); text-shadow: none; }
 .banner-row .info { margin-top: .6em; }
+/* multi-image galleries: uniform tiles, full image in the lightbox */
+.gallery.g2 .thumb img, .gallery.g3 .thumb img { aspect-ratio: 16 / 10; object-fit: cover; }
+.gallery.g2 .ph, .gallery.g3 .ph { aspect-ratio: 16 / 10 !important; }

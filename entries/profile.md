@@ -1,7 +1,7 @@
 ---
 title: whoami
 slug: profile
-order: 0
+order: 99
 date: 2026-11-12
 day: profile
 phase: about
@@ -67,6 +67,55 @@ ProSys OSVP: tools for on-set virtual production, 2026 –
 GenSoftworks: [seven AI agents pre-produce a CRPG](https://jenniferied.github.io/gensoftworks/), 2025–26
 Everything Machine: [artistic research on AI and identity](https://jenniferied.github.io/everything-machine/), 2025
 Virtual Film Production: teaching at TH OWL, 2021–26
+```
+
+## more work
+
+### Vertical World, Dundee, 2018–19
+
+My bachelor's project: an open-world RPG environment on abandoned oil platforms, where people fled from the rising sea. It was meant as a game level, and became my first VR presentation.
+
+```gallery
+assets/img/work-dundee-concept-art-01.jpg | Concept art: the platform city | Painted concept of a vertical city built on an oil platform | 1076 x 1073
+assets/img/work-dundee-concept-art-02.jpg | Concept art: the lower decks | Painted concept of stacked industrial decks in the clouds | 548 x 834
+assets/img/work-dundee-ocean-scene.jpg | The sea around the platforms | Stylised render of a stormy sea with platform structures | 991 x 1400
+assets/img/work-dundee-sketches.jpg | Sketches, models and notes | Desk with sketches, wooden blocks and drawings of the platform world | 1400 x 788
+assets/img/work-dundee-3d-model.jpg | The 3D model of the platform | Line drawing of a platform structure on black | 1400 x 1022
+assets/img/work-dundee-atmosphere.jpg | Atmosphere study | Pale atmospheric study in grey and white | 991 x 1400
+```
+
+### Illusion, 2024–25
+
+```gallery
+assets/img/work-illusion-cyberpunk.jpg | A digital character in the machine hall | A digital woman with a black bob in a dark hall full of machines | 1400 x 788
+assets/img/work-illusion-corridor.jpg | The hexagon corridor | A silhouette walking through a glowing blue hexagonal tunnel | 643 x 1400
+assets/img/work-illusion-clothing.jpg | Cloth simulation for the costumes | Four grey simulated hooded robes on black | 1400 x 788
+assets/img/work-illusion-pocketwatch.jpg | Insert shot: the pocket watch | Hands holding a pocket watch over a handwritten letter | 1400 x 788
+```
+
+### Baudrillard in VR, 2024
+
+```gallery
+assets/img/work-etm-hero.jpg | A conversational MetaHuman in a villa | A digital man sitting in a grand hall with columns and a city view | 1400 x 782
+assets/img/work-etm-computer.jpg | The simulation room | A digital man at a desk crowded with old computers | 1400 x 788
+```
+
+### Teaching virtual film production
+
+```gallery
+assets/img/work-vfp-madmax.jpg | Student exercise: a desert chase environment | Wrecked car and a figure in a desert at dusk | 1400 x 788
+assets/img/work-vfp-tombraider.jpg | Student exercise: rocky coast | Sunlit rocky coast with a small figure | 1400 x 591
+assets/img/work-vfp-curriculum.jpg | Planning the curriculum | A whiteboard-style diagram of course modules | 1400 x 1159
+```
+
+### Interiors, games, music
+
+```gallery
+assets/img/work-archvis-hero.jpg | Archviz: a hallway | Bright hallway interior with built-in wooden shelves | 1400 x 1050
+assets/img/work-archvis-02.jpg | Archviz: shelves and doors | Interior with shelves, books and white doors | 1050 x 1400
+assets/img/work-archvis-03.jpg | Archviz: entrance | Entrance area with a wardrobe and coat hooks | 1050 x 1400
+assets/img/work-sumo-hero.jpg | Sumo Digital: worldbuilding for a game concept | Abstract architecture graphic in blue and pink | 1400 x 933
+assets/img/work-kepler-hero.jpg | Kepler: website and visuals for a music project | Dark starfield website with a pixel title and cover art | 1400 x 788
 ```
 
 ## publications
