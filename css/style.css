@@ -9,8 +9,8 @@
   --fs: calc(21px * var(--scale));
   --mono: "VT323", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   --display: "Jersey 15", "VT323", ui-monospace, monospace;
-  --read: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  --read-fs: calc(15px * var(--scale));
+  --read: "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --read-fs: calc(16.5px * var(--scale));
   --radius: 4px;
   --gap: 16px;
 }
@@ -163,7 +163,7 @@ input[type="search"]::-webkit-search-cancel-button { display: none; }
 .entry-head .sub .badge.draft { background: var(--faint); }
 .entry-head .lead { font-family: var(--read); font-size: calc(var(--read-fs) * 1.06); line-height: 1.6; color: var(--fg); border-left: 2px solid var(--line-2); padding-left: 12px; margin: 0 0 22px; }
 
-.prose { overflow-wrap: break-word; font-family: var(--read); font-size: var(--read-fs); line-height: 1.75; letter-spacing: -.005em; }
+.prose { overflow-wrap: break-word; font-family: var(--read); font-size: var(--read-fs); line-height: 1.65; letter-spacing: .005em; }
 .prose p { margin: 0 0 1.15em; }
 .prose li { line-height: 1.6; }
 .prose .specs, .prose .log, .prose .timeline, .prose .chat, .prose .todo, .prose .tracks, .prose .gallery figcaption, .prose .chart figcaption, .prose h2, .prose h3, .prose h4 { font-family: var(--mono); font-size: var(--fs); line-height: 1.35; letter-spacing: 0; }
