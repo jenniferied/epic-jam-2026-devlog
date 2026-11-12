@@ -258,7 +258,7 @@
     document.querySelectorAll(".track[data-src]").forEach((b) => {
       const on = playing && b.dataset.src === playing && !audio.paused;
       b.classList.toggle("on", on);
-      b.querySelector(".state").textContent = on ? "❚❚" : "▶";
+      b.querySelector(".state").textContent = on ? "||" : "▶";
     });
   }
   function toggleTrack(btn) {
@@ -336,7 +336,7 @@
   el.filter.addEventListener("focus", () => status("FILTER"));
   el.filter.addEventListener("blur", () => status("NORMAL"));
   el.filter.addEventListener("keydown", (ev) => {
-    if (ev.key === "Enter") { ev.preventDefault(); zone = "reader"; open(shown[sel]); el.filter.blur(); }
+    if (ev.key === "Enter") { ev.preventDefault(); const e = shown[sel]; el.filter.value = ""; zone = "reader"; renderList(); open(e); el.filter.blur(); }
     else if (ev.key === "ArrowDown") { ev.preventDefault(); move(1); }
     else if (ev.key === "ArrowUp") { ev.preventDefault(); move(-1); }
     else if (ev.key === "Escape") { el.filter.value = ""; renderList(); el.list.focus(); zone = "list"; }

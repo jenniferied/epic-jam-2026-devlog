@@ -223,7 +223,7 @@ q.voice::before, q.voice::after { color: color-mix(in srgb, var(--voice) 60%, tr
 .chat > div { max-width: 88%; padding: 6px 12px; border: 1px solid var(--line-2); border-radius: 10px; }
 .chat .who { display: block; font-size: .72em; text-transform: uppercase; letter-spacing: .12em; color: var(--faint); }
 .chat p { margin: 0; }
-.chat .msg-you { align-self: flex-end; border-bottom-right-radius: 2px; background: var(--voice-bg); border-color: color-mix(in srgb, var(--voice) 50%, transparent); color: var(--voice); }
+.chat .msg-you { align-self: flex-end; border-bottom-right-radius: 2px; background: color-mix(in srgb, var(--accent) 8%, var(--pane)); border-color: var(--line-2); }
 .chat .msg-ai { align-self: flex-start; border-bottom-left-radius: 2px; background: var(--pane); }
 
 /* todo */
