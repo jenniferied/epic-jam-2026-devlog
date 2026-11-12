@@ -412,3 +412,6 @@ q.voice::before, q.voice::after { color: color-mix(in srgb, var(--voice) 60%, tr
 .info:hover, .info:focus-visible { border-color: var(--accent); }
 .info .tip { position: absolute; z-index: 5; top: calc(100% + 8px); right: 0; width: min(340px, 80vw); padding: 8px 12px; background: var(--pane); color: var(--fg); border: 1px solid var(--line-2); border-radius: var(--radius); font-family: var(--read); font-style: normal; font-size: calc(var(--read-fs) * .9); line-height: 1.5; text-align: left; box-shadow: 0 8px 24px rgba(0,0,0,.35); opacity: 0; visibility: hidden; transition: opacity .12s; }
 .info:hover .tip, .info:focus .tip, .info:focus-within .tip { opacity: 1; visibility: visible; }
+.banner { margin: 0 0 18px; font: 400 clamp(2.6em, 6.5vw, 4.4em)/.9 var(--display); letter-spacing: .04em; color: var(--accent); text-shadow: var(--glow), 3px 3px 0 color-mix(in srgb, var(--accent) 22%, transparent); }
+.banner-sub { display: block; margin-top: 6px; font-family: var(--mono); font-size: .3em; letter-spacing: .5em; color: var(--dim); text-shadow: none; }
+.banner-row .info { margin-top: .6em; }
