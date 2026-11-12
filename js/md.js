@@ -62,7 +62,7 @@
         return `<div class="log-line" role="listitem"><time>${esc(t)}</time><span class="tag tag-${cls}">${esc(tag || "")}</span><span class="msg">${inline(rest.join(" | "))}</span></div>`;
       }).join("") + "</div>";
     },
-    gallery(lines, ctx) {
+    gallery(lines, ctx, opts) {
       const items = lines.filter((l) => l.trim()).map((l) => {
         const [src, caption = "", alt = "", size = ""] = split(l);
         const [w, h] = size.split(/\s*x\s*/).map(Number);
@@ -70,7 +70,7 @@
       });
       const id = ctx.galleries.length;
       ctx.galleries.push(items);
-      return `<div class="gallery g${items.length === 4 ? 2 : Math.min(items.length, 3)}">` + items.map((it, i) => {
+      return `<div class="gallery g${items.length === 4 ? 2 : Math.min(items.length, 3)}${/contain/.test(opts || "") ? " contain" : ""}">` + items.map((it, i) => {
         const fig = it.src === "placeholder"
           ? `<span class="ph" style="aspect-ratio:${it.w}/${it.h}"><span class="ph-label">[ photo pending ]</span><span class="ph-cap">${esc(it.alt)}</span></span>`
           : `<img src="${esc(it.src)}" alt="${esc(it.alt)}" width="${it.w}" height="${it.h}" loading="lazy" decoding="async">`;
@@ -138,19 +138,20 @@
       const line = lines[i];
       if (!line.trim()) { i++; continue; }
 
-      const fence = line.match(/^```(\w*)/);
+      const fence = line.match(/^```(\w*)\s*(.*)$/);
       if (fence) {
         i++;
         const body = until((l) => /^```\s*$/.test(l));
         i++;
         const kind = fence[1];
-        html += blocks[kind] ? blocks[kind](body, ctx) : `<pre><code>${esc(body.join("\n"))}</code></pre>`;
+        html += blocks[kind] ? blocks[kind](body, ctx, (fence[2] || "").trim()) : `<pre><code>${esc(body.join("\n"))}</code></pre>`;
         continue;
       }
       const h = line.match(/^(#{1,4})\s+(.*)$/);
       if (h) {
         const level = Math.min(h[1].length + 1, 5);
         const id = h[2].toLowerCase().replace(/[^\w]+/g, "-").replace(/^-|-$/g, "");
+        if (h[1].length === 2) (ctx.toc = ctx.toc || []).push({ id, text: h[2] });
         html += `<h${level} id="${id}"><span class="hash" aria-hidden="true">${"#".repeat(h[1].length)}</span> ${inline(h[2])}</h${level}>`;
         i++; continue;
       }
@@ -180,7 +181,7 @@
       const para = until((l) => !l.trim() || /^(```|#{1,4}\s|>|\s*([-*]|\d+\.)\s+)/.test(l));
       html += `<p>${inline(para.join(" "))}</p>`;
     }
-    return { html, galleries: ctx.galleries };
+    return { html, galleries: ctx.galleries, toc: ctx.toc || [] };
   }
 
   function frontMatter(text) {

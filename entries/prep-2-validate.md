@@ -61,6 +61,10 @@ None of that test code is in the jam entry. At 22:15 I wrote a declaration of ev
 
 ## The kickoff stream
 
+```gallery
+assets/img/kickoff-night.jpg | Kickoff night, 20:00. My own illustration, made with an image model (Gemini 2.5 Flash Image via fal). | Pixel art of a woman at a desk watching a stream with a film clapperboard on screen, a small dragon on the monitor and a cat asleep on the desk | 1344 x 768
+```
+
 I watched the stream. A lot of it went over the jam page I had already read, or rather the page my AI had read. Then it explained how to install the MCP, which «I did let my AI install, like months before already».
 
 >> It was valuable to hear it actually being read out, whilst other people in some stream were complaining that they already knew this, and I was like, yeah, but I did somewhat thoroughly read it, but having it read to me front to back was good, actually, since I do rely on AI to read long texts and understand things.
@@ -74,5 +78,9 @@ The theme is **Director's Cut**. I work at a film university now, and I'm not a 
 >> I did learn things again, and that's why I like the theme Director's Cut, and what speaks to me, that I have always wanted to make a game.
 
 It also reminded me of my first jam. Back in Dundee, as a student at Duncan of Jordanstone, there were over twenty VR headsets at a jam. I joined a group and we started iterating.
+
+```gallery
+assets/img/memory-dundee-jam.jpg | Dundee, my first jam. My own illustration, made with an image model (Gemini 2.5 Flash Image via fal). | Pixel art of a young woman holding up a VR headset in joy, tables of boxed headsets and students with laptops around her | 1344 x 768
+```
 
 >> I received a free headset for no reason whatsoever, but I was thankful for that. That's what made me use VR in my final presentations, even though I didn't even start to begin to make a game. I was too overwhelmed. But I did participate. Even just getting this free headset changed the course of my life, because I was the first one to do a VR presentation in my interior design-focused class. I was making a game level instead of an interior design project.

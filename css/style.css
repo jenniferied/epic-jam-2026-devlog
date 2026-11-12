@@ -420,3 +420,24 @@ mark.voice { color: var(--hl-ink); background: linear-gradient(100deg, transpare
 /* multi-image galleries: uniform tiles, full image in the lightbox */
 .gallery.g2 .thumb img, .gallery.g3 .thumb img { aspect-ratio: 16 / 10; object-fit: cover; }
 .gallery.g2 .ph, .gallery.g3 .ph { aspect-ratio: 16 / 10 !important; }
+
+/* readability pass */
+.gallery.contain .thumb img { object-fit: contain; background: var(--pane); }
+.gallery.g1 .ph { max-height: 300px; aspect-ratio: auto !important; min-height: 180px; }
+.prose h3 { border-top: 1px dashed var(--line); padding-top: 1.1em; }
+.prose > h3:first-child, .recap + h3 { border-top: 0; padding-top: 0; }
+.toc { display: flex; flex-wrap: wrap; gap: 4px 6px; margin: -6px 0 26px; font-family: var(--mono); font-size: calc(var(--fs) * .85); }
+.toc-head { width: 100%; color: var(--faint); text-transform: uppercase; letter-spacing: .14em; font-size: .85em; }
+.toc a { display: inline-flex; gap: 6px; padding: 2px 9px; border: 1px solid var(--line-2); border-radius: 999px; color: var(--fg); text-decoration: none; }
+.toc a span { color: var(--accent); }
+.toc a:hover { border-color: var(--accent); }
+.home-grid { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+.home-grid .card { padding: 0 0 12px; overflow: hidden; }
+.home-grid .card img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; image-rendering: pixelated; margin-bottom: 10px; border-bottom: 1px solid var(--line-2); }
+.home-grid .card .d, .home-grid .card .t, .home-grid .card .s { padding: 0 12px; }
+.home-grid .card .s { font-family: var(--read); font-size: calc(var(--read-fs) * .88); line-height: 1.45; display: block; }
+.upcoming { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 8px; margin: 4px 0 10px; font-family: var(--mono); }
+.upcoming .up-head { color: var(--faint); margin-right: 4px; }
+.upcoming a { padding: 1px 9px; border: 1px dashed var(--line-2); border-radius: var(--radius); color: var(--dim); text-decoration: none; font-size: .85em; }
+.upcoming a b { color: var(--fg); font-weight: 400; margin-right: 6px; }
+.upcoming a:hover { border-color: var(--accent); }

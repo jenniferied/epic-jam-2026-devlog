@@ -70,7 +70,7 @@ C · competitor | Optimise for the judges and the prizes. Payoff: recognition
 
 Its point was that I'm trying to optimise all three at once, and that the jam is really two games. One is a four-day tournament. The other is a creative career that keeps going for years. It suggested treating the jam as a *proof of experience* rather than a tiny Skyrim, which I liked. The images in my head are a castle, a masked prisoner and an island in the distance. They're images, not a design.
 
-```gallery
+```gallery contain
 assets/img/chatgpt-rpg-pillars.jpg | ChatGPT's sketch of the whole dream: twelve pillars, and the advice to validate only one of them deeply | Grid of twelve RPG pillars with Living NPCs highlighted | 1296 x 664
 assets/img/chatgpt-directions.jpg | Three directions scored against "long-term RPG". Its own judgement, not data | Bar chart: cinematic 3D world 4.3, 2D AI worldbuilding 3.7, 3D world with local AI NPCs 3.5 | 1296 x 610
 assets/img/chatgpt-one-gpu.jpg | The tempting NVIDIA question: can DLSS make room on the GPU for local AI characters? | Diagram of one RTX GPU shared by Unreal rendering and ACE inference | 1232 x 962

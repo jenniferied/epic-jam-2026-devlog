@@ -117,12 +117,15 @@
     const ctx = { galleries: [] };
     const md = Md.render(await body("readme.md"), ctx);
     galleries = md.galleries;
-    const cards = entries.filter((e) => !e.home && !isPage(e)).map((e) => `<a href="#/${e.slug}" class="${e.status === "draft" ? "draft" : ""}"><span class="d">${e.n} · ${Md.esc(e.day)} · ${fmtDate(e.date)}${e.status === "draft" ? " · " + Md.esc(t("status.draft")) : ""}</span><span class="t">${Md.esc(e.title)}</span>${e.summary ? `<span class="s">${Md.esc(e.summary)}</span>` : ""}</a>`).join("");
+    const logs = entries.filter((e) => !e.home && !isPage(e));
+    const cards = logs.filter((e) => e.status !== "draft").map((e) => `<a href="#/${e.slug}" class="card">${e.cover ? `<img src="${Md.esc(e.cover)}" alt="" loading="lazy" width="1344" height="768">` : ""}<span class="d">${Md.esc(e.day)} · ${fmtDate(e.date)}</span><span class="t">${Md.esc(e.title)}</span>${e.summary ? `<span class="s">${Md.esc(e.summary)}</span>` : ""}</a>`).join("");
+    const upcoming = logs.filter((e) => e.status === "draft").map((e) => `<a href="#/${e.slug}"><b>${Md.esc(e.day)}</b>${fmtDate(e.date)}</a>`).join("");
     el.reader.innerHTML = `<article class="article">
       <div class="crumbs"><span class="ps1">~/devlog $</span> cat README.md</div>
       <div class="banner-row"><p class="banner" role="heading" aria-level="1">EPIC JAM 2026<span class="banner-sub">devlog</span></p><button type="button" class="info" aria-describedby="tagline-tip" aria-label="${Md.esc(t("info.label"))}">i<span class="tip" role="tooltip" id="tagline-tip">${Md.esc(t("site.tagline"))}</span></button></div>
       <div class="prose">${md.html}</div>
       <div class="home-grid">${cards}</div>
+      ${upcoming ? `<div class="upcoming"><span class="up-head">${Md.esc(t("home.upcoming"))}</span>${upcoming}</div>` : ""}
       ${legend()}
       ${pager()}
     </article>`;
@@ -149,6 +152,7 @@
         <p class="sub"><span class="badge ${e.status === "draft" ? "draft" : ""}">${Md.esc(e.day)}</span>${page ? "" : `<span>${fmtDate(e.date)}</span>`}${draft || page ? "" : `<span>${minutes} ${Md.esc(t("entry.minutes"))}</span>`}</p>
         ${e.summary ? `<p class="lead">${Md.inline(e.summary)}</p>` : ""}
       </header>
+      ${md.toc.length >= 3 ? `<nav class="toc" aria-label="${Md.esc(t("toc.label"))}"><span class="toc-head">${Md.esc(t("toc.label"))}</span>${md.toc.map((x, i) => `<a href="#/${e.slug}" data-jump="${x.id}"><span>${String(i + 1).padStart(2, "0")}</span>${Md.inline(x.text)}</a>`).join("")}</nav>` : ""}
       ${draft ? `<p class="empty-entry"><span class="blink" aria-hidden="true">█</span></p>` : `<div class="prose">${md.html}</div>${page ? "" : legend()}`}
       ${pager()}
     </article>`;
@@ -376,6 +380,8 @@
   el.reader.addEventListener("click", (ev) => {
     const th = ev.target.closest(".thumb"); if (th) { lbOpen(th.dataset.gallery, th.dataset.index); return; }
     const tr = ev.target.closest(".track[data-src]"); if (tr) { toggleTrack(tr); return; }
+    const jump = ev.target.closest("[data-jump]");
+    if (jump) { ev.preventDefault(); const h = document.getElementById(jump.dataset.jump); if (h) h.scrollIntoView({ behavior: "smooth", block: "start" }); return; }
     if (ev.target.closest("[data-back]")) { zone = "list"; location.hash = "#/"; }
   });
   el.reader.addEventListener("focusin", () => { zone = "reader"; status(); });
