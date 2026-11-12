@@ -81,6 +81,27 @@ since then | Research at a film university. Visual production, AI, lots of liter
 
 I've been working with Unreal Engine since 2019, and I love it. (Unreal Engine and its logo are trademarks of Epic Games, Inc., shown here only to say what I build with.)
 
+## I love creating worlds
+
+>> I love creating worlds.
+
+The last one was **Dystopian District**, published as PANELGRAD: a small, melancholic snow city of concrete panel blocks, inspired by post-Soviet towns in Eastern Russia and inhabited by anthropomorphic animals. It started from real satellite terrain and OpenStreetMap streets. Houdini turned that into roads, districts and buildings, and Unreal Engine rendered it. That was my master's project at TH OWL, 2025/26. Frames from the final film, one per shot:
+
+```gallery
+assets/img/dd-hero.jpg | Drone over the city at night | Aerial view of a snowy city of lit-up panel blocks at night | 1600 x 674
+assets/img/dd-aerial2.jpg | Districts along the river | Dark aerial view of panel-block districts between a frozen river and forest | 1600 x 672
+assets/img/dd-snow.jpg | Two towers on the hill | Two high-rise blocks on a snowy hill above the city, mountains behind | 1600 x 814
+assets/img/dd-street.jpg | The bus stop under a huge moon | Night street with a lit apartment block, a bus shelter, street lamps and a large moon over mountains | 1600 x 673
+```
+
+How it got there: terrain, then streets, then buildings.
+
+```gallery
+assets/img/dd-process-terrain.jpg | Terrain from satellite data, with the town's footprint | Red and grey contour visualisation of a heightfield with a small town in the middle | 1200 x 1338
+assets/img/dd-process-streets.jpg | The street network from OpenStreetMap | White street network lines on black | 1200 x 484
+assets/img/dd-process-blocks.jpg | Procedural building blocks placed on the terrain | Grey building blocks with coloured roofs scattered over a dark terrain grid | 1200 x 604
+```
+
 ## Setup: two machines, two agents
 
 «I started using AI pretty early on, and I'm doing stuff like literature reviews, 3D generation and all sorts of stuff.» So "setting up" mostly meant connecting things I already had. The **Codex desktop app** runs on the Windows workstation and **Claude Code** on the Mac. They talk to each other over SSH through Tailscale, and both work on the same git checkout.
