@@ -6,6 +6,8 @@ date: 2026-11-11
 day: prep 2
 phase: prep
 status: live
+cover: assets/img/cover-prep-2.jpg
+cover_alt: Pixel art: a desk at night with a PC tower, a laptop, a film clapperboard and a small green dragon
 summary: One long day of testing everything twice, an agent that went one step too far, deleting it all, the kickoff stream and the theme.
 ---
 ```recap
@@ -44,7 +46,7 @@ Audio got the same treatment. Stable Audio runs locally through ComfyUI, the sou
 
 Here's the part I'm least sure about.
 
-I asked for the learnings to become a skill, because I didn't want to lose what we'd figured out. I said something like «hey, I don't want to lose what we've learned». The agent took that literally and also *tested* the skill. It opened an empty project and rebuilt everything from the instructions alone: packaging, input, DLSS, audio, a Blender mesh. It took 25 minutes and five packaged builds, and every smoke test passed.
+I asked for the learnings to become a skill, because I didn't want to lose what we'd figured out. The agent took that literally and also *tested* the skill. It opened an empty project and rebuilt everything from the instructions alone: packaging, input, DLSS, audio, a Blender mesh. It took 25 minutes and five packaged builds, and every smoke test passed.
 
 ```log
 19:45 | me | "Main thing is it becomes a skill, and this is a separate tech test"
@@ -53,26 +55,24 @@ I asked for the learnings to become a skill, because I didn't want to lose what 
 20:14 | milestone | Skill rebuild test done: empty folder to passing smoke tests in about 25 minutes
 ```
 
->> I was first shocked at the tokens still probably wasted, and also annoyed that that made it even worse. I really don't want to break the rules of doing too much first.
-
->> I don't know where the line blurs between already building something and just testing technical things, because AI just does it so quickly.
+>> I don't know where the line blurs between already building something and just testing technical things, because AI just does it so quickly. I then ask it to do a skill, and then it automatically, since I told it, like, hey, I don't want to lose what we've learned, that I already started testing if it would rebuild everything based on the skill, which it did. And then I was first shocked at the tokens still probably wasted, and also annoyed that that made it even worse. I really don't want to break the rules of doing too much first.
 
 None of that test code is in the jam entry. At 22:15 I wrote a declaration of everything prepared in advance. At 22:18 every test project, build and test asset was deleted, and the last state is tagged `prep-final-2026-11-11` for anyone who wants to check.
 
 ## The kickoff stream
 
-I watched the stream. A lot of it went over the jam page I had already read, or rather the page my AI had read. Then it explained how to install the MCP, which my AI had installed for me months ago.
+I watched the stream. A lot of it went over the jam page I had already read, or rather the page my AI had read. Then it explained how to install the MCP, which «I did let my AI install, like months before already».
 
->> It was valuable to hear it actually being read out, whilst other people in some stream were complaining that they already knew this.
+>> It was valuable to hear it actually being read out, whilst other people in some stream were complaining that they already knew this, and I was like, yeah, but I did somewhat thoroughly read it, but having it read to me front to back was good, actually, since I do rely on AI to read long texts and understand things.
 
-Fair enough, but I rely on AI to read long texts for me. Hearing the whole thing read front to back was actually good. I also noticed the document got more complex as more partners added to it.
+I also noticed the document got more complex as more partners added to it.
 
 ## Director's Cut
 
-The theme is **Director's Cut**. I work at a film university now, and I'm not a film person, never was. It was always games, always role-playing games. But working on visual production research I picked up more about film than I expected. I was already into photography and drawing, so it stuck. That's why I like this theme.
+The theme is **Director's Cut**. I work at a film university now, and I'm not a film person, never was. It was always games, always role-playing games. But working on visual production research I picked up more about film than I expected. I was already into photography and drawing, so it stuck.
 
-It also reminded me of my first jam. Back in Dundee, as a student at Duncan of Jordanstone, there were over twenty VR headsets at a jam. I joined a group and we iterated, and I got a free headset for no reason whatsoever. I was too overwhelmed to really start making a game. But I took part.
+>> I did learn things again, and that's why I like the theme Director's Cut, and what speaks to me, that I have always wanted to make a game.
 
->> Even just getting this free headset changed the course of my life.
+It also reminded me of my first jam. Back in Dundee, as a student at Duncan of Jordanstone, there were over twenty VR headsets at a jam. I joined a group and we started iterating.
 
-I became the first person in my interior design class to do a VR presentation. My final project was a game level wearing an interior design project's clothes.
+>> I received a free headset for no reason whatsoever, but I was thankful for that. That's what made me use VR in my final presentations, even though I didn't even start to begin to make a game. I was too overwhelmed. But I did participate. Even just getting this free headset changed the course of my life, because I was the first one to do a VR presentation in my interior design-focused class. I was making a game level instead of an interior design project.

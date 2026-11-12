@@ -6,6 +6,8 @@ date: 2026-10-27
 day: prep 1
 phase: prep
 status: live
+cover: assets/img/cover-prep-1.jpg
+cover_alt: Pixel art: a woman with a walking boot carries a glowing PC tower out of an office at night, a small green dragon flying beside her
 summary: How a work PC came home with me first, why I'm doing this at all, and the toolchain I set up in the two weeks before the jam.
 ---
 ```recap
@@ -15,11 +17,11 @@ summary: How a work PC came home with me first, why I'm doing this at all, and t
 
 ## The kidnapping
 
-The new workstation was meant for the office. It isn't a normal office anyway, and I had waited for this machine for a long time. So before it went to work, it came home with me.
+The new workstation was meant for the office. Before it went to work, it came home with me.
 
->> It's not a normal office anyway. I waited for long, grueling hours.
+>> My work PC, because it's not a normal office anyway, so taking it home before taking it to the office, because I waited for long, grueling hours. And then that's my explanation for essentially kidnapping this PC.
 
-Some context for the timing. I broke my foot. After six weeks on sick leave I was back at work for exactly two days. No more physio, back to the gym, and a jam on the calendar.
+Some context for the timing: I «just broke my foot, and after six weeks of sickness, I was at work for two days, no more physio now, back to the gym». And a jam on the calendar.
 
 ```gallery
 placeholder | The kidnapped workstation. Photo follows. | Photo of the workstation | 1600 x 1200
@@ -46,19 +48,17 @@ Glue: Tailscale, SSH, git + LFS, herdr
 
 ## Why I'm here
 
-On 11.11.2011 a game came out and I teared up. Then I caught myself.
-
->> And then, like, stopping myself and be like, okay, like, but that's cringe.
+>> I do like my job, but doing research, I do feel that I've always wanted to make games. Like remembering tearing up on 2011-11-11, and then, like, stopping myself and be like, okay, like, but that's cringe. Like, we all love making games.
 
 Fifteen years later, to the day, the kickoff of this jam was on 11.11.2026. I didn't plan that.
 
-I always liked drawing and computers, like a lot of us. I wanted to do concept art. I had some talent, but I realised I wasn't consistent enough with drawing to get there. My first website was a Pokémon fan page, built by stealing the HTML and CSS from other pages. I bet a lot of people in this jam have a story like that. A lot of them will be very young, and this jam might be their origin story.
+I always liked drawing and computers, like a lot of us. I wanted to do concept art. I had some talent, but I realised I wasn't consistent enough with drawing to get there. And «I did my first Pokémon website back then by stealing the HTML and CSS and all that stuff». I bet a lot of people in this jam have a story like that.
 
->> We all have our story.
+>> I can imagine that many very, very young people will participate in this, and this might be their origin story. We all have our story.
 
-I know how artists feel about AI, especially concept artists and graphic designers, and I'm one of the people who wanted that job. I don't think that feeling is wrong.
+I'm one of the people who wanted to make concept art, so I know how artists feel about this. I don't think that feeling is wrong.
 
->> AI represents something scary, but it also represents a possibility.
+>> We all know that AI is scary, and there is a sentiment between artists, especially, for example, concept artists or graphic designers. AI represents something scary, but it also represents a possibility.
 
 ```timeline
 early days | Drawing, PCs, and a Pokémon fan site made of borrowed HTML and CSS
@@ -70,7 +70,7 @@ since then | Research at a film university. Visual production, AI, lots of liter
 
 ## Setup: two machines, two agents
 
-I started using AI early, for literature reviews, 3D generation and everything in between. So "setting up" mostly meant connecting things I already had. The **Codex desktop app** runs on the Windows workstation and **Claude Code** on the Mac. They talk to each other over SSH through Tailscale, and both work on the same git checkout.
+«I started using AI pretty early on, and I'm doing stuff like literature reviews, 3D generation and all sorts of stuff.» So "setting up" mostly meant connecting things I already had. The **Codex desktop app** runs on the Windows workstation and **Claude Code** on the Mac. They talk to each other over SSH through Tailscale, and both work on the same git checkout.
 
 The rules allow preparing tools, agents, MCP settings, prompts and scripts in advance. Game content has to wait for 12 November, 06:00. So everything here is plumbing.
 

@@ -19,7 +19,6 @@
   "entry.prev": "previous",
   "entry.next": "next",
   "entry.minutes": "min read",
-  "entry.draftNote": "This entry is a skeleton. It gets written on the day itself, nothing here has happened yet.",
   "legend.title": "legend",
   "legend.voice": "dictated: my own words, transcribed from voice notes",
   "legend.ai": "plain text: condensed with AI from my notes and the agent logs",
@@ -32,19 +31,58 @@
   "help.title": "keys",
   "help.close": "press esc to close",
   "help.rows": [
-    ["j k  ↑ ↓", "move through entries, scroll inside an entry"],
-    ["enter  l  →", "open the selected entry"],
-    ["esc  h  ←", "back to the list"],
-    ["n  p", "next / previous entry"],
-    ["g  G", "first / last entry"],
-    ["1 – 9", "jump to entry number"],
-    ["/", "filter entries"],
-    [":", "command line (try help)"],
-    ["[  ]", "narrower / wider sidebar (or drag the divider)"],
-    ["+  -  0", "text size"],
-    ["t", "cycle colour theme"],
-    ["f", "poke Funke"],
-    ["?", "this help"]
+    [
+      "j k  ↑ ↓",
+      "move through entries, scroll inside an entry"
+    ],
+    [
+      "enter  l",
+      "open the selected entry"
+    ],
+    [
+      "← →  n p",
+      "previous / next entry"
+    ],
+    [
+      "esc  h",
+      "back to the list"
+    ],
+    [
+      "0 – 9",
+      "jump to entry number (0 = README)"
+    ],
+    [
+      "g  G",
+      "first / last entry"
+    ],
+    [
+      "/",
+      "filter entries"
+    ],
+    [
+      ":",
+      "command line (try help)"
+    ],
+    [
+      "[  ]",
+      "narrower / wider sidebar (or drag the divider)"
+    ],
+    [
+      "+  -",
+      "text size"
+    ],
+    [
+      "t",
+      "cycle colour theme"
+    ],
+    [
+      "f",
+      "poke Funke"
+    ],
+    [
+      "?",
+      "this help"
+    ]
   ],
   "cmd.help": "commands: ls · open <n|slug> · cd .. · theme [forest|amber|paper] · lang [en|de] · funke · rss · clear · help",
   "cmd.unknown": "command not found: {cmd}",
@@ -68,5 +106,34 @@
   "theme.paper": "paper",
   "footer.feed": "feed",
   "footer.source": "source",
-  "noscript": "This devlog needs JavaScript for its terminal. The raw entries are plain markdown in the entries folder."
+  "noscript": "This devlog needs JavaScript for its terminal. The raw entries are plain markdown in the entries folder.",
+  "phase.home": "start",
+  "list.homeMeta": "what this is",
+  "cover.credit": "Illustration for this devlog, made with an image model (FLUX.1 dev via fal). Not game content.",
+  "hints": [
+    [
+      "↑↓",
+      "select"
+    ],
+    [
+      "⏎",
+      "open"
+    ],
+    [
+      "← →",
+      "prev / next"
+    ],
+    [
+      "/",
+      "filter"
+    ],
+    [
+      ":",
+      "command"
+    ],
+    [
+      "?",
+      "all keys"
+    ]
+  ]
 }

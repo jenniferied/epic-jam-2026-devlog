@@ -19,7 +19,6 @@
   "entry.prev": "vorheriger",
   "entry.next": "nächster",
   "entry.minutes": "Min. Lesezeit",
-  "entry.draftNote": "Dieser Eintrag ist ein Gerüst. Er wird am jeweiligen Tag geschrieben, nichts davon ist schon passiert.",
   "legend.title": "legende",
   "legend.voice": "diktiert: meine eigenen Worte, aus Sprachnotizen transkribiert",
   "legend.ai": "normaler Text: mit KI aus meinen Notizen und den Agenten-Logs verdichtet",
@@ -32,19 +31,58 @@
   "help.title": "tasten",
   "help.close": "Esc schließt",
   "help.rows": [
-    ["j k  ↑ ↓", "durch Einträge gehen, im Eintrag scrollen"],
-    ["enter  l  →", "gewählten Eintrag öffnen"],
-    ["esc  h  ←", "zurück zur Liste"],
-    ["n  p", "nächster / vorheriger Eintrag"],
-    ["g  G", "erster / letzter Eintrag"],
-    ["1 – 9", "zu Eintrag Nummer springen"],
-    ["/", "Einträge filtern"],
-    [":", "Kommandozeile (help probieren)"],
-    ["[  ]", "Seitenleiste schmaler / breiter (oder Trenner ziehen)"],
-    ["+  -  0", "Schriftgröße"],
-    ["t", "Farbschema wechseln"],
-    ["f", "Funke anstupsen"],
-    ["?", "diese Hilfe"]
+    [
+      "j k  ↑ ↓",
+      "durch Einträge gehen, im Eintrag scrollen"
+    ],
+    [
+      "enter  l",
+      "gewählten Eintrag öffnen"
+    ],
+    [
+      "← →  n p",
+      "vorheriger / nächster Eintrag"
+    ],
+    [
+      "esc  h",
+      "zurück zur Liste"
+    ],
+    [
+      "0 – 9",
+      "zu Eintrag springen (0 = README)"
+    ],
+    [
+      "g  G",
+      "erster / letzter Eintrag"
+    ],
+    [
+      "/",
+      "Einträge filtern"
+    ],
+    [
+      ":",
+      "Kommandozeile (help probieren)"
+    ],
+    [
+      "[  ]",
+      "Seitenleiste schmaler / breiter (oder Trenner ziehen)"
+    ],
+    [
+      "+  -",
+      "Schriftgröße"
+    ],
+    [
+      "t",
+      "Farbschema wechseln"
+    ],
+    [
+      "f",
+      "Funke anstupsen"
+    ],
+    [
+      "?",
+      "diese Hilfe"
+    ]
   ],
   "cmd.help": "Befehle: ls · open <n|slug> · cd .. · theme [forest|amber|paper] · lang [en|de] · funke · rss · clear · help",
   "cmd.unknown": "Befehl nicht gefunden: {cmd}",
@@ -68,5 +106,34 @@
   "theme.paper": "papier",
   "footer.feed": "feed",
   "footer.source": "quelltext",
-  "noscript": "Dieses Devlog braucht JavaScript für sein Terminal. Die Einträge liegen als Markdown im Ordner entries."
+  "noscript": "Dieses Devlog braucht JavaScript für sein Terminal. Die Einträge liegen als Markdown im Ordner entries.",
+  "phase.home": "start",
+  "list.homeMeta": "worum es geht",
+  "cover.credit": "Illustration für dieses Devlog, mit einem Bildmodell erzeugt (FLUX.1 dev über fal). Kein Spielinhalt.",
+  "hints": [
+    [
+      "↑↓",
+      "wählen"
+    ],
+    [
+      "⏎",
+      "öffnen"
+    ],
+    [
+      "← →",
+      "zurück / weiter"
+    ],
+    [
+      "/",
+      "filtern"
+    ],
+    [
+      ":",
+      "befehl"
+    ],
+    [
+      "?",
+      "alle tasten"
+    ]
+  ]
 }

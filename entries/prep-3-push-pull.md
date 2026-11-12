@@ -6,6 +6,8 @@ date: 2026-11-12
 day: prep 3
 phase: prep
 status: live
+cover: assets/img/cover-prep-3.jpg
+cover_alt: Pixel art: a figure at a forest crossroads at night, paths leading to a castle, a glowing workshop and a golden trophy
 summary: There is no concept yet. There is a pile of directions pulling against each other, and me being overwhelmed at 3 AM, three hours before the start.
 ---
 ```recap
@@ -21,19 +23,17 @@ I like small games. I love Stardew Valley, mostly because I can play it with my 
 
 >> Realistically, maybe there is two days of focused work if you are strict, and then obviously you will not hold in your two-day deadline and maybe add one and a half more days of troubleshooting and stuff, and then, yeah, everything will explode anyway.
 
-But here's my actual problem: I don't want to make a small game. I want to work on something like the next Cyberpunk, the next Skyrim, the next Fallout. That's crazy, and of course it's scary.
+But here's my actual problem: I want to work on something like the next Cyberpunk, the next Skyrim, the next Fallout. That's crazy, and of course it's scary.
 
->> I don't wanna make Pong on steroids.
+>> The problem is I don't wanna make something smaller. I don't wanna make Pong on steroids. And I don't have smaller mechanics. I don't want to make a particularly fun platformer thing or, like, card games and stuff like that.
 
-No particularly fun platformer, no card game. I was never a huge board game fan either. Catan was fun last time, at a birthday party, even though it almost caused a relationship rupture. The year before, Monopoly did. I was laughing about it.
+I was never a huge board game fan either. Catan was fun last time, at a birthday party, even though it almost caused a relationship rupture. The year before, Monopoly did. I was laughing about it.
 
 What I'd love to make one day is a role-playing game. A sandbox, something that lives from interactions. That's about the most complex thing you can pick, and usually it takes a lot of people. Should it be world first or systems first? Is the world just window dressing? I don't want to build a theme park. In The Sims I always went for the Renaissance man: exercise, painting, building the house to a ridiculous degree, selling ever more expensive paintings. What draws me is that feeling of complexity and opportunity at once.
 
 None of this is a plan. These are directions I keep coming back to, nothing more. There's a levelling system I have a rough idea for. I like the star constellations in Skyrim, rune-based systems and skill trees. I also like body-based damage like in Fallout. I recently watched a documentary that was crazy good (link follows). I keep going back to a long Elder Scrolls analysis from my master's notes: [A New Type of RPG](https://www.youtube.com/watch?v=1_y0Iaq3k_Q) and [The Tragedy of Skyrim](https://www.youtube.com/watch?v=6NXSxkWQp0M).
 
->> I don't know how to break down a mechanic from a role-playing game that's new. There has to be a lot of scaffolding.
-
->> I think it's so hard to break it down to create, like, the smallest slice possible for my idea of the big game I want to create.
+>> I don't know how to break down a mechanic from a role-playing game that's new. There has to be a lot of scaffolding, but still reducing it to like a small thing. I think it's so hard to break it down to create, like, the smallest slice possible for my idea of the big game I want to create.
 
 Then there's the temptation of the hardware. I could focus on making something look cinematic *and* run well, with NVIDIA tech on a 5090. But then I hit the same question again:
 
@@ -83,6 +83,8 @@ There's plenty of evidence that new technology doesn't always help people as muc
 
 ## 3 AM
 
-It's 3 AM. This website was prepared before the jam too, and it's declared as such. I hope that's not cheating. Building starts at 06:00. This is my second game jam, and I hope this one leads to something.
+>> I did some high-level thinking and philosophizing, and now I'm tired. It's 3 a.m. where I'm at, and yeah, I'm preparing a website to document my process, like a little blog. Obviously written with AI. The website is prepared even before, so I hope that's not cheating.
 
->> Let's see how it goes.
+It's declared as pre-made, like everything else. Building starts at 06:00.
+
+>> Let's see how it goes. I'm definitely curious, my second game jam now, hopefully leading to something. And I do hope it's something good.

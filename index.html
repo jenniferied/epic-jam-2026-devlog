@@ -21,6 +21,9 @@
   <meta name="twitter:card" content="summary_large_image">
 
   <link rel="preload" href="assets/fonts/VT323.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&display=swap">
   <link rel="stylesheet" href="css/style.css">
   <script>
     // set theme and text size before first paint
@@ -41,6 +44,8 @@
       <span class="lights" aria-hidden="true"><i></i><i></i><i></i></span>
       <h1 class="title"><a href="#/" data-i18n="site.title">epic-jam-2026 / devlog</a></h1>
       <span class="titlebar-tools">
+        <button type="button" class="tb tb-nav" id="btn-prev">‹</button>
+        <button type="button" class="tb tb-nav" id="btn-next">›</button>
         <button type="button" class="tb" id="btn-theme" aria-label="theme">◐</button>
         <button type="button" class="tb" id="btn-lang" aria-label="language">EN</button>
         <button type="button" class="tb" id="btn-help" aria-label="help">?</button>
@@ -79,7 +84,7 @@
     <footer class="statusbar" id="statusbar">
       <span class="mode" id="mode">NORMAL</span>
       <span class="sb-file" id="sb-file">~/devlog</span>
-      <span class="sb-fill"></span>
+      <span class="sb-fill hints" id="hints"></span>
       <span class="sb-pos" id="sb-pos"></span>
       <span class="sb-clock" id="sb-clock"></span>
     </footer>

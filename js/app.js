@@ -34,6 +34,8 @@
     document.querySelectorAll("[data-i18n-ph]").forEach((n) => { n.placeholder = t(n.dataset.i18nPh); });
     document.querySelectorAll("[data-i18n-label]").forEach((n) => { n.setAttribute("aria-label", t(n.dataset.i18nLabel)); });
     $("#help-rows").innerHTML = (dict["help.rows"] || []).map(([k, v]) => `<dt>${Md.esc(k)}</dt><dd>${Md.esc(v)}</dd>`).join("");
+    $("#hints").innerHTML = (dict["hints"] || []).map(([k, v]) => `<span><kbd>${Md.esc(k)}</kbd>${Md.esc(v)}</span>`).join("");
+    $("#btn-prev").setAttribute("aria-label", t("entry.prev")); $("#btn-next").setAttribute("aria-label", t("entry.next"));
     $("#lb-prev").setAttribute("aria-label", t("lightbox.prev"));
     $("#lb-next").setAttribute("aria-label", t("lightbox.next"));
     $("#lb-close").setAttribute("aria-label", t("lightbox.close"));
@@ -63,7 +65,8 @@
 
   async function loadEntries() {
     const data = await (await fetch("entries/index.json")).json();
-    entries = data.entries.map((e, i) => ({ ...e, n: i + 1 }));
+    const home = { slug: "readme", file: "readme.md", title: "README.md", day: "start", phase: "home", status: "live", date: data.entries[0].date, summary: "", home: true };
+    entries = [home, ...data.entries].map((e, i) => ({ ...e, n: i }));
   }
   async function body(file) {
     if (!bodies.has(file)) bodies.set(file, fetch("entries/" + file).then((r) => r.text()).then((x) => Md.frontMatter(x).body));
@@ -74,14 +77,14 @@
   // ------------------------------------------------------------ list
   function renderList() {
     const q = el.filter.value.trim().toLowerCase();
-    shown = entries.filter((e) => !q || [e.title, e.summary, e.slug, e.phase, e.day].join(" ").toLowerCase().includes(q));
+    shown = entries.filter((e) => !q || e.home || [e.title, e.summary, e.slug, e.phase, e.day].join(" ").toLowerCase().includes(q));
     sel = Math.min(sel, Math.max(0, shown.length - 1));
-    el.count.textContent = shown.length + "/" + entries.length;
+    el.count.textContent = (shown.length - (shown[0] && shown[0].home ? 1 : 0)) + "/" + (entries.length - 1);
     el.list.innerHTML = shown.length ? shown.map((e, i) => `
       <li role="option" id="opt-${e.slug}" aria-selected="${i === sel}" class="${i === sel ? "sel" : ""} ${current && current.slug === e.slug ? "open" : ""} ${e.status === "draft" ? "draft" : ""}">
         <a href="#/${e.slug}" tabindex="-1" data-i="${i}">
           <span class="n">${e.n}</span><span class="ph ph-${e.phase}">${Md.esc(t("phase." + e.phase))}</span><span class="t">${Md.esc(e.title)}</span>
-          <span class="meta">${Md.esc(e.day)} · ${fmtDate(e.date)}</span>
+          <span class="meta">${e.home ? Md.esc(t("list.homeMeta")) : Md.esc(e.day) + " · " + fmtDate(e.date)}</span>
         </a></li>`).join("") : `<li class="empty">${Md.esc(t("list.empty"))}</li>`;
     if (shown[sel]) el.list.setAttribute("aria-activedescendant", "opt-" + shown[sel].slug);
   }
@@ -97,17 +100,14 @@
   // ------------------------------------------------------------ views
   async function route() {
     const slug = decodeURIComponent(location.hash.replace(/^#\/?/, ""));
-    const e = entries.find((x) => x.slug === slug);
-    current = e || null;
-    document.body.classList.toggle("reading", !!e);
-    if (e) {
-      const i = shown.findIndex((x) => x.slug === e.slug);
-      if (i >= 0) sel = i;
-      await renderEntry(e);
-    } else {
-      await renderHome();
-    }
+    const e = entries.find((x) => x.slug === slug) || entries[0];
+    current = e;
+    document.body.classList.toggle("reading", !!slug && slug === e.slug);
+    const i = shown.findIndex((x) => x.slug === e.slug);
+    if (i >= 0) sel = i;
+    if (e.home) await renderHome(); else await renderEntry(e);
     renderList();
+    navState();
     status();
   }
 
@@ -115,7 +115,7 @@
     const ctx = { galleries: [] };
     const md = Md.render(await body("readme.md"), ctx);
     galleries = md.galleries;
-    const cards = entries.map((e) => `<a href="#/${e.slug}" class="${e.status === "draft" ? "draft" : ""}"><span class="d">${e.n} · ${Md.esc(e.day)} · ${fmtDate(e.date)}${e.status === "draft" ? " · " + Md.esc(t("status.draft")) : ""}</span><span class="t">${Md.esc(e.title)}</span><span class="s">${Md.esc(e.summary)}</span></a>`).join("");
+    const cards = entries.filter((e) => !e.home).map((e) => `<a href="#/${e.slug}" class="${e.status === "draft" ? "draft" : ""}"><span class="d">${e.n} · ${Md.esc(e.day)} · ${fmtDate(e.date)}${e.status === "draft" ? " · " + Md.esc(t("status.draft")) : ""}</span><span class="t">${Md.esc(e.title)}</span>${e.summary ? `<span class="s">${Md.esc(e.summary)}</span>` : ""}</a>`).join("");
     el.reader.innerHTML = `<article class="article">
       <div class="crumbs"><span class="ps1">~/devlog $</span> cat README.md</div>
       <pre class="ascii" aria-hidden="true">${BANNER}</pre>
@@ -123,10 +123,12 @@
       <div class="prose">${md.html}</div>
       <div class="home-grid">${cards}</div>
       ${legend()}
+      ${pager()}
     </article>`;
     el.reader.scrollTop = 0;
     document.title = t("site.title");
     el.cwd.textContent = "~/devlog";
+    if (zone === "reader" && document.body.classList.contains("reading")) el.reader.focus({ preventScroll: true });
   }
 
   async function renderEntry(e) {
@@ -134,22 +136,20 @@
     const src = await body(e.file);
     const md = Md.render(src, ctx);
     galleries = md.galleries;
-    const idx = entries.indexOf(e), prev = entries[idx - 1], next = entries[idx + 1];
+    const draft = e.status === "draft";
+    if (e.cover) galleries.push([{ src: e.cover, alt: e.cover_alt || "", caption: t("cover.credit"), w: 1024, h: 576 }]);
+    const cover = e.cover ? `<figure class="cover"><button class="thumb" type="button" data-gallery="${galleries.length - 1}" data-index="0" aria-label="${Md.esc(e.cover_alt || "")}"><img src="${Md.esc(e.cover)}" alt="${Md.esc(e.cover_alt || "")}" width="1024" height="576" decoding="async" fetchpriority="high"></button></figure>` : "";
     const minutes = Math.max(1, Math.round(src.split(/\s+/).length / 200));
     el.reader.innerHTML = `<article class="article">
       <div class="crumbs"><span class="ps1">~/devlog $</span> less entries/${Md.esc(e.file)} <button type="button" class="only-mobile" data-back>${Md.esc(t("entry.back"))}</button></div>
+      ${cover}
       <header class="entry-head">
         <h1>${Md.esc(e.title)}</h1>
-        <p class="sub"><span class="badge ${e.status === "draft" ? "draft" : ""}">${Md.esc(e.day)}</span><span>${fmtDate(e.date)}</span><span>${minutes} ${Md.esc(t("entry.minutes"))}</span>${e.status === "draft" ? `<span>${Md.esc(t("status.draft"))}</span>` : ""}</p>
+        <p class="sub"><span class="badge ${e.status === "draft" ? "draft" : ""}">${Md.esc(e.day)}</span><span>${fmtDate(e.date)}</span>${draft ? "" : `<span>${minutes} ${Md.esc(t("entry.minutes"))}</span>`}</p>
         ${e.summary ? `<p class="lead">${Md.inline(e.summary)}</p>` : ""}
       </header>
-      ${e.status === "draft" ? `<p class="draft-note">${Md.esc(t("entry.draftNote"))}</p>` : ""}
-      <div class="prose">${md.html}</div>
-      ${legend()}
-      <nav class="pager">
-        ${prev ? `<a class="prev" href="#/${prev.slug}"><small>← ${Md.esc(t("entry.prev"))}</small>${Md.esc(prev.title)}</a>` : "<span></span>"}
-        ${next ? `<a class="next" href="#/${next.slug}"><small>${Md.esc(t("entry.next"))} →</small>${Md.esc(next.title)}</a>` : "<span></span>"}
-      </nav>
+      ${draft ? `<p class="empty-entry"><span class="blink" aria-hidden="true">█</span></p>` : `<div class="prose">${md.html}</div>${legend()}`}
+      ${pager()}
     </article>`;
     el.reader.scrollTop = 0;
     enhance(); trackUi(); renderCharts();
@@ -157,6 +157,22 @@
     el.cwd.textContent = "~/devlog/" + e.slug;
     if (zone === "reader") el.reader.focus({ preventScroll: true });
   }
+
+  function pager() {
+    const i = entries.indexOf(current), prev = entries[i - 1], next = entries[i + 1];
+    const link = (e, cls, label) => e
+      ? `<a class="${cls}" href="#/${e.slug}"><small>${label}</small>${Md.esc(e.title)}</a>`
+      : `<span class="${cls} off" aria-disabled="true"><small>${label}</small>–</span>`;
+    return `<nav class="pager">${link(prev, "prev", "← " + Md.esc(t("entry.prev")))}${link(next, "next", Md.esc(t("entry.next")) + " →")}</nav>`;
+  }
+  function navState() {
+    const i = entries.indexOf(current);
+    $("#btn-prev").disabled = i <= 0;
+    $("#btn-next").disabled = i >= entries.length - 1;
+  }
+  const step = (d) => { const e = entries[entries.indexOf(current) + d]; if (e) { zone = "reader"; open(e); } };
+  $("#btn-prev").onclick = () => step(-1);
+  $("#btn-next").onclick = () => step(1);
 
   const legend = () => `<footer class="legend" aria-label="${Md.esc(t("legend.title"))}">
       <span><i class="sw sw-voice"></i>${Md.esc(t("legend.voice"))}</span>
@@ -168,9 +184,9 @@
   // ------------------------------------------------------------ status bar
   function status(mode) {
     if (mode) { el.mode.textContent = mode; el.mode.classList.toggle("insert", mode !== "NORMAL"); }
-    el.sbFile.textContent = current ? "entries/" + current.file : "README.md";
+    el.sbFile.textContent = current && !current.home ? "entries/" + current.file : "README.md";
     const r = el.reader, max = r.scrollHeight - r.clientHeight;
-    el.sbPos.textContent = (current ? current.n + "/" + entries.length + "  " : "") + (max > 4 ? Math.round((r.scrollTop / max) * 100) + "%" : "all");
+    el.sbPos.textContent = (current ? current.n + "/" + (entries.length - 1) + "  " : "") + (max > 4 ? Math.round((r.scrollTop / max) * 100) + "%" : "all");
   }
   function clock() {
     el.sbClock.textContent = new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/Berlin", weekday: "short", hour: "2-digit", minute: "2-digit" }).format(new Date()) + " CET";
@@ -288,14 +304,14 @@
   function run(line) {
     const [cmd, ...args] = line.trim().split(/\s+/);
     const arg = args.join(" ");
-    const find = (a) => entries[+a - 1] || entries.find((e) => e.slug === a || e.slug.startsWith(a));
+    const find = (a) => (/^\d+$/.test(a) ? entries[+a] : null) || entries.find((e) => e.slug === a || e.slug.startsWith(a));
     let out = "";
     switch ((cmd || "").toLowerCase()) {
       case "": break;
       case "help": case "?": out = t("cmd.help"); break;
-      case "ls": case "ll": out = entries.map((e) => `${String(e.n).padStart(2)}  ${e.phase.padEnd(4)}  ${e.date}  ${e.status === "draft" ? "-" : "+"}  ${e.slug}`).join("\n"); break;
+      case "ls": case "ll": out = entries.filter((e) => !e.home).map((e) => `${String(e.n).padStart(2)}  ${e.phase.padEnd(4)}  ${e.date}  ${e.status === "draft" ? "-" : "+"}  ${e.slug}`).join("\n"); break;
       case "open": case "cat": case "less": case "cd": {
-        if (cmd === "cd" && (!arg || arg === ".." || arg === "~" || arg === "/")) { location.hash = "#/"; break; }
+        if (cmd === "cd" && (!arg || arg === ".." || arg === "~" || arg === "/")) { location.hash = "#/readme"; break; }
         const e = find(arg.replace(/^entries\//, "").replace(/\.md$/, ""));
         if (e) { zone = "reader"; open(e); } else out = t("cmd.notFound", { arg });
         break;
@@ -401,14 +417,16 @@
       case "j": case "ArrowDown": if (reading) scroll(80); else move(1); break;
       case "k": case "ArrowUp": if (reading) scroll(-80); else move(-1); break;
       case " ": if (reading) scroll(ev.shiftKey ? -el.reader.clientHeight * 0.85 : el.reader.clientHeight * 0.85); else { zone = "reader"; open(shown[sel]); } break;
-      case "Enter": case "l": case "ArrowRight":
+      case "Enter": case "l":
         if (reading) { handled = false; break; }
         zone = "reader"; open(shown[sel]); break;
-      case "Escape": case "h": case "ArrowLeft": case "Backspace":
-        if (current) { zone = "list"; location.hash = "#/"; el.list.focus({ preventScroll: true }); } else { zone = "list"; el.list.focus(); }
+      case "ArrowRight": case "n": step(1); break;
+      case "ArrowLeft": case "p": step(-1); break;
+      case "Escape": case "h": case "Backspace":
+        zone = "list";
+        if (matchMedia("(max-width: 760px)").matches) location.hash = "#/";
+        el.list.focus({ preventScroll: true });
         break;
-      case "n": if (current) open(entries[entries.indexOf(current) + 1]); else move(1); break;
-      case "p": if (current) open(entries[entries.indexOf(current) - 1]); else move(-1); break;
       case "g": if (reading) el.reader.scrollTo({ top: 0 }); else move(0, 0); break;
       case "G": if (reading) el.reader.scrollTo({ top: el.reader.scrollHeight }); else move(0, shown.length - 1); break;
       case "/": el.filter.focus(); el.filter.select(); break;
@@ -418,11 +436,10 @@
       case "]": setSide(el.side.getBoundingClientRect().width + 30); break;
       case "+": case "=": setScale((+prefs.scale || 1) + 0.05); break;
       case "-": setScale((+prefs.scale || 1) - 0.05); break;
-      case "0": setScale(1); break;
       case "t": setTheme(); break;
       case "f": funke && funke.talk(); break;
       default:
-        if (/^[1-9]$/.test(k) && entries[+k - 1]) { zone = "reader"; open(entries[+k - 1]); }
+        if (/^[0-9]$/.test(k) && entries[+k]) { zone = "reader"; open(entries[+k]); }
         else handled = false;
     }
     if (handled) ev.preventDefault();
@@ -440,6 +457,6 @@
     funke = Funke.mount($("#funke"), { linesUrl: "assets/funke-lines.json", t });
     if (!prefs.greeted) { funke.say(t("funke.hello"), "dragon"); prefs.greeted = 1; save(); }
     clock(); setInterval(clock, 30000);
-    if (!current) el.list.focus({ preventScroll: true });
+    if (!location.hash.replace(/^#\/?/, "")) el.list.focus({ preventScroll: true });
   })();
 })();
