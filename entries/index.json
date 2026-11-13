@@ -43,9 +43,9 @@
    "day": "day 1",
    "phase": "jam",
    "status": "live",
-   "summary": "At 06:00 there was no game. By midnight there was a playable UE 5.8 island, a portable build ladder, weather, NPCs, GASP movement, reviews, and a very honest list of things still broken.",
-   "cover": "assets/img/day-1-island-playable.webp",
-   "cover_alt": "An Unreal Engine third-person mannequin stands on a grassy island path under a bright sky",
+   "summary": "At 06:00 there was no game. Eighteen hours later there was a tested UE 5.8 build ladder, an island, NPCs, time and weather, five parallel creative tracks, and a very honest list of what was still broken.",
+   "cover": "assets/img/day-1-cover-split-a.jpg",
+   "cover_alt": "Split image with an early grey Unreal movement test on the left and the later green island build on the right",
    "file": "day-1.md"
   },
   {

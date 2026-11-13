@@ -6,6 +6,7 @@
 //   ```timeline       "when | text" lines -> vertical timeline
 //   ```log            "HH:MM | tag | text" lines -> terminal log
 //   ```gallery        "src | caption | alt | w x h" lines; src "placeholder" -> labelled empty frame
+//   ```clips          "src.mp4 | caption | poster.jpg" lines -> inline video clips
 //   ```chat           "you: ..." / "ai: ..." lines -> chat transcript
 //   ```recap          disclosure box shown at the top of an entry
 //   ```todo           "[ ] item" / "[x] item" lines -> checklist (used by draft entries)
@@ -75,6 +76,13 @@
           ? `<span class="ph" style="aspect-ratio:${it.w}/${it.h}"><span class="ph-label">[ photo pending ]</span><span class="ph-cap">${esc(it.alt)}</span></span>`
           : `<img src="${esc(it.src)}" alt="${esc(it.alt)}" width="${it.w}" height="${it.h}" loading="lazy" decoding="async">`;
         return `<figure><button class="thumb" type="button" data-gallery="${id}" data-index="${i}" aria-label="${esc(it.alt)}">${fig}</button>${it.caption ? `<figcaption>${inline(it.caption)}</figcaption>` : ""}</figure>`;
+      }).join("") + "</div>";
+    },
+    clips(lines) {
+      return '<div class="clips">' + lines.filter((l) => l.trim()).map((l) => {
+        const [src, caption = "", poster = ""] = split(l);
+        const posterAttr = poster ? ` poster="${esc(poster)}"` : "";
+        return `<figure class="clip"><video controls preload="metadata" playsinline${posterAttr}><source src="${esc(src)}" type="video/mp4">Your browser does not support embedded video.</video>${caption ? `<figcaption>${inline(caption)}</figcaption>` : ""}</figure>`;
       }).join("") + "</div>";
     },
     chat(lines) {

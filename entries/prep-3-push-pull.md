@@ -87,6 +87,12 @@ There's plenty of evidence that new technology doesn't always help people as muc
 
 ## 3 AM
 
+This was also what the practical side looked like: not one magical AI button, but a terminal split into several named panes, logs, prompts and hand-offs. The layout itself became part of the glass box. It shows why parallel work can be powerful and why it can become mentally crowded before a game even exists.
+
+```gallery contain
+assets/img/prep-3-terminal-layout.webp | The pre-jam terminal layout: several agents and processes visible at once. Useful orchestration, but already a lot of state to keep in one head. | A dark multi-pane terminal workspace showing parallel agent sessions, logs and commands | 1600 x 900
+```
+
 >> I did some high-level thinking and philosophizing, and now I'm tired. It's 3 a.m. where I'm at, and yeah, I'm preparing a website to document my process, like a little blog. Obviously written with AI. The website is prepared even before, so I hope that's not cheating.
 
 It's declared as pre-made, like everything else. Building starts at 06:00.
