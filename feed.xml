@@ -5,8 +5,15 @@
   <link href="https://jenniferied.github.io/epic-jam-2026-devlog/"/>
   <link rel="self" href="https://jenniferied.github.io/epic-jam-2026-devlog/feed.xml"/>
   <id>https://jenniferied.github.io/epic-jam-2026-devlog/</id>
-  <updated>2026-11-13T12:17:08Z</updated>
+  <updated>2026-11-13T20:24:14Z</updated>
   <author><name>Jennifer</name></author>
+  <entry>
+    <title>day-2.log: the agent factory needs rules</title>
+    <link href="https://jenniferied.github.io/epic-jam-2026-devlog/#/day-2"/>
+    <id>https://jenniferied.github.io/epic-jam-2026-devlog/#/day-2</id>
+    <updated>2026-11-13T12:00:00+01:00</updated>
+    <summary>The prototype kept growing, but so did the number of branches, agents and compile collisions. Day 2 became a test of whether the factory could be made safer without stopping it.</summary>
+  </entry>
   <entry>
     <title>day-1.log: build the smallest world</title>
     <link href="https://jenniferied.github.io/epic-jam-2026-devlog/#/day-1"/>
