@@ -24,6 +24,8 @@ window.JamMusic = (() => {
     const audio = root.querySelector("audio"), now = root.querySelector("#music-now"), cover = root.querySelector("#music-cover"), wave = root.querySelector("#music-wave"), play = root.querySelector("#music-play");
     const prev = root.querySelector("#music-prev"), next = root.querySelector("#music-next"), time = root.querySelector("#music-time");
     const progress = root.querySelector("#music-progress"), toggle = root.querySelector("#music-list"), menu = root.querySelector("#music-menu");
+    const playerId = crypto.randomUUID?.() || `${Date.now()}-${Math.random()}`;
+    const playerChannel = "BroadcastChannel" in window ? new BroadcastChannel("epic-jam-soundtrack") : null;
     let index = Math.max(0, Math.min(tracks.length - 1, rememberedTrack()));
     let bands = { highs: [], mids: [], bass: [] }, waveToken = 0;
     menu.innerHTML = tracks.map((track, i) => `<button type="button" data-track="${i}"><span>${String(i + 1).padStart(2, "0")}</span><img src="assets/img/music/${track.cover}" alt="">${track.title}</button>`).join("");
@@ -110,6 +112,8 @@ window.JamMusic = (() => {
     const load = (i, start) => {
       index = (i + tracks.length) % tracks.length;
       rememberTrack(index);
+      audio.pause();
+      audio.currentTime = 0;
       audio.src = tracks[index].file;
       audio.load(); loadWave(tracks[index].file); sync();
       if (start) audio.play().catch(() => sync());
@@ -117,7 +121,12 @@ window.JamMusic = (() => {
     const step = (delta) => load(index + delta, !audio.paused || audio.currentTime > 0);
     play.addEventListener("click", () => audio.paused ? audio.play().catch(() => {}) : audio.pause());
     prev.addEventListener("click", () => step(-1)); next.addEventListener("click", () => step(1));
-    audio.addEventListener("play", sync); audio.addEventListener("pause", sync); audio.addEventListener("ended", () => load(index + 1, true));
+    audio.addEventListener("play", () => { playerChannel?.postMessage({ type: "playing", playerId }); sync(); });
+    audio.addEventListener("pause", sync); audio.addEventListener("ended", sync);
+    playerChannel?.addEventListener("message", (event) => {
+      if (event.data?.type === "playing" && event.data.playerId !== playerId) audio.pause();
+    });
+    window.addEventListener("pagehide", () => { audio.pause(); playerChannel?.close(); }, { once: true });
     audio.addEventListener("timeupdate", () => {
       time.textContent = `${fmt(audio.currentTime)} / ${fmt(audio.duration)}`;
       progress.value = audio.duration ? Math.round(audio.currentTime / audio.duration * 1000) : 0;
