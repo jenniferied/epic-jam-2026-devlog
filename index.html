@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=day1-visual-3">
   <script>
     // set theme and text size before first paint
     try {
@@ -61,6 +61,19 @@
           <input id="filter" type="search" autocomplete="off" spellcheck="false" data-i18n-ph="filter.placeholder">
         </label>
         <ol class="list" id="list" role="listbox" aria-labelledby="side-label" tabindex="0"></ol>
+        <section class="music" id="music" aria-label="Jam soundtrack">
+          <div class="music-head"><span>jam soundtrack</span><button type="button" id="music-list" aria-label="Show playlist" aria-expanded="false">4 tracks</button></div>
+          <div class="music-now" id="music-now">Daylight Ambient</div>
+          <div class="music-controls">
+            <button type="button" id="music-prev" aria-label="Previous track">|‹</button>
+            <button type="button" id="music-play" aria-label="Play Daylight Ambient" aria-pressed="false">▶</button>
+            <button type="button" id="music-next" aria-label="Next track">›|</button>
+            <span id="music-time">0:00 / 0:00</span>
+          </div>
+          <input class="music-progress" id="music-progress" type="range" min="0" max="1000" value="0" aria-label="Track position">
+          <div class="music-menu" id="music-menu" hidden></div>
+          <audio id="music-audio" preload="metadata"></audio>
+        </section>
         <section class="funke" id="funke" aria-live="polite">
           <p class="funke-bubble"></p>
           <canvas width="132" height="156" role="img" data-i18n-label="funke.label"></canvas>
@@ -111,8 +124,9 @@
     </div>
   </div>
 
-  <script src="js/md.js" defer></script>
-  <script src="js/funke.js" defer></script>
-  <script src="js/app.js" defer></script>
+  <script src="js/md.js?v=day1-visual-3" defer></script>
+  <script src="js/music.js?v=day1-visual-3" defer></script>
+  <script src="js/funke.js?v=day1-visual-3" defer></script>
+  <script src="js/app.js?v=day1-visual-3" defer></script>
 </body>
 </html>

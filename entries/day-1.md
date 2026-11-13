@@ -25,8 +25,9 @@ The pitch was direct: «the game I have always dreamed of making» — an «Open
 The first image was an island with a castle. The player arrives as a prisoner, an Elder Scrolls homage rather than a complete story. The larger ambition stayed visible, but the jam target became deliberately narrower: one cinematic place, movement that feels like an RPG, a day/night cycle, a few inhabitants, minimal UI, Windows and Mac builds, and a route towards local AI characters later.
 
 ```gallery contain
-assets/img/day-1-concept-sheet.webp | One of the first concept sheets captured for Darkest Night: masked figures, castle silhouettes, eclipse imagery and a world much larger than the jam build could contain. It is concept work, not implemented game art. | Dark fantasy concept sheet with masked characters, castles and eclipse imagery | 1600 x 900
-assets/img/day-1-gasp-first-person.webp | The good old start: an early movement test in Unreal's third-person template, before the decision to settle on GASP. This is also the left half of the title image. | Unreal third-person template movement test in a purple obstacle course | 1600 x 900
+assets/img/day-1-concept-sheet.webp | One of the first concept sheets captured for Darkest Night: masked figures, castle silhouettes, eclipse imagery and a world much larger than the jam build could contain. | Dark fantasy concept sheet with masked characters, castles and eclipse imagery | 1600 x 900
+assets/img/day-1-gasp-first-person.webp | It all started with the third-person template. Classic. This is also the left half of the title image. | Unreal third-person template movement test in a purple obstacle course | 1600 x 900
+assets/img/day-1-title-raw.webp | The first raw title screen: no visual identity yet, just proof that the frontend flow could start. | Black early title screen reading DarkestNight | 1600 x 900
 ```
 
 ## A build ladder, not one giant promise
@@ -53,42 +54,39 @@ The Unreal project lives in a separate local Git repository because binary asset
 
 The ladder kept every ambitious system replaceable. The lower rung stayed usable if a higher one failed.
 
-```specs
-# 0.1 · input
-implemented: C++ Enhanced Input, keyboard and mouse mappings, controller mappings, device switching logic
-verified: 66 automated mapping and state checks
-limit: no physical controller had been tested yet
-# 0.2 · graphics
-implemented: DLSS Super Resolution, DLAA and an explicit TSR fallback
-verified: 9/9 image-mode A/B checks on Windows; Mac used TSR without NVIDIA plugins
-limit: Frame Generation initialised, but was not yet a proven gameplay feature
-# 0.3 · persistence
-implemented: unlimited named manual saves, Quick Save, six rotating autosaves, Continue, save blocker
-verified: packaged save/load and restore checks on Windows and Mac
-# 0.4 · player shell
-implemented: GASP locomotion, custom C++ camera, first/third person, zoom, shoulder swap, frontend
-implemented: data-only left/right hand equipment slots so later items have somewhere to connect
-# 0.5 · inhabited island
-implemented: small island, procedural scatter, navigation, lightweight NPC schedule and appearance data
-verified: 0/10/30/50 NPC scaling runs; 29 NPCs organised into six groups in the playable setup
-# 0.6 · time and weather
-implemented: accelerated clock, moon phases, sunrise/sunset states, weighted basic weather
-verified: time jump, pause, save/load and sky synchronisation in the packaged build
-# 0.7 · readable prototype
-implemented: UI, debug views, stats, loading flow, NPC MetaHuman test and teleport orbs
-result: every packaged suite passed except the automated orb traversal course
-```
+### 0.1 · Input
+
+C++ Enhanced Input covered keyboard, mouse, controller mappings and device-switching logic. **Verified:** 66 automated mapping and state checks. **Limit:** no physical controller had been tested yet.
+
+### 0.2 · Graphics
+
+DLSS Super Resolution, DLAA and an explicit TSR fallback were wired up. **Verified:** 9/9 image-mode A/B checks on Windows; Mac used TSR without NVIDIA plugins. **Limit:** Frame Generation initialised, but was not yet a proven gameplay feature.
+
+### 0.3 · Persistence
+
+The game had unlimited named manual saves, Quick Save, six rotating autosaves, Continue and a save blocker. **Verified:** packaged save/load and restore checks on Windows and Mac.
+
+### 0.4 · Player shell
+
+GASP locomotion, a custom C++ camera, first/third person, zoom, shoulder swap and the frontend were connected. Data-only left/right hand equipment slots gave later items somewhere to connect.
+
+### 0.5 · Inhabited island
+
+The small island combined procedural scatter, navigation, a lightweight NPC schedule and appearance data. **Verified:** 0/10/30/50 NPC scaling runs; 29 NPCs organised into six groups in the playable setup.
+
+### 0.6 · Time and weather
+
+An accelerated clock, moon phases, sunrise/sunset states and weighted basic weather ran together. **Verified:** time jump, pause, save/load and sky synchronisation in the packaged build.
+
+### 0.7 · Readable prototype
+
+UI, debug views, stats, loading flow, the NPC MetaHuman test and teleport orbs formed the last day-one rung. **Result:** every packaged suite passed except the automated orb traversal course.
 
 ## What the player could actually do
 
 This was more than a list of subsystems. The player could switch first and third person, zoom, swap the camera shoulder and move through the GASP locomotion set. The frontend could start or continue a game. The save menu supported arbitrary manual slots, a Quick slot and six rotating autosaves. Saving could be blocked during unsafe transitions instead of corrupting a state.
 
 The input layer was intentionally owned by the project rather than hidden in a Blueprint. That made its behaviour testable and gave keyboard, mouse and controller a common route. It did not mean controller support was finished: the mappings and switching logic passed 66 checks, but no physical controller had yet been held in a human hand.
-
-```clips
-assets/video/day-1-gasp-early.mp4 | Early GASP movement in the functional test map. The clip records the behaviour before there was an island. | assets/img/day-1-gasp-first-person.webp
-assets/video/day-1-island-play.mp4 | Later the same day: movement, camera and the first world running together in the island package. | assets/img/day-1-npcs-day.webp
-```
 
 The Mac mattered throughout. It had no NVIDIA plugin and therefore exercised the TSR fallback instead of pretending all target machines were the Windows workstation. Integrated Mac packages existed for Builds 0.3 and 0.4 before midnight. Later systems had Windows packages or separate branches, but the rebuilt cross-platform 0.7 result did not exist yet. That distinction is important: a branch package, a merged Windows package and a native Mac package are three different kinds of evidence.
 
@@ -99,8 +97,9 @@ There were early failures. The first Mac package needed an EngineSettings depend
 The first island footprint was too large for four days, but useful enough to preserve as a possible post-jam direction. A smaller version became the real test ground: landscape, vegetation, castle blockout, opening cameras, NPC locations, time, weather and a minimal astronomical HUD.
 
 ```clips
-assets/video/day-1-castle-blockout.mp4 | The castle and island blockout as a moving spatial sketch. It answers scale and route questions, not final-art questions. | assets/img/day-1-npcs-night.webp
-assets/video/day-1-npc-test.mp4 | Lightweight NPCs moving through the test world. Their job was to test schedules, navigation and load, not to pass as final characters. | assets/img/day-1-npcs-night.webp
+assets/video/day-1-npc-test.mp4 | **13:26 CEST · 7h26 after jam start.** Lightweight NPCs moving through the test arena. The NPC/system agents used them to test schedules, navigation and load; Claude captured the packaged run. | assets/img/day-1-npcs-night.webp
+assets/video/day-1-castle-blockout.mp4 | **14:11 CEST · 8h11 after jam start.** The world agent's castle and island blockout as a moving spatial sketch, captured by Claude after the character branch merged. | assets/img/day-1-island-opening.webp
+assets/video/day-1-island-play.mp4 | **16:39 CEST · 10h39 after jam start.** The packaged Build 0.6 island in motion after the world, time and character tracks came together; Claude captured the release inspection. | assets/img/day-1-npcs-day.webp
 ```
 
 At 14:38 the packaged Build 0.6 time-and-weather test passed twice. It checked clock rate, pause states, synchronisation after time jumps, eight moon phases, the sundial-style HUD, sunrise and sunset states, weighted weather, and persistence through save/load. A later world test counted 1,258 PCG instances and ten successful camera shots in the Windows package.
@@ -109,6 +108,8 @@ At 14:38 the packaged Build 0.6 time-and-weather test passed twice. It checked c
 assets/img/day-1-npcs-to-metahumans.jpg | The population pipeline in one plate: lightweight coloured NPCs on the island first, then MetaHuman sources prepared as their replacement route. The right half shows source preparation, not a claim that every visible NPC had already been replaced in this shot. | Split image of lightweight island NPCs and a MetaHuman source in the editor | 1600 x 900
 assets/img/day-1-npcs-night.webp | The same systems had to survive darkness: navigation, home schedules and the astronomical HUD were tested at night rather than inferred from daytime. | Unreal island scene at night with NPCs and HUD | 1600 x 900
 assets/img/day-1-time-hud-options.webp | Initial time and astronomy UI iterations. Several readings were explored before choosing what deserved space on screen. | Review sheet with several time and moon HUD variations | 1600 x 900
+assets/img/day-1-island-opening.webp | An early letterboxed opening camera on the smaller island. The foreground tree motion still smeared at this point. | Early cinematic opening view across the island | 1600 x 900
+assets/img/day-1-wind-fix.webp | The foliage investigation as a measured before/after plate. Disabling Nanite on the Norway maples removed the worst WPO smear in the packaged scene. | Four-frame comparison of foliage before and after the wind rendering fix | 1600 x 900
 ```
 
 The NPC slice was deliberately cheap before it was pretty. Lightweight and GASP-based characters were compared at 0, 10, 30 and 50 NPCs. All 50 could walk on the navigation mesh, go home at night and restore their positions from a save. The playable setup used 29 characters in six groups. Those numbers describe a controlled prototype test, not a finished crowd system.
@@ -164,7 +165,7 @@ assets/img/day-1-ui-title-mock.webp | An earlier title/menu proposal kept for co
 This changed the work. The studio name became **Red Robin** with a space. The game title became **Darkest Night**, while the Latin subtitle stayed open. The wax seal disappeared from the robin because simpler was better. The game mark moved towards a restrained eclipse ring. The UI moved away from generated background art and towards black screens, one detailed 3D object, sparse particles and a modern layer over the fantasy world.
 
 ```clips
-assets/video/day-1-eclipse-ring.mp4 | A short moving eclipse-ring study. Motion revealed which versions felt like an interface and which felt like a generic fantasy logo. | assets/img/day-1-ring-study.webp
+assets/video/day-1-eclipse-ring.mp4 | **21:55 CEST · 15h55 after jam start.** The branding/logo agent's round-six high-detail eclipse ring, rendered as an eight-second seamless moon loop. Motion revealed which versions felt like an interface rather than a generic fantasy logo. | assets/img/day-1-ring-study.webp
 ```
 
 The same review process redirected audio. The first music was too much like a story score: too upbeat by day, too romantic by night and too heroic in combat. The next brief asked for sparse exploration beds, darker combat, a strong title piece and optional small doses of classical DnB, angelcore, nightcore and phonk. Generated footsteps sounded wrong, so GASP's existing animation step sounds remained the base. Human listening overruled quantity.
@@ -181,11 +182,11 @@ The review provenance rule itself began at 21:13. Later cards record backend, mo
 
 At around six in the morning, chronological “day one” had stopped matching a normal human day. My sleep rhythm was broken, the agents had multiplied, and the orchestration was becoming a little muddy in my head. I had taken time off, my father was on a night shift, and my mother had the day off. At 29, I was building this from my parents' home and being supplied with food while the terminals kept moving.
 
-The Outlook account also stopped letting me in. That matters because some services, subscriptions and API-key workflows depend on it. It was a real setback, but not the emotional centre of the night: «Ich bin aber entspannt, weil ich ja schon sehr viel hingekriegt habe.»
+The Outlook account also stopped letting me in. That matters because some services, subscriptions and API-key workflows depend on it. It was a real setback, but not the emotional centre of the night: «But I am relaxed, because I have already managed to get so much done.»
 
 The website itself still did not feel right. I wanted it more visual, with the interesting images and clips visible instead of buried in capture folders. I also wanted an editor eventually: not necessarily a complex WYSIWYG system, but a way to see all media, add or replace it, move it, save, and immediately see the result. The review board is the first smaller step towards that control.
 
-There is an important difference between saying “AI made this” and pretending I was absent from it. A huge amount of production was delegated, but direction, rejection, scope and taste were active work: «Ich habe ja kreative Entscheidungen getroffen.» I also knew the speed would leave debt behind: «Ich weiß, dass ich da viel aufräumen werden muss, aber fürs Prototyping ist es super.»
+There is an important difference between saying “AI made this” and pretending I was absent from it. A huge amount of production was delegated, but direction, rejection, scope and taste were active work: «I did make creative decisions.» I also knew the speed would leave debt behind: «I know I will have a lot to clean up, but for prototyping it is great.»
 
 ## What broke in the glass box
 

@@ -469,6 +469,7 @@
     await route();
     window.addEventListener("hashchange", route);
     funke = Funke.mount($("#funke"), { linesUrl: "assets/funke-lines.json", t });
+    JamMusic.mount($("#music"));
     if (!prefs.greeted) { funke.say(t("funke.hello"), "dragon"); prefs.greeted = 1; save(); }
     clock(); setInterval(clock, 30000);
     el.reader.focus({ preventScroll: true });
