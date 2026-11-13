@@ -38,11 +38,14 @@
   },
   {
    "slug": "day-1",
-   "title": "day-1.log",
+   "title": "day-1.log: build the smallest world",
    "date": "2026-11-12",
    "day": "day 1",
    "phase": "jam",
-   "status": "draft",
+   "status": "live",
+   "summary": "At 06:00 there was no game. By midnight there was a playable UE 5.8 island, a portable build ladder, weather, NPCs, GASP movement, reviews, and a very honest list of things still broken.",
+   "cover": "assets/img/day-1-island-playable.webp",
+   "cover_alt": "An Unreal Engine third-person mannequin stands on a grassy island path under a bright sky",
    "file": "day-1.md"
   },
   {

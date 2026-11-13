@@ -5,8 +5,15 @@
   <link href="https://jenniferied.github.io/epic-jam-2026-devlog/"/>
   <link rel="self" href="https://jenniferied.github.io/epic-jam-2026-devlog/feed.xml"/>
   <id>https://jenniferied.github.io/epic-jam-2026-devlog/</id>
-  <updated>2026-11-12T03:33:49Z</updated>
+  <updated>2026-11-13T00:55:52Z</updated>
   <author><name>Jennifer</name></author>
+  <entry>
+    <title>day-1.log: build the smallest world</title>
+    <link href="https://jenniferied.github.io/epic-jam-2026-devlog/#/day-1"/>
+    <id>https://jenniferied.github.io/epic-jam-2026-devlog/#/day-1</id>
+    <updated>2026-11-12T12:00:00+01:00</updated>
+    <summary>At 06:00 there was no game. By midnight there was a playable UE 5.8 island, a portable build ladder, weather, NPCs, GASP movement, reviews, and a very honest list of things still broken.</summary>
+  </entry>
   <entry>
     <title>push_pull.md: inspiration, not a plan</title>
     <link href="https://jenniferied.github.io/epic-jam-2026-devlog/#/prep-3-push-pull"/>
