@@ -44,8 +44,8 @@
    "phase": "jam",
    "status": "live",
    "summary": "At 06:00 there was no game. Eighteen hours later there was a tested UE 5.8 build ladder, an island, NPCs, time and weather, five parallel creative tracks, and a very honest list of what was still broken.",
-   "cover": "assets/img/day-1-cover-split-a.jpg",
-   "cover_alt": "Split image with an early grey Unreal movement test on the left and the later green island build on the right",
+   "cover": "assets/img/day-1-cover-split-final.jpg",
+   "cover_alt": "Split image with the early UE third-person template movement test on the left and the first populated jam island iteration on the right",
    "file": "day-1.md"
   },
   {

@@ -6,8 +6,8 @@ date: 2026-11-12
 day: day 1
 phase: jam
 status: live
-cover: assets/img/day-1-cover-split-a.jpg
-cover_alt: Split image with an early grey Unreal movement test on the left and the later green island build on the right
+cover: assets/img/day-1-cover-split-final.jpg
+cover_alt: Split image with the early UE third-person template movement test on the left and the first populated jam island iteration on the right
 summary: At 06:00 there was no game. Eighteen hours later there was a tested UE 5.8 build ladder, an island, NPCs, time and weather, five parallel creative tracks, and a very honest list of what was still broken.
 ---
 
@@ -20,17 +20,13 @@ The picture above is one day in two halves. On the left: the first grey movement
 
 At 06:00 there was no game. Half an hour later there was a name, a world and a constraint: **Darkest Night**, made by **Red Robin**, would be the smallest playable slice of the game I actually want to make.
 
->> the game I have always dreamed of making
-
->> Open World Medieval Dark High Science Fantasy RPG
-
->> It should play in their equivalent of the time of Copernicus. Scientific discovery in dark times.
+The pitch was direct: «the game I have always dreamed of making» — an «Open World Medieval Dark High Science Fantasy RPG». Its historical anchor was already there too: «It should play in their equivalent of the time of Copernicus. Scientific discovery in dark times.»
 
 The first image was an island with a castle. The player arrives as a prisoner, an Elder Scrolls homage rather than a complete story. The larger ambition stayed visible, but the jam target became deliberately narrower: one cinematic place, movement that feels like an RPG, a day/night cycle, a few inhabitants, minimal UI, Windows and Mac builds, and a route towards local AI characters later.
 
 ```gallery contain
-assets/img/day-1-concept-sheet.webp | One of the first visual direction sheets: masked figures, castle silhouettes, eclipse imagery and a world much larger than the jam build could contain. It is concept work, not implemented game art. | Dark fantasy concept sheet with masked characters, castles and eclipse imagery | 1600 x 900
-assets/img/day-1-gasp-first-person.webp | The early movement sandbox from first person. Grey boxes and a mannequin were enough to answer camera and control questions before spending time on a world. | First-person Unreal movement test in a grey obstacle course | 1600 x 900
+assets/img/day-1-concept-sheet.webp | One of the first concept sheets captured for Darkest Night: masked figures, castle silhouettes, eclipse imagery and a world much larger than the jam build could contain. It is concept work, not implemented game art. | Dark fantasy concept sheet with masked characters, castles and eclipse imagery | 1600 x 900
+assets/img/day-1-gasp-first-person.webp | The good old start: an early movement test in Unreal's third-person template, before the decision to settle on GASP. This is also the left half of the title image. | Unreal third-person template movement test in a purple obstacle course | 1600 x 900
 ```
 
 ## A build ladder, not one giant promise
@@ -110,9 +106,9 @@ assets/video/day-1-npc-test.mp4 | Lightweight NPCs moving through the test world
 At 14:38 the packaged Build 0.6 time-and-weather test passed twice. It checked clock rate, pause states, synchronisation after time jumps, eight moon phases, the sundial-style HUD, sunrise and sunset states, weighted weather, and persistence through save/load. A later world test counted 1,258 PCG instances and ten successful camera shots in the Windows package.
 
 ```gallery contain
-assets/img/day-1-npcs-day.webp | The playable island in daylight with inhabitants distributed through the space. At this stage the world is a readable systems scaffold. | Unreal third-person island scene in daylight with multiple NPCs | 1600 x 900
+assets/img/day-1-npcs-to-metahumans.jpg | The population pipeline in one plate: lightweight coloured NPCs on the island first, then MetaHuman sources prepared as their replacement route. The right half shows source preparation, not a claim that every visible NPC had already been replaced in this shot. | Split image of lightweight island NPCs and a MetaHuman source in the editor | 1600 x 900
 assets/img/day-1-npcs-night.webp | The same systems had to survive darkness: navigation, home schedules and the astronomical HUD were tested at night rather than inferred from daytime. | Unreal island scene at night with NPCs and HUD | 1600 x 900
-assets/img/day-1-time-hud-options.webp | Time and astronomy HUD studies. Several readings were explored before choosing what deserved space on screen. | Review sheet with several time and moon HUD variations | 1600 x 900
+assets/img/day-1-time-hud-options.webp | Initial time and astronomy UI iterations. Several readings were explored before choosing what deserved space on screen. | Review sheet with several time and moon HUD variations | 1600 x 900
 ```
 
 The NPC slice was deliberately cheap before it was pretty. Lightweight and GASP-based characters were compared at 0, 10, 30 and 50 NPCs. All 50 could walk on the navigation mesh, go home at night and restore their positions from a save. The playable setup used 29 characters in six groups. Those numbers describe a controlled prototype test, not a finished crowd system.
@@ -123,7 +119,7 @@ Build 0.7 gave the prototype a readable shell. Stats were not just decorative ba
 
 ```gallery contain
 assets/img/day-1-low-health.png | The low-health screen treatment in the packaged prototype. A small effect, but one that connects system state to something the player can perceive. | Red low-health vignette over a third-person Unreal scene | 1600 x 900
-assets/img/day-1-pause-debug.webp | Pause and debug views made hidden prototype state visible during integration and testing. | Dark pause and debug menu over the game | 1600 x 900
+assets/img/day-1-pause-debug.webp | The first pause/debug menu iteration made hidden prototype state visible during integration and testing. | Dark first pause and debug menu over the game | 1600 x 900
 assets/img/day-1-ui-system-dark.webp | A darker UI system proposal exploring hierarchy, type and panels. This is a review artefact, not proof that every screen was implemented. | Dark fantasy user interface system board | 1600 x 900
 ```
 
@@ -143,9 +139,9 @@ Not everything visible on day one was integrated. Several parallel tracks produc
 The ACE lab proved that the intended local pieces could run and measured a roughly 1.7–2.4 second workaround path. Candidate distributions were about 4.6, 6.0 and 8.7 GB zipped, with estimated combined VRAM footprints around 6.9, 8.5 and 10.7 GB. Those figures are planning evidence. They are not evidence that a talking NPC existed in the game.
 
 ```gallery contain
-assets/img/day-1-metahuman-source-editor.png | A MetaHuman source character in the editor. Source preparation and retargeting were real work; the character was not automatically a final cast member. | MetaHuman character open in Unreal Engine editor | 1600 x 900
+assets/img/day-1-metahuman-source-editor.png | My AGI agent — ChatGPT Codex in the desktop app — used the MetaHuman editor by itself after the Claude Code terminal route did not want to drive it. Having several agents meant one interface limitation did not stop the track. The source character was still not automatically a final cast member. | MetaHuman character open in Unreal Engine editor under Codex desktop control | 1600 x 900
 assets/img/day-1-metahuman-motion-review.webp | Motion and retarget review exposed body-shape mismatches, stale meshes and naming collisions before a rebuilt review map passed. | Review board showing MetaHuman movement and retargeting tests | 1600 x 900
-assets/img/day-1-metahuman-cast-review.webp | Nineteen character candidates were presented for review. A board full of faces is a choice space, not a silently approved cast. | Review board with many MetaHuman character candidates | 1600 x 900
+assets/img/day-1-metahuman-cast-review.webp | A programmatic sheet from the real retarget-test captures shows a selection of the 19 assembled MetaHuman appearances across idle, walk, run, sprint, crouch and jump. It records technical replacement tests, not a silently approved final cast. | Contact sheet of multiple MetaHuman body types moving through the Unreal retarget test | 1600 x 900
 ```
 
 Clothing is still one of the riskiest unknowns. A beautiful fantasy asset pack was bought to give the characters a better chance, but fitting clothing to MetaHumans can become its own production. I have made simple clothing in Marvelous Designer before; even the simple version was painful. For a cinematic-only result, that work still has to justify its cost.
@@ -159,7 +155,7 @@ assets/img/day-1-armor-concepts.webp | Clothing and armour directions for the ca
 By evening the bottleneck was no longer a lack of output. It was deciding what should survive. Agents produced replaceable proposals for the logo, typography, UI, character bodies, concepts, SFX and music. I reviewed them in local boards with three states: **take it**, **with changes**, and **not now**. “Not now” keeps the item and its comment; it does not erase the work.
 
 ```gallery contain
-assets/img/day-1-brand-review.webp | The brand review put studio and game marks side by side so the decision was made in context. | Browser review board with Red Robin and Darkest Night identity studies | 1600 x 900
+assets/img/day-1-brand-review.webp | One of the first brand reviews put studio and game marks side by side so the decision was made in context. | Browser review board with early Red Robin and Darkest Night identity studies | 1600 x 900
 assets/img/day-1-ring-study.webp | Eclipse-ring variations moving from ornate fantasy emblem towards a quieter mark. | Grid of minimal eclipse ring logo studies | 1600 x 900
 assets/img/day-1-title-ring-mock.webp | A title-screen mock using the restrained ring direction. Still a proposal, but much closer to the chosen tone. | Dark title screen mock with a thin eclipse ring | 1600 x 900
 assets/img/day-1-ui-title-mock.webp | An earlier title/menu proposal kept for comparison rather than rewritten as if it never happened. | Dark fantasy title menu concept | 1600 x 900
@@ -185,17 +181,11 @@ The review provenance rule itself began at 21:13. Later cards record backend, mo
 
 At around six in the morning, chronological “day one” had stopped matching a normal human day. My sleep rhythm was broken, the agents had multiplied, and the orchestration was becoming a little muddy in my head. I had taken time off, my father was on a night shift, and my mother had the day off. At 29, I was building this from my parents' home and being supplied with food while the terminals kept moving.
 
-The Outlook account also stopped letting me in. That matters because some services, subscriptions and API-key workflows depend on it. It was a real setback, but not the emotional centre of the night.
-
->> Ich bin aber entspannt, weil ich ja schon sehr viel hingekriegt habe.
+The Outlook account also stopped letting me in. That matters because some services, subscriptions and API-key workflows depend on it. It was a real setback, but not the emotional centre of the night: «Ich bin aber entspannt, weil ich ja schon sehr viel hingekriegt habe.»
 
 The website itself still did not feel right. I wanted it more visual, with the interesting images and clips visible instead of buried in capture folders. I also wanted an editor eventually: not necessarily a complex WYSIWYG system, but a way to see all media, add or replace it, move it, save, and immediately see the result. The review board is the first smaller step towards that control.
 
-There is an important difference between saying “AI made this” and pretending I was absent from it. A huge amount of production was delegated, but direction, rejection, scope and taste were active work.
-
->> Ich habe ja kreative Entscheidungen getroffen.
-
->> Ich weiß, dass ich da viel aufräumen werden muss, aber fürs Prototyping ist es super.
+There is an important difference between saying “AI made this” and pretending I was absent from it. A huge amount of production was delegated, but direction, rejection, scope and taste were active work: «Ich habe ja kreative Entscheidungen getroffen.» I also knew the speed would leave debt behind: «Ich weiß, dass ich da viel aufräumen werden muss, aber fürs Prototyping ist es super.»
 
 ## What broke in the glass box
 
