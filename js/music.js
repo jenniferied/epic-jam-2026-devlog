@@ -39,9 +39,14 @@ window.JamMusic = (() => {
       const played = audio.duration ? audio.currentTime / audio.duration : 0;
       const accent = css.getPropertyValue("--accent").trim(), faint = css.getPropertyValue("--faint").trim();
       peaks.forEach((peak, i) => {
-        const bh = Math.max(2, Math.round(peak * (h - 6)));
+        const blocks = Math.max(1, Math.round(peak * 6));
+        const x = i * 4, barWidth = i % 4 === 0 ? 3 : 2;
         ctx.fillStyle = i / peaks.length <= played ? accent : faint;
-        ctx.fillRect(i * 3, Math.round((h - bh) / 2), 2, bh);
+        for (let block = 0; block < blocks; block++) {
+          const offset = 2 + block * 3;
+          ctx.fillRect(x, Math.floor(h / 2) - offset, barWidth, 2);
+          ctx.fillRect(x, Math.floor(h / 2) + offset - 1, barWidth, 2);
+        }
       });
     };
     const loadWave = async (file) => {
@@ -50,15 +55,19 @@ window.JamMusic = (() => {
         const encoded = await (await fetch(file)).arrayBuffer();
         const decoder = new OfflineAudioContext(1, 1, 44100);
         const decoded = await decoder.decodeAudioData(encoded);
-        const samples = decoded.getChannelData(0), count = 80, block = Math.floor(samples.length / count), next = [];
+        const samples = decoded.getChannelData(0), count = 60, block = Math.floor(samples.length / count), next = [];
         let loudest = 0;
         for (let i = 0; i < count; i++) {
-          let peak = 0, start = i * block, end = Math.min(samples.length, start + block), stride = Math.max(1, Math.floor(block / 256));
-          for (let j = start; j < end; j += stride) peak = Math.max(peak, Math.abs(samples[j]));
-          next.push(peak); loudest = Math.max(loudest, peak);
+          let peak = 0, energy = 0, seen = 0, start = i * block, end = Math.min(samples.length, start + block), stride = Math.max(1, Math.floor(block / 384));
+          for (let j = start; j < end; j += stride) {
+            const sample = Math.abs(samples[j]);
+            peak = Math.max(peak, sample); energy += sample * sample; seen++;
+          }
+          const shape = Math.sqrt(energy / Math.max(1, seen)) * .72 + peak * .28;
+          next.push(shape); loudest = Math.max(loudest, shape);
         }
         if (token !== waveToken) return;
-        peaks = next.map((peak) => loudest ? peak / loudest : 0); drawWave();
+        peaks = next.map((peak) => loudest ? Math.pow(peak / loudest, .78) : 0); drawWave();
       } catch (_) { if (token === waveToken) drawWave(); }
     };
     const sync = () => {
