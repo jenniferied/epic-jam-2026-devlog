@@ -69,7 +69,7 @@ window.JamMusic = (() => {
         const encoded = await (await fetch(file)).arrayBuffer();
         const decoder = new OfflineAudioContext(1, 1, 44100);
         const decoded = await decoder.decodeAudioData(encoded);
-        const samples = decoded.getChannelData(0), count = 120, block = Math.floor(samples.length / count);
+        const samples = decoded.getChannelData(0), count = 140, block = Math.floor(samples.length / count);
         const next = { highs: [], mids: [], bass: [] }, loudest = { highs: 0, mids: 0, bass: 0 };
         const bassAlpha = 1 - Math.exp(-2 * Math.PI * 250 / decoded.sampleRate);
         const midsAlpha = 1 - Math.exp(-2 * Math.PI * 4000 / decoded.sampleRate);
