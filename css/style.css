@@ -144,14 +144,18 @@ input[type="search"]::-webkit-search-cancel-button { display: none; }
 .music { position: relative; flex: none; padding: 7px 10px 8px; border-top: 1px solid var(--line); color: var(--dim); }
 .music-head { display: flex; justify-content: space-between; align-items: center; font-size: .72em; letter-spacing: .08em; text-transform: uppercase; }
 .music-head button { color: var(--accent-2); font-size: .9em; text-transform: none; letter-spacing: 0; }
+.music-body { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 8px; align-items: center; margin-top: 4px; }
+.music-body > img { display: block; width: 48px; height: 48px; object-fit: cover; border: 1px solid var(--line-2); border-radius: 2px; }
+.music-main { min-width: 0; }
 .music-now { color: var(--fg); line-height: 1.15; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .music-controls { display: grid; grid-template-columns: 2.2ch 2.2ch 2.2ch 1fr; gap: 5px; align-items: center; margin-top: 3px; }
 .music-controls button { color: var(--accent); line-height: 1; }
 .music-controls button:hover { color: var(--accent-2); }
 .music-controls span { text-align: right; font-size: .7em; color: var(--faint); }
 .music-progress { display: block; width: 100%; height: 3px; margin: 5px 0 0; accent-color: var(--accent); }
-.music-menu { position: absolute; z-index: 8; left: 8px; right: 8px; bottom: calc(100% - 26px); padding: 4px; border: 1px solid var(--line-2); background: var(--term); box-shadow: 0 8px 24px rgba(0,0,0,.4); }
-.music-menu button { display: grid; grid-template-columns: 2.2ch 1fr; gap: 7px; width: 100%; padding: 3px 6px; text-align: left; color: var(--dim); }
+.music-menu { position: absolute; z-index: 8; left: 8px; right: 8px; top: calc(100% - 4px); padding: 4px; border: 1px solid var(--line-2); background: var(--term); box-shadow: 0 8px 24px rgba(0,0,0,.4); max-height: min(330px, 55vh); overflow-y: auto; }
+.music-menu button { display: grid; grid-template-columns: 2.2ch 28px minmax(0, 1fr); gap: 7px; align-items: center; width: 100%; padding: 3px 6px; text-align: left; color: var(--dim); }
+.music-menu button img { width: 28px; height: 28px; object-fit: cover; border: 1px solid var(--line); }
 .music-menu button:hover, .music-menu button.on { color: var(--accent); background: var(--sel-bg); }
 .music-menu button span { color: var(--faint); }
 .funke { padding: 7px 10px 8px; border-top: 1px solid var(--line); }
