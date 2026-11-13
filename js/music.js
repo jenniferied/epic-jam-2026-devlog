@@ -21,15 +21,51 @@ window.JamMusic = (() => {
 
   function mount(root) {
     if (!root) return;
-    const audio = root.querySelector("audio"), now = root.querySelector("#music-now"), cover = root.querySelector("#music-cover"), play = root.querySelector("#music-play");
+    const audio = root.querySelector("audio"), now = root.querySelector("#music-now"), cover = root.querySelector("#music-cover"), wave = root.querySelector("#music-wave"), play = root.querySelector("#music-play");
     const prev = root.querySelector("#music-prev"), next = root.querySelector("#music-next"), time = root.querySelector("#music-time");
     const progress = root.querySelector("#music-progress"), toggle = root.querySelector("#music-list"), menu = root.querySelector("#music-menu");
     let index = Math.max(0, Math.min(tracks.length - 1, rememberedTrack()));
+    let peaks = [], waveToken = 0;
     menu.innerHTML = tracks.map((track, i) => `<button type="button" data-track="${i}"><span>${String(i + 1).padStart(2, "0")}</span><img src="assets/img/music/${track.cover}" alt="">${track.title}</button>`).join("");
+    const showTitle = (title) => {
+      const first = document.createElement("span"), repeat = document.createElement("span");
+      first.textContent = title; repeat.textContent = title; repeat.setAttribute("aria-hidden", "true");
+      now.replaceChildren(first, repeat);
+    };
+    const drawWave = () => {
+      const ctx = wave.getContext("2d"), css = getComputedStyle(document.documentElement), w = wave.width, h = wave.height;
+      ctx.clearRect(0, 0, w, h);
+      if (!peaks.length) return;
+      const played = audio.duration ? audio.currentTime / audio.duration : 0;
+      const accent = css.getPropertyValue("--accent").trim(), faint = css.getPropertyValue("--faint").trim();
+      peaks.forEach((peak, i) => {
+        const bh = Math.max(2, Math.round(peak * (h - 6)));
+        ctx.fillStyle = i / peaks.length <= played ? accent : faint;
+        ctx.fillRect(i * 3, Math.round((h - bh) / 2), 2, bh);
+      });
+    };
+    const loadWave = async (file) => {
+      const token = ++waveToken; peaks = []; drawWave();
+      try {
+        const encoded = await (await fetch(file)).arrayBuffer();
+        const decoder = new OfflineAudioContext(1, 1, 44100);
+        const decoded = await decoder.decodeAudioData(encoded);
+        const samples = decoded.getChannelData(0), count = 80, block = Math.floor(samples.length / count), next = [];
+        let loudest = 0;
+        for (let i = 0; i < count; i++) {
+          let peak = 0, start = i * block, end = Math.min(samples.length, start + block), stride = Math.max(1, Math.floor(block / 256));
+          for (let j = start; j < end; j += stride) peak = Math.max(peak, Math.abs(samples[j]));
+          next.push(peak); loudest = Math.max(loudest, peak);
+        }
+        if (token !== waveToken) return;
+        peaks = next.map((peak) => loudest ? peak / loudest : 0); drawWave();
+      } catch (_) { if (token === waveToken) drawWave(); }
+    };
     const sync = () => {
       const track = tracks[index];
-      now.textContent = track.title;
+      if (now.firstElementChild?.textContent !== track.title) showTitle(track.title);
       cover.src = `assets/img/music/${track.cover}`;
+      root.classList.toggle("playing", !audio.paused);
       play.textContent = audio.paused ? "▶" : "Ⅱ";
       play.setAttribute("aria-pressed", String(!audio.paused));
       play.setAttribute("aria-label", `${audio.paused ? "Play" : "Pause"} ${track.title}`);
@@ -39,7 +75,7 @@ window.JamMusic = (() => {
       index = (i + tracks.length) % tracks.length;
       rememberTrack(index);
       audio.src = tracks[index].file;
-      audio.load(); sync();
+      audio.load(); loadWave(tracks[index].file); sync();
       if (start) audio.play().catch(() => sync());
     };
     const step = (delta) => load(index + delta, !audio.paused || audio.currentTime > 0);
@@ -49,6 +85,7 @@ window.JamMusic = (() => {
     audio.addEventListener("timeupdate", () => {
       time.textContent = `${fmt(audio.currentTime)} / ${fmt(audio.duration)}`;
       progress.value = audio.duration ? Math.round(audio.currentTime / audio.duration * 1000) : 0;
+      drawWave();
     });
     progress.addEventListener("input", () => { if (audio.duration) audio.currentTime = audio.duration * progress.value / 1000; });
     toggle.addEventListener("click", () => { menu.hidden = !menu.hidden; toggle.setAttribute("aria-expanded", String(!menu.hidden)); });
