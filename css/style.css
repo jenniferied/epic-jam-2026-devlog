@@ -157,7 +157,7 @@ input[type="search"]::-webkit-search-cancel-button { display: none; }
 .music-controls button:hover { color: var(--accent-2); }
 .music-controls span { text-align: right; font-size: .7em; color: var(--faint); }
 .music-progress { display: block; width: 100%; height: 3px; margin: 5px 0 0; accent-color: var(--accent); }
-.music-wave { display: block; width: 100%; height: 42px; margin-top: 7px; background: color-mix(in srgb, var(--term) 68%, var(--pane)); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); image-rendering: pixelated; }
+.music-wave { display: block; width: 100%; height: 60px; margin-top: 7px; background: color-mix(in srgb, var(--term) 68%, var(--pane)); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); image-rendering: pixelated; }
 .music-menu { position: absolute; z-index: 8; left: 8px; right: 8px; top: calc(100% - 4px); padding: 4px; border: 1px solid var(--line-2); background: var(--term); box-shadow: 0 8px 24px rgba(0,0,0,.4); max-height: min(330px, 55vh); overflow-y: auto; }
 .music-menu button { display: grid; grid-template-columns: 2.2ch 36px minmax(0, 1fr); gap: 7px; align-items: center; width: 100%; padding: 3px 6px; text-align: left; color: var(--dim); font-size: .78em; }
 .music-menu button img { width: 36px; height: 36px; object-fit: cover; border: 1px solid var(--line); }

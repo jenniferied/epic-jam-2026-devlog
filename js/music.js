@@ -25,7 +25,7 @@ window.JamMusic = (() => {
     const prev = root.querySelector("#music-prev"), next = root.querySelector("#music-next"), time = root.querySelector("#music-time");
     const progress = root.querySelector("#music-progress"), toggle = root.querySelector("#music-list"), menu = root.querySelector("#music-menu");
     let index = Math.max(0, Math.min(tracks.length - 1, rememberedTrack()));
-    let peaks = [], waveToken = 0;
+    let bands = { highs: [], mids: [], bass: [] }, waveToken = 0;
     menu.innerHTML = tracks.map((track, i) => `<button type="button" data-track="${i}"><span>${String(i + 1).padStart(2, "0")}</span><img src="assets/img/music/${track.cover}" alt="">${track.title}</button>`).join("");
     const showTitle = (title) => {
       const first = document.createElement("span"), repeat = document.createElement("span");
@@ -35,35 +35,57 @@ window.JamMusic = (() => {
     const drawWave = () => {
       const ctx = wave.getContext("2d"), css = getComputedStyle(document.documentElement), w = wave.width, h = wave.height;
       ctx.clearRect(0, 0, w, h);
-      if (!peaks.length) return;
+      if (!bands.bass.length) return;
       const played = audio.duration ? audio.currentTime / audio.duration : 0;
-      const accent = css.getPropertyValue("--accent").trim(), faint = css.getPropertyValue("--faint").trim();
-      peaks.forEach((peak, i) => {
-        const barHeight = Math.max(2, Math.round(peak * (h - 6)));
-        const x = Math.round(i / (peaks.length - 1) * (w - 1));
-        ctx.fillStyle = i / peaks.length <= played ? accent : faint;
-        ctx.fillRect(x, Math.round((h - barHeight) / 2), 1, barHeight);
+      const faint = css.getPropertyValue("--faint").trim();
+      const lanes = [
+        ["H", bands.highs, 10, css.getPropertyValue("--fg").trim()],
+        ["M", bands.mids, 30, css.getPropertyValue("--accent").trim()],
+        ["B", bands.bass, 50, css.getPropertyValue("--accent-2").trim()]
+      ];
+      ctx.font = "8px monospace";
+      lanes.forEach(([label, values, center, color]) => {
+        ctx.fillStyle = faint; ctx.fillText(label, 1, center + 3);
+        values.forEach((peak, i) => {
+          const barHeight = Math.max(1, Math.round(peak * 15));
+          const x = 11 + Math.round(i / (values.length - 1) * (w - 12));
+          ctx.fillStyle = i / values.length <= played ? color : faint;
+          ctx.fillRect(x, Math.round(center - barHeight / 2), 1, barHeight);
+        });
       });
     };
     const loadWave = async (file) => {
-      const token = ++waveToken; peaks = []; drawWave();
+      const token = ++waveToken; bands = { highs: [], mids: [], bass: [] }; drawWave();
       try {
         const encoded = await (await fetch(file)).arrayBuffer();
         const decoder = new OfflineAudioContext(1, 1, 44100);
         const decoded = await decoder.decodeAudioData(encoded);
-        const samples = decoded.getChannelData(0), count = 100, block = Math.floor(samples.length / count), next = [];
-        let loudest = 0;
+        const samples = decoded.getChannelData(0), count = 92, block = Math.floor(samples.length / count);
+        const next = { highs: [], mids: [], bass: [] }, loudest = { highs: 0, mids: 0, bass: 0 };
+        const bassAlpha = 1 - Math.exp(-2 * Math.PI * 250 / decoded.sampleRate);
+        const midsAlpha = 1 - Math.exp(-2 * Math.PI * 4000 / decoded.sampleRate);
         for (let i = 0; i < count; i++) {
-          let peak = 0, energy = 0, seen = 0, start = i * block, end = Math.min(samples.length, start + block), stride = Math.max(1, Math.floor(block / 384));
-          for (let j = start; j < end; j += stride) {
-            const sample = Math.abs(samples[j]);
-            peak = Math.max(peak, sample); energy += sample * sample; seen++;
+          const windowSize = Math.min(block, 4096), start = i * block + Math.max(0, Math.floor((block - windowSize) / 2));
+          let lowBass = samples[start] || 0, lowMids = lowBass, bassEnergy = 0, midEnergy = 0, highEnergy = 0;
+          for (let j = start; j < Math.min(samples.length, start + windowSize); j++) {
+            const sample = samples[j];
+            lowBass += bassAlpha * (sample - lowBass);
+            lowMids += midsAlpha * (sample - lowMids);
+            const mid = lowMids - lowBass, high = sample - lowMids;
+            bassEnergy += lowBass * lowBass; midEnergy += mid * mid; highEnergy += high * high;
           }
-          const shape = Math.sqrt(energy / Math.max(1, seen)) * .85 + peak * .15;
-          next.push(shape); loudest = Math.max(loudest, shape);
+          const values = {
+            bass: Math.sqrt(bassEnergy / windowSize),
+            mids: Math.sqrt(midEnergy / windowSize),
+            highs: Math.sqrt(highEnergy / windowSize)
+          };
+          Object.keys(values).forEach((band) => {
+            next[band].push(values[band]); loudest[band] = Math.max(loudest[band], values[band]);
+          });
         }
         if (token !== waveToken) return;
-        peaks = next.map((peak) => loudest ? Math.pow(peak / loudest, 1.12) : 0); drawWave();
+        bands = Object.fromEntries(Object.entries(next).map(([band, values]) => [band, values.map((value) => loudest[band] ? Math.pow(value / loudest[band], 1.08) : 0)]));
+        drawWave();
       } catch (_) { if (token === waveToken) drawWave(); }
     };
     const sync = () => {
