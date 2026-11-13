@@ -36,22 +36,31 @@ window.JamMusic = (() => {
       const ctx = wave.getContext("2d"), css = getComputedStyle(document.documentElement), w = wave.width, h = wave.height;
       ctx.clearRect(0, 0, w, h);
       if (!bands.bass.length) return;
-      const played = audio.duration ? audio.currentTime / audio.duration : 0;
-      const faint = css.getPropertyValue("--faint").trim();
-      const lanes = [
-        ["H", bands.highs, 10, css.getPropertyValue("--fg").trim()],
-        ["M", bands.mids, 30, css.getPropertyValue("--accent").trim()],
-        ["B", bands.bass, 50, css.getPropertyValue("--accent-2").trim()]
-      ];
-      ctx.font = "8px monospace";
-      lanes.forEach(([label, values, center, color]) => {
-        ctx.fillStyle = faint; ctx.fillText(label, 1, center + 3);
-        values.forEach((peak, i) => {
-          const barHeight = Math.max(1, Math.round(peak * 15));
-          const x = 11 + Math.round(i / (values.length - 1) * (w - 12));
-          ctx.fillStyle = i / values.length <= played ? color : faint;
-          ctx.fillRect(x, Math.round(center - barHeight / 2), 1, barHeight);
+      const center = Math.floor(h / 2);
+      const colors = {
+        bass: css.getPropertyValue("--violet").trim(),
+        mids: css.getPropertyValue("--blue").trim(),
+        highs: css.getPropertyValue("--pink").trim()
+      };
+      bands.bass.forEach((_, i) => {
+        const x = i * 2;
+        const sizes = {
+          bass: Math.round(bands.bass[i] * 5),
+          mids: Math.round(bands.mids[i] * 7),
+          highs: Math.round(bands.highs[i] * 6)
+        };
+        let edge = 0;
+        ["bass", "mids", "highs"].forEach((band) => {
+          const size = sizes[band];
+          if (!size) return;
+          ctx.fillStyle = colors[band];
+          ctx.globalAlpha = 1;
+          ctx.fillRect(x, center - edge - size, 1, size);
+          ctx.fillRect(x, center + edge, 1, size);
+          edge += size;
         });
+        ctx.globalAlpha = 1;
+        if (!edge) { ctx.fillStyle = colors.mids; ctx.fillRect(x, center, 1, 1); }
       });
     };
     const loadWave = async (file) => {
@@ -60,12 +69,12 @@ window.JamMusic = (() => {
         const encoded = await (await fetch(file)).arrayBuffer();
         const decoder = new OfflineAudioContext(1, 1, 44100);
         const decoded = await decoder.decodeAudioData(encoded);
-        const samples = decoded.getChannelData(0), count = 92, block = Math.floor(samples.length / count);
+        const samples = decoded.getChannelData(0), count = 120, block = Math.floor(samples.length / count);
         const next = { highs: [], mids: [], bass: [] }, loudest = { highs: 0, mids: 0, bass: 0 };
         const bassAlpha = 1 - Math.exp(-2 * Math.PI * 250 / decoded.sampleRate);
         const midsAlpha = 1 - Math.exp(-2 * Math.PI * 4000 / decoded.sampleRate);
         for (let i = 0; i < count; i++) {
-          const windowSize = Math.min(block, 4096), start = i * block + Math.max(0, Math.floor((block - windowSize) / 2));
+          const windowSize = Math.min(block, 3072), start = i * block + Math.max(0, Math.floor((block - windowSize) / 2));
           let lowBass = samples[start] || 0, lowMids = lowBass, bassEnergy = 0, midEnergy = 0, highEnergy = 0;
           for (let j = start; j < Math.min(samples.length, start + windowSize); j++) {
             const sample = samples[j];
