@@ -79,6 +79,16 @@
    "status": "draft",
    "summary": "After the deadline. What worked, what exploded, what I'd do again.",
    "file": "post-mortem.md"
+  },
+  {
+   "slug": "builds",
+   "title": "builds.log",
+   "date": "2026-11-14",
+   "day": "builds",
+   "phase": "jam",
+   "status": "live",
+   "summary": "Every build of the jam so far, with the branches, features and fixes that went into it.",
+   "file": "builds.md"
   }
  ]
 }

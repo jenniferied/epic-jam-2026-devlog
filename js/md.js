@@ -11,6 +11,8 @@
 //   ```todo           "[ ] item" / "[x] item" lines -> checklist (used by draft entries)
 //   ```model          "src.glb | caption | alt | poster.jpg" -> interactive 3D viewer, loaded on demand
 //   ```chart          "spec.vl.json | caption" -> numbered figure rendered with Vega-Lite, loaded on demand
+//   ```embed          "page.html?query | caption | height" -> same-site page in a frame (generated pages such as builds.html);
+//                     height is the starting height, a page that posts {devlogEmbed, h} resizes its frame
 //   ```tracks         "src.mp3 | title | m:ss" lines -> soundtrack player; src "placeholder" -> pending track
 (function (global) {
   "use strict";
@@ -102,6 +104,13 @@
         return `<figure class="chart" data-spec="${esc(src)}"><div class="vl" role="img" aria-label="${esc(caption)}"></div><figcaption><span class="fig">Figure ${ctx.figures}.</span> ${inline(caption)}</figcaption></figure>`;
       }).join("");
     },
+    embed(lines) {
+      return lines.filter((l) => l.trim()).map((l) => {
+        const [src, caption = "", height = "720"] = split(l);
+        if (!/^[\w./-]+\.html(\?[\w=&.-]*)?(#[\w.-]*)?$/.test(src) || src.includes("..")) return "";
+        return `<figure class="embed"><iframe src="${esc(src)}" title="${esc(caption)}" loading="lazy" style="height:${parseInt(height, 10) || 720}px"></iframe><figcaption>${inline(caption)} <a href="${esc(src)}" target="_blank" rel="noopener">open full page</a></figcaption></figure>`;
+      }).join("");
+    },
     tracks(lines) {
       return '<ol class="tracks">' + lines.filter((l) => l.trim()).map((l, i) => {
         const [src, title = "", len = ""] = split(l);
@@ -126,6 +135,7 @@
     while (i < lines.length) {
       const line = lines[i];
       if (!line.trim()) { i++; continue; }
+      if (/^\s*<!--.*-->\s*$/.test(line)) { i++; continue; }  // marker comments (devlog-picks, branches-embed)
 
       const fence = line.match(/^```(\w*)/);
       if (fence) {
@@ -182,6 +192,14 @@
     }
     return { meta, body: text.slice(m[0].length) };
   }
+
+  // embedded same-site pages report their height (builds.html); match the message to its frame
+  if (global.addEventListener) global.addEventListener("message", (e) => {
+    if (e.origin !== global.location.origin || !e.data || !e.data.devlogEmbed) return;
+    document.querySelectorAll(".embed iframe").forEach((f) => {
+      if (f.contentWindow === e.source) f.style.height = Math.max(160, Math.min(8000, +e.data.h || 0)) + "px";
+    });
+  });
 
   global.Md = { render, frontMatter, esc, inline };
 })(window);

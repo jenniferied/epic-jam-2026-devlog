@@ -18,3 +18,8 @@ summary: Core loop day.
 [ ] First Windows package and smoke test
 [ ] What got cut
 ```
+
+<!-- branches-embed -->
+```embed
+builds.html?day=2 | Branches of day 2: every branch active that day, by area, with the build it shipped in. Hover or tap a row. | 1750
+```

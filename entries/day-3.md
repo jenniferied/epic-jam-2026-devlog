@@ -18,3 +18,8 @@ summary: Make it feel like something.
 [ ] Playtest by someone who isn't me
 [ ] Mac build check
 ```
+
+<!-- branches-embed -->
+```embed
+builds.html?day=3 | Branches of day 3: every branch active that day, by area, with the build it shipped in. Hover or tap a row. | 1100
+```

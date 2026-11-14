@@ -5,8 +5,15 @@
   <link href="https://jenniferied.github.io/epic-jam-2026-devlog/"/>
   <link rel="self" href="https://jenniferied.github.io/epic-jam-2026-devlog/feed.xml"/>
   <id>https://jenniferied.github.io/epic-jam-2026-devlog/</id>
-  <updated>2026-11-12T02:33:45Z</updated>
+  <updated>2026-11-14T22:03:23Z</updated>
   <author><name>Jennifer</name></author>
+  <entry>
+    <title>builds.log</title>
+    <link href="https://jenniferied.github.io/epic-jam-2026-devlog/#/builds"/>
+    <id>https://jenniferied.github.io/epic-jam-2026-devlog/#/builds</id>
+    <updated>2026-11-14T12:00:00+01:00</updated>
+    <summary>Every build of the jam so far, with the branches, features and fixes that went into it.</summary>
+  </entry>
   <entry>
     <title>push_pull.md: inspiration, not a plan</title>
     <link href="https://jenniferied.github.io/epic-jam-2026-devlog/#/prep-3-push-pull"/>

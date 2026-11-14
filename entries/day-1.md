@@ -19,3 +19,8 @@ summary: Jam starts at 06:00. Empty folder, one theme, one dragon.
 [ ] First playable loop
 [ ] Devlog captures of the first frame
 ```
+
+<!-- branches-embed -->
+```embed
+builds.html?day=1 | Branches of day 1: every branch active that day, by area, with the build it shipped in. Hover or tap a row. | 1000
+```

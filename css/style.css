@@ -256,6 +256,11 @@ q.voice::before, q.voice::after { color: color-mix(in srgb, var(--voice) 60%, tr
 .model figcaption { color: var(--dim); font-size: .8em; margin-top: 4px; }
 
 /* chart (scientific figure) */
+/* embed: generated same-site page (builds.html) in a frame, wider than the text column where there is room */
+.embed { margin: 1.3em 0 1.5em; width: min(1180px, calc(min(100vw, 1440px) - var(--side) - 170px)); max-width: none; position: relative; left: 50%; transform: translateX(-50%); }
+.embed iframe { display: block; width: 100%; border: 1px solid var(--line-2); border-radius: var(--radius); background: var(--term); }
+.embed figcaption { color: var(--dim); font-size: .82em; margin-top: 6px; line-height: 1.25; }
+@media (max-width: 900px) { .embed { width: 100%; left: 0; transform: none; } }
 .chart { margin: 1.3em 0 1.5em; padding: 12px 14px 8px; border-top: 1px solid var(--line-2); border-bottom: 1px solid var(--line-2); }
 .chart .vl { width: 100%; min-height: 120px; }
 .chart figcaption { color: var(--dim); font-size: .82em; margin-top: 6px; line-height: 1.25; }

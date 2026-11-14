@@ -18,3 +18,8 @@ summary: After the deadline. What worked, what exploded, what I'd do again.
 [ ] Every tool, model and pre-made item, listed again
 [ ] Funke's verdict on the scope
 ```
+
+<!-- branches-embed -->
+```embed
+builds.html | All branches of the jam: fork, merges and the build each one shipped in, by area. Hover or tap a row. | 2700
+```
