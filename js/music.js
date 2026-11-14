@@ -122,7 +122,8 @@ window.JamMusic = (() => {
     play.addEventListener("click", () => audio.paused ? audio.play().catch(() => {}) : audio.pause());
     prev.addEventListener("click", () => step(-1)); next.addEventListener("click", () => step(1));
     audio.addEventListener("play", () => { playerChannel?.postMessage({ type: "playing", playerId }); sync(); });
-    audio.addEventListener("pause", sync); audio.addEventListener("ended", sync);
+    audio.addEventListener("pause", sync);
+    audio.addEventListener("ended", () => load(index + 1, true));
     playerChannel?.addEventListener("message", (event) => {
       if (event.data?.type === "playing" && event.data.playerId !== playerId) audio.pause();
     });

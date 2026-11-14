@@ -50,12 +50,12 @@
   },
   {
    "slug": "day-2",
-   "title": "day-2.log: the agent factory needs rules",
+   "title": "day-2.log: builds, overload and one decision board",
    "date": "2026-11-13",
    "day": "day 2",
    "phase": "jam",
    "status": "live",
-   "summary": "The prototype kept growing, but so did the number of branches, agents and compile collisions. Day 2 became a test of whether the factory could be made safer without stopping it.",
+   "summary": "Five more packaged builds turned the prototype into a dense playable system. Day 2 also became a test of how to make decisions when agents, branches and review boards move faster than one person can absorb them.",
    "cover": "assets/img/day-2-cover.webp",
    "cover_alt": "Three-part view of the Day 2 prototype world, a film-print look comparison and the expanding castle approach",
    "file": "day-2.md"

@@ -1,5 +1,5 @@
 ---
-title: day-2.log: the agent factory needs rules
+title: day-2.log: builds, overload and one decision board
 slug: day-2
 order: 5
 date: 2026-11-13
@@ -8,12 +8,12 @@ phase: jam
 status: live
 cover: assets/img/day-2-cover.webp
 cover_alt: Three-part view of the Day 2 prototype world, a film-print look comparison and the expanding castle approach
-summary: The prototype kept growing, but so did the number of branches, agents and compile collisions. Day 2 became a test of whether the factory could be made safer without stopping it.
+summary: Five more packaged builds turned the prototype into a dense playable system. Day 2 also became a test of how to make decisions when agents, branches and review boards move faster than one person can absorb them.
 ---
 
 ```recap
 **Before this entry:** Day 1 ended with a playable Windows Build 0.7 integration, an island full of systems and one stubborn red orb-course test. The rebuilt cross-platform result had not happened yet.
-**What this draft covers:** 13 November, 00:00–14:40 CET. It is a live first half of Day 2, not an end-of-day retrospective.
+**What this live entry covers:** 13 November, 00:00 CET through the human decision phase at 03:56 on 14 November. Jennifer's sleep-shifted Day 2 is still in progress; this is not an end-of-day retrospective.
 ```
 
 Day 2 started with the least glamorous version of progress: rebuild the thing, run the tests again, and find out which of yesterday's claims still survived contact with another machine.
@@ -82,7 +82,7 @@ The music and water parents were individually healthy enough to merge, but bring
 
 The first rename let the package build and tests pass, but a clean editor build still found ambiguity. A second fix placed the helpers in qualified namespaces. Only then did both editor and package builds complete again. The music package was 3,063 MB and its packaged music and input tests passed.
 
-At 04:23 the water and music lines met on main as `build-0.7.1`. There is no documented fresh package test of that exact post-merge tag. Its two parents had package evidence; the merged tag itself did not. That gap belongs in the log because “both sides passed” and “the merge passed” are not the same statement.
+At 04:23 the water and music lines met on main as `build-0.7.1`. The first version of this devlog said there was no fresh package test of that exact merge. Later-synchronised Windows records corrected that: commit `5e4b4d3` received a full package run, and everything passed except the already-known orb traversal course. The native Mac package passed its systems too; World and Water produced zero screenshots because the sandbox path was wrong, not because the runtime test failed.
 
 ```timeline
 02:49 | music | runtime system, fallbacks and 36 automated checks
@@ -90,7 +90,7 @@ At 04:23 the water and music lines met on main as `build-0.7.1`. There is no doc
 03:26 | fonts | selected type assets merged into the game line
 03:52 | collision | the first combined package exposes Unity helper-name clashes
 04:11 | repair | qualified helper names pass clean editor and package builds
-04:23 | tag | music and water meet on main as build-0.7.1; no fresh post-merge package recorded
+04:23 | tag | music and water meet on main as build-0.7.1; later records confirm the merged package
 ```
 
 ## Waking up into the agent factory
@@ -148,7 +148,7 @@ The most important feature added after noon may be a set of limits rather than a
 
 There was cleanup outside the code too. The 314 GB NvRTX source build moved to `D:` behind a verified junction, freeing roughly 432 GB on `C:`. ACE setup and staging scripts that had lived as operational knowledge were pulled into tracked source. Old Unreal projects and lab build output started moving or being pruned. None of this makes a good trailer shot, but it is what lets the next compile happen.
 
-The website became another live system. Day 1 was expanded into a much more visual article, and its sidebar player grew from four tracks to twelve reviewed directions with local covers, scrolling titles and separate high, mid and bass waveforms. Then a hidden browser tab kept playing after the visible tabs were closed. The fix made track changes stop the previous source, stopped playback after one track, paused on page exit and used cross-tab coordination so only one devlog tab can play.
+The website became another live system. Day 1 was expanded into a much more visual article, and its sidebar player grew from four tracks to twelve reviewed directions with local covers, scrolling titles and separate high, mid and bass waveforms. Then a hidden browser tab kept playing after the visible tabs were closed. The fix made track changes stop the previous source, paused on page exit and used cross-tab coordination so only one devlog tab can play. A later change made a deliberately started playlist advance forever, wrapping from track twelve to track one.
 
 ## Current state at 14:40
 
@@ -158,13 +158,96 @@ PASS | native Mac Build 0.7 package and the subset of tests actually run there
 PASS | isolated music package, water package and C1 trial tests
 PASS | headwear review module reports 88/88 automated checks
 FIXED | two-stage Unity-build helper collision during music integration
-OPEN | no fresh package test is documented for the exact build-0.7.1 merge tag
-OPEN | Build 0.9 / Build 1 work is an active integration line, not a packaged release
+PASS | the exact build-0.7.1 merge was later confirmed on Windows and Mac, with documented test limits
+OPEN | Build 0.9 / Build 1 work is an active integration line at this 14:40 checkpoint
 OPEN | water, final look, MetaHuman clothing and the orb traversal course
 OPEN | many generated assets still need selection, cleanup, retopology or real integration
 RISK | agent throughput is exceeding the rate at which one person can continuously audit every branch
 ```
 
-Day 2 is not finished, and neither is this entry. The useful shift is that confusion is no longer being treated as a personal failure to “keep up.” It is an engineering signal. If several agents can produce systems faster than one director can review them, then branch ownership, test scope, compile budgets, reversible modules and honest status labels are part of the game project too.
+That was the state at 14:40, not the end of the day. The next twelve hours turned several branches into five packaged builds and turned the review problem into the main design problem.
 
-The vibe-coding answer is therefore not to stop asking ambitious questions. It is to keep the smallest known-good build alive while asking them.
+## 14:51–19:32 · Four hours, three packages
+
+Build 0.9 arrived at 14:51, 32 hours and 51 minutes after the jam began. The 3,974 MB Windows package joined the 0.8.2 base to story work, the C1–C3 character, inventory and social systems, the armillary, look switching, PCG and level work, a sundial sleep-and-light puzzle and an initial character creator. Package smoke, sleep and character-creation tests passed; the quest suite reported 14/14 in the editor. It was Windows-only, and several things were obviously provisional: a cell still blocked the orb course, the bed and sundial stone were cubes, and the character creator was backlit and hard to read.
+
+```gallery contain
+assets/img/day-2-build09-character.webp | Build 0.9's first character-creation screen was real and usable, but still looked like a debug panel placed over the beach. The point of the package was to prove the flow before polishing it. | Early character-creation panel beside a mannequin on a bright beach | 1920 x 1080
+assets/img/day-2-build09-sundial.webp | The first packaged sleep dial connected time selection to the light puzzle. Its clean circular layout already pointed towards the later eclipse UI language. | Circular sleep and wake-time dial over a simple test interior | 1920 x 1080
+assets/img/day-2-build091-music-test.webp | Build 0.9.1's music overlay running inside the purple systems map. Debug text is doing the useful work here: it exposes which state, layer and cue the runtime believes it is playing. | Unreal test map with a large music-system debug overlay | 1920 x 1080
+```
+
+The work immediately became more test-first. A character batch reached 41/41 checks plus thirteen editor tests on its branch, but that evidence did not magically make it part of the packaged main line. Build 0.9.1 followed at 16:11. Its 4,055 MB package added dedicated test maps, UI, crouch and foot-placement fixes, the `dn4` switch, environmental signs, shared interaction, cinema and modal repairs, weather fixes, rain controls and safer NPC collision. The changed areas passed editor and package tests. One first launch ended in a DXGI device-hung error; more than nine later starts did not reproduce it, so the incident stayed recorded rather than being promoted into either a solved bug or a permanent failure.
+
+Build 0.9.2 landed at 19:32 at 4,048 MB. It added music debug spheres, a unified interaction prompt, quest-driven character-creation and save rules, weather sequences, NPC animation LOD, GASP footsteps, the Calor warmth system and ember-room UI. Forty unit tests passed and the broad editor suite was green. In the package, only smoke and the 94-step input test were run. The 35-minute package time remained unexplained, and nobody had visually reviewed that build yet.
+
+That changed during Jennifer's playtest around 20:40. She chose a longer title and loading flow, actual title music with an ambient loading bed, save and settings sounds, the HUD and glyph direction, a 72-minute day, a walk-only opening and the current weather and LOD approach. This is where a pile of implemented options began turning into her game rather than an agent default.
+
+## The overload becomes the workflow
+
+The problem was no longer a lack of material. It was the opposite. «I was overwhelmed during the day,» Jennifer says now. Questions lived across build notes, specialist chats and several review boards; answers were easy to give twice and hard to trace once.
+
+At 19:42 the build history gained a proper changelog route. Between 21:19 and 21:29 all unanswered choices began moving into one `OPEN-QUESTIONS` funnel. At 21:34 Jennifer chose quality over raw speed, then at 21:35 asked for a fast start path anyway: fewer minutes between a change and a useful playtest, without pretending the verification step was optional. By 22:42 the boards themselves were being consolidated.
+
+The strongest correction came during the next real playtest: «I want to retire the agents that have been doing stuff. I need fresh context for everybody.» This was not a rejection of agent work. It was an ownership decision. Old sessions had accumulated assumptions; the next orchestrator should gather their state, let one integration session own 0.9.4, then start fresh specialists from a known checkpoint. «I want to optimise my time» became a rule for the factory rather than a request to make every agent type faster.
+
+```clips
+assets/video/day-2-decision-board.mp4 | **01:53 CET · 43h53 after jam start.** The consolidated board in motion: one place for HUD, prompt, character, settings and audio choices instead of answers scattered across chats. The browser view is evidence of the decision process, not an in-game menu. | assets/img/day-2-consolidated-board.webp
+```
+
+```gallery contain
+assets/img/day-2-consolidated-board.webp | A central board gathered island, kit, equipment, loading-prop and dungeon questions. Consolidation did not reduce the work to one click, but it made the remaining decisions countable and attributable. | Dark review board with several medieval building candidates and decision fields | 1388 x 710
+assets/img/day-2-build093-settings.webp | The settings screen detected the RTX 5090, selected DLSS Quality and exposed the active result instead of hiding the chosen preset behind a label. This is the actual packaged interface. | Dark starry graphics-settings screen with detected-hardware summary | 1600 x 900
+```
+
+## 00:00–02:38 · The playtest writes 0.9.4
+
+Build 0.9.3 was tagged at midnight, 42 hours after jam start. At 4,847 MB it carried the frontend, loading and preloading flow, saves, NVIDIA settings, HUD and glyphs, character creation, a walk-only escort and tutorial, the 72-minute day, FPS limits, MetaHuman hair handling, loading props and experimental chunking. Seventy unit tests passed, along with broad editor coverage and packaged smoke, input, loading and hair tests.
+
+The status still had sharp edges. One armillary package shot was black. Hair emitted warnings and showed fringe risk. The travel-fade test timed out. Face LOD had not been visually checked, and the new UI paths were not all exercised in the package. It was still a Windows-only build.
+
+```clips
+assets/video/day-2-build093-character.mp4 | **00:53 CET · 42h53 after jam start.** Build 0.9.3's character creator running in the packaged frontend. The clip proves the screen moves and responds; it does not prove controller recovery or saving, which the later playtest found broken. | assets/img/day-2-build093-character.webp
+```
+
+```gallery contain
+assets/img/day-2-build093-character.webp | The later character creator moved from the beach-debug look into the ember-and-eclipse frontend. It was much closer visually, while its input and save rules still needed the human playtest. | Character-creation screen with ember particles and a female base body | 1600 x 900
+assets/img/day-2-sound-iteration.webp | The loading-finished cue went through many tiny variations. Several local rustles were rejected as scratchy; Jennifer wanted a dark, distant, heavy door or object rather than a bright UI tick. | Audio review board showing short cloth and loading-finished sound candidates | 1600 x 800
+```
+
+The 01:30 playtest supplied the useful failures. Switching between controller and keyboard could strand character creation. Q and E did not change tabs. Sprint returned after the cut. Autosave guards and player restoration were wrong; save-and-quit was wrong too. Stars, selector shapes and UI shadows needed another pass. Wind and rain were too loud indoors. The route was difficult to read, rocks floated and quest hints did not communicate enough. Guard state was not fully restored.
+
+Jennifer made two immediate decisions: debug should be off by default but switchable from pause, and the loading object should remain visible for at least eight seconds while world sound is muted. The star and selector work then became unusually specific: combine the A and C star directions, chamfer the moon by seven millimetres, use genuinely three-dimensional star and lozenge forms and make ring-glide C deeper. The sound pass also exposed a real bug: what seemed merely “too busy” was five to twelve hits firing before the onset counter made the overlap measurable.
+
+Build 0.9.4 was tagged at 02:22 and documented at 02:38, 44 hours and 38 minutes after jam start. The 4,849 MB package fixed modal input, escort and story state, saves, stars and 3D selectors, settings, character creation, the eight-second muted loading presentation, debug defaults and 27 UI sounds and textures. Package smoke, input and fast-start tests passed. The loading test failed because it still expected saving immediately after the skip, while the new character-creation gate intentionally blocked that save. The run did observe 8.28 seconds and muted world audio. Load, travel and quit scenarios were not run; nobody had listened to or visually approved every new asset, no real controller had been used, and Mac remained untested.
+
+## 02:38–03:56 · Decision phase, not victory lap
+
+By 02:30 the remaining choices were being pulled into one final board: 79 decisions rather than 79 half-remembered chat fragments. The confirmed direction included an eight-second load, preload plus one central object, separate title and music flows, restrained subtitle and hint policies, no giant scenic backdrops, no numerical warmth display, hand-drawn glyphs, a debug easter egg, the walk-only escort and explicit FPS caps. Some details, especially the final sprint scheme, remained agent proposals awaiting confirmation.
+
+The clothing question finally received a controlled test instead of another beautiful concept sheet. At 03:36 an Epic Chaos Outfit creator build was compared with a tighter Blender weight-transfer version across body targets. Trousers behaved cleanly in both. The shirt still showed neck and shoulder penetration from the source fit. Parametric deformation could move the helmet by up to three centimetres, which is enough to ruin a rigid silhouette; the current recommendation is therefore fitted per-head helmets rather than pretending one elastic solution works for everything. This is a fitting study, not clothing running on a MetaHuman in the game.
+
+```gallery contain
+assets/img/day-2-parametric-clothing.webp | Guard 01 compares the parametric Chaos route above with a tighter Blender transfer and rigid helmet below. The boring grey sheet answers the important question: which parts may deform, and which must stay fitted. | Front side and back clothing-fit comparison for a broad guard body | 1400 x 1712
+```
+
+ACE was explicitly moved to Build 1. Its lively-NPC lab could continue, but it would not destabilise the Build 0 finish. At 03:52 only one integration session was authorised to touch the combined line. At 03:56 Jennifer rejected the latest local rustles as too scratchy and described the wanted loading-finished cue as a dark, distant, heavy door or object.
+
+Anything after that needs a different label. The 03:57 Build 1 ladder is an agent synthesis, not a player-approved implementation. A later package of roughly 5,182 lines of story and dialogue is an agent draft: it is not built, tested or inside the game.
+
+## Live checkpoint at 03:56
+
+```log
+PASS | Windows packages 0.9, 0.9.1, 0.9.2, 0.9.3 and 0.9.4 exist with explicitly different test scopes
+PASS | 0.9.4 smoke, 94-step input and fast-start paths; loading duration and world mute observed
+DECIDED | central decision funnel, fresh agent context, one integration owner and Build 1 separation
+DECIDED | eight-second loading object, debug default off, walk-only opening and current UI direction
+OPEN | real-controller pass, Mac package, full load/travel/quit coverage and creative review of 0.9.4 assets
+OPEN | MetaHuman clothing remains a fitting problem; the parametric study is not an in-game result
+OPEN | final loading-finished sound after the scratchy local rustles were rejected
+RISK | automated green checks are growing faster than human visual, audio and architectural review
+```
+
+Day 2 is still going. The useful shift is that overload is no longer being treated as a personal failure to “keep up.” It is an engineering signal. If several agents can produce systems faster than one director can review them, then branch ownership, test scope, compile budgets, reversible modules, one decision funnel and honest status labels are part of the game project too.
+
+The vibe-coding answer is not to stop asking ambitious questions. It is to keep the smallest known-good build alive, keep one person in charge of its meaning, and make the next decision visible.
