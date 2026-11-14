@@ -7,7 +7,9 @@
    "day": "prep 1",
    "phase": "prep",
    "status": "live",
-   "summary": "How a work PC came home with me first, why I'm doing this at all, and the toolchain I set up in the two weeks before the jam.",
+   "summary": "How a work PC got kidnapped twice before reaching the office, why I'm doing this at all, and the toolchain I set up in the two weeks before the jam.",
+   "cover": "assets/img/cover-prep-1.jpg",
+   "cover_alt": "Pixel art: a woman in walking boots carries a PC tower away from an office building at night, a small green dragon flying beside her",
    "file": "prep-1-boot.md"
   },
   {
@@ -18,6 +20,8 @@
    "phase": "prep",
    "status": "live",
    "summary": "One long day of testing everything twice, an agent that went one step too far, deleting it all, the kickoff stream and the theme.",
+   "cover": "assets/img/cover-prep-2.jpg",
+   "cover_alt": "Pixel art: a desk at night with a PC tower and a laptop joined by a cable, a film clapperboard, and a small green dragon asleep on the tower",
    "file": "prep-2-validate.md"
   },
   {
@@ -28,26 +32,32 @@
    "phase": "prep",
    "status": "live",
    "summary": "There is no concept yet. There is a pile of directions pulling against each other, and me being overwhelmed at 3 AM, three hours before the start.",
+   "cover": "assets/img/cover-prep-3.jpg",
+   "cover_alt": "Pixel art: a woman with a small dragon on her shoulder at a forest fork at night, paths to a castle, a lit house and a golden trophy",
    "file": "prep-3-push-pull.md"
   },
   {
    "slug": "day-1",
-   "title": "day-1.log",
+   "title": "day-1.log: build the smallest world",
    "date": "2026-11-12",
    "day": "day 1",
    "phase": "jam",
    "status": "live",
-   "summary": "From an empty folder at 06:00 to a packaged island with a castle, night, rain, NPCs, a title screen, a studio logo and a pile of review boards. Builds 0.0 to 0.6, and the first time it all got too much.",
+   "summary": "At 06:00 there was no game. Eighteen hours later there was a tested UE 5.8 build ladder, an island, NPCs, time and weather, five parallel creative tracks, and a very honest list of what was still broken.",
+   "cover": "assets/img/day-1-cover-split-final.jpg",
+   "cover_alt": "Split image with the early UE third-person template movement test on the left and the first populated jam island iteration on the right",
    "file": "day-1.md"
   },
   {
    "slug": "day-2",
-   "title": "day-2.log",
+   "title": "day-2.log: builds, overload and one decision board",
    "date": "2026-11-13",
    "day": "day 2",
    "phase": "jam",
    "status": "live",
-   "summary": "Nine builds in 28 hours. The Mac gets dropped, Build 0 is called final, the masked guard learns to be suspicious, and the castle gets a silhouette. Also foam everywhere, flat LUTs, four editors open at once and far too many boards.",
+   "summary": "Five more packaged builds turned the prototype into a dense playable system. Day 2 also became a test of how to make decisions when agents, branches and review boards move faster than one person can absorb them.",
+   "cover": "assets/img/day-2-cover.webp",
+   "cover_alt": "Three-part view of the Day 2 prototype world, a film-print look comparison and the expanding castle approach",
    "file": "day-2.md"
   },
   {
@@ -67,7 +77,6 @@
    "day": "day 4",
    "phase": "jam",
    "status": "draft",
-   "summary": "Package, debug, submit. Deadline Monday 02:59.",
    "file": "day-4.md"
   },
   {
@@ -77,7 +86,6 @@
    "day": "post",
    "phase": "post",
    "status": "draft",
-   "summary": "After the deadline. What worked, what exploded, what I'd do again.",
    "file": "post-mortem.md"
   },
   {
@@ -89,6 +97,17 @@
    "status": "live",
    "summary": "Every build of the jam so far, with the branches, features and fixes that went into it.",
    "file": "builds.md"
+  },
+  {
+   "slug": "profile",
+   "title": "whoami",
+   "date": "2026-11-12",
+   "day": "profile",
+   "phase": "about",
+   "status": "live",
+   "summary": "I research virtual production at Filmuniversität Babelsberg KONRAD WOLF, I trained as an interior designer, and I keep asking what AI does to the making of worlds.",
+   "kind": "page",
+   "file": "profile.md"
   }
  ]
 }

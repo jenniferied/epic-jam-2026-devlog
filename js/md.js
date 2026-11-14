@@ -1,11 +1,12 @@
 // Minimal markdown renderer for devlog entries, no dependencies.
 // Extras on top of plain markdown:
-//   «text»            inline verbatim quote from the author's dictation (rendered as <q class="voice">)
+//   «text»            inline verbatim quote from the author's dictation (rendered as a highlighter <mark class="voice">)
 //   >> text           block of verbatim dictation
 //   ```specs          "# Section" lines and "key: value" lines -> spec sheet
 //   ```timeline       "when | text" lines -> vertical timeline
 //   ```log            "HH:MM | tag | text" lines -> terminal log
 //   ```gallery        "src | caption | alt | w x h" lines; src "placeholder" -> labelled empty frame
+//   ```clips          "src.mp4 | caption | poster.jpg" lines -> inline video clips
 //   ```chat           "you: ..." / "ai: ..." lines -> chat transcript
 //   ```recap          disclosure box shown at the top of an entry
 //   ```todo           "[ ] item" / "[x] item" lines -> checklist (used by draft entries)
@@ -14,6 +15,7 @@
 //   ```embed          "page.html?query | caption | height" -> same-site page in a frame (generated pages such as builds.html);
 //                     height is the starting height, a page that posts {devlogEmbed, h} resizes its frame
 //   ```tracks         "src.mp3 | title | m:ss" lines -> soundtrack player; src "placeholder" -> pending track
+//   ```pubs           "year | title | authors | venue | status | url" lines -> publication list; url optional
 (function (global) {
   "use strict";
 
@@ -23,7 +25,7 @@
     const codes = [];
     s = esc(s).replace(/`([^`]+)`/g, (_, c) => { codes.push(c); return "\u0000" + (codes.length - 1) + "\u0000"; });
     s = s
-      .replace(/«([^»]+)»/g, '<q class="voice">$1</q>')
+      .replace(/«([^»]+)»/g, '<mark class="voice">$1</mark>')
       .replace(/!\[([^\]]*)\]\(([^)\s]+)\)/g, '<img src="$2" alt="$1" loading="lazy" decoding="async">')
       .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (_, t, h) => {
         const ext = /^https?:/.test(h);
@@ -63,7 +65,7 @@
         return `<div class="log-line" role="listitem"><time>${esc(t)}</time><span class="tag tag-${cls}">${esc(tag || "")}</span><span class="msg">${inline(rest.join(" | "))}</span></div>`;
       }).join("") + "</div>";
     },
-    gallery(lines, ctx) {
+    gallery(lines, ctx, opts) {
       const items = lines.filter((l) => l.trim()).map((l) => {
         const [src, caption = "", alt = "", size = ""] = split(l);
         const [w, h] = size.split(/\s*x\s*/).map(Number);
@@ -71,11 +73,18 @@
       });
       const id = ctx.galleries.length;
       ctx.galleries.push(items);
-      return `<div class="gallery g${items.length === 4 ? 2 : Math.min(items.length, 3)}">` + items.map((it, i) => {
+      return `<div class="gallery g${items.length === 4 ? 2 : Math.min(items.length, 3)}${/contain/.test(opts || "") ? " contain" : ""}">` + items.map((it, i) => {
         const fig = it.src === "placeholder"
           ? `<span class="ph" style="aspect-ratio:${it.w}/${it.h}"><span class="ph-label">[ photo pending ]</span><span class="ph-cap">${esc(it.alt)}</span></span>`
           : `<img src="${esc(it.src)}" alt="${esc(it.alt)}" width="${it.w}" height="${it.h}" loading="lazy" decoding="async">`;
         return `<figure><button class="thumb" type="button" data-gallery="${id}" data-index="${i}" aria-label="${esc(it.alt)}">${fig}</button>${it.caption ? `<figcaption>${inline(it.caption)}</figcaption>` : ""}</figure>`;
+      }).join("") + "</div>";
+    },
+    clips(lines) {
+      return '<div class="clips">' + lines.filter((l) => l.trim()).map((l) => {
+        const [src, caption = "", poster = ""] = split(l);
+        const posterAttr = poster ? ` poster="${esc(poster)}"` : "";
+        return `<figure class="clip"><video controls preload="metadata" playsinline${posterAttr}><source src="${esc(src)}" type="video/mp4">Your browser does not support embedded video.</video>${caption ? `<figcaption>${inline(caption)}</figcaption>` : ""}</figure>`;
       }).join("") + "</div>";
     },
     chat(lines) {
@@ -118,6 +127,16 @@
         return `<li class="${pending ? "pending" : ""}"><button type="button" class="track" ${pending ? "disabled" : `data-src="${esc(src)}"`} aria-label="${esc(title)}"><span class="no">${String(i + 1).padStart(2, "0")}</span><span class="state" aria-hidden="true">${pending ? "··" : "▶"}</span><span class="tt">${inline(title)}</span><span class="len">${pending ? "pending" : esc(len)}</span></button><span class="bar" aria-hidden="true"><i></i></span></li>`;
       }).join("") + "</ol>";
     },
+    pubs(lines) {
+      return '<ol class="pubs">' + lines.filter((l) => l.trim()).map((l) => {
+        const [year, title = "", authors = "", venue = "", status = "", url = ""] = split(l);
+        const cls = status.toLowerCase().split(/[^a-z]/)[0];
+        const head = url
+          ? `<a class="pt" href="${esc(url)}" target="_blank" rel="noopener">${inline(title)}<span class="ext" aria-hidden="true">↗</span></a>`
+          : `<span class="pt">${inline(title)}</span>`;
+        return `<li><span class="yr">${esc(year)}</span><div>${head}<span class="pa">${inline(authors)}</span><span class="pv">${status ? `<span class="st st-${cls}">${esc(status)}</span>` : ""}${inline(venue)}</span></div></li>`;
+      }).join("") + "</ol>";
+    },
     todo(lines) {
       return '<ul class="todo">' + lines.filter((l) => l.trim()).map((l) => {
         const done = /^\[x\]/i.test(l);
@@ -137,26 +156,27 @@
       if (!line.trim()) { i++; continue; }
       if (/^\s*<!--.*-->\s*$/.test(line)) { i++; continue; }  // marker comments (devlog-picks, branches-embed)
 
-      const fence = line.match(/^```(\w*)/);
+      const fence = line.match(/^```(\w*)\s*(.*)$/);
       if (fence) {
         i++;
         const body = until((l) => /^```\s*$/.test(l));
         i++;
         const kind = fence[1];
-        html += blocks[kind] ? blocks[kind](body, ctx) : `<pre><code>${esc(body.join("\n"))}</code></pre>`;
+        html += blocks[kind] ? blocks[kind](body, ctx, (fence[2] || "").trim()) : `<pre><code>${esc(body.join("\n"))}</code></pre>`;
         continue;
       }
       const h = line.match(/^(#{1,4})\s+(.*)$/);
       if (h) {
         const level = Math.min(h[1].length + 1, 5);
         const id = h[2].toLowerCase().replace(/[^\w]+/g, "-").replace(/^-|-$/g, "");
+        if (h[1].length === 2) (ctx.toc = ctx.toc || []).push({ id, text: h[2] });
         html += `<h${level} id="${id}"><span class="hash" aria-hidden="true">${"#".repeat(h[1].length)}</span> ${inline(h[2])}</h${level}>`;
         i++; continue;
       }
       if (/^(-{3,}|\*{3,})\s*$/.test(line)) { html += '<hr>'; i++; continue; }
       if (line.startsWith(">>")) {
         const body = until((l) => !l.startsWith(">>")).map((l) => l.replace(/^>>\s?/, ""));
-        html += `<blockquote class="voice-block"><p>${body.map(inline).join("<br>")}</p></blockquote>`;
+        html += `<blockquote class="voice-block"><p><mark class="voice">${body.map(inline).join("<br>")}</mark></p></blockquote>`;
         continue;
       }
       if (line.startsWith(">")) {
@@ -179,7 +199,7 @@
       const para = until((l) => !l.trim() || /^(```|#{1,4}\s|>|\s*([-*]|\d+\.)\s+)/.test(l));
       html += `<p>${inline(para.join(" "))}</p>`;
     }
-    return { html, galleries: ctx.galleries };
+    return { html, galleries: ctx.galleries, toc: ctx.toc || [] };
   }
 
   function frontMatter(text) {

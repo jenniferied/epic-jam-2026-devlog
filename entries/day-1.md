@@ -1,193 +1,225 @@
 ---
-title: day-1.log
+title: day-1.log: build the smallest world
 slug: day-1
 order: 4
 date: 2026-11-12
 day: day 1
 phase: jam
 status: live
-summary: From an empty folder at 06:00 to a packaged island with a castle, night, rain, NPCs, a title screen, a studio logo and a pile of review boards. Builds 0.0 to 0.6, and the first time it all got too much.
+cover: assets/img/day-1-cover-split-final.jpg
+cover_alt: Split image with the early UE third-person template movement test on the left and the first populated jam island iteration on the right
+summary: At 06:00 there was no game. Eighteen hours later there was a tested UE 5.8 build ladder, an island, NPCs, time and weather, five parallel creative tracks, and a very honest list of what was still broken.
 ---
+
 ```recap
-**Before this entry:** a toolchain (prep 1), an empty jam folder after the reset (prep 2), and no concept, only a pile of directions (prep 3). The theme is **Director's Cut**.
-**What this entry covers:** Thursday 12 November, 06:00 to midnight. The decision for a game, Builds 0.0 to 0.6 and the integration of 0.7, the first island, the first brand and music rounds, and the first setbacks. Everything below is AI summary except the highlighted quotes, which are my own messages to the agents. Most of them were typed in German at odd hours; the English after each one is a translation.
+**Before this entry:** the toolchain was prepared and possible directions were written down, but there was no concept, game project, code or game asset.
+**What this entry covers:** 12 November, from the first post-start brief to the final Windows integration attempt before midnight. The rebuilt Windows and Mac Build 0.7 results belong to day 2.
 ```
 
-The night before, I had a castle, a masked prisoner and an island in my head, and no plan. At 06:33 I typed «The jam has officially started, yay. :)» and asked the agents for an Unreal 5.8 project for Mac and Windows. I said to call it *Build 0*.
+The picture above is one day in two halves. On the left: the first grey movement test. On the right: the later island build. They are not a polished before-and-after marketing shot; the line between them is the actual distance travelled on day one.
 
-By the end of the day there was a packaged game with an island, a grey-box castle, a day-night cycle, rain, NPCs walking around and a title screen. There were also more review sheets than I could keep track of. This entry is that day in pictures, roughly in order.
+At 06:00 there was no game. Half an hour later there was a name, a world and a constraint: **Darkest Night**, made by **Red Robin**, would be the smallest playable slice of the game I actually want to make.
 
-## 06:00–10:00 · Picking a game before breakfast
+The pitch was direct: «the game I have always dreamed of making» — an «Open World Medieval Dark High Science Fantasy RPG». Its historical anchor was already there too: «It should play in their equivalent of the time of Copernicus. Scientific discovery in dark times.»
 
-The first decision was the game. It's an open-world, medieval, dark, high-science-fantasy RPG *slice*, on an island with a castle, and the player arrives as a prisoner. Working title **DarkestNight**, studio name RedRobin. The obvious objection is that it's far too big for four days, and I knew that. I had an anecdote in my head that I wasn't even sure was true:
+The first image was an island with a castle. The player arrives as a prisoner, an Elder Scrolls homage rather than a complete story. The larger ambition stayed visible, but the jam target became deliberately narrower: one cinematic place, movement that feels like an RPG, a day/night cycle, a few inhabitants, minimal UI, Windows and Mac builds, and a route towards local AI characters later.
 
-> «Interesting anecdote I heard was, Skyrim had a world first approach while other design team have a systems first approach.»
-
-So Build 0 became a skeleton for both. There's a C++ project from the third-person template, Epic's Game Animation Sample (GASP) for movement, a Skyrim-style key layout, saving like Skyrim (manual saves any time plus rotating autosaves), DLSS 4.5 with a TSR fallback, menus, and a letterboxed dummy opening with three cameras. Every sub-build gets packaged for Windows and natively for the Mac.
-
-The skeleton compiled at 06:52, 52 minutes into the jam. The first Windows package took 53 seconds and the Mac one 148 seconds over SSH. One Mac start in five crashed before writing a single log line. Codex on the Mac traced it to a known memory-tracker race in development builds, so Mac runs now use `-LLM`.
-
-At 07:11 I went to bed: «Arbeite bitte erstmal guten Gewissens weiter ich bin zu müde.» (Please just keep working with a clear conscience, I'm too tired.) The last thing I asked was how to stop Windows asking for firewall permission while I slept.
-
-```gallery
-assets/img/day1/11-12-064901-watcher-start.jpg | 06:49 · Watcher session starts: agent terminals in herdr, the devlog capture loop begins. Funke bottom left | Terminal multiplexer with agent panes, a pixel dragon and a jam credits panel | 1600 x 900
-assets/img/day1/11-12-074640-imported-gasp-cmc-movetest-win64-run.jpg | 07:46 · First packaged Win64 run: GASP mannequin sprinting across the test level | Grey mannequin running across a purple test grid | 1280 x 720
-assets/img/day1/11-12-081149-clip.jpg | 08:11 · Build 0.3 in motion: GASP movement on the template test map (still from a clip) | Mannequin standing on a green test platform | 1600 x 900
-assets/img/day1/11-12-082649-game-launched.jpg | 08:26 · First title screen: plain DarkestNight placeholder with Press any key | Dark window with the word DarkestNight and Press any key | 1282 x 752
+```gallery contain
+assets/img/day-1-concept-sheet.webp | One of the first concept sheets captured for Darkest Night: masked figures, castle silhouettes, eclipse imagery and a world much larger than the jam build could contain. | Dark fantasy concept sheet with masked characters, castles and eclipse imagery | 1600 x 900
+assets/img/day-1-gasp-first-person.webp | It all started with the third-person template. Classic. This is also the left half of the title image. | Unreal third-person template movement test in a purple obstacle course | 1600 x 900
+assets/img/day-1-title-raw.webp | The first raw title screen: no visual identity yet, just proof that the frontend flow could start. | Black early title screen reading DarkestNight | 1600 x 900
 ```
 
-## 10:00–14:00 · An island grows while I sleep
+## A build ladder, not one giant promise
 
-While I slept, a world agent built `L_Island` entirely from scripts. A NumPy heightmap becomes the landscape, with Ultra Dynamic Sky and its weather, an Easy Waterscape ocean, a castle blockout, and a PCG scatter of 5,405 Megascans maples and rocks. The first version had the castle upside down and the trees leaning, because in Unreal's Python `Rotator(a, b, c)` means roll, pitch, yaw and not what you'd guess. It went into the skill so no agent makes that mistake twice.
+Claude Code orchestrated the main Windows work in separate Git worktrees. Codex handled Mac-side work where useful. Specialist agents worked on systems, world, characters, audio and visual directions in parallel. The terminal was less like a chatbot and more like a small, noisy control room.
 
-A separate NPC slice put 50 GASP characters on a navmesh. Motion matching costs about 7.7 ms of game thread at 50 characters, against 1.9 ms for a lighter character, and night sends them all home. Then GASP's MetaHuman *Kellan* was retargeted onto the player without Epic's generic retarget blueprint, which would have pulled in 2.3 GB of other characters.
-
-At 13:17 I was back: «Kannst du mir fragen hier stellen? Berichte was bis jetzt geschah.» (Can you ask me questions here? Report what has happened so far.)
-
-```gallery
-assets/img/day1/11-12-132708-agent-turn-end.jpg | 13:27 · NPC load test: dozens of GASP NPCs walking on the test grid | Many small characters walking on a purple grid around the GASP logo | 1600 x 900
-assets/img/day1/11-12-133513-smoke-test.jpg | 13:35 · NPC smoke test passes: GASP character with vest on the test level | Character in an orange vest running on the test level | 1600 x 931
-assets/img/day1/11-12-141050-commit.jpg | 14:10 · Mannequin on the first island hillside under a blue sky | Mannequin crouching on a sunny grassy slope with trees | 1600 x 900
-assets/img/day1/11-12-141148-clip.jpg | 14:11 · Island flythrough: grey-box castle on the cliff, ending on a dusk view over the sea (still from a clip) | Grey-box castle with conical towers on a meadow | 1600 x 900
+```gallery contain
+assets/img/prep-3-terminal-layout.webp | The multi-pane terminal layout in use: several agents, logs and hand-offs visible together. Parallelism created speed, but also an increasing amount of state to understand and reconcile. | Dark terminal workspace divided into several panes with agent sessions and logs | 1600 x 900
 ```
 
-## 14:00–18:00 · First night, first smear, first play
-
-The first island was 1.5 km across, which is too big to fill. I kept it as a possible footprint for after the jam, and the jam island became the same coastline at half scale, with the road cut from 1.1 km to 530 m. Time and weather went into Build 0.6: a clock that runs, pauses and has a speed setting, a small sundial HUD, and a weighted weather director on top of Ultra Dynamic Sky. Along the way an agent found that UDS counts moon phase 0 as *full* moon, so our clock had been showing a full moon at new moon.
-
-Then the trees started smearing whenever the camera moved. I had a hunch before anyone measured it:
-
-> «Ich glaube der Schmierbug hat was mit wind zu tun.»
-
-(I think the smear bug has something to do with the wind.) It did. Nanite-rendered maples moved several times more per frame through wind animation than the non-Nanite path, and DLSS and TSR ghosted the branches, worse in gusts. The fix renders the tree instances without Nanite (`DN.Trees.Nanite 0`).
-
-Meanwhile a separate **ACE lab** project started, outside the game, to find out what NVIDIA's on-device speech can actually do on UE 5.8. By 16:11 it had a full spoken loop running in a package: speech recognition, a local Qwen model in llama.cpp, speech synthesis and a 3D voice at a gate guard, with no cloud.
-
-My first real play session at 16:53 produced a long list. The mouse felt inverted. I wanted a controls page with an icon pack, auto quality that says what hardware it found, a debug view, debug orbs and a teleport to the castle. I also asked for stamina, health, and light and dark energy that charge in sunlight and moonlight. The "inverted mouse" turned out to be our own automated tests writing *invert Y* into my personal settings. Tests now save to their own folder.
-
-At 17:57 I described the levelling system I actually want: body systems with Latin names, levelled by use, with Fallout-like body parts. It got staged as *MVP now, mid later, final much later*.
-
-```gallery
-assets/img/day1/11-12-144150-shot.jpg | 14:41 · First night on the island: NPCs on the meadow in the dark | Small figures on a dark meadow below grey castle walls | 1600 x 900
-assets/img/day1/11-12-163904-watch.jpg | 16:39 · Rock outcrop and pines on the island, mannequin looking up | Mannequin looking up at a rock outcrop and tall pines | 1600 x 900
-assets/img/day1/11-12-163921-clip.jpg | 16:39 · Build 0.6 in motion: walking the dirt road across the island meadow (still from a clip) | Mannequin seen from above on a dirt road | 1282 x 752
-assets/img/day1/11-12-173449-agent-turn-end.jpg | 17:34 · Several NPCs walking the island road around the player | Mannequins in different colours on a dirt road between hills | 1282 x 752
-assets/img/day1/11-12-173908-watch.jpg | 17:39 · First pause menu with graphics settings (DLSS, look invert, debug view) | Pause menu listing graphics quality, upscaler and invert look options | 1282 x 752
-```
-
-## 18:00–22:00 · A name, a typeface, a robin
-
-In the evening the work turned visual. I asked for logos for Red Robin and DarkestNight, maybe with a Latin name, plus a serif, a sans and a debug font. The agents made logos in code (Python, font outlines, Blender extrusions), type sheets, UI kit directions and mockups.
-
-Some of my answers from that evening, which stuck:
-
-- Studio is **Red Robin**, with a space, not "Red Rob". The round robin is the mark.
-- The game logo is the **moonlight eclipse ring**: «less is more», no castle.
-- No AI-generated images behind menus or titles. The start screen is black, with subtle particles and one detailed 3D object.
-- Weekdays in the time HUD use planetary signs with the Latin day names (*dies Lunae*, *dies Martis*, ...).
-- The Latin title **NOX OBSCVRISSIMA** stays, with DARKEST NIGHT as the subtitle.
-
-I also wondered aloud whether "Director" even fits a medieval world: «idk ob director in ne mittelalterwelt passt was war damals das euqivalent» (I don't know if a director fits a medieval world, what was the equivalent back then). The narrator figure later became *Custos*, the keeper.
-
-Music started the same evening. As a first test, the adaptive music system ran on two licensed packs I own (Caravan by day, Starry Skies by night). In parallel an agent wrote an original score by hand: MIDI, FluidSynth and a sampled orchestra, sample-aligned stems, no AI audio model. I listened at 21:43. Day was too upbeat, night too romantic and combat too heroic, so they became a cutscene library. In-game music should be sparse, Skyrim-like exploration beds.
-
-```gallery
-assets/img/day1/11-12-180759-imported-system-dark.jpg | 18:07 · Type system proposal: Cormorant and EB Garamond on black | Type specimen sheet with DARKEST NIGHT in a classical serif | 1474 x 1600
-assets/img/day1/11-12-180800-imported-mock-title-menu.jpg | 18:08 · Title menu mockup: DARKEST NIGHT over a stormy castle on the sea. Rejected later: no AI images behind menus | Title mockup with a castle on a rock in a storm | 1600 x 900
-assets/img/day1/11-12-204114-imported-r2-sets.jpg | 20:41 · Type round 2: DARKEST NIGHT title set in many OFL families | Grid of title cards in different typefaces | 1600 x 1433
-assets/img/day1/11-12-210718-imported-TY-C01.jpg | 21:07 · Type round 3: NOX OBSCVRISSIMA menu card with Latin title and lore text | Menu card with the Latin title and a short lore paragraph | 1600 x 900
-assets/img/day1/11-12-205700-commit.jpg | 20:57 · Title screen motion mockup: eclipse ring beside a minimal DARKEST NIGHT menu | Golden ring with a moon beside a small menu | 1600 x 764
-assets/img/day1/11-12-211950-agent-turn-end.jpg | 21:19 · Eclipse ring rendered in Blender: one pose per menu entry | Five renders of a brass ring, one per menu entry | 1600 x 764
-```
-
-```gallery
-assets/img/day1/11-12-205611-milestone.jpg | 20:56 · Brand board round 5: Red Robin logos and eclipse-ring wordmarks side by side | Review board with ring logos and wordmarks | 1600 x 764
-assets/img/day1/11-12-210005-milestone.jpg | 21:00 · Red Robin studio logo variants on the brand board | Review board with red robin bird logos | 1600 x 764
-assets/img/day1/11-12-232732-setback.jpg | 23:27 · Title lockup NOX OBSCVRISSIMA, the eclipse ring as the O | Latin title with a brass ring as the letter O | 746 x 600
-assets/img/day1/11-12-222859-milestone.jpg | 22:28 · Menu selection marker variants: CONTINUE / NEW GAME / LOAD | Three menu variants with different brass markers | 1600 x 764
-```
-
-## The day it got too much
-
-By 20:40 a lot of agents were working on Build 0, Build 1 and "future stuff" at the same time. I asked whether any of it was being orchestrated:
-
-> «es arbeiten ganz viele agenten an build 0 oder build 1 oder zukunfttsstuff, wird alles ncoh rodentlich orchestriert und commited in logische branches? ich möchte bald auch mal alles kombinierte spiel…»
-
-(Lots of agents are working on Build 0 or Build 1 or future stuff. Is all of it still being orchestrated properly and committed in logical branches? I'd like to play everything combined soon.) Ten minutes later:
-
-> «uggh zu viele sheets habe den überblick verloren»
-
-(Ugh, too many sheets, I've lost track.) That sentence led to a rule that has shaped every day since. At 21:13 it became a standing instruction: everything generated is shown as **one review board** per batch. Each item gets accept, accept with changes, or "not now", plus a free comment field, and the export includes everything, also what I didn't pick. "Not now" doesn't mean rejected. The review-board skill was written that night.
-
-Disk C: also ran full twice, down to 0 MB, because several agents packaged at once. The Unreal project archive (197 GB) moved to the other drive behind a junction. Packaging queued for over an hour behind another agent's stuck copy loop. At 23:27 the editor crashed outright.
-
-```gallery
-assets/img/day1/11-12-145950-imported-before-after-wind.jpg | 14:59 · Tree wind smear before/after: Nanite WPO trees ghosting under DLSS vs sharp non-Nanite trees | Six crops of trees comparing smeared and sharp branches | 1600 x 800
-assets/img/day1/11-12-202749-shot.jpg | 20:27 · Concept-art contact sheets under review: castle, harbour and tower moods. Too many windows at once | A stack of open image windows over concept art | 1282 x 752
-assets/img/day1/11-12-220445-milestone.jpg | 22:04 · Gameplay SFX round 2 review board: 260 generated weather, footstep and combat sounds | Audio review board with players and comment fields | 1600 x 764
-assets/img/day1/11-12-225733-shot.jpg | 22:57 · Frontend audio round 2 board with spectrograms of studio idents and weather loops | Audio board with coloured spectrograms | 1600 x 764
-```
-
-## 22:00–00:00 · Guards, shackles, capes and a beach with three pillars
-
-The last two hours were review rounds. There were 260 gameplay sounds (weather beds, footsteps, breathing, combat) made through an API for about 3.26 USD. I accepted most weather beds and the heartbeat, but the generated footsteps felt weird, so we went back to GASP's own foley as the base. Concept art covered guards, helmets, shackles and five creature races, made both locally and through an API and compiled into a PDF. The prison became a medieval-equivalent **mental asylum**.
-
-Clothing was the other thread. I bought medieval clothing and cape packs on Fab, and an agent fitted one garment to a MetaHuman body by script and resized it onto another. The MetaHuman retarget board, with 19 bald bodies in three heights, got my favourite verdict of the day: «lief super» (went great).
-
-```gallery
-assets/img/day1/11-12-234515-commit.jpg | 23:45 · Concept art: four castle guards in plate armour with red-cross tabards | Four armoured guards with spears | 1600 x 764
-assets/img/day1/11-12-234931-watch.jpg | 23:49 · Concept board of prisoner shackles and helmets | Board with iron masks, shackles and helmets | 1600 x 764
-assets/img/day1/11-12-195452-commit.jpg | 19:54 · Shopping Fab for MetaHuman medieval clothing | Fab store page filtered to MetaHuman clothing | 1600 x 764
-assets/img/day1/11-12-215506-milestone.jpg | 21:55 · Fab library of purchased medieval clothing, capes and robes | Library grid of clothing and cape packs | 1006 x 521
-assets/img/day1/11-12-235932-watch.jpg | 23:59 · ACE lab test beach: three placeholder NPC pillars for voice dialog | Three grey pillars with sphere heads on a beach | 1282 x 752
-```
-
-## Timeline
+The Unreal project lives in a separate local Git repository because binary assets need one clear writer. The jam repository holds plans, logs, tools and reproducible source material. That split was decided at 07:00, before parallel work became difficult to untangle.
 
 ```timeline
-06:33 | Jam starts. Open-world medieval science-fantasy RPG slice, island, castle, prisoner
-06:52 | Build 0.0: C++ project compiles, Win64 package in 53 s, Mac package over SSH
-07:11 | I go to sleep. Agents keep building
-08:46 | Build 0.4: GASP motion-matching character with our own C++ input and camera
-08:56 | Island generated from scripts. The castle is upside down at first
-13:16 | Build 0.5: the island world, 5,405 PCG instances, 146–179 fps at 1080p DLSS Quality
-13:54 | MetaHuman Kellan runs on the GASP character in a package
-14:15 | "I think the smear bug has to do with the wind." It does
-15:03 | Build 0.6: NPCs, MetaHuman player, smaller island, time and weather
-16:11 | ACE lab: spoken question to local LLM to NPC voice, all on-device
-16:53 | First real playtest, first long feedback list
-18:23 | Original adaptive score, 72 sample-aligned stems, no AI audio model
-20:26 | C: full while several agents package
-20:51 | "Too many sheets, I've lost track"
-21:13 | Rule: everything generated goes on one review board
-22:55 | Build 0.7 integration packaged: 12-test suite passes, one orb test fails
-23:27 | Editor crash
+06:33 | kickoff | Darkest Night, Red Robin, island, castle, prisoner, UE 5.8
+07:00 | structure | separate Unreal repo; Windows writes assets, Mac builds from Git
+07:22 | build 0.3 | Skyrim-like manual saves plus Quick and six rotating autosaves
+08:46 | build 0.4 | GASP movement, custom C++ camera, equipment data and frontend feature-complete
+08:59 | package | Build 0.4 packaged and its automated smoke suite passed
+14:38 | build 0.6 | packaged time-and-weather test passed twice
+16:57 | playtest | inverted-feeling mouse, missing control help and HUD needs reported
+22:55 | build 0.7 | the b07-integrate package passed its suite except the orb traversal course
+23:59 | close | creative reviews still running; rebuilt Windows and Mac 0.7 moved to day 2
 ```
 
-## Builds of the day
+The ladder kept every ambitious system replaceable. The lower rung stayed usable if a higher one failed.
 
-```specs
-# Build 0.0 · 06:52
-What: empty C++ project from the third-person template
-Package: Win64 53 s, 996 MB; Mac native 148 s, 901 MB
-# Build 0.3 · 07:42
-What: input layer, graphics (DLSS 4.5 / TSR), save system
-Package: Win64 1,314 MB, Mac 902 MB
-# Build 0.4 · 08:46
-What: GASP character, C++ camera (third and first person), equipment slots, menus, letterboxed opening
-Package: Win64 1,405 MB; Mac about 52 fps on M1 Max
-# Build 0.5 · 13:16
-What: the island world (UDS sky, Easy Waterscape, PCG vegetation, castle blockout)
-Package: Win64 1,909 MB
-# Build 0.6 · 15:03
-What: NPCs on the island, MetaHuman player, smaller jam island, time and weather, wind smear fix
-Package: Win64 1,941 MB, full test suite passed
-# Build 0.7 (integration) · 22:55
-What: UI and controls page, time HUD, stats bars, NPC MetaHumans, loading screen, weather
-Package: passed the 12-test suite, tagged after midnight (day 2)
+### 0.1 · Input
+
+C++ Enhanced Input covered keyboard, mouse, controller mappings and device-switching logic. **Verified:** 66 automated mapping and state checks. **Limit:** no physical controller had been tested yet.
+
+### 0.2 · Graphics
+
+DLSS Super Resolution, DLAA and an explicit TSR fallback were wired up. **Verified:** 9/9 image-mode A/B checks on Windows; Mac used TSR without NVIDIA plugins. **Limit:** Frame Generation initialised, but was not yet a proven gameplay feature.
+
+### 0.3 · Persistence
+
+The game had unlimited named manual saves, Quick Save, six rotating autosaves, Continue and a save blocker. **Verified:** packaged save/load and restore checks on Windows and Mac.
+
+### 0.4 · Player shell
+
+GASP locomotion, a custom C++ camera, first/third person, zoom, shoulder swap and the frontend were connected. Data-only left/right hand equipment slots gave later items somewhere to connect.
+
+### 0.5 · Inhabited island
+
+The small island combined procedural scatter, navigation, a lightweight NPC schedule and appearance data. **Verified:** 0/10/30/50 NPC scaling runs; 29 NPCs organised into six groups in the playable setup.
+
+### 0.6 · Time and weather
+
+An accelerated clock, moon phases, sunrise/sunset states and weighted basic weather ran together. **Verified:** time jump, pause, save/load and sky synchronisation in the packaged build.
+
+### 0.7 · Readable prototype
+
+UI, debug views, stats, loading flow, the NPC MetaHuman test and teleport orbs formed the last day-one rung. **Result:** every packaged suite passed except the automated orb traversal course.
+
+## What the player could actually do
+
+This was more than a list of subsystems. The player could switch first and third person, zoom, swap the camera shoulder and move through the GASP locomotion set. The frontend could start or continue a game. The save menu supported arbitrary manual slots, a Quick slot and six rotating autosaves. Saving could be blocked during unsafe transitions instead of corrupting a state.
+
+The input layer was intentionally owned by the project rather than hidden in a Blueprint. That made its behaviour testable and gave keyboard, mouse and controller a common route. It did not mean controller support was finished: the mappings and switching logic passed 66 checks, but no physical controller had yet been held in a human hand.
+
+The Mac mattered throughout. It had no NVIDIA plugin and therefore exercised the TSR fallback instead of pretending all target machines were the Windows workstation. Integrated Mac packages existed for Builds 0.3 and 0.4 before midnight. Later systems had Windows packages or separate branches, but the rebuilt cross-platform 0.7 result did not exist yet. That distinction is important: a branch package, a merged Windows package and a native Mac package are three different kinds of evidence.
+
+There were early failures. The first Mac package needed an EngineSettings dependency. A later development build crashed intermittently before writing a log; the working theory was a Low Level Memory Tracker race, and runs with `-LLM` passed 15 out of 15. That is a useful test workaround, not proof that the engine issue disappeared.
+
+## The island becomes a systems test
+
+The first island footprint was too large for four days, but useful enough to preserve as a possible post-jam direction. A smaller version became the real test ground: landscape, vegetation, castle blockout, opening cameras, NPC locations, time, weather and a minimal astronomical HUD.
+
+```clips
+assets/video/day-1-npc-test.mp4 | **13:26 CEST · 7h26 after jam start.** Lightweight NPCs moving through the test arena. The NPC/system agents used them to test schedules, navigation and load; Claude captured the packaged run. | assets/img/day-1-npcs-night.webp
+assets/video/day-1-castle-blockout.mp4 | **14:11 CEST · 8h11 after jam start.** The world agent's castle and island blockout as a moving spatial sketch, captured by Claude after the character branch merged. | assets/img/day-1-island-opening.webp
+assets/video/day-1-island-play.mp4 | **16:39 CEST · 10h39 after jam start.** The packaged Build 0.6 island in motion after the world, time and character tracks came together; Claude captured the release inspection. | assets/img/day-1-npcs-day.webp
 ```
 
-"Passed" here means the automated tests passed in a packaged build. Nobody had *listened* to most of the sounds yet, and I hadn't played most of it. That distinction mattered more every day.
+At 14:38 the packaged Build 0.6 time-and-weather test passed twice. It checked clock rate, pause states, synchronisation after time jumps, eight moon phases, the sundial-style HUD, sunrise and sunset states, weighted weather, and persistence through save/load. A later world test counted 1,258 PCG instances and ten successful camera shots in the Windows package.
+
+```gallery contain
+assets/img/day-1-npcs-to-metahumans.jpg | The population pipeline in one plate: lightweight coloured NPCs on the island first, then MetaHuman sources prepared as their replacement route. The right half shows source preparation, not a claim that every visible NPC had already been replaced in this shot. | Split image of lightweight island NPCs and a MetaHuman source in the editor | 1600 x 900
+assets/img/day-1-npcs-night.webp | The same systems had to survive darkness: navigation, home schedules and the astronomical HUD were tested at night rather than inferred from daytime. | Unreal island scene at night with NPCs and HUD | 1600 x 900
+assets/img/day-1-time-hud-options.webp | Initial time and astronomy UI iterations. Several readings were explored before choosing what deserved space on screen. | Review sheet with several time and moon HUD variations | 1600 x 900
+assets/img/day-1-island-opening.webp | An early letterboxed opening camera on the smaller island. The foreground tree motion still smeared at this point. | Early cinematic opening view across the island | 1600 x 900
+assets/img/day-1-wind-fix.webp | The foliage investigation as a measured before/after plate. Disabling Nanite on the Norway maples removed the worst WPO smear in the packaged scene. | Four-frame comparison of foliage before and after the wind rendering fix | 1600 x 900
+```
+
+The NPC slice was deliberately cheap before it was pretty. Lightweight and GASP-based characters were compared at 0, 10, 30 and 50 NPCs. All 50 could walk on the navigation mesh, go home at night and restore their positions from a save. The playable setup used 29 characters in six groups. Those numbers describe a controlled prototype test, not a finished crowd system.
+
+## Stats, loading and debug visibility
+
+Build 0.7 gave the prototype a readable shell. Stats were not just decorative bars: health, stamina and mana had explicit rules; low health produced a screen treatment; menus and debug screens exposed state instead of burying it. Loading transitions got a fade, input gating and a save blocker. Teleport orbs connected the landing point and castle so the flow could be tested without pretending the entire path was authored.
+
+```gallery contain
+assets/img/day-1-low-health.png | The low-health screen treatment in the packaged prototype. A small effect, but one that connects system state to something the player can perceive. | Red low-health vignette over a third-person Unreal scene | 1600 x 900
+assets/img/day-1-pause-debug.webp | The first pause/debug menu iteration made hidden prototype state visible during integration and testing. | Dark first pause and debug menu over the game | 1600 x 900
+assets/img/day-1-ui-system-dark.webp | A darker UI system proposal exploring hierarchy, type and panels. This is a review artefact, not proof that every screen was implemented. | Dark fantasy user interface system board | 1600 x 900
+```
+
+The first orb package travelled incorrectly and failed several checks. The next run fixed the crash at the end of the fade. The orbs then worked between landing and castle, including fade and save blocking. The automated obstacle course still reached the hurdle, jumped, and never entered traversal; it stopped after moving 207 units. It failed twice at the same point. The honest result was therefore **PASS except orb course**.
+
+## Five creative tracks ran beside the game
+
+Not everything visible on day one was integrated. Several parallel tracks produced material to review. Keeping them separate made the status clearer:
+
+- **Game build:** code, packaged tests and the island described above.
+- **MetaHumans:** source characters, body/face combinations, retargeting and performance experiments.
+- **Audio:** SFX boards and music directions, not a finished mix in the game.
+- **Visual identity and UI:** logo, eclipse ring, title screen and interface proposals.
+- **Story and level direction:** concepts and blockouts that could influence later builds.
+- **ACE lab:** ASR, TTS and local LLM experiments in a separate laboratory project, not an NPC conversation feature inside Darkest Night.
+
+The ACE lab proved that the intended local pieces could run and measured a roughly 1.7–2.4 second workaround path. Candidate distributions were about 4.6, 6.0 and 8.7 GB zipped, with estimated combined VRAM footprints around 6.9, 8.5 and 10.7 GB. Those figures are planning evidence. They are not evidence that a talking NPC existed in the game.
+
+```gallery contain
+assets/img/day-1-metahuman-source-editor.png | My AGI agent — ChatGPT Codex in the desktop app — used the MetaHuman editor by itself after the Claude Code terminal route did not want to drive it. Having several agents meant one interface limitation did not stop the track. The source character was still not automatically a final cast member. | MetaHuman character open in Unreal Engine editor under Codex desktop control | 1600 x 900
+assets/img/day-1-metahuman-motion-review.webp | Motion and retarget review exposed body-shape mismatches, stale meshes and naming collisions before a rebuilt review map passed. | Review board showing MetaHuman movement and retargeting tests | 1600 x 900
+assets/img/day-1-metahuman-cast-review.webp | A programmatic sheet from the real retarget-test captures shows a selection of the 19 assembled MetaHuman appearances across idle, walk, run, sprint, crouch and jump. It records technical replacement tests, not a silently approved final cast. | Contact sheet of multiple MetaHuman body types moving through the Unreal retarget test | 1600 x 900
+```
+
+Clothing is still one of the riskiest unknowns. A beautiful fantasy asset pack was bought to give the characters a better chance, but fitting clothing to MetaHumans can become its own production. I have made simple clothing in Marvelous Designer before; even the simple version was painful. For a cinematic-only result, that work still has to justify its cost.
+
+```gallery contain
+assets/img/day-1-armor-concepts.webp | Clothing and armour directions for the cast. These are visual targets; the difficult MetaHuman fitting and deformation work still lies between the sheet and the screen. | Fantasy clothing and armour concept sheet | 1600 x 900
+```
+
+## The player became the director
+
+By evening the bottleneck was no longer a lack of output. It was deciding what should survive. Agents produced replaceable proposals for the logo, typography, UI, character bodies, concepts, SFX and music. I reviewed them in local boards with three states: **take it**, **with changes**, and **not now**. “Not now” keeps the item and its comment; it does not erase the work.
+
+```gallery contain
+assets/img/day-1-brand-review.webp | One of the first brand reviews put studio and game marks side by side so the decision was made in context. | Browser review board with early Red Robin and Darkest Night identity studies | 1600 x 900
+assets/img/day-1-ring-study.webp | Eclipse-ring variations moving from ornate fantasy emblem towards a quieter mark. | Grid of minimal eclipse ring logo studies | 1600 x 900
+assets/img/day-1-title-ring-mock.webp | A title-screen mock using the restrained ring direction. Still a proposal, but much closer to the chosen tone. | Dark title screen mock with a thin eclipse ring | 1600 x 900
+assets/img/day-1-ui-title-mock.webp | An earlier title/menu proposal kept for comparison rather than rewritten as if it never happened. | Dark fantasy title menu concept | 1600 x 900
+```
+
+This changed the work. The studio name became **Red Robin** with a space. The game title became **Darkest Night**, while the Latin subtitle stayed open. The wax seal disappeared from the robin because simpler was better. The game mark moved towards a restrained eclipse ring. The UI moved away from generated background art and towards black screens, one detailed 3D object, sparse particles and a modern layer over the fantasy world.
+
+```clips
+assets/video/day-1-eclipse-ring.mp4 | **21:55 CEST · 15h55 after jam start.** The branding/logo agent's round-six high-detail eclipse ring, rendered as an eight-second seamless moon loop. Motion revealed which versions felt like an interface rather than a generic fantasy logo. | assets/img/day-1-ring-study.webp
+```
+
+The same review process redirected audio. The first music was too much like a story score: too upbeat by day, too romantic by night and too heroic in combat. The next brief asked for sparse exploration beds, darker combat, a strong title piece and optional small doses of classical DnB, angelcore, nightcore and phonk. Generated footsteps sounded wrong, so GASP's existing animation step sounds remained the base. Human listening overruled quantity.
+
+```gallery contain
+assets/img/day-1-sfx-review.webp | The sound-effects review board: a large batch made inspectable instead of becoming an invisible folder of generated files. | Browser review board with many sound effect cards and controls | 1600 x 900
+assets/img/day-1-ui-review.webp | UI proposals reviewed together, with status and comments attached to each card. | Browser review board of interface concepts | 1600 x 900
+assets/img/day-1-menu-review.webp | Menu directions compared as a set. The board records choices; it does not make them. | Browser review board showing title and menu variations | 1600 x 900
+```
+
+The review provenance rule itself began at 21:13. Later cards record backend, model, licence and agent. Earlier material is not retroactively described as if that metadata had always existed.
+
+## The human state behind the agent factory
+
+At around six in the morning, chronological “day one” had stopped matching a normal human day. My sleep rhythm was broken, the agents had multiplied, and the orchestration was becoming a little muddy in my head. I had taken time off, my father was on a night shift, and my mother had the day off. At 29, I was building this from my parents' home and being supplied with food while the terminals kept moving.
+
+The Outlook account also stopped letting me in. That matters because some services, subscriptions and API-key workflows depend on it. It was a real setback, but not the emotional centre of the night: «But I am relaxed, because I have already managed to get so much done.»
+
+The website itself still did not feel right. I wanted it more visual, with the interesting images and clips visible instead of buried in capture folders. I also wanted an editor eventually: not necessarily a complex WYSIWYG system, but a way to see all media, add or replace it, move it, save, and immediately see the result. The review board is the first smaller step towards that control.
+
+There is an important difference between saying “AI made this” and pretending I was absent from it. A huge amount of production was delegated, but direction, rejection, scope and taste were active work: «I did make creative decisions.» I also knew the speed would leave debt behind: «I know I will have a lot to clean up, but for prototyping it is great.»
+
+## What broke in the glass box
+
+```log
+FAIL | Mac package 0.3 initially did not link: missing EngineSettings dependency
+FAIL | one Mac development build crashed before writing a log; -LLM became the test workaround
+FAIL | vegetation wind smeared badly; the Norway maples lost Nanite for the jam build
+FAIL | C: filled during builds; caches and package output moved to D: behind junctions
+FAIL | the first Build 0.7 package bypassed travel incorrectly and failed several tests
+FAIL | the first orb run crashed at the end of the fade; that crash was fixed
+OPEN | the orb course reaches the hurdle and jumps, but traversal never starts (moved=207)
+OPEN | water and the overall look still need a serious pass
+OPEN | clothing the MetaHumans may exceed what the cinematic return justifies
+OPEN | Outlook account access is broken and may block service/API administration
+```
+
+The b07-integrate package at 22:55 was 2.8 GB and passed build, input, movement, frontend, world, time, NPC, appearance, UI, stats, loading and save tests. Weather work continued on another branch and exposed more unity-build name collisions. A fix was prepared, but the build was stopped under memory pressure before midnight. There was no later all-green main-branch package that night.
+
+## End of day 1
+
+The day did not produce the cinematic game in my head. It produced something more useful: a portable spine for it.
+
+- A real UE 5.8 C++ project packaged through the early ladder on Windows and Mac.
+- GASP movement with a project-owned camera and input layer.
+- A smaller procedural island with an opening flow, NPCs, time and weather.
+- Saves, settings, stats, debug views, loading transitions and packaged tests.
+- Separate, visible creative tracks for characters, audio, identity, UI, level and story.
+- A modular fallback-first plan for the larger dialogue, clothing, loading and levelling ideas.
+- A review process where I, not the generation pipeline, decide what enters the game.
+
+At midnight the island still looked like a prototype. Water was wrong. The obstacle course was red. Many beautiful boards were only proposals. The local ACE lab was still separate. The later Build 0.7 cross-platform rebuild had not happened. And my sense of time had become strange enough that “overnight” meant “while I finally sleep after sunrise.”
+
+But the project could be built, run, inspected and criticised. For the first eighteen hours, that was enough.
 
 <!-- branches-embed -->
 ```embed

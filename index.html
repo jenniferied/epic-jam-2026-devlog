@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>epic-jam-2026 / devlog</title>
-  <meta name="description" content="A participant's terminal-style devlog for the Epic AI MegaJam 2026: Unreal Engine 5.9, two machines, a handful of AI agents and one small pixel dragon.">
+  <meta name="description" content="A participant's terminal-style devlog for the Epic AI MegaJam 2026: Unreal Engine, two machines, a handful of AI agents and one small pixel dragon.">
   <meta name="author" content="Jennifer">
   <meta name="theme-color" content="#0b1411">
   <meta name="color-scheme" content="dark light">
@@ -21,7 +21,10 @@
   <meta name="twitter:card" content="summary_large_image">
 
   <link rel="preload" href="assets/fonts/VT323.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap">
+  <link rel="stylesheet" href="css/style.css?v=soundtrack-16">
   <script>
     // set theme and text size before first paint
     try {
@@ -41,6 +44,8 @@
       <span class="lights" aria-hidden="true"><i></i><i></i><i></i></span>
       <h1 class="title"><a href="#/" data-i18n="site.title">epic-jam-2026 / devlog</a></h1>
       <span class="titlebar-tools">
+        <button type="button" class="tb tb-nav" id="btn-prev">‹</button>
+        <button type="button" class="tb tb-nav" id="btn-next">›</button>
         <button type="button" class="tb" id="btn-theme" aria-label="theme">◐</button>
         <button type="button" class="tb" id="btn-lang" aria-label="language">EN</button>
         <button type="button" class="tb" id="btn-help" aria-label="help">?</button>
@@ -56,6 +61,25 @@
           <input id="filter" type="search" autocomplete="off" spellcheck="false" data-i18n-ph="filter.placeholder">
         </label>
         <ol class="list" id="list" role="listbox" aria-labelledby="side-label" tabindex="0"></ol>
+        <section class="music" id="music" aria-label="Jam soundtrack">
+          <div class="music-head"><span>jam soundtrack</span><button type="button" id="music-list" aria-label="Show playlist" aria-expanded="false">12 tracks</button></div>
+          <div class="music-body">
+            <img id="music-cover" src="assets/img/music/cover-the-long-night-breaks.webp" alt="" width="78" height="78">
+            <div class="music-main">
+              <div class="music-title-window"><div class="music-now" id="music-now"><span>The Long Night Breaks (Title DnB)</span><span aria-hidden="true">The Long Night Breaks (Title DnB)</span></div></div>
+              <div class="music-controls">
+                <button type="button" id="music-prev" aria-label="Previous track">|‹</button>
+                <button type="button" id="music-play" aria-label="Play The Long Night Breaks" aria-pressed="false">▶</button>
+                <button type="button" id="music-next" aria-label="Next track">›|</button>
+                <span id="music-time">0:00 / 0:00</span>
+              </div>
+              <input class="music-progress" id="music-progress" type="range" min="0" max="1000" value="0" aria-label="Track position">
+            </div>
+          </div>
+          <canvas class="music-wave" id="music-wave" width="280" height="48" aria-label="Detailed mixed track waveform"></canvas>
+          <div class="music-menu" id="music-menu" hidden></div>
+          <audio id="music-audio" preload="metadata"></audio>
+        </section>
         <section class="funke" id="funke" aria-live="polite">
           <p class="funke-bubble"></p>
           <canvas width="132" height="156" role="img" data-i18n-label="funke.label"></canvas>
@@ -79,7 +103,7 @@
     <footer class="statusbar" id="statusbar">
       <span class="mode" id="mode">NORMAL</span>
       <span class="sb-file" id="sb-file">~/devlog</span>
-      <span class="sb-fill"></span>
+      <span class="sb-fill hints" id="hints"></span>
       <span class="sb-pos" id="sb-pos"></span>
       <span class="sb-clock" id="sb-clock"></span>
     </footer>
@@ -106,8 +130,9 @@
     </div>
   </div>
 
-  <script src="js/md.js" defer></script>
-  <script src="js/funke.js" defer></script>
-  <script src="js/app.js" defer></script>
+  <script src="js/md.js?v=soundtrack-16" defer></script>
+  <script src="js/music.js?v=soundtrack-17" defer></script>
+  <script src="js/funke.js?v=soundtrack-16" defer></script>
+  <script src="js/app.js?v=soundtrack-16" defer></script>
 </body>
 </html>

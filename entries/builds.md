@@ -9,7 +9,7 @@ status: live
 summary: Every build of the jam so far, with the branches, features and fixes that went into it.
 ---
 ```recap
-**What this is:** a generated page, not a diary entry. A script reads the game repository (tags, merges, branches) and the build notes and redraws this after every integration. Last run Sat 14.11. 23:03, latest build 0.11.0. The short texts are AI summaries of the build notes.
+**What this is:** a generated page, not a diary entry. A script reads the game repository (tags, merges, branches) and the build notes and redraws this after every integration. Last run Sat 14.11. 23:07, latest build 0.12.0. The short texts are AI summaries of the build notes.
 ```
 
 Each agent works on its own branch. Only the orchestrator merges, and a build is what came out of one integration. Every branch of the jam has one row, grouped by area: the bar runs from the fork to the last merge, the label after it names the build it shipped in, dashed bars were never merged. Vertical lines are builds. Each day entry shows the same chart cut to that day.
@@ -18,10 +18,12 @@ Each agent works on its own branch. Only the orchestrator merges, and a build is
 builds.html | All branches of the jam by area, with the builds they shipped in. Scroll the chart sideways; hover or tap a row or build. | 2600
 ```
 
-## Build 0.12.0 (in progress)
+## Build 0.12.0
+Build 1 package: the story in the real cell, levelling and routines, looks to validate, fix rounds 2 and 3, her board answers
+
 ```specs
-when: Sat 14.11. 22:29
-commit: in progress / cc2e126
+when: Sat 14.11. 23:07
+commit: build-0.12.0 / cc2e126
 branches: 18
 ```
 
@@ -29,36 +31,33 @@ branches: 18
 
 **Features**
 
-- Live grading switcher, OCIO mode, sky layering (switches off by default) (b1-look)
-- Utility brain for NPCs with an advisor interface (no LLM) (c4-brain)
-- Body systems "Corpus", mid stage of the stats (c4-corpus)
-- Headless unit tests for pure rule logic (unit-pilot)
-- Named characters with schedules, link to character creation (c5-named)
-- Corpus, Exercitatio, brain, named characters, unit pilot on Build 1 (c7-exercitatio)
-- Batched build of NPC brain, named characters, Corpus and unit tests (char-batch)
-- AM_Act_ activity montages for the routine system, add-only (b1-npcanims)
-- routine table types + pure rules Routine/Rules/DNRoutineRules (parse HH:MM-HH:MM/days/lists, validation, per-NPC boundary jitter, generic routine and anim key fallback) … (c6-routines)
-- dressed L_Cell, dungeon, furniture, rat (b1-cell)
-- Corpus, Exercitatio, c4-brain, char-batch, c6-routines (b1-corpus)
-- High-quality strand hair for the main characters, cards as the fallback (b1-hairhq)
-- story in the dressed cell, contains b1-cell (b1-cellstory)
-- int-0.12.0: silent rat in the real cell (DN.Story.RealCell.RatSound 0 by default) (b1-credits2)
-- looks: LUT registry, OCIO, own looks, F2 panel, night switch (b1-look2)
-- int-0.12.0: silent rat in the real cell (DN.Story.RealCell.RatSound 0 by default) (b1-talknpc)
-- fix round 2, second part (b1-fix2)
-- chest creator stand-up, Latin system names switch, Body page header row (b1-fix3)
+- The cell scene plays in the dressed dungeon under the castle: furniture, lanterns, the real door; Mira and Anselm are already there when you arrive; the island stand-in cell stays as a switch
+- Body systems and levelling by use: a quiet level-up notice under the dial and a Body page in the pause menu, with the Latin names
+- People in the castle follow daily routines and activities
+- Guard room: first look at your identity at the table, then take your clothes at the chest; the closing waits for both
+- Opening narration shorter (about 32 s) and the cellmates' answers in mixed lengths, some told in two parts
+- Looks to validate live in the F2 panel and Settings > Debug (own looks, LUTs, OCIO profiles, night values); the default picture is unchanged
+- Her picks: the new loading-finished cue and the new bound rustle; talk captions and system names in Latin; the "..." list folds back after each answer
 
 **Fixes**
 
-- b1-fix2: fixes from the light editor test pass
-- Hair 9.9 fix: groom components start in their final representation and LOD (cards-then-strands switch left a dotted, darker hairline)
-- b1-cell round 2: vault frame normals fixed (two-sided workaround removed), iron-bound chest with separate lid, plank door at the stair doorway, …
-- char-batch fix (c4-brain hook): -DNSocialTest executor check accepts a guard the brain drives (the executor forwards to the sink and does not hold …
-- char-batch fix (c5-named): -DNCharTest migrate_file also counts records the catalog keeps for named characters that are not spawned (gate_captain …
-- char-batch fix (unit-pilot): Dialogue.ParseEffectRejectsMalformed follows c35's Custom effect kind (unknown kinds and bare Unlock parse as Custom
-- char-batch fix (c4-brain): DNBrainTest local bInvalid hid the class member (C4458) -> bInvalidJson
+- Quit and keep-settings dialogs on a dark plate with a soft edge; the settings hardware text on a soft plate
+- The Q key no longer reads as 0; the dial shows its gap line also under a bright moon
+- Loading tip readable over bright loops (the 0.11.0 backing never rendered)
+- Credits: open facts hidden outside debug mode; the licence list is filled; the film LUTs with an unclear licence are not shipped
+- Intro without the wind bed when it is not raining; rain on a roof sounds muffled indoors
+- Chest view: a crouched player is stood up so the framing stays as intended
+- The rat in the cell is silent until better sounds are found
 
-**Tests:** not packaged yet
+**Known issues**
+
+- The deny tone is still the old one until a new one is picked
+- The player's mask is still a placeholder shape; some castle people are still placeholders
+- Credits: one long licence line wraps over the next one
+- Eyes of Mira and Anselm in the package not yet looked at closely by a person
+- The intro end line is still open
+
+**Tests:** Editor (each run alone on the GPU, test-input guard on): unit 263/263, guard proof, story 21/21 in the real cell with routines (twice), Corpus, loading, ACE 73/73, look smoke, UI 44/44, chest framing and the crouch proof, character creation, Body page, castle court frame time, credits licences. Package 10.9 GB: start, menu, direct start, loading, story 21/21 in the real cell, ACE 71/71, talk 85/85, belongings 32/32, hair; film LUTs proven absent.
 
 **Decisions (board codes):** FQ-01, FQ-02, FQ-05, FQ-07, FQ-08, FQ-14, FQ-27, ST-04
 

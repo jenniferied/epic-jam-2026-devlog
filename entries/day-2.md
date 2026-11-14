@@ -1,255 +1,256 @@
 ---
-title: day-2.log
+title: day-2.log: builds, overload and one decision board
 slug: day-2
 order: 5
 date: 2026-11-13
 day: day 2
 phase: jam
 status: live
-summary: Nine builds in 28 hours. The Mac gets dropped, Build 0 is called final, the masked guard learns to be suspicious, and the castle gets a silhouette. Also foam everywhere, flat LUTs, four editors open at once and far too many boards.
+cover: assets/img/day-2-cover.webp
+cover_alt: Three-part view of the Day 2 prototype world, a film-print look comparison and the expanding castle approach
+summary: Five more packaged builds turned the prototype into a dense playable system. Day 2 also became a test of how to make decisions when agents, branches and review boards move faster than one person can absorb them.
 ---
+
 ```recap
-**Before this entry:** Builds 0.0 to 0.6 and a packaged 0.7 integration from day 1: an island built from scripts, a grey-box castle, GASP movement, a MetaHuman player, time, weather and rain, a first title screen, Red Robin and NOX OBSCVRISSIMA as brand directions, an original score that was too heroic, and a separate ACE lab project with a talking NPC.
-**What this entry covers:** Friday 13 November from midnight to Saturday 03:56, my own cut of "day 2". Builds 0.7 to 0.9.4, the end of the Mac build, the first character systems, the castle redesigns, and the moment the boards became one board. Highlighted text is my own messages, mostly typed in German; the English after them is a translation. Everything else is AI summary.
+**Before this entry:** Day 1 ended with a playable Windows Build 0.7 integration, an island full of systems and one stubborn red orb-course test. The rebuilt cross-platform result had not happened yet.
+**What this live entry covers:** 13 November, 00:00 CET through the human decision phase at 03:56 on 14 November. Jennifer's sleep-shifted Day 2 is still in progress; this is not an end-of-day retrospective.
 ```
 
-Day 2 had no clean start or end. I slept twice, at about 08:30 and again in the afternoon, and the agents didn't. In 28 hours the game went through nine tagged builds and grew from 2.8 GB to 4.8 GB. Most of the change was invisible to me until I played it, and when I played it, things broke in ways the tests had not seen.
+Day 2 started with the least glamorous version of progress: rebuild the thing, run the tests again, and find out which of yesterday's claims still survived contact with another machine.
 
-## 00:00–04:00 · First playable combination
+The three panels above show the day pulling in three directions at once. The left is the still-obviously-prototype world. The centre is a measured film-print comparison rather than a mystery LUT. The right is the castle approach expanding into roads, terraces and walls. The game was getting broader. So was the job of understanding it.
 
-Build 0.7 was tagged at 00:24 as the *first playable combination*: UI, time HUD, stats, NPC MetaHumans, loading screen and weather in one package. The Mac version passed its suite too, at 2.1 GB and about 50 fps on an M1 Max.
+## 00:12 · Stabilise before adding more
 
-The type was settled at 00:47: **IM Fell English SC** for titles, **IM Fell Great Primer** for text, **Barlow** for the UI. It took six rounds of type cards. The Red Robin studio ident (a bird flies in, pecks, GAMES types out, a wax stamp comes down) got one word from me: «AMAZING».
+The first Day 2 run was a trial merge of the C1 character branch onto the 0.7 integration line. Three conflicts were resolved by keeping the useful parts from both sides, and a duplicate Stats HUD helper had to be renamed because Unreal's Unity build placed previously separate source files together.
 
-Then I looked at the water.
+That trial packaged on Windows. Character and stats tests passed both with and without the character module, alongside weather, NPC, time, loading and UI. This was **not yet a normal main-branch integration**. It was a successful rehearsal on `c1-trial`.
 
-```gallery
-assets/img/day2/11-13-011330-agent-turn-end.jpg | 01:13 · Island road winding up to a distant grey-box tower | Dirt road winding between grassy hills toward a small tower | 1600 x 900
-assets/img/day2/11-13-011936-watch.jpg | 01:19 · Mannequin facing the dark castle wall at dusk, time HUD top right | Mannequin in front of a dark castle wall at dusk | 1600 x 900
-assets/img/day2/11-13-024939-watch.jpg | 02:49 · Grey-box castle gate at the end of the approach road | Grey-box gatehouse with conical towers at the end of a dirt road | 1402 x 907
-assets/img/day2/11-13-033238-milestone.jpg | 03:32 · Castle site plan on the island contour map: ring wall, keep and approach road | Top-down castle plan on contour lines | 1600 x 864
-assets/img/day2/11-13-032732-shot.jpg | 03:27 · Concept portrait: prisoner in an iron face cage | Portrait of a man wearing a riveted iron face cage | 1600 x 864
-assets/img/day2/11-13-031941-watch.jpg | 03:19 · Cape renders on the base mesh: blue, gold and brown cloaks | Turnaround renders of hooded capes on a grey body | 1600 x 864
+```clips
+assets/video/day-2-c1-trial.mp4 | **00:12 CET · 18h12 after jam start.** The first Day 2 run of Build 0.7 with the C1 character branch trial-merged into the integration build. | assets/img/day-2-world.webp
 ```
 
-## Setback: foam everywhere
+At 00:24 the Windows Build 0.7 package passed its full suite, including the new weather test. The orb teleport itself worked, but the automated jump-course traversal still failed. At 00:50 the same 0.7 revision packaged natively on Mac in 290 seconds at 2.1 GB. Smoke, frontend, world, weather, time, stats, loading and UI passed there too. Input, movement, NPC, appearance and the orb course were not run on that Mac pass, so they are not silently counted as green.
 
-The sea had been flickering since day 1. On Windows the foam covered the ocean in white, and on the Mac the whole sea flipped between blue and white from one frame to the next. I wrote on the water board:
-
-> «all of this is awful. what exactly happened. we can keep testin oboth but why is it actualy all so awful and broken? i dont see this in the editor and i did make some of my own changes.»
-
-and on one of the cards just «warum ist überall Schaum» (why is there foam everywhere). The diagnosis was measurable. With Easy Waterscape's FFT foam on, the picture changed 19.4 units from frame to frame, against 0.4 with foam off, and the simulation stepped at 30 Hz. Build 0 got the foam off and the simulation on game time. A second water system, Waterline PRO, went to Build 1 for a proper comparison.
-
-The same night I decided something larger:
-
-> «was wenn ich mac einfach droppe? ich will es ja eh windows only machen.»
-
-(What if I just drop the Mac? I want it Windows-only anyway.) At first the Mac kept building in parallel without blocking. At 13:04 Mac development stopped completely: «stop mac develooment». The last Mac build is 0.7.1.
-
-```gallery
-assets/img/day2/11-13-032312-milestone.jpg | 03:23 · Water diagnosis board: FFT foam flicker across the sea vs fixed variants, with my comment at the top | Review board for ocean variants with an angry comment in the text box | 1600 x 864
-assets/img/day2/11-13-041616-commit.jpg | 04:16 · Castle on the cliff at night under the new night look | Dark castle silhouette on a cliff above a moonlit sea | 1402 x 907
-assets/img/day2/11-13-041958-milestone.jpg | 04:19 · Rainstorm on the island road, the player walking through fog | Mannequin walking on a wet road through rain and fog | 1600 x 1000
+```gallery contain
+assets/img/day-2-world.webp | The playable valley and approach road at the start of Day 2, with the castle still represented by deliberately crude blockout volumes. | Third-person prototype view down a grassy valley towards a grey castle blockout | 1600 x 900
+assets/img/day-2-npcs.webp | The current character running through the population test. These figures exercise schedules, navigation and load; they are not final inhabitants. | Third-person character running among test NPCs in a grassy Unreal world | 1600 x 900
+assets/img/day-2-courtyard.webp | Inside the castle courtyard while time, HUD and NPC systems run together in one world. | Third-person character and test NPCs inside a bright castle blockout | 1600 x 900
 ```
 
-## 04:00–08:00 · "Final Build 0", running on 1%
+## 00:57 · A passing build can still look wrong
 
-Around 05:00 the usage limit came close again:
+The rebuilt package did not settle the visual question. Jennifer's playtest exposed obvious water artefacts and a wider problem with the tone on both platforms, worse on Mac. Passing automation meant that the systems ran; it did not mean the result was pleasant to look at.
 
-> «i just wanna build asap in the least commands possibe so i cnp play everythign we only have 1% usage lft we were rly close no»
-
-Build 0.8 went out at 06:17 as **Final Build 0**. It had Creator MetaHumans, gameplay sounds, the brand look and the UI kit. The start screen became the black screen with the ring on the right and the menu on the left, and no title (the titles are already in the ident). The loading screen shows the armillary sphere, with its rings turning instead of the whole object spinning.
-
-The look took longer. An agent had researched the "Unreal look" from 14 video transcripts and the engine source, and proposed to neutralise it and then add LUTs. Its first LUTs were technically correct and visually nothing:
-
-> «there is not enough variety i the luts i want contrast wheres the cinematic looks gone they are all flat an nondescript dont bother showing me those anyway»
-
-The next round was too far the other way: «THEY LL INCREDIBLY WEIRD ... TOO ITNENSE». The one that worked, at 12:13, was asking for what film people actually use: «Ich brauche klassiche Cinematic LUTS wie sie in der Filmbranche üblich und typisch sind.» (I need classic cinematic LUTs as they're common and typical in the film industry). After that came print emulation (Kodak 2383, Fuji 3513) through an inverted tonemapper and a log curve, and in the evening a set recreated from a commercial LUT pack's public before-and-after pairs, without the pack itself.
-
-```gallery
-assets/img/day2/11-13-042508-imported-05-pause-dof.jpg | 04:25 · Pause menu over the island with depth-of-field blur | Pause menu text floating over a blurred island scene | 1400 x 875
-assets/img/day2/11-13-062000-watch.jpg | 06:20 · Start screen: eclipse ring with NEW GAME / LOAD / SETTINGS / QUIT | Black start screen with a brass ring and moon crescent beside a small menu | 1600 x 1000
-assets/img/day2/11-13-054012-milestone.jpg | 05:40 · MetaHuman player running along the island road | Bald MetaHuman running on a sandy road | 1282 x 752
-assets/img/day2/11-13-054959-watch.jpg | 05:49 · MetaHuman with stamina and health orbs on the test map | MetaHuman walking between a green and a red debug orb | 1282 x 752
-assets/img/day2/11-13-071901-agent-turn-end.jpg | 07:19 · Player running toward the grey-box castle walls and towers | MetaHuman running across grass toward grey-box towers | 1600 x 1000
-assets/img/day2/11-13-074137-imported-pie-road.jpg | 07:41 · Castle v2.2 grey-box: road up to walls with pink placeholder roofs | Grey-box castle with pink conical roofs above a path | 1600 x 900
+```clips
+assets/video/day-2-water-playtest.mp4 | **00:57 CET · 18h57 after jam start.** The rebuilt 0.7 playtest that made the next problem impossible to ignore: broken-looking water and a world whose overall visual tone still felt wrong. | assets/img/day-2-water-editor.webp
 ```
 
-## Setback: the tests that tested everything
+The response was modular instead of destructive. A water branch exposed Simple, Easy Waterscape and Waterline as switchable implementations with a fallback. Its own package passed a six-part water test, smoke and world tests. Simple was fastest, corrected Easy was slower but clean, and Waterline sat between them. Waterline still lacked proper shore treatment and was not cooked into the later 0.7.1 merge. The screenshot below is an editor experiment, not a claim that the replacement shipped.
 
-At 07:13 I asked for one thing and got a full test run again:
-
-> «start again und lass diese ganzen tests wir haben die schon 100x gemach, nur das testen was neu ist.»
-
-(Start again and drop all these tests, we've done them a hundred times, test only what's new.) An hour later, in capitals, because it kept happening: «und teste eben nciht !== MAL ALLE S SONDERN NUR LGOISCH DAS WAS NEUE IST WIEDER». Every agent was packaging and re-running a full suite for a one-line change, and the packaging queue was the slowest part of the whole jam.
-
-At 08:02 a new orchestrator session took over with a handover prompt, and I tried to make sure nothing I'd already decided got lost:
-
-> «stelle sicher dass früher getane entscheidungen anderer chats besetehen bleiben»
-
-(Make sure that decisions made earlier in other chats stay in place.) That became a register, `DECISIONS.md`, which every agent has to check before changing anything. Then I went to sleep.
-
-## 08:00–12:00 · Suspicious guards
-
-While I slept, Build 0.8.2 got the start sequence I'd asked for. The Red Robin ident comes with bird sounds and no music, then the game logo, then the title music fades in slowly. The settings page was rebuilt with explanations, the controls are Skyrim-like without key conflicts, rain darkens the picture and wets every character, and NPC arms got a relaxed pose. One rule from the night: «REGEN AMBIENTE GEHÖRT NICHT IN LOGO OR TITEL USW» (rain ambience doesn't belong in the logo or title).
-
-The character system started too. Gate guards wear masks and grow suspicious with every question and with time. They refuse probing questions, end the talk and block the gate. A steward warms up to the right topics. The talk panel shows the NPC's body, mind and belongings as *Corpus, Animus, Res*.
-
-```gallery
-assets/img/day2/11-13-083203-imported-social-04-guard-hostile.jpg | 08:32 · Talk panel: a masked guard turns hostile at the grey-box castle gate | Dialogue panel with topics on the left and Latin stat icons on the right | 1600 x 900
-assets/img/day2/11-13-125751-imported-social-07-steward.jpg | 12:57 · Talk panel with the steward Aldric in front of the castle | Dialogue with a steward NPC and a topic list | 1600 x 900
-assets/img/day2/11-13-150022-imported-social-11-toll-paid.jpg | 15:00 · Night talk with the masked guard after paying the toll | Night scene with a guard dialogue: Five coins. I didn't see you | 1600 x 900
-assets/img/day2/11-13-084649-imported-15-hud-r8-layout.jpg | 08:46 · Brass sundial HUD with the Latin day name over the treetops | Brass compass dial with DIES LUNAE and weather icons | 1120 x 500
-assets/img/day2/11-13-084649-imported-16-loading-loop.jpg | 08:46 · Loading screen: golden armillary sphere in the dark with a lore line | Golden armillary sphere on a dark background with italic text | 1400 x 875
-assets/img/day2/11-13-084444-agent-turn-end.jpg | 08:44 · Chaos Cloth capes in motion: blue and brown cloaks walking side by side | Six panels of walking figures in simulated capes | 1600 x 1000
+```gallery contain
+assets/img/day-2-water-editor.webp | An alternative ocean actor under inspection in Unreal after the package playtest rejected the original water. This remained an isolated editor experiment. | Unreal Editor showing an alternative ocean surface and water actors | 1600 x 900
+assets/img/day-2-look-split.webp | A Round 5 in-engine split: untreated blockout on the left and a Kodak 2383 print study on the right. The point was to compare one controlled transform at a time. | Split image of a grey castle gate before and after a film-print colour treatment | 1400 x 875
 ```
 
-## 12:00–16:00 · Rules, a sundial and a body that gets cold
+The look track followed the same rule. Research covered the UE 5.8 colour pipeline and common causes of the generic “Unreal look.” A neutral base preset and film-print candidates were captured in engine, but the `b1-look` work remained isolated: no game-target package, no Mac result and no merge. It is evidence for a direction, not a final grade.
 
-I came back at noon with a list. The world keeps running while you talk, Skyrim-style: «Die Welt läuft weiter während man redet.» No quest markers in normal play, only in debug. The narrator speaks in cutscenes, never during play. And the castle:
+## Labs become modules, not promises
 
-> «für die burg wir brauchen eine stärkere silhouette und mehr sense, emrh sinn müsse n dinge ergeben.»
+Several impressive-looking results stayed deliberately outside the game.
 
-(For the castle we need a stronger silhouette and more sense, things have to make more sense.) That started a castle kit and a house generator, built from modules.
+The ACE lab's local roleplay package scored 79/79, 78/79 and 79/79 in three model tiers, while combined voice and menu tests also passed. Audio2Face started driving ARKit curves on a proxy face 70–77 ms after TTS chunks. The cost was about 1.5 GB of package size and 1.1 GB of VRAM. That is useful engineering evidence, but it is still a separate laboratory with a proxy face — not a talking MetaHuman NPC inside *Darkest Night*.
 
-Then I asked a question I'd been putting off. I don't write code, and I wanted to know whether the project was being built properly:
+Music moved closer to game code. Day/night beds, quiet optional flavours, an independent-clock combat pool and a frontend title route passed 36 automated checks across the new system and fallbacks. The package passed the music and input tests. Nobody had listened to that exact integrated build yet, so the result was technically verified and creatively unapproved.
 
-> «are we using division betweenfront and back/ ui and stuff, are we using clean code/programming principles etc. test driven development?»
+The final type set — IM Fell English SC, IM Fell Great Primer and Barlow — became real Unreal font assets. A fresh-process import check passed. At that moment the fonts had still not been seen inside a player widget.
 
-> «ich schriebe ja selber keien code und kenne mich nur ein bisschen aus erklär mal wie das projekt gerade ist undso»
-
-(I don't write code myself and only know a little, explain what the project looks like right now.) The answer was an architecture review and a pilot: pure rule logic pulled out into world-free C++ and tested headless in seconds. The first system built that way was warmth. I described it as «wie eine healthbar nur dass man quasi in der mitte sein will» (like a health bar, except you want to stay in the middle). It goes freezing, cold, cool, normal, warm, hot, burning. Sun warms faster than shade, wet plus cold is especially bad, water steals heat. Ten unit tests passed in 15.5 seconds.
-
-Build 0.9 at 14:51 was the groundwork for Build 1. It added story, talk, inventory, character creation, and sleep on a brass sundial with a light puzzle that works once by sun and once by moon.
-
-```gallery
-assets/img/day2/11-13-151854-imported-5-hearth-night.jpg | 15:18 · Warmth system Calor: the player at a glowing hearth at night | Figure lit orange by a hearth in a dark forest, warmth bar at the bottom | 1600 x 900
-assets/img/day2/11-13-154452-milestone.jpg | 15:44 · Sleep dial in game: brass clock face over the cell, "5 hours of sleep" | Brass sleep dial with Roman numerals over a dark cell | 1600 x 864
-assets/img/day2/11-13-144628-commit.jpg | 14:46 · MetaHuman close-up: character creation face in the test map | Close-up of a MetaHuman woman's face | 1600 x 931
-assets/img/day2/11-13-134221-milestone.jpg | 13:42 · Cloak simulation comparison: four cape set-ups against the sky | Four figures in different simulated cloaks | 1600 x 1000
-assets/img/day2/11-13-122310-agent-turn-end.jpg | 12:23 · Headwear board: script-modelled helmets and iron masks on MetaHuman heads | Review board of iron masks and helmets on heads | 1600 x 864
-assets/img/day2/11-13-133148-commit.jpg | 13:31 · PCG castle approach round 2: organic terraces and dry-stone walls, with GASP traversal tests | Board with screenshots of a mannequin climbing stone terrace walls | 1600 x 864
+```gallery contain
+assets/img/day-2-iron-mask.webp | One of the image-to-3D experiments. The silhouette survived conversion, but the roughly 500k-triangle result still needed retopology before it could be treated as game art. | Dark iron mask rendered on a neutral background | 1024 x 1024
+assets/img/day-2-armillary.webp | The armillary linked observatory prop, eclipse mark and loading-screen ideas. It was a generated mesh prototype, not an imported final asset. | Brass armillary sphere on a carved wooden stand | 1024 x 1024
+assets/img/day-2-armor-set.webp | The first assembled clothing-and-armour set proved that tunic, mail and helmet pieces could be authored as layers. MetaHuman fitting and deformation were still the hard part. | Simple mannequin wearing a red tunic, mail and helmet | 1024 x 1024
 ```
 
-## Setback: four editors and builds that looked old
-
-At 12:59: «die ganze ezit sehe ich budls die voll veraltet wirken???» (all the time I'm seeing builds that look completely outdated???). At 13:25: «es ist gerade 4x der editor offen muss das sei.» (The editor is open four times right now, does that have to be?) Shortly after, Task Manager itself stopped responding.
-
-The causes were mundane. Every new worktree recompiled about 85 NVIDIA plugin units and copied 2.3 GB, editor starts waited behind other agents' compiles (one hung for 14 minutes), and feature tests ran on the full island. The fixes were too: prebuilt NVIDIA plugins in the engine, small test maps, and at most three Unreal compiles at once.
-
-The loading-screen props from that round didn't survive either. I rejected the specimen jar, the phial case and the instrument roll: «they don't really make sense». The next round was real historical objects tied to the story: a dark lantern, a brass warming pan and a grafted sapling in a pot.
-
-```gallery
-assets/img/day2/11-13-133721-shot.jpg | 13:37 · Editor hangs: Task Manager reports Not Responding | Task Manager window titled Not Responding with an empty process list | 960 x 600
-assets/img/day2/11-13-152349-clip.jpg | 15:23 · Loading props round 1 on the board: brass instrument box, rendered lid open on velvet. Rejected (still from a clip) | Board cards with a brass and oak case and a leather instrument roll | 1600 x 795
+```clips
+assets/video/day-2-armor-turntable.mp4 | **01:10 CET · 19h10 after jam start.** A short layer-check turntable used to catch intersections and proportion problems before any Unreal import. | assets/img/day-2-armor-set.webp
+assets/video/day-2-loading-study.mp4 | **Around midday · concept track.** A loading-screen study where the armillary stays visually central while its rings communicate progress. This is motion design, not an integrated loading widget. | assets/img/day-2-ui-round9.webp
 ```
 
-## 16:00–20:00 · Weather routes, timber frames and a round cell
+## 04:23 · Integration creates its own debt
 
-Weather now changes along believable routes: clear, overcast, rain, storm, then storm, rain, fog and clear again. The house kit grew from 72 to 96 scripted pieces, with bowed timber frames, real shingles and openable shutters. I picked the prison cell from reference images: a round ward with a shaft of light in the middle, beds around the edge, and a balcony above for the guards.
+The music and water parents were individually healthy enough to merge, but bringing them together exposed a classic parallel-development problem. Unreal's Unity build groups source files differently as the codebase changes. Two anonymous helper functions that had never met before suddenly shared one compilation unit and collided.
 
-At 19:19 I asked for something this website now has: «lass uns auch ein feature log per buidlk machen und an einer timeline in meinem log visualisiern.» (let's also make a feature log per build and show it on a timeline in my log). That is the branch chart at the bottom of this page.
+The first rename let the package build and tests pass, but a clean editor build still found ambiguity. A second fix placed the helpers in qualified namespaces. Only then did both editor and package builds complete again. The music package was 3,063 MB and its packaged music and input tests passed.
 
-At 19:36, before testing Build 0.9.2 myself: «why not im happy. let me test hte functionality by myslef now».
-
-```gallery
-assets/img/day2/11-13-180057-agent-turn-end.jpg | 18:00 · Weather routes: rain clearing on the island road, debug readout on top | Rainy road with a debug line reading Weather rain to clear | 1282 x 752
-assets/img/day2/11-13-181548-agent-turn-end.jpg | 18:15 · House kit: timber-frame interior with plank floor and stair hatch, my comment below | Timber-framed attic room with a floor hatch | 1600 x 864
-assets/img/day2/11-13-182622-milestone.jpg | 18:26 · Concept for the prisoner cell: round ward around a shaft of light | Top-down render of a circular stone ward with a light shaft | 1600 x 864
-assets/img/day2/11-13-205155-commit.jpg | 20:51 · Dry-stone wall rendered for the PCG island dressing | Close render of a dry-stone wall | 1600 x 764
-```
-
-## 20:00–00:00 · Who are you?
-
-Character creation opened for the first time in a dark room with embers: «Who are you?» You pick a body, a skin tone and a gender (*Mulieris, Media, Virilis*). Race is greyed out with "Not in this cut". The ACE lab NPCs answered with subtitles, and I said what I thought of the conversations: «die konverstaotnen sind ziemlcih stumpf.» (the conversations are pretty dull). Hair arrived on the NPCs, the music system got real stems with a mixer, and a rat got rigged.
-
-```gallery
-assets/img/day2/11-13-201237-milestone.jpg | 20:12 · Character creation "Who are you?" in a dark room with a MetaHuman body | Character creation menu beside a MetaHuman in underwear in a dark room | 1600 x 900
-assets/img/day2/11-13-201812-milestone.jpg | 20:18 · Hair round 2: MetaHuman NPCs with hair on the island road at dusk | MetaHuman NPCs with hair walking on a dusk road | 1600 x 900
-assets/img/day2/11-13-204532-commit.jpg | 20:45 · ACE talking NPC answers with subtitles on the beach test map | MetaHuman in a yellow vest speaking with subtitles on a beach | 1600 x 931
-assets/img/day2/11-13-212616-agent-turn-end.jpg | 21:26 · Music stems page: layer mixer sliders for the dn4 set | Web page with stem sliders for a music piece | 1600 x 764
-assets/img/day2/11-13-224650-imported-poster-scurry-f3.jpg | 22:46 · Rigged rat rendered in Cycles, mid-scurry | Realistic grey rat mid-step | 1600 x 900
-```
-
-## Setback: too many boards
-
-The review boards from day 1 worked too well. By evening there were 68 of them, open across tab groups in my browser, and some couldn't even save. I was exporting feedback files into Downloads and losing track of which was which:
-
-> «all the feedbacks are getting missed way to amny baords opened... i am trying to manually closxe them»
-
-At 22:43 they became one: every old board closed, every answer read out of the browser's storage and archived, and the open questions of all sessions put on a single decision board. At 23:44 I asked for the same again, «Merge die alle und halte die offenen Fragen fest.» (merge them all and record the open questions). By 00:48 there was one board with 79 decisions ordered by urgency. At 23:50 the narrator got his name: **Custos**.
-
-## 00:00–03:56 · Sounds I couldn't hear
-
-Build 0.9.3 was packaged at midnight and 0.9.4 at 02:22, with fixes from my walkthrough of 0.9.3. Most of the night went into five rounds of menu sounds. On the second round I wrote «ich höre nichts!» (I can't hear anything!). 92–99 % of the energy in the generated tones sat below 120 Hz, inaudible on my speakers. On the fifth round I said the "single drum hit" for confirm was several hits. An onset counter then found 5–12 onsets per take: the local model had made drum rolls, and I heard it before the agent measured it. The board closed with one deep muffled drum hit, a stone settling for loading a save, and a page turn for saving.
-
-At 03:51 I asked how to save disk space, «radikal» (radically). A few minutes earlier, when an agent asked if there was anything else: «nein danke exzellente abreit :)))) !» (no thanks, excellent work).
-
-```gallery
-assets/img/day2/11-14-005300-commit.jpg | 00:53 · Fog over the island road with the tower on the hill, opening narration on screen | Foggy road with a castle tower on a hill and narration text | 1600 x 900
-assets/img/day2/11-14-013040-commit.jpg | 01:30 · Decision board: all open questions with castle and character images | Decision board grid with castle, HUD and character cards | 1600 x 764
-assets/img/day2/11-14-030446-watch.jpg | 03:04 · Lore card: "The Lens-Grinder and the Moon-Child" story draft, with my comment on the cellmates | Story card for two cellmates with a long comment below | 1600 x 864
-```
-
-## Timeline
+At 04:23 the water and music lines met on main as `build-0.7.1`. The first version of this devlog said there was no fresh package test of that exact merge. Later-synchronised Windows records corrected that: commit `5e4b4d3` received a full package run, and everything passed except the already-known orb traversal course. The native Mac package passed its systems too; World and Water produced zero screenshots because the sandbox path was wrong, not because the runtime test failed.
 
 ```timeline
-00:24 | Build 0.7 tagged: first playable combination. Mac passes too
-00:47 | Final type set: IM Fell English SC, IM Fell Great Primer, Barlow
-03:23 | Water diagnosed: FFT foam flicker, 19.4 vs 0.4 frame change
-05:02 | "What if I just drop the Mac?"
-06:17 | Build 0.8: Final Build 0
-07:13 | "Drop all these tests, test only what's new"
-08:02 | New orchestrator session takes over; DECISIONS.md becomes binding
-09:58 | Build 0.8.2: start sequence, settings, Skyrim controls, rain look
-13:04 | Mac development stopped
-14:51 | Build 0.9: story, talk, inventory, character creation, sundial
-15:20 | Warmth system built test-first, 10 unit tests in 15.5 s
-16:11 | Build 0.9.1: polish, music set dn4, robustness
-19:32 | Build 0.9.2: UI round, weather routes, warmth
-22:43 | 68 boards become one decision board
-23:50 | The narrator is called Custos
-00:00 | Build 0.9.3 packaged (Sat)
-02:22 | Build 0.9.4: fixes from my walkthrough (Sat)
-02:42 | Menu sounds settled after five rounds (Sat)
+02:49 | music | runtime system, fallbacks and 36 automated checks
+03:15 | water | three replaceable implementations tested on its branch
+03:26 | fonts | selected type assets merged into the game line
+03:52 | collision | the first combined package exposes Unity helper-name clashes
+04:11 | repair | qualified helper names pass clean editor and package builds
+04:23 | tag | music and water meet on main as build-0.7.1; later records confirm the merged package
 ```
 
-## Builds of the day
+## Waking up into the agent factory
 
-```specs
-# 0.7 · 00:24
-Theme: first playable combination
-Package: 2,848 MB, Mac 2.1 GB
-# 0.7.1 · 04:57
-Theme: fonts, music, water fix. Last Mac build
-Package: 3,033 MB
-# 0.8 · 06:17
-Theme: Final Build 0. Creator MetaHumans, gameplay SFX, brand look, UI kit
-Package: 3,869 MB
-# 0.8.1 · 07:41
-Theme: front-end audio on the brand start screen
-Package: 3,855 MB
-# 0.8.2 · 09:57
-Theme: start sequence, menus, controls, rain look
-Package: 3,904 MB
-# 0.9 · 14:51
-Theme: Build-1 groundwork. Story, character system, creation, sundial
-Package: 3,974 MB
-# 0.9.1 · 16:11
-Theme: polish. UI, animation, music set dn4, robustness
-Package: 4,055 MB
-# 0.9.2 · 19:32
-Theme: UI round, weather transitions, warmth
-Package: 4,048 MB
-# 0.9.3 · 00:00 Sat
-Theme: front end, HUD, character creation, flow, hair, loading props
-Package: 4,847 MB
-# 0.9.4 · 02:22 Sat
-Theme: fixes from the 0.9.3 playtest
-Package: 4,849 MB
+By noon the problem had changed. There was no shortage of output. There were character, story, sundial, look, music, PCG, clothing, headwear, UI and architecture threads moving at once. Jennifer was deliberately using the remaining weekly model allowance, but the speed made the whole system harder to hold in one head.
+
+Earlier she had already described it as «a bit muddy in my brain» and added, «I know I will have a lot to clean up, but for prototyping it is great.» At 14:40 the sharper version was: «It is getting a bit confusing, and I am maximising my weekly usage and hopefully not destroying everything for the future.»
+
+Different chats were being asked to delete obsolete material, move files into clearer places, improve efficiency and challenge the structure: «Is the architecture good? Can we make it better and faster to compile?» Her own summary was blunt and funny: «It is all very nooby and vibe-cody, but what can I do?»
+
+Those are not claims that every deletion was audited or that the architecture is now solved. They describe the human control problem created by parallel generation. The work moved faster than one person could continuously re-read it, so safety had to become an explicit feature of the workflow.
+
+```timeline
+12:06 | integration | story, social, inventory, armillary, look and PCG branches meet on a Build 1 integration line
+12:37 | character | a character-creation MVP and the sundial branch are prepared
+12:59 | rule | use editor tests first; package only when the evidence actually needs a package
+13:03 | focus | stop parallel Mac development and Mac builds for now
+13:24 | tempo | at most three compiling sessions; reuse worktrees and use Unity-safe helper names
+14:17 | plan | split the next line into 0.9, 0.9.1 and held Build 1 work
+14:22 | speed | document test maps and faster editor-start levers
+14:36 | tests | add a first unit-test pilot and headless runner
 ```
 
-A script counted the jam so far at 03:07 on Saturday, right at the end of this "day": 95,339 lines of C++, 584 commits, 47 agent sessions (Claude and Codex) with 286 subagent runs, 80 review boards with 689 rated cards and 219 logged decisions, 262 3D models, 236 API images and 266 AI sound effects. There is one human. Most of the generated material is not in the game. That's what a cut is.
+The Build 1 and 0.9 work above is an **integration line in progress**, not a new packaged release. It shows how much was moving after waking up; it does not turn every branch into a finished feature.
+
+## Noon produced more world than the morning could absorb
+
+The castle approach moved from a road on a hill towards an authored traversal network: a main path, field routes, retaining walls, terraces and alternate climbs. The v2 plan treated the castle as stacked access layers rather than a single corridor. The rendered approach and route diagram are proposals and test assets; neither image proves a finished level.
+
+```gallery contain
+assets/img/day-2-approach-overview.webp | The second approach pass adds switchbacks, retaining walls and terraced fields below the castle. It is a spatial prototype assembled for review, not final environment art. | Aerial Unreal view of a castle approach with a winding road and terraces | 1600 x 900
+assets/img/day-2-approach-layout.webp | The same approach reduced to paths, elevations and placement logic. This is the kind of unglamorous diagram that keeps procedural generation from becoming random scatter. | Top-down technical layout of paths and terraces on a mountainous island | 1600 x 900
+assets/img/day-2-castle-routes.webp | Castle v2 planned as stairs, climbs, drops, shafts, social gates and water routes. This is an agent proposal and route map, not a claim that every route exists in Unreal. | Dense route diagram connecting stacked castle areas and alternate paths | 1600 x 1200
+```
+
+Headwear became its own small module. Sixteen items were registered across hats, helmets, masks and a collar, with a generated fit table for several body targets. Its automated review test reported `HEADWEAR_TEST_PASS 88/88`. These sheets show the in-game review setup, not a final cast or final fitting quality.
+
+```gallery contain
+assets/img/day-2-headwear-third.webp | Third-person headwear review in the GASP test space. The floating and worn items make coverage and scale errors easy to spot without pretending this is a cinematic scene. | Third-person mannequin surrounded by hats, helmets and coloured test markers | 1600 x 900
+assets/img/day-2-headwear-first.webp | The same module from first person, checking what equipment and debug markers remain readable from the player camera. | First-person view across headwear and coloured test markers in a purple test map | 1600 x 900
+assets/img/day-2-ui-round9.webp | Round 9 brought start screen, loading object and time HUD into one brass-and-eclipse visual system. It is a review strip; the UI is not fully integrated. | Wide review strip of eclipse logo, armillary loading screen and circular time HUD | 2560 x 394
+```
+
+## Making the factory safer
+
+The most important feature added after noon may be a set of limits rather than a player mechanic:
+
+- no more than three sessions compiling at once;
+- reuse existing worktrees instead of multiplying them without need;
+- prefer small editor tests and dedicated test maps before packaging gigabytes;
+- write helper names that stay unique when Unity merges translation units;
+- start Unreal with the expensive SDK setup skipped when it is not needed;
+- keep experimental systems behind switches so the fallback still runs;
+- record which line is 0.9, which is 0.9.1 and which is held for Build 1.
+
+There was cleanup outside the code too. The 314 GB NvRTX source build moved to `D:` behind a verified junction, freeing roughly 432 GB on `C:`. ACE setup and staging scripts that had lived as operational knowledge were pulled into tracked source. Old Unreal projects and lab build output started moving or being pruned. None of this makes a good trailer shot, but it is what lets the next compile happen.
+
+The website became another live system. Day 1 was expanded into a much more visual article, and its sidebar player grew from four tracks to twelve reviewed directions with local covers, scrolling titles and separate high, mid and bass waveforms. Then a hidden browser tab kept playing after the visible tabs were closed. The fix made track changes stop the previous source, paused on page exit and used cross-tab coordination so only one devlog tab can play. A later change made a deliberately started playlist advance forever, wrapping from track twelve to track one.
+
+## Current state at 14:40
+
+```log
+PASS | Windows Build 0.7 package suite, except the existing orb traversal course
+PASS | native Mac Build 0.7 package and the subset of tests actually run there
+PASS | isolated music package, water package and C1 trial tests
+PASS | headwear review module reports 88/88 automated checks
+FIXED | two-stage Unity-build helper collision during music integration
+PASS | the exact build-0.7.1 merge was later confirmed on Windows and Mac, with documented test limits
+OPEN | Build 0.9 / Build 1 work is an active integration line at this 14:40 checkpoint
+OPEN | water, final look, MetaHuman clothing and the orb traversal course
+OPEN | many generated assets still need selection, cleanup, retopology or real integration
+RISK | agent throughput is exceeding the rate at which one person can continuously audit every branch
+```
+
+That was the state at 14:40, not the end of the day. The next twelve hours turned several branches into five packaged builds and turned the review problem into the main design problem.
+
+## 14:51–19:32 · Four hours, three packages
+
+Build 0.9 arrived at 14:51, 32 hours and 51 minutes after the jam began. The 3,974 MB Windows package joined the 0.8.2 base to story work, the C1–C3 character, inventory and social systems, the armillary, look switching, PCG and level work, a sundial sleep-and-light puzzle and an initial character creator. Package smoke, sleep and character-creation tests passed; the quest suite reported 14/14 in the editor. It was Windows-only, and several things were obviously provisional: a cell still blocked the orb course, the bed and sundial stone were cubes, and the character creator was backlit and hard to read.
+
+```gallery contain
+assets/img/day-2-build09-character.webp | Build 0.9's first character-creation screen was real and usable, but still looked like a debug panel placed over the beach. The point of the package was to prove the flow before polishing it. | Early character-creation panel beside a mannequin on a bright beach | 1920 x 1080
+assets/img/day-2-build09-sundial.webp | The first packaged sleep dial connected time selection to the light puzzle. Its clean circular layout already pointed towards the later eclipse UI language. | Circular sleep and wake-time dial over a simple test interior | 1920 x 1080
+assets/img/day-2-build091-music-test.webp | Build 0.9.1's music overlay running inside the purple systems map. Debug text is doing the useful work here: it exposes which state, layer and cue the runtime believes it is playing. | Unreal test map with a large music-system debug overlay | 1920 x 1080
+```
+
+The work immediately became more test-first. A character batch reached 41/41 checks plus thirteen editor tests on its branch, but that evidence did not magically make it part of the packaged main line. Build 0.9.1 followed at 16:11. Its 4,055 MB package added dedicated test maps, UI, crouch and foot-placement fixes, the `dn4` switch, environmental signs, shared interaction, cinema and modal repairs, weather fixes, rain controls and safer NPC collision. The changed areas passed editor and package tests. One first launch ended in a DXGI device-hung error; more than nine later starts did not reproduce it, so the incident stayed recorded rather than being promoted into either a solved bug or a permanent failure.
+
+Build 0.9.2 landed at 19:32 at 4,048 MB. It added music debug spheres, a unified interaction prompt, quest-driven character-creation and save rules, weather sequences, NPC animation LOD, GASP footsteps, the Calor warmth system and ember-room UI. Forty unit tests passed and the broad editor suite was green. In the package, only smoke and the 94-step input test were run. The 35-minute package time remained unexplained, and nobody had visually reviewed that build yet.
+
+That changed during Jennifer's playtest around 20:40. She chose a longer title and loading flow, actual title music with an ambient loading bed, save and settings sounds, the HUD and glyph direction, a 72-minute day, a walk-only opening and the current weather and LOD approach. This is where a pile of implemented options began turning into her game rather than an agent default.
+
+## The overload becomes the workflow
+
+The problem was no longer a lack of material. It was the opposite. «I was overwhelmed during the day,» Jennifer says now. Questions lived across build notes, specialist chats and several review boards; answers were easy to give twice and hard to trace once.
+
+At 19:42 the build history gained a proper changelog route. Between 21:19 and 21:29 all unanswered choices began moving into one `OPEN-QUESTIONS` funnel. At 21:34 Jennifer chose quality over raw speed, then at 21:35 asked for a fast start path anyway: fewer minutes between a change and a useful playtest, without pretending the verification step was optional. By 22:42 the boards themselves were being consolidated.
+
+The strongest correction came during the next real playtest: «I want to retire the agents that have been doing stuff. I need fresh context for everybody.» This was not a rejection of agent work. It was an ownership decision. Old sessions had accumulated assumptions; the next orchestrator should gather their state, let one integration session own 0.9.4, then start fresh specialists from a known checkpoint. «I want to optimise my time» became a rule for the factory rather than a request to make every agent type faster.
+
+```clips
+assets/video/day-2-decision-board.mp4 | **01:53 CET · 43h53 after jam start.** The consolidated board in motion: one place for HUD, prompt, character, settings and audio choices instead of answers scattered across chats. The browser view is evidence of the decision process, not an in-game menu. | assets/img/day-2-consolidated-board.webp
+```
+
+```gallery contain
+assets/img/day-2-consolidated-board.webp | A central board gathered island, kit, equipment, loading-prop and dungeon questions. Consolidation did not reduce the work to one click, but it made the remaining decisions countable and attributable. | Dark review board with several medieval building candidates and decision fields | 1388 x 710
+assets/img/day-2-build093-settings.webp | The settings screen detected the RTX 5090, selected DLSS Quality and exposed the active result instead of hiding the chosen preset behind a label. This is the actual packaged interface. | Dark starry graphics-settings screen with detected-hardware summary | 1600 x 900
+```
+
+## 00:00–02:38 · The playtest writes 0.9.4
+
+Build 0.9.3 was tagged at midnight, 42 hours after jam start. At 4,847 MB it carried the frontend, loading and preloading flow, saves, NVIDIA settings, HUD and glyphs, character creation, a walk-only escort and tutorial, the 72-minute day, FPS limits, MetaHuman hair handling, loading props and experimental chunking. Seventy unit tests passed, along with broad editor coverage and packaged smoke, input, loading and hair tests.
+
+The status still had sharp edges. One armillary package shot was black. Hair emitted warnings and showed fringe risk. The travel-fade test timed out. Face LOD had not been visually checked, and the new UI paths were not all exercised in the package. It was still a Windows-only build.
+
+```clips
+assets/video/day-2-build093-character.mp4 | **00:53 CET · 42h53 after jam start.** Build 0.9.3's character creator running in the packaged frontend. The clip proves the screen moves and responds; it does not prove controller recovery or saving, which the later playtest found broken. | assets/img/day-2-build093-character.webp
+```
+
+```gallery contain
+assets/img/day-2-build093-character.webp | The later character creator moved from the beach-debug look into the ember-and-eclipse frontend. It was much closer visually, while its input and save rules still needed the human playtest. | Character-creation screen with ember particles and a female base body | 1600 x 900
+assets/img/day-2-sound-iteration.webp | The loading-finished cue went through many tiny variations. Several local rustles were rejected as scratchy; Jennifer wanted a dark, distant, heavy door or object rather than a bright UI tick. | Audio review board showing short cloth and loading-finished sound candidates | 1600 x 800
+```
+
+The 01:30 playtest supplied the useful failures. Switching between controller and keyboard could strand character creation. Q and E did not change tabs. Sprint returned after the cut. Autosave guards and player restoration were wrong; save-and-quit was wrong too. Stars, selector shapes and UI shadows needed another pass. Wind and rain were too loud indoors. The route was difficult to read, rocks floated and quest hints did not communicate enough. Guard state was not fully restored.
+
+Jennifer made two immediate decisions: debug should be off by default but switchable from pause, and the loading object should remain visible for at least eight seconds while world sound is muted. The star and selector work then became unusually specific: combine the A and C star directions, chamfer the moon by seven millimetres, use genuinely three-dimensional star and lozenge forms and make ring-glide C deeper. The sound pass also exposed a real bug: what seemed merely “too busy” was five to twelve hits firing before the onset counter made the overlap measurable.
+
+Build 0.9.4 was tagged at 02:22 and documented at 02:38, 44 hours and 38 minutes after jam start. The 4,849 MB package fixed modal input, escort and story state, saves, stars and 3D selectors, settings, character creation, the eight-second muted loading presentation, debug defaults and 27 UI sounds and textures. Package smoke, input and fast-start tests passed. The loading test failed because it still expected saving immediately after the skip, while the new character-creation gate intentionally blocked that save. The run did observe 8.28 seconds and muted world audio. Load, travel and quit scenarios were not run; nobody had listened to or visually approved every new asset, no real controller had been used, and Mac remained untested.
+
+## 02:38–03:56 · Decision phase, not victory lap
+
+By 02:30 the remaining choices were being pulled into one final board: 79 decisions rather than 79 half-remembered chat fragments. The confirmed direction included an eight-second load, preload plus one central object, separate title and music flows, restrained subtitle and hint policies, no giant scenic backdrops, no numerical warmth display, hand-drawn glyphs, a debug easter egg, the walk-only escort and explicit FPS caps. Some details, especially the final sprint scheme, remained agent proposals awaiting confirmation.
+
+The clothing question finally received a controlled test instead of another beautiful concept sheet. At 03:36 an Epic Chaos Outfit creator build was compared with a tighter Blender weight-transfer version across body targets. Trousers behaved cleanly in both. The shirt still showed neck and shoulder penetration from the source fit. Parametric deformation could move the helmet by up to three centimetres, which is enough to ruin a rigid silhouette; the current recommendation is therefore fitted per-head helmets rather than pretending one elastic solution works for everything. This is a fitting study, not clothing running on a MetaHuman in the game.
+
+```gallery contain
+assets/img/day-2-parametric-clothing.webp | Guard 01 compares the parametric Chaos route above with a tighter Blender transfer and rigid helmet below. The boring grey sheet answers the important question: which parts may deform, and which must stay fitted. | Front side and back clothing-fit comparison for a broad guard body | 1400 x 1712
+```
+
+ACE was explicitly moved to Build 1. Its lively-NPC lab could continue, but it would not destabilise the Build 0 finish. At 03:52 only one integration session was authorised to touch the combined line. At 03:56 Jennifer rejected the latest local rustles as too scratchy and described the wanted loading-finished cue as a dark, distant, heavy door or object.
+
+Anything after that needs a different label. The 03:57 Build 1 ladder is an agent synthesis, not a player-approved implementation. A later package of roughly 5,182 lines of story and dialogue is an agent draft: it is not built, tested or inside the game.
+
+## Live checkpoint at 03:56
+
+```log
+PASS | Windows packages 0.9, 0.9.1, 0.9.2, 0.9.3 and 0.9.4 exist with explicitly different test scopes
+PASS | 0.9.4 smoke, 94-step input and fast-start paths; loading duration and world mute observed
+DECIDED | central decision funnel, fresh agent context, one integration owner and Build 1 separation
+DECIDED | eight-second loading object, debug default off, walk-only opening and current UI direction
+OPEN | real-controller pass, Mac package, full load/travel/quit coverage and creative review of 0.9.4 assets
+OPEN | MetaHuman clothing remains a fitting problem; the parametric study is not an in-game result
+OPEN | final loading-finished sound after the scratchy local rustles were rejected
+RISK | automated green checks are growing faster than human visual, audio and architectural review
+```
+
+Day 2 is still going. The useful shift is that overload is no longer being treated as a personal failure to “keep up.” It is an engineering signal. If several agents can produce systems faster than one director can review them, then branch ownership, test scope, compile budgets, reversible modules, one decision funnel and honest status labels are part of the game project too.
+
+The vibe-coding answer is not to stop asking ambitious questions. It is to keep the smallest known-good build alive, keep one person in charge of its meaning, and make the next decision visible.
 
 <!-- branches-embed -->
 ```embed

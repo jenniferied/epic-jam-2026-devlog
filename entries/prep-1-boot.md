@@ -6,7 +6,9 @@ date: 2026-10-27
 day: prep 1
 phase: prep
 status: live
-summary: How a work PC came home with me first, why I'm doing this at all, and the toolchain I set up in the two weeks before the jam.
+cover: assets/img/cover-prep-1.jpg
+cover_alt: Pixel art: a woman in walking boots carries a PC tower away from an office building at night, a small green dragon flying beside her
+summary: How a work PC got kidnapped twice before reaching the office, why I'm doing this at all, and the toolchain I set up in the two weeks before the jam.
 ---
 ```recap
 **Before this entry:** nothing. It starts on 27 October 2026 at 15:53, fifteen days before kickoff.
@@ -15,11 +17,13 @@ summary: How a work PC came home with me first, why I'm doing this at all, and t
 
 ## The kidnapping
 
-The new workstation was meant for the office. It isn't a normal office anyway, and I had waited for this machine for a long time. So before it went to work, it came home with me.
+The new workstation was meant for the office. It still hasn't arrived there.
 
->> It's not a normal office anyway. I waited for long, grueling hours.
+On delivery day I waited for the freight company in the office, from the morning until late in the afternoon, hoping it would show up. It didn't, so I drove to the depot and picked it up myself. By then I was dead, so the PC came home with me instead of staying at work.
 
-Some context for the timing. I broke my foot. After six weeks on sick leave I was back at work for exactly two days. No more physio, back to the gym, and a jam on the calendar.
+>> I was waiting for the spedition for hours in the office before driving to the spedition, after waiting from morning to late afternoon hoping for it to arrive. I then took it home as I was dead.
+
+Then it got kidnapped a second time. I had just broken my foot: «after six weeks of sickness, I was at work for two days, no more physio now, back to the gym». I needed an X-ray back in my home town anyway, so the workstation came along to my parents' place. A fridge that magically refills itself, my cat, and a 5090 under the desk is a pretty good jam environment. After that it finally moves to where it belongs, the office.
 
 ```gallery
 placeholder | The kidnapped workstation. Photo follows. | Photo of the workstation | 1600 x 1200
@@ -38,7 +42,7 @@ Machine: MacBook Pro, Apple M1 Max
 RAM: 64 GB
 Role: native Mac builds, a second pair of hands over SSH
 # software
-Engine: Unreal Engine 5.9 (5.8 kept for comparison)
+Engine: Unreal Engine 5.8 or 5.9, maybe another one. Decided when the jam starts
 3D: Blender 5.3 with the official Blender Lab MCP
 Agents: Claude Code, OpenAI Codex (desktop app)
 Glue: Tailscale, SSH, git + LFS, herdr
@@ -46,31 +50,61 @@ Glue: Tailscale, SSH, git + LFS, herdr
 
 ## Why I'm here
 
-On 11.11.2011 a game came out and I teared up. Then I caught myself.
+On 11.11.2011, [Skyrim](https://elderscrolls.bethesda.net/en/skyrim) came out.
 
->> And then, like, stopping myself and be like, okay, like, but that's cringe.
+```gallery
+assets/img/memory-2011.jpg | How I remember that night. My own illustration, made with an image model (Gemini 2.5 Flash Image via fal). It is not Skyrim artwork; The Elder Scrolls V: Skyrim is a trademark of ZeniMax Media / Bethesda Softworks. | Pixel art of a girl at an old monitor at night, a snowy mountain on screen, wiping a tear | 1344 x 768
+```
+
+>> I do like my job, but doing research, I do feel that I've always wanted to make games. Like remembering tearing up on 2011-11-11, and then, like, stopping myself and be like, okay, like, but that's cringe. Like, we all love making games.
 
 Fifteen years later, to the day, the kickoff of this jam was on 11.11.2026. I didn't plan that.
 
-I always liked drawing and computers, like a lot of us. I wanted to do concept art. I had some talent, but I realised I wasn't consistent enough with drawing to get there. My first website was a Pokémon fan page, built by stealing the HTML and CSS from other pages. I bet a lot of people in this jam have a story like that. A lot of them will be very young, and this jam might be their origin story.
+I always liked drawing and computers, like a lot of us. I wanted to do concept art. I had some talent, but I realised I wasn't consistent enough with drawing to get there. And «I did my first Pokémon website back then by stealing the HTML and CSS and all that stuff». I bet a lot of people in this jam have a story like that.
 
->> We all have our story.
+>> I can imagine that many very, very young people will participate in this, and this might be their origin story. We all have our story.
 
-I know how artists feel about AI, especially concept artists and graphic designers, and I'm one of the people who wanted that job. I don't think that feeling is wrong.
+I'm one of the people who wanted to make concept art, so I know how artists feel about this. I don't think that feeling is wrong.
 
->> AI represents something scary, but it also represents a possibility.
+>> We all know that AI is scary, and there is a sentiment between artists, especially, for example, concept artists or graphic designers. AI represents something scary, but it also represents a possibility.
 
 ```timeline
 early days | Drawing, PCs, and a Pokémon fan site made of borrowed HTML and CSS
-11.11.2011 | A game release. Tears, quickly suppressed
+11.11.2011 | Skyrim comes out. Tears, quickly suppressed
 Dundee | Interior design at Duncan of Jordanstone College of Art and Design (University of Dundee). One game jam, one free VR headset
+2019 | First project in Unreal Engine. I never stopped
 since then | Research at a film university. Visual production, AI, lots of literature reviews
 27.10.2026 | "I'm doing the MegaJam."
 ```
 
+![Unreal Engine, with love, since 2019](assets/img/ue-since-2019.svg)
+
+I've been working with Unreal Engine since 2019, and I love it. (Unreal Engine and its logo are trademarks of Epic Games, Inc., shown here only to say what I build with.)
+
+## I love creating worlds
+
+>> I love creating worlds.
+
+The last one was **Dystopian District**, published as PANELGRAD: a small, melancholic snow city of concrete panel blocks, inspired by post-Soviet towns in Eastern Russia and inhabited by anthropomorphic animals. It started from real satellite terrain and OpenStreetMap streets. Houdini turned that into roads, districts and buildings, and Unreal Engine rendered it. It was a project in the Virtual Worlds module of my master's at TH OWL, 2025/26. Frames from the final film, one per shot:
+
+```gallery
+assets/img/dd-hero.jpg | Drone over the city at night | Aerial view of a snowy city of lit-up panel blocks at night | 1600 x 674
+assets/img/dd-aerial2.jpg | Districts along the river | Dark aerial view of panel-block districts between a frozen river and forest | 1600 x 672
+assets/img/dd-snow.jpg | Two towers on the hill | Two high-rise blocks on a snowy hill above the city, mountains behind | 1600 x 814
+assets/img/dd-street.jpg | The bus stop under a huge moon | Night street with a lit apartment block, a bus shelter, street lamps and a large moon over mountains | 1600 x 673
+```
+
+How it got there: terrain, then streets, then buildings.
+
+```gallery
+assets/img/dd-process-terrain.jpg | Terrain from satellite data, with the town's footprint | Red and grey contour visualisation of a heightfield with a small town in the middle | 1200 x 1338
+assets/img/dd-process-streets.jpg | The street network from OpenStreetMap | White street network lines on black | 1200 x 484
+assets/img/dd-process-blocks.jpg | Procedural building blocks placed on the terrain | Grey building blocks with coloured roofs scattered over a dark terrain grid | 1200 x 604
+```
+
 ## Setup: two machines, two agents
 
-I started using AI early, for literature reviews, 3D generation and everything in between. So "setting up" mostly meant connecting things I already had. The **Codex desktop app** runs on the Windows workstation and **Claude Code** on the Mac. They talk to each other over SSH through Tailscale, and both work on the same git checkout.
+«I started using AI pretty early on, and I'm doing stuff like literature reviews, 3D generation and all sorts of stuff.» So "setting up" mostly meant connecting things I already had. The **Codex desktop app** runs on the Windows workstation and **Claude Code** on the Mac. They talk to each other over SSH through Tailscale, and both work on the same git checkout.
 
 The rules allow preparing tools, agents, MCP settings, prompts and scripts in advance. Game content has to wait for 12 November, 06:00. So everything here is plumbing.
 
