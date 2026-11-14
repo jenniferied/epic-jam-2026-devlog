@@ -200,6 +200,7 @@ The board also kept moving. I freed my Tripo credits on the second machine for t
 21:23 | Second GPU driver hang. Hard reboot at 21:42
 21:58 | Git LFS budget used up
 22:29 | Build 0.12.0 integration starts
+23:45 | The build method: compile in one place, test once, cook iteratively
 ```
 
 ## Builds so far
@@ -234,6 +235,42 @@ assets/audio/mus-sacred-salt-shrine.mp3 | Salt Shrine Chant (Sacred III) | 2:44
 assets/audio/mus-night-cave-bells.mp3 | Bells in the Cave (Night Phonk, Classical) | 3:00
 assets/audio/mus-dnb-timpani-breakbeat.mp3 | Timpani Breakbeat (Classical DnB I) | 2:00
 assets/audio/mus-dnb-gezeiten.mp3 | Gezeiten Journey (Own Score, Cutscene Arc) | 2:59
+```
+
+## 23:45 · The build method that cost us hours
+
+Late in the evening I asked for Build 0.13.0 with everything in it, and I asked for it fast:
+
+> «Und mach es so schnell wie möglich. Also ohne zwölf Millionen Tests, lass es mich doch zuerst testen.»
+
+(And make it as fast as possible. So without twelve million tests, let me test it first.) Then the orchestrator explained why a round took three to five hours. Every work package had its own branch in its own worktree, and every worktree compiled the C++ game code for itself. Each worktree has its own intermediate files, so every fresh worktree or branch switch meant a rebuild. And all of those builds stood in one machine-wide queue, because Unreal's build tool runs only once at a time. On top of that came test rounds per package and a package cooked from zero each time. At 00:03 I asked about cooking (the dictation wrote «guckt», "looks", where I said «kocht», "cooks"):
+
+> «Wenn man guckt, wird alles neu geguckt oder nur das, was neu ist? … Also wenn ich jetzt ein 200 GB Spiel habe und 30 Leute dran arbeiten jedes Mal, wenn ein Change ist, cooken die das?»
+
+(When you cook, is everything cooked again or only what's new? … If I had a 200 GB game and 30 people working on it, would they cook it every time there's a change?) No, they don't. Big teams work uncooked in the editor and cook incrementally on build machines. And the same goes for code: branches and merging are one thing, compiling is another. You compile in one place, and there an incremental build of our code takes about 38 seconds.
+
+> «Ach du meine Güte. Ja, oh mein Gott. … Oh mein Gott, das hättest du von Anfang an catchen müssen.»
+
+(Oh my goodness. Yes, oh my God. … Oh my God, you should have caught that from the start.) The orchestrator's answer, in short: the rules said one branch and one worktree per package, and each package was to be delivered compiled. That was set up for safety, not speed. My "faster" had only been written down as "fewer tests", never as "compile in one place". Every new orchestrator session reads the rule files, not what I said in a conversation, so it repeated the mistake, and it should have caught it at the start. Since 00:05 the rule is in `AGENTS.md`: game code is compiled only in the integration worktree, packages hand in code unbuilt, tests run once at the end, and the cook is iterative (`-iterate`).
+
+I'm very, very frustrated about this. Here is how I said it to the devlog session, dictated (the dictation heard «Bildlänge», "image length", for build length, and «Szenen», "scenes", probably for «Skandal», scandal):
+
+> «Ich geh auf jeden Fall rein, dass ich sehr, sehr frustriert bin über die Bildlänge»
+
+> «Das ist ein Szenen, ich habe so viele Stunden sparen können.»
+
+(I'm definitely putting in that I'm very, very frustrated about the build length. That's a scandal, I could have saved so many hours.) At 00:07 I asked for the number:
+
+> «Jetzt eine geskriptete Kalkulation, wie viel Zeit wir verschwendet haben mit der Methode und wie viel wir jetzt voraussichtlich dann sparen.»
+
+(Now a scripted calculation of how much time we wasted with the method, and how much we'll probably save now.) The script reads every build, test and package log that's on disk from 12 November 06:00 to the change at 23:45.
+
+**Measured:** 444 builds of the game code in 52 worktrees, 62 of them first builds in a fresh worktree. Only 8.7 hours of it was actual compiling. The waiting in the build queue was at least 14.4 hours, summed over all agents (the longest single wait was 2.5 hours). The tests were the biggest item: 970 test runs, 24.9 hours. Packaging took 5.4 hours, of which cooking was only 1.5. So cooking from zero cost us little. The waiting and the endless tests cost us a lot.
+
+**Estimated:** 42 to 50 hours of machine time were spent on work the new method doesn't need. Because agents worked in parallel, the delay to the builds I could play is smaller: 8 to 20 hours, most likely about 13. The new method should save 30 to 80 minutes per build round, most likely about 55. A typical round of 3.3 hours becomes 2 to 3 hours. That's 1.2 to 1.5 times faster, not the 2 to 3 times the orchestrator guessed that night, because most of a round is the agents' actual work. Iterative cooking isn't measured yet.
+
+```gallery
+assets/img/day3/build-time-audit.png | Per build round: the time as it ran (left bar) and the same round with one integration build, tests once and an iterative cook (right bar). Right: cumulative hours lost until the change at 23:45, likely line and low-high band. Script: tools/devlog/build_time_audit.py in the jam repo | Stacked bar chart of 14 build rounds with a cumulative line rising to about 13 hours | 1600 x 1000
 ```
 
 ## More captures
