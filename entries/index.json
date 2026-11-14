@@ -36,8 +36,8 @@
    "date": "2026-11-12",
    "day": "day 1",
    "phase": "jam",
-   "status": "draft",
-   "summary": "Jam starts at 06:00. Empty folder, one theme, one dragon.",
+   "status": "live",
+   "summary": "From an empty folder at 06:00 to a packaged island with a castle, night, rain, NPCs, a title screen, a studio logo and a pile of review boards. Builds 0.0 to 0.6, and the first time it all got too much.",
    "file": "day-1.md"
   },
   {
@@ -46,8 +46,8 @@
    "date": "2026-11-13",
    "day": "day 2",
    "phase": "jam",
-   "status": "draft",
-   "summary": "Core loop day.",
+   "status": "live",
+   "summary": "Nine builds in 28 hours. The Mac gets dropped, Build 0 is called final, the masked guard learns to be suspicious, and the castle gets a silhouette. Also foam everywhere, flat LUTs, four editors open at once and far too many boards.",
    "file": "day-2.md"
   },
   {
@@ -57,7 +57,7 @@
    "day": "day 3",
    "phase": "jam",
    "status": "draft",
-   "summary": "Make it feel like something.",
+   "summary": "Build 1 starts: an escort, a cell with two cellmates who talk back through NVIDIA ACE, a kit-built castle and end credits. Then two GPU driver hangs, a hard reboot, and a new way of working. Status so far, still running.",
    "file": "day-3.md"
   },
   {
