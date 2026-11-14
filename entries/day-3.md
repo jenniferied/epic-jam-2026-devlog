@@ -222,6 +222,20 @@ Theme: levelling, character brain, routines, look switcher, dressed cell
 Package: in progress
 ```
 
+## Soundtrack, now in four albums
+
+The sidebar player grew from 12 to 39 tracks, grouped into four albums. Everything on it is either an own score (written as Python, rendered locally with Sonatina Symphonic Orchestra samples) or generated through fal with a commercial licence (Stable Audio 3, Lyria 3.5, ElevenLabs Music, ACE-Step); the licensed packs I used as inspiration are not on it. Long ambient beds are cut to three minutes with a fade. A few of the new ones:
+
+```tracks
+assets/audio/mus-title-orch-silver.mp3 | Silver Overture (Title Nightcore Orchestral) | 3:00
+assets/audio/mus-title-longest-night.mp3 | The Longest Night (Own Score, Title A) | 1:36
+assets/audio/mus-combat-war-drums.mp3 | War Drums at the Gate (Combat I) | 2:53
+assets/audio/mus-sacred-salt-shrine.mp3 | Salt Shrine Chant (Sacred III) | 2:44
+assets/audio/mus-night-cave-bells.mp3 | Bells in the Cave (Night Phonk, Classical) | 3:00
+assets/audio/mus-dnb-timpani-breakbeat.mp3 | Timpani Breakbeat (Classical DnB I) | 2:00
+assets/audio/mus-dnb-gezeiten.mp3 | Gezeiten Journey (Own Score, Cutscene Arc) | 2:59
+```
+
 ## More captures
 
 Automatic picks from the devlog board. This block is rewritten by a script, and its captions are condensed agent notes, not my words.

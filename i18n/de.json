@@ -146,5 +146,13 @@
     ]
   ],
   "toc.label": "in diesem eintrag",
-  "home.upcoming": "noch leer, entsteht während des jams"
+  "home.upcoming": "noch leer, entsteht während des jams",
+  "music.title": "jam-soundtrack",
+  "music.show": "Playlist zeigen",
+  "music.count": "{n} Tracks · {a} Alben",
+  "music.albumCount": "{n} Tracks",
+  "music.album.title": "Hauptmenü-Themen und ihre Varianten",
+  "music.album.score": "Tag-, Nacht- und Kampfmusik aus dem Spiel",
+  "music.album.sacred": "Schreine, Engelschöre, Höhlen",
+  "music.album.dnbsym": "Drum and Bass trifft Orchester"
 }

@@ -38,6 +38,7 @@
     $("#btn-prev").setAttribute("aria-label", t("entry.prev")); $("#btn-next").setAttribute("aria-label", t("entry.next"));
     $("#lb-prev").setAttribute("aria-label", t("lightbox.prev"));
     $("#lb-next").setAttribute("aria-label", t("lightbox.next"));
+    window.JamMusic?.relabel();
     $("#lb-close").setAttribute("aria-label", t("lightbox.close"));
   }
 
@@ -469,7 +470,7 @@
     await route();
     window.addEventListener("hashchange", route);
     funke = Funke.mount($("#funke"), { linesUrl: "assets/funke-lines.json", t });
-    JamMusic.mount($("#music"));
+    JamMusic.mount($("#music"), { t });
     if (!prefs.greeted) { funke.say(t("funke.hello"), "dragon"); prefs.greeted = 1; save(); }
     clock(); setInterval(clock, 30000);
     el.reader.focus({ preventScroll: true });

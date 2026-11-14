@@ -146,5 +146,13 @@
     ]
   ],
   "toc.label": "in this entry",
-  "home.upcoming": "still empty, written during the jam"
+  "home.upcoming": "still empty, written during the jam",
+  "music.title": "jam soundtrack",
+  "music.show": "Show playlist",
+  "music.count": "{n} tracks · {a} albums",
+  "music.albumCount": "{n} tracks",
+  "music.album.title": "main menu themes and their flavours",
+  "music.album.score": "day, night and combat music from the game",
+  "music.album.sacred": "shrines, angel choirs, caves",
+  "music.album.dnbsym": "drum and bass meets the orchestra"
 }
