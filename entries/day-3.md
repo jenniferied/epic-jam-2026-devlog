@@ -321,6 +321,10 @@ assets/img/day3/11-15-130653-shot.jpg | 15.11. 13:06: Game window on int-0.13.0 
 assets/img/day3/11-15-130655-clip.jpg | 15.11. 13:06 (still from a clip): 15 s of int-0.13.0 with the reworked cell and the grass round 3 merge. | 15 s of int-0.13.0 with the reworked cell and the grass round 3 merge. | 1600 x 900
 assets/img/day3/11-15-140657-clip.jpg | 15.11. 14:06 (still from a clip): 15 s of int-0.13.0 with the temperature layer; package tests fixed after a self-test on the 0.13.0 package. | 15 s of int-0.13.0 with the temperature layer; package tests fixed after a self-test on the 0.13.0… | 1600 x 900
 assets/img/day3/11-15-143653-clip.jpg | 15.11. 14:36 (still from a clip): 15 s of the packaged 0.13.0 test run before the night package. | 15 s of the packaged 0.13.0 test run before the night package. | 1600 x 900
+assets/img/day3/11-15-165111-commit.jpg | 15.11. 16:51: Sed didn't match; editing directly. | Sed didn't match; editing directly. | 1600 x 900
+assets/img/day3/11-15-180653-shot.jpg | 15.11. 18:06: Jennifer playtesting the Shipping package 0.14.0 (b0140); her live feedback (keyboard run 1) is fixed as she plays on b1-ui15. | Jennifer playtesting the Shipping package 0.14.0 (b0140); her live feedback (keyboard run 1) is… | 1600 x 900
+assets/img/day3/11-15-180654-clip.jpg | 15.11. 18:06 (still from a clip): 15 s of Jennifer's playtest of Shipping 0.14.0. | 15 s of Jennifer's playtest of Shipping 0.14.0. | 1600 x 900
+assets/img/day3/11-15-190653-clip.jpg | 15.11. 19:06 (still from a clip): 15 s of Jennifer's Shipping 0.14.0 playtest, now at note 81 (tutorial cards, introductions in the first talk); fixes written live on b1-ui20/21. | 15 s of Jennifer's Shipping 0.14.0 playtest, now at note 81 (tutorial cards, introductions in the… | 1600 x 900
 ```
 
 ```timeline
