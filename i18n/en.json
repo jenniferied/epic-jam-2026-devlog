@@ -150,6 +150,8 @@
   "music.title": "jam soundtrack",
   "music.show": "Show playlist",
   "music.count": "{n} tracks · {a} albums",
+  "music.shuffleOn": "Shuffle on",
+  "music.shuffleOff": "Shuffle off",
   "music.albumCount": "{n} tracks",
   "music.album.title": "main menu themes and their flavours",
   "music.album.score": "day, night and combat music from the game",

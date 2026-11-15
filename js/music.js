@@ -53,7 +53,7 @@ window.JamMusic = (() => {
     ] },
   ];
   const tracks = albums.flatMap((album, a) => album.tracks.map((track, n) => ({ ...track, album: a, no: n + 1 })));
-  const FALLBACK = { "music.title": "jam soundtrack", "music.show": "Show playlist", "music.count": "{n} tracks · {a} albums", "music.albumCount": "{n} tracks" };
+  const FALLBACK = { "music.title": "jam soundtrack", "music.show": "Show playlist", "music.count": "{n} tracks · {a} albums", "music.albumCount": "{n} tracks", "music.shuffleOn": "Shuffle on", "music.shuffleOff": "Shuffle off" };
   const fill = (s, vars) => Object.entries(vars || {}).reduce((acc, [k, v]) => acc.replace("{" + k + "}", v), s);
   let t = (key, vars) => fill(FALLBACK[key] || "", vars);
   let relabel = () => {};
@@ -78,6 +78,20 @@ window.JamMusic = (() => {
     }
     const audio = root.querySelector("audio"), now = root.querySelector("#music-now"), cover = root.querySelector("#music-cover"), wave = root.querySelector("#music-wave"), play = root.querySelector("#music-play");
     const prev = root.querySelector("#music-prev"), next = root.querySelector("#music-next"), time = root.querySelector("#music-time");
+    const shuffleBtn = root.querySelector("#music-shuffle");
+    let shuffle = false, history = [];
+    try { shuffle = localStorage.getItem("epic-jam-soundtrack-shuffle") === "1"; } catch (e) { /* storage blocked */ }
+    const showShuffle = () => {
+      if (!shuffleBtn) return;
+      shuffleBtn.setAttribute("aria-pressed", String(shuffle));
+      const label = t(shuffle ? "music.shuffleOn" : "music.shuffleOff");
+      shuffleBtn.setAttribute("aria-label", label); shuffleBtn.title = label;
+    };
+    const randomOther = () => {
+      if (tracks.length < 2) return index;
+      let i; do { i = Math.floor(Math.random() * tracks.length); } while (i === index);
+      return i;
+    };
     const progress = root.querySelector("#music-progress"), toggle = root.querySelector("#music-list"), menu = root.querySelector("#music-menu");
     const heading = root.querySelector(".music-head > span");
     const playerId = crypto.randomUUID?.() || `${Date.now()}-${Math.random()}`;
@@ -97,6 +111,7 @@ window.JamMusic = (() => {
       markCurrent();
     };
     relabel = () => {
+      showShuffle();
       if (heading) heading.textContent = t("music.title");
       toggle.textContent = t("music.count", { n: tracks.length, a: albums.length });
       toggle.setAttribute("aria-label", t("music.show"));
@@ -191,12 +206,22 @@ window.JamMusic = (() => {
       audio.load(); loadWave(tracks[index].file); sync();
       if (start) audio.play().catch(() => sync());
     };
-    const step = (delta) => load(index + delta, !audio.paused || audio.currentTime > 0);
+    const step = (delta) => {
+      const playing = !audio.paused || audio.currentTime > 0;
+      if (shuffle && delta > 0) { history.push(index); return load(randomOther(), playing); }
+      if (shuffle && delta < 0 && history.length) return load(history.pop(), playing);
+      load(index + delta, playing);
+    };
     play.addEventListener("click", () => audio.paused ? audio.play().catch(() => {}) : audio.pause());
     prev.addEventListener("click", () => step(-1)); next.addEventListener("click", () => step(1));
     audio.addEventListener("play", () => { playerChannel?.postMessage({ type: "playing", playerId }); sync(); });
     audio.addEventListener("pause", sync);
-    audio.addEventListener("ended", () => load(index + 1, true));
+    audio.addEventListener("ended", () => { if (shuffle) { history.push(index); load(randomOther(), true); } else load(index + 1, true); });
+    shuffleBtn?.addEventListener("click", () => {
+      shuffle = !shuffle; history = [];
+      try { localStorage.setItem("epic-jam-soundtrack-shuffle", shuffle ? "1" : "0"); } catch (e) { /* storage blocked */ }
+      showShuffle();
+    });
     playerChannel?.addEventListener("message", (event) => {
       if (event.data?.type === "playing" && event.data.playerId !== playerId) audio.pause();
     });
@@ -218,6 +243,7 @@ window.JamMusic = (() => {
       menu.hidden = true; toggle.setAttribute("aria-expanded", "false");
     });
     relabel();
+    showShuffle();
     load(index, false);
   }
   return { mount, relabel: () => relabel(), albums };

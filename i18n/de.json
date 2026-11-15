@@ -150,6 +150,8 @@
   "music.title": "jam-soundtrack",
   "music.show": "Playlist zeigen",
   "music.count": "{n} Tracks · {a} Alben",
+  "music.shuffleOn": "Zufallswiedergabe an",
+  "music.shuffleOff": "Zufallswiedergabe aus",
   "music.albumCount": "{n} Tracks",
   "music.album.title": "Hauptmenü-Themen und ihre Varianten",
   "music.album.score": "Tag-, Nacht- und Kampfmusik aus dem Spiel",

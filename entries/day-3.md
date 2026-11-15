@@ -273,6 +273,32 @@ I'm very, very frustrated about this. Here is how I said it to the devlog sessio
 assets/img/day3/build-time-audit.png | Per build round: the time as it ran (left bar) and the same round with one integration build, tests once and an iterative cook (right bar). Right: cumulative hours lost until the change at 23:45, likely line and low-high band. Script: tools/devlog/build_time_audit.py in the jam repo | Stacked bar chart of 14 build rounds with a cumulative line rising to about 13 hours | 1600 x 1000
 ```
 
+## 00:30–11:40 · The night shift: one line, one map, clothes on everyone
+
+After the build-time lesson the night did not stop; it changed shape. Game code is now merged continuously onto one integration branch and compiled only there, incrementally. Jennifer pushed the same idea one step further at 01:40:
+
+«WARUM TESTEN WIR NICHT IM EDITOR EINFACH, WARUM IMMER BUILD … 20 MINUTEN SIND ZU VIEL … MAN KANN DOCH EXTREMST VIEL ERSTMAL IM EDITOR TESTEN» (Why don't we just test in the editor, why always a build … 20 minutes is too much … you can test an awful lot in the editor first.)
+
+So the integrated state is now played uncooked from the editor through a desktop shortcut, and packages are made only on her word. A few hours later the GPU rules from the driver hangs went too: «Nur wenn ein krasser Prozess startet, checkt er die GPU-Werte. Sonst einfach machen.» (Only when a heavy process starts, check the GPU values. Otherwise just do it.)
+
+**Two orchestrators instead of a crowd.** The work was reorganised around owners: a game orchestrator for code, fixes, UI, story and integration, and a content factory on the second PC for Blender, props, the castle kit and maps. Every card on the one board now carries an owner badge and goes to that role's inbox, and board sends are worked "rapid fire", so they are done by the time she finishes the board. The rule that matters most to her is that the orchestrator does the work itself and hands off only what is truly independent, because every hand-off loses her words.
+
+**3D work gets a quality loop.** «du musst halt auch beurteilen können, ob die gut sind und dann so eine Schleife machen … Du brauchst mehr Polygone, du musst mehr Aktionen ausführen … Bevels, Details, richtige Thicknesses» (You have to be able to judge whether they are good and then loop … You need more polygons, more operations … bevels, details, real thicknesses.) Since then every mesh goes through references, review renders, a scored checklist and at least two improvement rounds before she sees it. And after a shirt was modelled by the wrong model: «Warum macht gerade Sonnet ein T-Shirt? Das geht gar nicht. Fable muss ein Shirt modellieren.» (Why is Sonnet making a T-shirt right now? That won't do. Fable has to model a shirt.)
+
+**Clothes on everyone.** The basic shirt went through three simulated rounds (looser at the seat, band and gathered collars, ties, a belt variant) until «die Shirts sind gut» (the shirts are good). Shirt v3b now runs in Unreal as a two-size parametric outfit on all 19 bodies, with hose, loafers, helmets and hats, and the cast wears its outfits in the game. Jennifer fitted the hood over the closed muzzle cage herself in a live Blender session, and the cuffs and rope for the escort were split left and right so she could fit them in the editor: «omg amazing model».
+
+**One map.** The castle built from the kit now stands on the story island L_Island as an always-loaded sublevel, with grass outside the bailey and none inside. Grass got a third round (bigger, bushier, a quarter less, no cards near the camera) and the island got Megascans rock sets.
+
+**The rest of the night**, in short: eyes with glow and five pupil shapes as their own choice, Mira with a very pale skin tone, a time HUD with a transparent sundial face, a tutorial checklist whose rows disappear once done, the start music at the logo timed so the drop lands about ten seconds after the logo appears, credits with a section on everything made with AI (generated versus used, counted by a script) and the whole branch history drawn as a scrolling chart, and a gameplay video cut taking shape. The editor crashed many times along the way; most crash reports were simply closed and work went on.
+
+```gallery
+assets/img/day3/11-15-043654-shot.jpg | 04:36 · Game window during the clothing follow-up and the NPC line-up | Game window of DarkestNight on the integration build | 1600 x 900
+assets/img/day3/11-15-050653-shot.jpg | 05:06 · Game window after the start music was retimed at the logo | Game window of DarkestNight | 1600 x 903
+assets/img/day3/11-15-083706-shot.jpg | 08:37 · Game window with the new time HUD and tutorial checklist | Game window of DarkestNight | 1600 x 931
+assets/img/day3/11-15-110655-shot.jpg | 11:06 · Game window after the accepted outfits round | Game window of DarkestNight | 1600 x 931
+assets/img/day3/11-15-113702-shot.jpg | 11:37 · Game window after grass round 3 and the Megascans rocks on the island | Game window of DarkestNight | 1600 x 931
+```
+
 ## More captures
 
 Automatic picks from the devlog board. This block is rewritten by a script, and its captions are condensed agent notes, not my words.
@@ -286,13 +312,11 @@ assets/img/day3/11-15-003705-shot.jpg | 15.11. 00:37: Game window during worldle
 assets/img/day3/11-15-010655-shot.jpg | 15.11. 01:06: Game window during the key-place screenshot run (17 fixed camera places) on int-0.13.0 with the start music at the logo. | Game window during the key-place screenshot run (17 fixed camera places) on int-0.13.0 with the… | 1600 x 900
 assets/img/day3/11-15-010657-clip.jpg | 15.11. 01:06 (still from a clip): 15 s of int-0.13.0 during the key-place screenshot run (title theme at the logo, larger cell, world rocks). | 15 s of int-0.13.0 during the key-place screenshot run (title theme at the logo, larger cell,… | 1600 x 900
 assets/img/day3/11-15-013653-shot.jpg | 15.11. 01:36: Game window while fix6 lands: story score cues behind DN.Story.ScoreCues and a daily cap on ACE free talk (12 replies per character per day, then a tired line). | Game window while fix6 lands: story score cues behind DN.Story.ScoreCues and a daily cap on ACE… | 1600 x 900
-assets/img/day3/11-15-043654-shot.jpg | 15.11. 04:36: Game window (line-up / key places): closer group shots of guards and farmers; clothing follow-up (hose feet, wool twill, Mira's own clothing body) merged into… | Game window (line-up / key places): closer group shots of guards and farmers; clothing follow-up… | 1600 x 900
 assets/img/day3/11-15-043656-clip.jpg | 15.11. 04:36 (still from a clip): 15 s of int-0.13.0 with the clothing follow-up and the NPC line-up. | 15 s of int-0.13.0 with the clothing follow-up and the NPC line-up. | 1600 x 900
-assets/img/day3/11-15-050653-shot.jpg | 15.11. 05:06: Game window on int-0.13.0: start music at the logo now begins 12 s in so the drop lands about 10 s after the logo. | Game window on int-0.13.0: start music at the logo now begins 12 s in so the drop lands about 10 s… | 1600 x 900
 assets/img/day3/11-15-080319-milestone.jpg | 15.11. 08:03: Shirt v3 round 3 is in Unreal as a two-size parametric outfit on all 19 bodies (branch b1-shirt3); the whole cast seen in the line-up editor with hose, shoes,… | Shirt v3 round 3 is in Unreal as a two-size parametric outfit on all 19 bodies (branch b1-shirt3);… | 1600 x 900
-assets/img/day3/11-15-083706-shot.jpg | 15.11. 08:37: Game window with the new UI fixes: transparent sundial face on the time HUD (UIN-04) and a tutorial checklist whose rows vanish when done (UIN-05). | Game window with the new UI fixes: transparent sundial face on the time HUD (UIN-04) and a… | 1600 x 900
 assets/img/day3/11-15-083708-clip.jpg | 15.11. 08:37 (still from a clip): 15 s of the game with the time HUD and tutorial checklist changes. | 15 s of the game with the time HUD and tutorial checklist changes. | 1600 x 900
 assets/img/day3/11-15-090737-milestone.jpg | 15.11. 09:07: Credits: Director's Cut section (knife slices the title), branch history and three-accounts middle cutscene run in the editor build; 148 winalt meshes… | Credits: Director's Cut section (knife slices the title), branch history and three-accounts middle… | 1600 x 900
+assets/img/day3/11-15-110657-clip.jpg | 15.11. 11:06 (still from a clip): 15 s of int-0.13.0 with the accepted outfits and loading changes. | 15 s of int-0.13.0 with the accepted outfits and loading changes. | 1600 x 900
 ```
 
 ```timeline

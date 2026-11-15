@@ -152,9 +152,11 @@ input[type="search"]::-webkit-search-cancel-button { display: none; }
 .music-now span { display: block; }
 .music.playing .music-now { animation: music-marquee 14s linear infinite; }
 @keyframes music-marquee { 0%, 12% { transform: translateX(0); } 100% { transform: translateX(calc(-50% - 1.2rem)); } }
-.music-controls { display: grid; grid-template-columns: 2.2ch 2.2ch 2.2ch 1fr; gap: 5px; align-items: center; margin-top: 3px; }
+.music-controls { display: grid; grid-template-columns: 2.2ch 2.2ch 2.2ch 2.2ch 1fr; gap: 5px; align-items: center; margin-top: 3px; }
 .music-controls button { color: var(--accent); line-height: 1; }
 .music-controls button:hover { color: var(--accent-2); }
+#music-shuffle { opacity: .45; }
+#music-shuffle[aria-pressed="true"] { opacity: 1; color: var(--accent-2); }
 .music-controls span { text-align: right; font-size: .7em; color: var(--faint); }
 .music-progress { display: block; width: 100%; height: 3px; margin: 5px 0 0; accent-color: var(--accent); }
 .music-wave { display: block; width: 100%; height: 48px; margin-top: 7px; background: color-mix(in srgb, var(--term) 68%, var(--pane)); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); image-rendering: pixelated; }
