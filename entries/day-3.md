@@ -325,6 +325,9 @@ assets/img/day3/11-15-165111-commit.jpg | 15.11. 16:51: Sed didn't match; editin
 assets/img/day3/11-15-180653-shot.jpg | 15.11. 18:06: Jennifer playtesting the Shipping package 0.14.0 (b0140); her live feedback (keyboard run 1) is fixed as she plays on b1-ui15. | Jennifer playtesting the Shipping package 0.14.0 (b0140); her live feedback (keyboard run 1) is… | 1600 x 900
 assets/img/day3/11-15-180654-clip.jpg | 15.11. 18:06 (still from a clip): 15 s of Jennifer's playtest of Shipping 0.14.0. | 15 s of Jennifer's playtest of Shipping 0.14.0. | 1600 x 900
 assets/img/day3/11-15-190653-clip.jpg | 15.11. 19:06 (still from a clip): 15 s of Jennifer's Shipping 0.14.0 playtest, now at note 81 (tutorial cards, introductions in the first talk); fixes written live on b1-ui20/21. | 15 s of Jennifer's Shipping 0.14.0 playtest, now at note 81 (tutorial cards, introductions in the… | 1600 x 900
+assets/img/day3/11-15-200652-shot.jpg | 15.11. 20:06: Playtest of Shipping 0.14.0 at note 107 (sleep until a chosen time); escort route via the gate fixed and a flatter stair merged into int-0.13.0. | Playtest of Shipping 0.14.0 at note 107 (sleep until a chosen time); escort route via the gate… | 1600 x 900
+assets/img/day3/11-15-200654-clip.jpg | 15.11. 20:06 (still from a clip): 15 s of Jennifer's playtest at note 107. | 15 s of Jennifer's playtest at note 107. | 1600 x 900
+assets/img/day3/11-15-203656-clip.jpg | 15.11. 20:36 (still from a clip): 15 s of the Shipping playtest around 0.14.1. | 15 s of the Shipping playtest around 0.14.1. | 1600 x 900
 ```
 
 ```timeline
