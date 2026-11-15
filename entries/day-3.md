@@ -299,6 +299,26 @@ assets/img/day3/11-15-110655-shot.jpg | 11:06 · Game window after the accepted 
 assets/img/day3/11-15-113702-shot.jpg | 11:37 · Game window after grass round 3 and the Megascans rocks on the island | Game window of DarkestNight | 1600 x 931
 ```
 
+## 11:40–23:00 · Shipping builds, a live playtest, and the submission
+
+```gallery
+assets/img/day3/sleep_screen.jpg | The sleep screen from the Shipping playtest: choose the hours, the dial shows when you wake. | Sleep picker with "Dormire" and wake time | 1600 x 900
+assets/img/day3/keyart_lightning.jpg | Key art built from the real opening lightning, layered for the jam page. | Logo with armillary sphere over a lightning sky | 1600 x 900
+assets/img/day3/keyart_village.jpg | The same layers over the generated concept art. | Logo with armillary sphere over a village and castle | 1600 x 900
+```
+
+The afternoon turned the integration line into real packages. The night package b0131 passed its story, credits and walk-out tests on both PCs: 78 fps average on the RTX 5090 and 56 on the RTX 3090 at 1080p. From 17:00 every package is a Shipping build, the version the jury will see. 0.14.0 and then 0.14.1 became the build I play.
+
+Then I played, and wrote notes while playing. More than 120 of them, from the start menu to the credits. The agents fixed them as they came in, on small branches merged into the next build, while the rule said no Unreal run while I play. Two of my notes, as typed:
+
+«Also die Tesselierung ist sehr heftig. Also ich würde gerne auf Mittel auch ein bisschen was rausholen … bei niedriger Safe» (The tessellation is very heavy. I'd like to get something out of Medium too … safe on Low.) Tessellation is now its own graphics setting, on from Medium.
+
+«I SEE DEBUG ON; HAVE MORE CONTROL OVER THIS MAYBE TURN OFF BY DEFAULT unless u wanted it» Debug is now off by default in the package.
+
+The opening lightning turned out to be random: angle and bolt seed changed every run, so it never struck behind the castle. It is fixed now and strikes the same way every time. That made a real key-art frame possible.
+
+The evening went into the submission. The itch page got a title splash, a story, an honest "at a glance" (this is scaffolding for a deep RPG, and gameplay is the thinnest part), features with screenshots, a UI section, a technical "under the hood" checked against the code, credits and an AI disclosure. The first upload was refused because the itch account email was not verified yet. The second run pushed 11.7 GB of b0141 with butler, so the final build can follow as a small patch.
+
 ## More captures
 
 Automatic picks from the devlog board. A script rewrites this block. The captions are condensed agent notes, not my words.
