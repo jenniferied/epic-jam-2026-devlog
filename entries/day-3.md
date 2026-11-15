@@ -280,8 +280,12 @@ Automatic picks from the devlog board. This block is rewritten by a script, and 
 <!-- devlog-picks:start -->
 
 ```gallery
-assets/img/day3/11-14-090655-clip.jpg | 14.11. 09:06 (still from a clip): 15 s of a running editor -game instance on main 0.10.1 (three game windows open for agent tests). | 15 s of a running editor -game instance on main 0.10.1 (three game windows open for agent tests). | 1600 x 931
-assets/img/day3/11-14-183700-shot.jpg | 14.11. 18:37: Game window while int-0.11.0 is merged for package 0.11.0 (not compiled yet); ACE on by default when the GPU supports it. | Game window while int-0.11.0 is merged for package 0.11.0 (not compiled yet); ACE on by default… | 1600 x 931
+assets/img/day3/11-14-232935-commit.jpg | 14.11. 23:29: Okay, es ist wieder alles zu langsam. Einfach machen, einfach machen. Nicht sich blockieren lassen, so sehr klar. Und nicht diese 1000 Tests machen, verstehst… | Okay, es ist wieder alles zu langsam. Einfach machen, einfach machen. Nicht sich blockieren… | 1600 x 900
+assets/img/day3/11-14-233155-commit.jpg | 14.11. 23:31: Beide Bilder sind in deinem Standard-Bildbetrachter geöffnet: die Körper-Seite (`corpus_page.png`) und die Inventar-Seite (`res_page.png`). | Beide Bilder sind in deinem Standard-Bildbetrachter geöffnet: die Körper-Seite (`corpus_page.png`)… | 1600 x 900
+assets/img/day3/11-15-000656-shot.jpg | 15.11. 00:06: UI-pages agent: body page mock round 3 (Jennifer's feedback on points and weight applied). | UI-pages agent: body page mock round 3 (Jennifer's feedback on points and weight applied). | 1600 x 900
+assets/img/day3/11-15-003705-shot.jpg | 15.11. 00:37: Game window during worldlevel r5 (meadow weight from slope, Nanite rock masters) on the way to 0.13.0. | Game window during worldlevel r5 (meadow weight from slope, Nanite rock masters) on the way to… | 1600 x 900
+assets/img/day3/11-15-010655-shot.jpg | 15.11. 01:06: Game window during the key-place screenshot run (17 fixed camera places) on int-0.13.0 with the start music at the logo. | Game window during the key-place screenshot run (17 fixed camera places) on int-0.13.0 with the… | 1600 x 900
+assets/img/day3/11-15-010657-clip.jpg | 15.11. 01:06 (still from a clip): 15 s of int-0.13.0 during the key-place screenshot run (title theme at the logo, larger cell, world rocks). | 15 s of int-0.13.0 during the key-place screenshot run (title theme at the logo, larger cell,… | 1600 x 900
 ```
 
 ```timeline
@@ -294,6 +298,11 @@ assets/img/day3/11-14-183700-shot.jpg | 14.11. 18:37: Game window while int-0.11
 16:10 | The male prisoner should also get one of the downloaded HQ hair styles, not only standard Creator hair; the other HD styles are to be implemented too. Plan first, then work.
 16:19 | Jennifer: one orchestrator for main, tags, world, fixes and ACE (ACE lab closes; figures and music stay separate). Goal: a solid Build 1 she can play through and one board with…
 18:36 | Two more Unreal crash reporters opened at 18:24 and 18:36; the paramcloth worktree crash (D3D12 UniformBufferRHI assertion) recurred at 17:53. Editor stability is a running cost…
+19:56 | Build 0.11.0 packaged and tagged (build-0.11.0 = d4c23ca, 10.5 GB with the first staged NVIDIA ACE models): credits after the Custos closing lines, loading loops round 4, world…
+19:57 | Package 0.11.0 built, all package tests pass, tagged build-0.11.0 on d4c23ca (int-0.11.0: hair HQ round 3, text shadows, ACE on by default when supported); first package run…
+23:36 | Unreal crash reporter at 23:30 while the worldlevel round fits world4's rocks into the story map (cause not checked).
+00:02 | Board send 14.11.2026 23:59 (27 items): story answers ST-05 to ST-08 accepted (Take 2/3/4 only; bound hands in 0.13.0 «das ist wichtig»; name Custos), castle kit CK3 needs a…
+00:10 | Biggest process lesson of the jam (Jennifer, 14.11.2026 ~24:00): «man kann ja einzelne Branches haben … aber das hat ja nichts mit der Kompilierung zu tun» / «Das muss ein…
 ```
 
 <!-- devlog-picks:end -->
