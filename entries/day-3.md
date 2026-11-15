@@ -6,22 +6,22 @@ date: 2026-11-14
 day: day 3
 phase: jam
 status: draft
-summary: Build 1 starts: an escort, a cell with two cellmates who talk back through NVIDIA ACE, a kit-built castle and end credits. Then two GPU driver hangs, a hard reboot, and a new way of working. Status so far, still running.
+summary: Build 1 starts. An escort, a cell with two cellmates who talk back through NVIDIA ACE, a kit-built castle and end credits. Then two GPU driver hangs, a hard reboot and a new way of working.
 ---
 ```recap
-**Before this entry:** Builds 0.7 to 0.9.4 from day 2. A playable island with a grey-box castle, weather routes, warmth, a sundial sleep with a light puzzle, character creation, suspicious masked guards, the final type set, one decision board instead of 68, and an ACE lab where NPCs talk back, in a separate project. The Mac build is gone.
-**What this entry covers:** Saturday 14 November from 03:56, my own cut of "day 3". It's still running, so this is the status so far, not a finished day. Highlighted text is my own messages, mostly typed in German, with the English after them. The rest is AI summary.
+**Before this entry:** Builds 0.7 to 0.9.4 from day 2. A playable island with a grey-box castle, weather, warmth, a sundial sleep puzzle, character creation, the final type set, one decision board instead of 68, and an ACE lab where NPCs talk back, in a separate project. The Mac build is gone.
+**What this entry covers:** Saturday 14 November from 03:56, my own cut of "day 3", into Sunday. Highlighted text is my own messages, mostly typed in German, with the English after them. The rest is AI summary.
 ```
 
-Day 3 is the day Build 0 stopped and Build 1 began. Build 1 is a short story you can play from start to end. By the evening there was a story skeleton from the boat to the cell to free roam, two cellmates you can talk to by voice, a castle built from a kit, and end credits. There was also a GPU that hung twice and a machine that had to be switched off by hand.
+Day 3 is where Build 0 stopped and Build 1 began. Build 1 is a short story you can play from start to end. By the evening it had a skeleton from the boat to the cell to free roam, two cellmates you can talk to by voice, a castle built from a kit, and end credits. It also had a GPU that hung twice and a machine I had to switch off by hand.
 
 ## 03:56–08:00 · A ladder of 19 steps
 
-At 03:57 an agent turned my board answers into the **Build 1 plan**: a ladder of 19 steps where the game ships after each one. The skeleton comes first. You're escorted, and if you run, the scene restarts as *Take two*. Then come cuts, the cell with two inmates, talk, a riddle, release, finding your documents, and free roam. ACE talk and polish come after that.
+At 03:57 an agent turned my board answers into the **Build 1 plan**: 19 steps, and the game ships after each one. The skeleton comes first. You are escorted, and if you run, the scene restarts as *Take two*. Then cuts, the cell with two inmates, talk, a riddle, release, your documents, free roam. ACE talk and polish come last.
 
 Build 0.9.5 was tagged at 03:59 with my sound picks, a new sprint scheme, earlier escort cuts and smoother loading. Its input and UI tests failed "as written": the tests were stale, not the game.
 
-The next hour turned into a parallel session for the world, content and credits. Eight agents ran without compiling anything: credits, licences, live loading props, the dungeon, NPC activities, music sorting, ambience and world concepts. On paper, the castle got battlemented, walkable tower tops with newel stairs, checked by script (max step 23 cm, head room at least 2.35 m). The dungeon from the round-cell concept went into Unreal as 51 meshes and 1,405 actors.
+The next hour became a parallel session for world, content and credits. Eight agents ran without compiling anything: credits, licences, live loading props, the dungeon, NPC activities, music sorting, ambience and world concepts. On paper the castle got walkable tower tops with newel stairs, checked by script (max step 23 cm, head room at least 2.35 m). The dungeon from the round-cell concept went into Unreal as 51 meshes and 1,405 actors.
 
 ```gallery
 assets/img/day3/11-14-043213-commit.jpg | 04:32 · Concept art: observatory courtyard with a great armillary at dusk, on the decision board | Night courtyard with a large armillary sphere and a robed figure | 1600 x 764
@@ -34,7 +34,7 @@ assets/img/day3/11-14-061316-imported-ue-own-eyelevel.jpg | 06:13 · Dungeon in 
 
 ## The end credits, and why they're long
 
-I wanted long, funny end credits, with the music I'd picked, that tell what the work in progress actually was:
+I wanted long, funny end credits with the music I picked, telling what the work in progress really was:
 
 > «mit viel humor dokumentieren was der wip war mit bildern, um directiors cut»
 
@@ -42,9 +42,9 @@ I wanted long, funny end credits, with the music I'd picked, that tell what the 
 
 > «of course jsut building a scaffoldinglike this ffrom scratch is a massive undertaking and wa too big a scope, but artifical intelligence made it psoisvle eprhaps we ar eon or eay to make more of ours dreams come true then oms critical sentence»
 
-The rest of that message wasn't quite a sentence, but the idea was to say how many days it took before listing everything: «sayiung before you are underwehlemd».
+The idea was to say how few days it took before listing everything: «sayiung before you are underwehlemd».
 
-By 06:34 the credits existed as a module that can be switched off. Black bars close, the logo comes, then cards, a scroll with 27 stills, a page called **The Evidence** with the numbers, a thank-you with a drawn heart, a QR code to this devlog and Funke. Hold any key for 8 seconds to skip. The first version squeezed every picture into a square, because a freshly imported texture reports a placeholder size while the editor is still compiling it.
+By 06:34 the credits were a module that can be switched off. Black bars close, the logo comes, then cards, a scroll with 27 stills, a page called **The Evidence** with the numbers, a thank-you with a drawn heart, a QR code to this devlog and Funke. Hold any key for 8 seconds to skip. The first version squeezed every picture into a square. A freshly imported texture reports a placeholder size while the editor still compiles it.
 
 ```gallery
 assets/img/day3/11-14-061915-imported-10-numbers.jpg | 06:19 · End credits "The Evidence": lines of C++, commits, agent roles and one human | Credits page listing jam statistics ending in 1 human and 1 dragon | 1600 x 900
@@ -59,13 +59,13 @@ Around 05:30 I sent a YouTube link to a drum-and-bass set played with a full orc
 
 > «ich will halt sonen bisschen science medieval vibe reinbringen und coinema und das geht aj auch über audio.»
 
-(I want to bring in a bit of a science-medieval vibe and cinema, and that works through audio too.) A local experiment made three sample-locked eight-stem sets on one exact grid for 0 USD: our own score with sampled orchestra, a programmed kit, NumPy bass. I listened and asked the question I keep asking about everything AI makes:
+(I want to bring in a bit of a science-medieval vibe and cinema, and that works through audio too.) A local experiment made three sample-locked eight-stem sets on one grid for 0 USD: our own score with a sampled orchestra, a programmed kit, NumPy bass. I listened and asked what I ask about everything AI makes:
 
 > «es ist ja wie ein rohschnitt was würde hans zimemr jetzt damit tun»
 
 (It's like a rough cut. What would Hans Zimmer do with it now?) And then «und der omponist von skyrim musik?» (and the composer of the Skyrim music?). The direction became Zimmer-like weight for cutscenes and Jeremy Soule-like stillness for exploration, blending into each other.
 
-The licensed music also left the game. The day-1 test packs (Caravan and Starry Skies) are mine, bought, but:
+The licensed music left the game too. The day-1 test packs (Caravan and Starry Skies) are bought and mine, but:
 
 > «ich habe es als inspo gentutz caravan und star sky dingsi kommen raus ich besitze sie allerdings aber is t oklay ich will ja alles als meine musik haben.»
 
@@ -78,7 +78,7 @@ assets/img/day3/11-14-195953-commit.jpg | 19:59 · Music stem mixer with wavefor
 
 ## A second PC, and a 15 m cable
 
-At 06:04 the second PC became the creation machine (*winalt*, an RTX 3090). Blender, image-to-3D, material generation and AnyScene jobs now go there over SSH, so the main machine can run Unreal. Setting it up surfaced something embarrassing. The main machine had been on Wi-Fi the whole jam, with less than one bar:
+At 06:04 the second PC became the creation machine (*winalt*, an RTX 3090). Blender, image-to-3D, material generation and AnyScene jobs go there over SSH, so the main machine can run Unreal. Setting it up showed something embarrassing: the main machine had been on Wi-Fi the whole jam, with less than one bar.
 
 > «meinst du ich habe mcih die häälfte des jams subtil ausgebremst?»
 
@@ -88,7 +88,7 @@ At 06:04 the second PC became the creation machine (*winalt*, an RTX 3090). Blen
 
 At 07:14 the first Build 1 integration ran end to end in the editor. The quest test walks from New Game to free roam with the real talk panel, the riddle, the release, the belongings room and the closing. At 07:40 I skipped the rest of Build 0: «cih kann dan einfach dirket 1 testen oder anstatt 0.9.5 oder 6» (I can just test 1 directly instead of 0.9.5 or 6), so there's no 0.9.6. From then on everything goes onto the Build 1 line as 0.10.x. Build 0.10.0 was packaged and tagged at 08:33.
 
-At 07:16 the cellmates spoke for the first time through **NVIDIA ACE**. Anselm and Mira answer free typed lines with a local 2B language model, guided by the game's topics and authored lines. By 07:43 they also spoke the answers (ACE TTS) and listened by push-to-talk (ACE ASR). The first audio comes about 0.85 s after the request. All of it runs on the player's GPU, with no server. Then I pushed to merge it right away instead of running another test round:
+At 07:16 the cellmates spoke for the first time through **NVIDIA ACE**. Anselm and Mira answer free typed lines with a local 2B language model, guided by the game's topics and authored lines. By 07:43 they also spoke the answers (ACE TTS) and listened by push-to-talk (ACE ASR). First audio comes about 0.85 s after the request. It all runs on the player's GPU, with no server. Then I asked to merge right away, not run another test round:
 
 > «hm its a bit broken bt yknow can we jhsut integrate stuff and i will test it actually i feel a llot of the tests and continuos builds are taking up a lot of time»
 
@@ -103,7 +103,7 @@ assets/img/day3/11-14-183700-shot.jpg | 18:37 · Grey-box cell: talking with fel
 
 ## 07:00–10:00 · A castle from a kit
 
-The castle kit from day 2 (a C++ house generator, modular walls, towers and gatehouses with traversal proxies for GASP) went onto the island. For the first time the view from the start shows a castle that looks like one: curtain walls, round towers, timber-frame houses with tiled roofs, terraces running down the slope. A scripted hand-play walk got stuck for 40 s in a market stall and found a 75 cm ledge in a lane. The last run made it through 107 of 107 waypoints in 96 s.
+The castle kit from day 2 (a C++ house generator, modular walls, towers and gatehouses with traversal proxies for GASP) went onto the island. For the first time the view from the start shows a castle that looks like one: curtain walls, round towers, timber-frame houses with tiled roofs, terraces down the slope. A scripted walk got stuck for 40 s in a market stall and found a 75 cm ledge in a lane. The last run passed 107 of 107 waypoints in 96 s.
 
 ```gallery
 assets/img/day3/11-14-075316-imported-g3-first-view.jpg | 07:53 · First view in L_World_Island: the player faces the castle on the hill | MetaHuman standing on a hill looking at a castle across the bay | 1600 x 900
@@ -116,17 +116,17 @@ assets/img/day3/11-14-093232-imported-r2-road.jpg | 09:32 · The graded road up 
 assets/img/day3/11-14-090655-clip.jpg | 09:06 · Brass armillary sphere glowing on a wooden table, loading-screen loop (still from a clip) | Brass armillary sphere on a dark wooden table in warm light | 1600 x 931
 ```
 
-I liked a lot of it, and said so on the board in the evening: «Das ist jetzt alles sehr interessant, also super.» (This is all very interesting now, so great.) I didn't like all of it. The rocks were still open at the bottom: «Ich habe schon mehrfach gesagt, dass diese Steine dieses Problem haben … Das geht gar nicht.» (I've said several times that these stones have this problem … that's not acceptable.) The bailey ground texture was «schrecklich» (terrible). And for the whole island: «Es muss next level werden jetzt.» (It has to go next level now.) The props didn't get away either: «momentan ist alles sehr generisch» (right now everything is very generic).
+I liked a lot of it and said so on the board that evening: «Das ist jetzt alles sehr interessant, also super.» (This is all very interesting now, so great.) I didn't like all of it. The rocks were still open at the bottom: «Ich habe schon mehrfach gesagt, dass diese Steine dieses Problem haben … Das geht gar nicht.» (I've said several times that these stones have this problem … that's not acceptable.) The bailey ground texture was «schrecklich» (terrible). And for the whole island: «Es muss next level werden jetzt.» (It has to go next level now.) The props didn't get away either: «momentan ist alles sehr generisch» (right now everything is very generic).
 
 ## Faces, hair, masks and clothes
 
-The characters ran in their own session all day. HQ strand hair goes only to the main characters: Mira gets a braid, Anselm a messy bun, and the player a ponytail or slick ponytail when the mask comes off, with a scraggly beard visible under the mask on the male player. Everyone else gets card hair. Masks were fitted per head, PBRgen made fabric and stone materials on the second machine, and a cast line-up level started that always shows every character.
+The characters ran in their own session all day. HQ strand hair goes only to the main characters: Mira gets a braid, Anselm a messy bun, the player a ponytail or slick ponytail once the mask comes off, plus a scraggly beard on the male player. Everyone else gets card hair. Masks were fitted per head. PBRgen made fabric and stone materials on the second machine. A cast line-up level now always shows every character.
 
-Clothing is the hard part, and earlier in the day I had parked it with a typed sigh:
+Clothing is the hard part. Earlier in the day I had parked it with a typed sigh:
 
 > «sehr brken da mache ich später prio sit es, kleidung zu erstellen die passt … das cape funktioneirt noch am besten teilweise … save this aprt for later»
 
-(Very broken. I'll prioritise it later, making clothes that fit … the cape works best, partly … save this part for later.) By the evening the plan was minimum first: every NPC in the world at least wears shoes and hose, and one simple medieval shirt gets authored on Epic's example bodies and then resized.
+(Very broken. I'll prioritise it later, making clothes that fit … the cape works best, partly … save this part for later.) By the evening the plan was minimum first: every NPC wears at least shoes and hose, and one simple medieval shirt is authored on Epic's example bodies and then resized.
 
 ```gallery
 assets/img/day3/11-14-081046-commit.jpg | 08:10 · Fab garments fitted on walking MetaHumans | Board with MetaHumans in fitted shirts and trousers, walking | 1600 x 764
@@ -139,11 +139,11 @@ assets/img/day3/11-14-205516-commit.jpg | 20:55 · Masked player faces: leather 
 
 ## 15:30–17:30 · Seeing, not orchestrating
 
-When I came back in the afternoon, the thing that bothered me most wasn't a bug. It was how we worked:
+When I came back in the afternoon, what bothered me most was not a bug. It was how we worked:
 
 > «Die Regel, packe nicht so oft, wenig Branches, Bundle fixes, teste im Brwoser und nicht zu viel Tests immer nur spezifische, wird die verwendet und sparen wir Zeit? Es kommt mir immennoch etwas lang…»
 
-(The rule: package less often, few branches, bundle fixes, test in the browser, not too many tests, only specific ones. Is it being used, and are we saving time? It still feels a bit long to me.) It led to a longer conversation, and some of what I said there is now the header of our rules file:
+(The rule: package less often, few branches, bundle fixes, test in the browser, not too many tests, only specific ones. Is it being used, and are we saving time? It still feels a bit long to me.) That led to a longer conversation. Some of what I said there is now the top of our rules file:
 
 >> «ich will Sachen sehen, validieren und nicht mehr so viel orchestrieren selber»
 >> «es soll alles heute angestoßen werden … ich brauche schnell Ergebnisse und große Sprünge»
@@ -152,21 +152,21 @@ When I came back in the afternoon, the thing that bothered me most wasn't a bug.
 
 (I want to see things and validate them, not orchestrate so much myself. Everything should get started today, I need fast results and big leaps. The tests have to get leaner. When I see these Python tests, everything is tested a hundred times, and I've said that so often. I don't want to repeat myself, but I also don't want old decisions to get overwritten after all.) And, in the same conversation: «Der Jam bedeutet mir viel.» (The jam means a lot to me.)
 
-So the setup changed. There is one orchestrator for main, tags, world, fixes and ACE, and separate sessions only for characters and music. There are few work packages, each with one higher-level agent doing 1 to 20 tasks. Fixes go onto one shared fix branch per round. One test pass per package, only for what changed, in the editor. `AGENTS.md` was cut down to that, and a handover skill now lets a new orchestrator pick up running work.
+So the setup changed. One orchestrator owns main, tags, world, fixes and ACE. Characters and music keep their own sessions. Few work packages, each with one higher-level agent doing 1 to 20 tasks. One shared fix branch per round. One test pass per package, only for what changed, in the editor. `AGENTS.md` was cut down to that, and a handover skill lets a new orchestrator pick up running work.
 
-Two smaller decisions from the same hour that I like. Narration lines should vary: «mal länger mal kürzer ist doch realistischer» (sometimes longer, sometimes shorter is more realistic). And the loading screens become live scenes that the player can nudge with the keys, not videos: «Es soll ja kein Render mehr sein.» (It's not meant to be a render anymore.)
+Two smaller decisions from the same hour. Narration lines should vary: «mal länger mal kürzer ist doch realistischer» (sometimes longer, sometimes shorter is more realistic). And the loading screens become live scenes that the player can nudge with the keys, not videos: «Es soll ja kein Render mehr sein.» (It's not meant to be a render anymore.)
 
 ## Setback: the GPU gives up, twice
 
-Editor crashes had been a running cost since morning: a world-memory-leak assertion at 07:35, then a D3D12 uniform-buffer assertion in the clothing worktree at 16:49 that came back at 17:53, plus crash reporters at 17:03, 18:24, 18:36, 20:02, 20:05, 21:05 and 22:32.
+Editor crashes had been a running cost since morning: a world-memory-leak assertion at 07:35, a D3D12 uniform-buffer assertion in the clothing worktree at 16:49 and again at 17:53, and crash reporters at 17:03, 18:24, 18:36, 20:02, 20:05, 21:05 and 22:32.
 
-At 19:23 the GPU driver itself hung (nvlddmkm error 153, a timeout detection and recovery). At that moment a hair test game, the clothing editor and a package smoke test on the full island were all running on the GPU. The sessions saved their state and the Mac session killed the processes over SSH. My reaction at 19:51 was mostly impatience:
+At 19:23 the GPU driver itself hung (nvlddmkm error 153, a timeout detection and recovery). A hair test game, the clothing editor and a package smoke test on the full island were all on the GPU at that moment. The sessions saved their state and the Mac session killed the processes over SSH. At 19:51 I was mostly impatient:
 
 > «Okay, lass das gleich machen. Mir ist jetzt wichtig, dass wir weitermachen.»
 
-(Okay, let's do that in a moment. What matters to me now is that we keep going.) The rule after the first hang was that package and smoke tests run alone on the GPU. At 21:23 it hung again, with my editor plus one story test on the island. At 21:42 the main machine had to be switched off by hand, and every agent session stalled from about 21:24. The rule now is strict: at most one Unreal process on the GPU of the main machine at a time, and my own editor counts.
+(Okay, let's do that in a moment. What matters to me now is that we keep going.) After the first hang, package and smoke tests ran alone on the GPU. At 21:23 it hung again, with my editor plus one story test on the island. At 21:42 I had to switch the main machine off by hand. Every agent session stalled from about 21:24. The rule became strict: one Unreal process at a time on the main GPU, and my own editor counts.
 
-The other limit hit around the same time: the Git LFS budget for the repo was used up, so agents now commit no LFS-tracked files until that's sorted out. And a small one, from 23:00, when an agent kept stopping at confirmation prompts for file deletions while I wanted to sleep: «Diese Remove Operations geht, wenn ich jetzt schlafen gehe, dann ist das schwierig.» (These remove operations, if I go to sleep now, that's difficult.) Agents now don't delete, and never wait on a prompt while I'm away.
+Another limit hit around then: the Git LFS budget was used up, so agents commit no LFS-tracked files until it is sorted. And from 23:00, when an agent kept stopping at prompts for file deletions while I wanted to sleep: «Diese Remove Operations geht, wenn ich jetzt schlafen gehe, dann ist das schwierig.» (These remove operations, if I go to sleep now, that's difficult.) Agents now don't delete, and never wait on a prompt while I'm away.
 
 ```gallery
 assets/img/day3/11-14-210652-setback.jpg | 21:06 · Fitting test in the editor: a crowd of MetaHumans in purchased garments and capes. Captured at 21:06; the second GPU hang came at 21:23 | Unreal editor with dozens of MetaHumans in robes and capes | 1600 x 900
@@ -175,9 +175,9 @@ assets/img/day3/11-14-200657-clip.jpg | 20:06 · Props concept board: fireplace,
 
 ## The evening so far
 
-Build 0.11.0 was packaged and tagged at 19:56, the first package under the one-GPU rule. It has credits after Custos's closing lines, loading loops round 4, world maps, fix round 1, HQ hair, and ACE on by default when the GPU supports it. It's 10.5 GB, because it stages the first NVIDIA ACE models. All its package tests passed. Build 0.12.0 started integrating at 22:29.
+Build 0.11.0 was packaged and tagged at 19:56, the first package under the one-GPU rule. It has credits after Custos's closing lines, loading loops round 4, world maps, fix round 1, HQ hair, and ACE on by default when the GPU supports it. It is 10.5 GB because it stages the first NVIDIA ACE models. All package tests passed. Build 0.12.0 started integrating at 22:29.
 
-The board also kept moving. I freed my Tripo credits on the second machine for the agents («Kann damit machen, was es will.», it can do whatever it wants with them). I allowed fal for concept art («Nutze doch fal, warum nicht?», just use fal, why not?) with moderate caps per round. I asked for less famous classical pieces as the basis for the music experiment. And I sketched the body page I want for the bio-levelling: a translucent figure of your own MetaHuman in a Vitruvian pose, with the light and dark orbs and the stats, unlocked in the cell.
+The board kept moving. I freed my Tripo credits on the second machine for the agents («Kann damit machen, was es will.», it can do whatever it wants with them). I allowed fal for concept art («Nutze doch fal, warum nicht?», just use fal, why not?) with moderate caps per round. I asked for less famous classical pieces as the base of the music experiment. And I sketched the body page for the bio-levelling: a translucent figure of your own MetaHuman in a Vitruvian pose, with the light and dark orbs and the stats, unlocked in the cell.
 
 ## Timeline so far
 
@@ -225,7 +225,7 @@ Package: in progress
 
 ## Soundtrack, now in four albums
 
-The sidebar player grew from 12 to 39 tracks, grouped into four albums. Everything on it is either an own score (written as Python, rendered locally with Sonatina Symphonic Orchestra samples) or generated through fal with a commercial licence (Stable Audio 3, Lyria 3.5, ElevenLabs Music, ACE-Step); the licensed packs I used as inspiration are not on it. Long ambient beds are cut to three minutes with a fade. A few of the new ones:
+The sidebar player grew from 12 to 39 tracks in four albums. Each track is either an own score (written as Python, rendered locally with Sonatina Symphonic Orchestra samples) or generated through fal with a commercial licence (Stable Audio 3, Lyria 3.5, ElevenLabs Music, ACE-Step). The licensed packs I used as inspiration are not on it. Long ambient beds are cut to three minutes with a fade. A few of the new ones:
 
 ```tracks
 assets/audio/mus-title-orch-silver.mp3 | Silver Overture (Title Nightcore Orchestral) | 3:00
@@ -239,21 +239,21 @@ assets/audio/mus-dnb-gezeiten.mp3 | Gezeiten Journey (Own Score, Cutscene Arc) |
 
 ## 23:45 · The build method that cost us hours
 
-Late in the evening I asked for Build 0.13.0 with everything in it, and I asked for it fast:
+Late in the evening I asked for Build 0.13.0 with everything in it, fast:
 
 > «Und mach es so schnell wie möglich. Also ohne zwölf Millionen Tests, lass es mich doch zuerst testen.»
 
-(And make it as fast as possible. So without twelve million tests, let me test it first.) Then the orchestrator explained why a round took three to five hours. Every work package had its own branch in its own worktree, and every worktree compiled the C++ game code for itself. Each worktree has its own intermediate files, so every fresh worktree or branch switch meant a rebuild. And all of those builds stood in one machine-wide queue, because Unreal's build tool runs only once at a time. On top of that came test rounds per package and a package cooked from zero each time. At 00:03 I asked about cooking (the dictation wrote «guckt», "looks", where I said «kocht», "cooks"):
+(And make it as fast as possible. So without twelve million tests, let me test it first.) Then the orchestrator explained why a round took three to five hours. Every work package had its own branch in its own worktree, and every worktree compiled the C++ game code for itself. Each worktree keeps its own intermediate files, so every fresh worktree or branch switch meant a rebuild. All those builds stood in one machine-wide queue, because Unreal's build tool runs only once at a time. On top came test rounds per package and a package cooked from zero each time. At 00:03 I asked about cooking (the dictation wrote «guckt», "looks", where I said «kocht», "cooks"):
 
 > «Wenn man guckt, wird alles neu geguckt oder nur das, was neu ist? … Also wenn ich jetzt ein 200 GB Spiel habe und 30 Leute dran arbeiten jedes Mal, wenn ein Change ist, cooken die das?»
 
-(When you cook, is everything cooked again or only what's new? … If I had a 200 GB game and 30 people working on it, would they cook it every time there's a change?) No, they don't. Big teams work uncooked in the editor and cook incrementally on build machines. And the same goes for code: branches and merging are one thing, compiling is another. You compile in one place, and there an incremental build of our code takes about 38 seconds.
+(When you cook, is everything cooked again or only what's new? … If I had a 200 GB game and 30 people working on it, would they cook it every time there's a change?) No. Big teams work uncooked in the editor and cook incrementally on build machines. Code is the same: branches and merging are one thing, compiling is another. You compile in one place, and there an incremental build of our code takes about 38 seconds.
 
 > «Ach du meine Güte. Ja, oh mein Gott. … Oh mein Gott, das hättest du von Anfang an catchen müssen.»
 
-(Oh my goodness. Yes, oh my God. … Oh my God, you should have caught that from the start.) The orchestrator's answer, in short: the rules said one branch and one worktree per package, and each package was to be delivered compiled. That was set up for safety, not speed. My "faster" had only been written down as "fewer tests", never as "compile in one place". Every new orchestrator session reads the rule files, not what I said in a conversation, so it repeated the mistake, and it should have caught it at the start. Since 00:05 the rule is in `AGENTS.md`: game code is compiled only in the integration worktree, packages hand in code unbuilt, tests run once at the end, and the cook is iterative (`-iterate`).
+(Oh my goodness. Yes, oh my God. … Oh my God, you should have caught that from the start.) The orchestrator's answer, in short: the rules said one branch and one worktree per package, each delivered compiled. That was set up for safety, not speed. My "faster" had only been written down as "fewer tests", never as "compile in one place". A new orchestrator session reads the rule files, not what I said in a conversation, so it repeated the mistake. Since 00:05 the rule is in `AGENTS.md`: game code is compiled only in the integration worktree, packages hand in code unbuilt, tests run once at the end, and the cook is iterative (`-iterate`).
 
-I'm very, very frustrated about this. Here is how I said it to the devlog session, dictated (the dictation heard «Bildlänge», "image length", for build length, and «Szenen», "scenes", probably for «Skandal», scandal):
+I am very, very frustrated about this. This is how I said it to the devlog session, dictated (the dictation heard «Bildlänge», "image length", for build length, and «Szenen», "scenes", probably for «Skandal», scandal):
 
 > «Ich geh auf jeden Fall rein, dass ich sehr, sehr frustriert bin über die Bildlänge»
 
@@ -263,11 +263,11 @@ I'm very, very frustrated about this. Here is how I said it to the devlog sessio
 
 > «Jetzt eine geskriptete Kalkulation, wie viel Zeit wir verschwendet haben mit der Methode und wie viel wir jetzt voraussichtlich dann sparen.»
 
-(Now a scripted calculation of how much time we wasted with the method, and how much we'll probably save now.) The script reads every build, test and package log that's on disk from 12 November 06:00 to the change at 23:45.
+(Now a scripted calculation of how much time we wasted with the method, and how much we'll probably save now.) The script reads every build, test and package log on disk from 12 November 06:00 to the change at 23:45.
 
 **Measured:** 444 builds of the game code in 52 worktrees, 62 of them first builds in a fresh worktree. Only 8.7 hours of it was actual compiling. The waiting in the build queue was at least 14.4 hours, summed over all agents (the longest single wait was 2.5 hours). The tests were the biggest item: 970 test runs, 24.9 hours. Packaging took 5.4 hours, of which cooking was only 1.5. So cooking from zero cost us little. The waiting and the endless tests cost us a lot.
 
-**Estimated:** 42 to 50 hours of machine time were spent on work the new method doesn't need. Because agents worked in parallel, the delay to the builds I could play is smaller: 8 to 20 hours, most likely about 13. The new method should save 30 to 80 minutes per build round, most likely about 55. A typical round of 3.3 hours becomes 2 to 3 hours. That's 1.2 to 1.5 times faster, not the 2 to 3 times the orchestrator guessed that night, because most of a round is the agents' actual work. Iterative cooking isn't measured yet.
+**Estimated:** 42 to 50 hours of machine time went into work the new method does not need. Agents worked in parallel, so the delay to builds I could play is smaller: 8 to 20 hours, most likely about 13. The new method should save 30 to 80 minutes per build round, most likely about 55. A typical round of 3.3 hours becomes 2 to 3 hours. That is 1.2 to 1.5 times faster, not the 2 to 3 times the orchestrator guessed that night, because most of a round is the agents' real work. Iterative cooking is not measured yet.
 
 ```gallery
 assets/img/day3/build-time-audit.png | Per build round: the time as it ran (left bar) and the same round with one integration build, tests once and an iterative cook (right bar). Right: cumulative hours lost until the change at 23:45, likely line and low-high band. Script: tools/devlog/build_time_audit.py in the jam repo | Stacked bar chart of 14 build rounds with a cumulative line rising to about 13 hours | 1600 x 1000
@@ -275,21 +275,21 @@ assets/img/day3/build-time-audit.png | Per build round: the time as it ran (left
 
 ## 00:30–11:40 · The night shift: one line, one map, clothes on everyone
 
-After the build-time lesson the night did not stop; it changed shape. Game code is now merged continuously onto one integration branch and compiled only there, incrementally. Jennifer pushed the same idea one step further at 01:40:
+After the build-time lesson the night went on in a new shape. Game code is merged continuously onto one integration branch and compiled only there, incrementally. At 01:40 I pushed the idea one step further:
 
 «WARUM TESTEN WIR NICHT IM EDITOR EINFACH, WARUM IMMER BUILD … 20 MINUTEN SIND ZU VIEL … MAN KANN DOCH EXTREMST VIEL ERSTMAL IM EDITOR TESTEN» (Why don't we just test in the editor, why always a build … 20 minutes is too much … you can test an awful lot in the editor first.)
 
-So the integrated state is now played uncooked from the editor through a desktop shortcut, and packages are made only on her word. A few hours later the GPU rules from the driver hangs went too: «Nur wenn ein krasser Prozess startet, checkt er die GPU-Werte. Sonst einfach machen.» (Only when a heavy process starts, check the GPU values. Otherwise just do it.)
+So the integrated state is now played uncooked from the editor through a desktop shortcut, and packages are made only on my word. A few hours later the GPU rules from the driver hangs went too: «Nur wenn ein krasser Prozess startet, checkt er die GPU-Werte. Sonst einfach machen.» (Only when a heavy process starts, check the GPU values. Otherwise just do it.)
 
-**Two orchestrators instead of a crowd.** The work was reorganised around owners: a game orchestrator for code, fixes, UI, story and integration, and a content factory on the second PC for Blender, props, the castle kit and maps. Every card on the one board now carries an owner badge and goes to that role's inbox, and board sends are worked "rapid fire", so they are done by the time she finishes the board. The rule that matters most to her is that the orchestrator does the work itself and hands off only what is truly independent, because every hand-off loses her words.
+**Two orchestrators instead of a crowd.** Work is organised around owners: a game orchestrator for code, fixes, UI, story and integration, and a content factory on the second PC for Blender, props, the castle kit and maps. Every card on the one board carries an owner badge and goes to that role's inbox. Board sends are worked "rapid fire", so they are done by the time I finish the board. The rule that matters most to me: the orchestrator does the work itself and hands off only what is truly independent, because every hand-off loses my words.
 
-**3D work gets a quality loop.** «du musst halt auch beurteilen können, ob die gut sind und dann so eine Schleife machen … Du brauchst mehr Polygone, du musst mehr Aktionen ausführen … Bevels, Details, richtige Thicknesses» (You have to be able to judge whether they are good and then loop … You need more polygons, more operations … bevels, details, real thicknesses.) Since then every mesh goes through references, review renders, a scored checklist and at least two improvement rounds before she sees it. And after a shirt was modelled by the wrong model: «Warum macht gerade Sonnet ein T-Shirt? Das geht gar nicht. Fable muss ein Shirt modellieren.» (Why is Sonnet making a T-shirt right now? That won't do. Fable has to model a shirt.)
+**3D work gets a quality loop.** «du musst halt auch beurteilen können, ob die gut sind und dann so eine Schleife machen … Du brauchst mehr Polygone, du musst mehr Aktionen ausführen … Bevels, Details, richtige Thicknesses» (You have to be able to judge whether they are good and then loop … You need more polygons, more operations … bevels, details, real thicknesses.) Since then every mesh goes through references, review renders, a scored checklist and at least two improvement rounds before I see it. And after a shirt was modelled by the wrong model: «Warum macht gerade Sonnet ein T-Shirt? Das geht gar nicht. Fable muss ein Shirt modellieren.» (Why is Sonnet making a T-shirt right now? That won't do. Fable has to model a shirt.)
 
-**Clothes on everyone.** The basic shirt went through three simulated rounds (looser at the seat, band and gathered collars, ties, a belt variant) until «die Shirts sind gut» (the shirts are good). Shirt v3b now runs in Unreal as a two-size parametric outfit on all 19 bodies, with hose, loafers, helmets and hats, and the cast wears its outfits in the game. Jennifer fitted the hood over the closed muzzle cage herself in a live Blender session, and the cuffs and rope for the escort were split left and right so she could fit them in the editor: «omg amazing model».
+**Clothes on everyone.** The basic shirt went through three simulated rounds (looser at the seat, band and gathered collars, ties, a belt variant) until «die Shirts sind gut» (the shirts are good). Shirt v3b now runs in Unreal as a two-size parametric outfit on all 19 bodies, with hose, loafers, helmets and hats. I fitted the hood over the closed muzzle cage myself in a live Blender session. The cuffs and rope for the escort were split left and right so I could fit them in the editor: «omg amazing model».
 
-**One map.** The castle built from the kit now stands on the story island L_Island as an always-loaded sublevel, with grass outside the bailey and none inside. Grass got a third round (bigger, bushier, a quarter less, no cards near the camera) and the island got Megascans rock sets.
+**One map.** The kit castle now stands on the story island L_Island as an always-loaded sublevel, with grass outside the bailey and none inside. Grass got a third round (bigger, bushier, a quarter less, no cards near the camera). The island got Megascans rock sets.
 
-**The rest of the night**, in short: eyes with glow and five pupil shapes as their own choice, Mira with a very pale skin tone, a time HUD with a transparent sundial face, a tutorial checklist whose rows disappear once done, the start music at the logo timed so the drop lands about ten seconds after the logo appears, credits with a section on everything made with AI (generated versus used, counted by a script) and the whole branch history drawn as a scrolling chart, and a gameplay video cut taking shape. The editor crashed many times along the way; most crash reports were simply closed and work went on.
+**The rest of the night**, in short: eyes with glow and five pupil shapes as their own choice, Mira with a very pale skin tone, a time HUD with a transparent sundial face, a tutorial checklist whose rows disappear once done, the start music timed so the drop lands about ten seconds after the logo, credits with a section on everything made with AI (generated versus used, counted by a script) and the whole branch history as a scrolling chart, and a gameplay video cut taking shape. The editor crashed many times. Most crash reports were closed and work went on.
 
 ```gallery
 assets/img/day3/11-15-043654-shot.jpg | 04:36 · Game window during the clothing follow-up and the NPC line-up | Game window of DarkestNight on the integration build | 1600 x 900
@@ -301,7 +301,7 @@ assets/img/day3/11-15-113702-shot.jpg | 11:37 · Game window after grass round 3
 
 ## More captures
 
-Automatic picks from the devlog board. This block is rewritten by a script, and its captions are condensed agent notes, not my words.
+Automatic picks from the devlog board. A script rewrites this block. The captions are condensed agent notes, not my words.
 
 <!-- devlog-picks:start -->
 

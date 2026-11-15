@@ -5,7 +5,7 @@
   <link href="https://jenniferied.github.io/epic-jam-2026-devlog/"/>
   <link rel="self" href="https://jenniferied.github.io/epic-jam-2026-devlog/feed.xml"/>
   <id>https://jenniferied.github.io/epic-jam-2026-devlog/</id>
-  <updated>2026-11-15T18:07:19Z</updated>
+  <updated>2026-11-15T20:33:06Z</updated>
   <author><name>Jennifer</name></author>
   <entry>
     <title>builds.log</title>
@@ -19,14 +19,14 @@
     <link href="https://jenniferied.github.io/epic-jam-2026-devlog/#/day-2"/>
     <id>https://jenniferied.github.io/epic-jam-2026-devlog/#/day-2</id>
     <updated>2026-11-13T12:00:00+01:00</updated>
-    <summary>Five more packaged builds turned the prototype into a dense playable system. Day 2 also became a test of how to make decisions when agents, branches and review boards move faster than one person can absorb them.</summary>
+    <summary>Five more packaged builds turned the prototype into a dense playable system. Day 2 also became a test of how to decide when agents, branches and boards move faster than one person can read.</summary>
   </entry>
   <entry>
     <title>day-1.log: build the smallest world</title>
     <link href="https://jenniferied.github.io/epic-jam-2026-devlog/#/day-1"/>
     <id>https://jenniferied.github.io/epic-jam-2026-devlog/#/day-1</id>
     <updated>2026-11-12T12:00:00+01:00</updated>
-    <summary>At 06:00 there was no game. Eighteen hours later there was a tested UE 5.8 build ladder, an island, NPCs, time and weather, five parallel creative tracks, and a very honest list of what was still broken.</summary>
+    <summary>At 06:00 there was no game. Eighteen hours later there was a tested UE 5.8 build ladder, an island, NPCs, time and weather, and an honest list of what was still broken.</summary>
   </entry>
   <entry>
     <title>push_pull.md: inspiration, not a plan</title>

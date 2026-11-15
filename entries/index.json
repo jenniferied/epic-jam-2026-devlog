@@ -43,7 +43,7 @@
    "day": "day 1",
    "phase": "jam",
    "status": "live",
-   "summary": "At 06:00 there was no game. Eighteen hours later there was a tested UE 5.8 build ladder, an island, NPCs, time and weather, five parallel creative tracks, and a very honest list of what was still broken.",
+   "summary": "At 06:00 there was no game. Eighteen hours later there was a tested UE 5.8 build ladder, an island, NPCs, time and weather, and an honest list of what was still broken.",
    "cover": "assets/img/day-1-cover-split-final.jpg",
    "cover_alt": "Split image with the early UE third-person template movement test on the left and the first populated jam island iteration on the right",
    "file": "day-1.md"
@@ -55,7 +55,7 @@
    "day": "day 2",
    "phase": "jam",
    "status": "live",
-   "summary": "Five more packaged builds turned the prototype into a dense playable system. Day 2 also became a test of how to make decisions when agents, branches and review boards move faster than one person can absorb them.",
+   "summary": "Five more packaged builds turned the prototype into a dense playable system. Day 2 also became a test of how to decide when agents, branches and boards move faster than one person can read.",
    "cover": "assets/img/day-2-cover.webp",
    "cover_alt": "Three-part view of the Day 2 prototype world, a film-print look comparison and the expanding castle approach",
    "file": "day-2.md"
@@ -67,7 +67,7 @@
    "day": "day 3",
    "phase": "jam",
    "status": "draft",
-   "summary": "Build 1 starts: an escort, a cell with two cellmates who talk back through NVIDIA ACE, a kit-built castle and end credits. Then two GPU driver hangs, a hard reboot, and a new way of working. Status so far, still running.",
+   "summary": "Build 1 starts. An escort, a cell with two cellmates who talk back through NVIDIA ACE, a kit-built castle and end credits. Then two GPU driver hangs, a hard reboot and a new way of working.",
    "file": "day-3.md"
   },
   {
@@ -86,7 +86,7 @@
    "day": "post",
    "phase": "post",
    "status": "draft",
-   "summary": "What four days of solo jamming with a crowd of AI agents taught me.",
+   "summary": "What four days of solo jamming with a crowd of AI agents produced, what was cut, and what I would change.",
    "file": "post-mortem.md"
   },
   {
