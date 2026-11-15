@@ -317,6 +317,8 @@ assets/img/day3/11-15-080319-milestone.jpg | 15.11. 08:03: Shirt v3 round 3 is i
 assets/img/day3/11-15-083708-clip.jpg | 15.11. 08:37 (still from a clip): 15 s of the game with the time HUD and tutorial checklist changes. | 15 s of the game with the time HUD and tutorial checklist changes. | 1600 x 900
 assets/img/day3/11-15-090737-milestone.jpg | 15.11. 09:07: Credits: Director's Cut section (knife slices the title), branch history and three-accounts middle cutscene run in the editor build; 148 winalt meshes… | Credits: Director's Cut section (knife slices the title), branch history and three-accounts middle… | 1600 x 900
 assets/img/day3/11-15-110657-clip.jpg | 15.11. 11:06 (still from a clip): 15 s of int-0.13.0 with the accepted outfits and loading changes. | 15 s of int-0.13.0 with the accepted outfits and loading changes. | 1600 x 900
+assets/img/day3/11-15-130653-shot.jpg | 15.11. 13:06: Game window on int-0.13.0 after cell round 5/6 (bevelled floor plates, gallery arcade), photo mode key hint and the guard hall dressed with fewer lights. | Game window on int-0.13.0 after cell round 5/6 (bevelled floor plates, gallery arcade), photo mode… | 1600 x 900
+assets/img/day3/11-15-130655-clip.jpg | 15.11. 13:06 (still from a clip): 15 s of int-0.13.0 with the reworked cell and the grass round 3 merge. | 15 s of int-0.13.0 with the reworked cell and the grass round 3 merge. | 1600 x 900
 ```
 
 ```timeline
