@@ -319,6 +319,8 @@ assets/img/day3/11-15-090737-milestone.jpg | 15.11. 09:07: Credits: Director's C
 assets/img/day3/11-15-110657-clip.jpg | 15.11. 11:06 (still from a clip): 15 s of int-0.13.0 with the accepted outfits and loading changes. | 15 s of int-0.13.0 with the accepted outfits and loading changes. | 1600 x 900
 assets/img/day3/11-15-130653-shot.jpg | 15.11. 13:06: Game window on int-0.13.0 after cell round 5/6 (bevelled floor plates, gallery arcade), photo mode key hint and the guard hall dressed with fewer lights. | Game window on int-0.13.0 after cell round 5/6 (bevelled floor plates, gallery arcade), photo mode… | 1600 x 900
 assets/img/day3/11-15-130655-clip.jpg | 15.11. 13:06 (still from a clip): 15 s of int-0.13.0 with the reworked cell and the grass round 3 merge. | 15 s of int-0.13.0 with the reworked cell and the grass round 3 merge. | 1600 x 900
+assets/img/day3/11-15-140657-clip.jpg | 15.11. 14:06 (still from a clip): 15 s of int-0.13.0 with the temperature layer; package tests fixed after a self-test on the 0.13.0 package. | 15 s of int-0.13.0 with the temperature layer; package tests fixed after a self-test on the 0.13.0… | 1600 x 900
+assets/img/day3/11-15-143653-clip.jpg | 15.11. 14:36 (still from a clip): 15 s of the packaged 0.13.0 test run before the night package. | 15 s of the packaged 0.13.0 test run before the night package. | 1600 x 900
 ```
 
 ```timeline
