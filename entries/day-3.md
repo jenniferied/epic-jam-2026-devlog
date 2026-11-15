@@ -282,15 +282,13 @@ Automatic picks from the devlog board. This block is rewritten by a script, and 
 ```gallery
 assets/img/day3/11-14-232935-commit.jpg | 14.11. 23:29: Okay, es ist wieder alles zu langsam. Einfach machen, einfach machen. Nicht sich blockieren lassen, so sehr klar. Und nicht diese 1000 Tests machen, verstehst… | Okay, es ist wieder alles zu langsam. Einfach machen, einfach machen. Nicht sich blockieren… | 1600 x 900
 assets/img/day3/11-14-233155-commit.jpg | 14.11. 23:31: Beide Bilder sind in deinem Standard-Bildbetrachter geöffnet: die Körper-Seite (`corpus_page.png`) und die Inventar-Seite (`res_page.png`). | Beide Bilder sind in deinem Standard-Bildbetrachter geöffnet: die Körper-Seite (`corpus_page.png`)… | 1600 x 900
-assets/img/day3/11-15-000656-shot.jpg | 15.11. 00:06: UI-pages agent: body page mock round 3 (Jennifer's feedback on points and weight applied). | UI-pages agent: body page mock round 3 (Jennifer's feedback on points and weight applied). | 1600 x 900
 assets/img/day3/11-15-003705-shot.jpg | 15.11. 00:37: Game window during worldlevel r5 (meadow weight from slope, Nanite rock masters) on the way to 0.13.0. | Game window during worldlevel r5 (meadow weight from slope, Nanite rock masters) on the way to… | 1600 x 900
 assets/img/day3/11-15-010655-shot.jpg | 15.11. 01:06: Game window during the key-place screenshot run (17 fixed camera places) on int-0.13.0 with the start music at the logo. | Game window during the key-place screenshot run (17 fixed camera places) on int-0.13.0 with the… | 1600 x 900
 assets/img/day3/11-15-010657-clip.jpg | 15.11. 01:06 (still from a clip): 15 s of int-0.13.0 during the key-place screenshot run (title theme at the logo, larger cell, world rocks). | 15 s of int-0.13.0 during the key-place screenshot run (title theme at the logo, larger cell,… | 1600 x 900
+assets/img/day3/11-15-013653-shot.jpg | 15.11. 01:36: Game window while fix6 lands: story score cues behind DN.Story.ScoreCues and a daily cap on ACE free talk (12 replies per character per day, then a tired line). | Game window while fix6 lands: story score cues behind DN.Story.ScoreCues and a daily cap on ACE… | 1600 x 900
 ```
 
 ```timeline
-03:57 | Build 1 plan written from Jennifer's board answers (cards B-01..D-01): a ladder of 19 steps where the game ships after each one, skeleton first (escort with Take two, cuts, cell…
-03:58 | b095-fixes round 2 (editor -game): earlier escort cuts, A-hold sprint scheme with L3 / double-Alt lock, ray crosshair, glyph hints and glyph grid, gliding lozenge selector,…
 03:58 | Agent decisions (b095, to confirm): new sprint scheme puts sneak on LB and lets A tap prefer interaction over jumping; deny/rustle/value-change levels set by measurement, not by…
 08:09 | Agent decisions, to confirm (hair-hq): placeholder looks prisoner_w (body player_f_standard_165, Dutch braid) and prisoner_m (body npc_04, chin-length hair); strands default…
 08:09 | Jennifer asked to merge all review boards into one again and close the old ones in Firefox. Agent board-merge2 read every stored board state in Firefox (no new answers since the…
@@ -303,6 +301,7 @@ assets/img/day3/11-15-010657-clip.jpg | 15.11. 01:06 (still from a clip): 15 s o
 23:36 | Unreal crash reporter at 23:30 while the worldlevel round fits world4's rocks into the story map (cause not checked).
 00:02 | Board send 14.11.2026 23:59 (27 items): story answers ST-05 to ST-08 accepted (Take 2/3/4 only; bound hands in 0.13.0 «das ist wichtig»; name Custos), castle kit CK3 needs a…
 00:10 | Biggest process lesson of the jam (Jennifer, 14.11.2026 ~24:00): «man kann ja einzelne Branches haben … aber das hat ja nichts mit der Kompilierung zu tun» / «Das muss ein…
+01:06 | Jennifer's unified board 'Dein Board': one review page, comments as messages, versions tracked automatically.
 ```
 
 <!-- devlog-picks:end -->
