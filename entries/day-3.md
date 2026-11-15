@@ -286,6 +286,9 @@ assets/img/day3/11-15-003705-shot.jpg | 15.11. 00:37: Game window during worldle
 assets/img/day3/11-15-010655-shot.jpg | 15.11. 01:06: Game window during the key-place screenshot run (17 fixed camera places) on int-0.13.0 with the start music at the logo. | Game window during the key-place screenshot run (17 fixed camera places) on int-0.13.0 with the… | 1600 x 900
 assets/img/day3/11-15-010657-clip.jpg | 15.11. 01:06 (still from a clip): 15 s of int-0.13.0 during the key-place screenshot run (title theme at the logo, larger cell, world rocks). | 15 s of int-0.13.0 during the key-place screenshot run (title theme at the logo, larger cell,… | 1600 x 900
 assets/img/day3/11-15-013653-shot.jpg | 15.11. 01:36: Game window while fix6 lands: story score cues behind DN.Story.ScoreCues and a daily cap on ACE free talk (12 replies per character per day, then a tired line). | Game window while fix6 lands: story score cues behind DN.Story.ScoreCues and a daily cap on ACE… | 1600 x 900
+assets/img/day3/11-15-043654-shot.jpg | 15.11. 04:36: Game window (line-up / key places): closer group shots of guards and farmers; clothing follow-up (hose feet, wool twill, Mira's own clothing body) merged into… | Game window (line-up / key places): closer group shots of guards and farmers; clothing follow-up… | 1600 x 900
+assets/img/day3/11-15-043656-clip.jpg | 15.11. 04:36 (still from a clip): 15 s of int-0.13.0 with the clothing follow-up and the NPC line-up. | 15 s of int-0.13.0 with the clothing follow-up and the NPC line-up. | 1600 x 900
+assets/img/day3/11-15-050653-shot.jpg | 15.11. 05:06: Game window on int-0.13.0: start music at the logo now begins 12 s in so the drop lands about 10 s after the logo. | Game window on int-0.13.0: start music at the logo now begins 12 s in so the drop lands about 10 s… | 1600 x 900
 ```
 
 ```timeline
@@ -302,6 +305,7 @@ assets/img/day3/11-15-013653-shot.jpg | 15.11. 01:36: Game window while fix6 lan
 00:02 | Board send 14.11.2026 23:59 (27 items): story answers ST-05 to ST-08 accepted (Take 2/3/4 only; bound hands in 0.13.0 «das ist wichtig»; name Custos), castle kit CK3 needs a…
 00:10 | Biggest process lesson of the jam (Jennifer, 14.11.2026 ~24:00): «man kann ja einzelne Branches haben … aber das hat ja nichts mit der Kompilierung zu tun» / «Das muss ein…
 01:06 | Jennifer's unified board 'Dein Board': one review page, comments as messages, versions tracked automatically.
+04:14 | GPU rule lifted: nobody waits for GPU slots any more; only before a heavy process the GPU values are checked; otherwise just start. Changed in AGENTS.md rule 11 and 5,…
 ```
 
 <!-- devlog-picks:end -->
