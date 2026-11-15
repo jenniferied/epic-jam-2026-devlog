@@ -62,6 +62,27 @@ The opening lightning turned out to be random: angle and bolt seed changed every
 The evening went into the submission. The itch page got a title splash, a story, an honest "at a glance" (this is scaffolding for a deep RPG, and gameplay is the thinnest part), features with screenshots, a UI section, a technical "under the hood" checked against the code, credits and an AI disclosure. The first upload was refused because the itch account email was not verified yet. The second run pushed 11.7 GB of b0141 with butler, so the final build can follow as a small patch.
 
 
+## 23:00–00:55 · Chaos at the end
+
+```gallery
+assets/img/day4/her-grass-streaks-gate.jpg | 00:17 · Package 0.14.3 at the castle gate: the grass smears upward into giant streaks. My screenshot. | Grass stretched into tall orange streaks along the drawbridge | 1600 x 901
+assets/img/day4/her-round-hall-overexposed.jpg | 18:49 · The round hall, washed out. My screenshot. | Overexposed round hall with the prisoner | 1600 x 908
+assets/img/day4/her-round-hall-floating-props.jpg | 18:50 · Props that do not sit where they belong. My screenshot. | Chair and table at odd angles in the hall | 1182 x 938
+assets/img/day4/her-round-hall-pixel-pillar.jpg | 18:50 · A pillar with a pixelated texture. My screenshot. | Pillar with blocky texture | 1190 x 920
+assets/img/day4/her-round-hall-hovering-rocks.jpg | 18:50 · Rocks hanging in the air above the prisoner. My screenshot. | Rocks floating above the player | 1212 x 957
+assets/img/day4/her-round-hall-white-stairs.jpg | 18:50 · Untextured white stairs in front of a door. My screenshot. | Plain white stairs | 788 x 817
+```
+
+The last hours did not go the way they should. The fixes from the playtest kept coming, new packages followed each other, and every new build also brought something new that broke. In 0.14.3 the water at the shore was gone, and the grass at the castle gate smeared upward into huge streaks. 0.14.3 had already been pushed to itch while I was still playing it, to keep things moving. The next package, 0.14.4, was cancelled because of the grass. At the time of writing it is not clear whether there will be a good playable version at the end, or whether we have to ship an older, weaker one.
+
+This is my last entry for day 4. In my own words:
+
+«das große Chaos … dass nicht klar ist, ob es überhaupt etwas Spielbares gibt zum Ende oder dann eine sehr schlechte Version verwendet werden [muss] und dass ich einfach alles bereue. Dass ich einfach Fehler gemacht habe in der Orchestrierung, meine Wörter nicht klar genug gewählt habe und immer zwischen vorsichtig und schrittweise und vorwärts arbeiten oszilliert habe und immer wieder frustriert war. Aber ich hoffe, dass es gut wird.» (The big chaos … that it is not clear whether there is anything playable at the end at all, or whether a very bad version has to be used, and that I simply regret everything. That I made mistakes in the orchestration, did not choose my words clearly enough, kept oscillating between careful, step-by-step work and pushing forward, and was frustrated again and again. But I hope it turns out well.)
+
+«Ich habe es natürlich hochladen lassen, während ich es gespielt habe, weil ich gucken wollte, dass wir schnell vorankommen.» (Of course I had it uploaded while I was playing it, because I wanted to make sure we moved fast.)
+
+«Ich hoffe, wir sehen uns dann wirklich im Postmortem, oder eben nicht. Das war einfach eine große Dynamic Experience.» (I hope we really see each other in the post-mortem, or not. It was simply one big dynamic experience.)
+
 ## More captures
 
 <!-- devlog-picks:start -->
