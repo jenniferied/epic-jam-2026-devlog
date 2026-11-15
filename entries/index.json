@@ -66,7 +66,7 @@
    "date": "2026-11-14",
    "day": "day 3",
    "phase": "jam",
-   "status": "draft",
+   "status": "live",
    "summary": "Build 1 starts. An escort, a cell with two cellmates who talk back through NVIDIA ACE, a kit-built castle and end credits. Then two GPU driver hangs, a hard reboot and a new way of working.",
    "file": "day-3.md"
   },
@@ -76,7 +76,8 @@
    "date": "2026-11-15",
    "day": "day 4",
    "phase": "jam",
-   "status": "draft",
+   "status": "live",
+   "summary": "One compile line, clothes on everyone, Shipping builds, a live playtest with 120 notes, and the submission.",
    "file": "day-4.md"
   },
   {

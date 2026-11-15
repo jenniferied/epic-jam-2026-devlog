@@ -5,7 +5,7 @@
   <link href="https://jenniferied.github.io/epic-jam-2026-devlog/"/>
   <link rel="self" href="https://jenniferied.github.io/epic-jam-2026-devlog/feed.xml"/>
   <id>https://jenniferied.github.io/epic-jam-2026-devlog/</id>
-  <updated>2026-11-15T21:55:17Z</updated>
+  <updated>2026-11-15T21:59:16Z</updated>
   <author><name>Jennifer</name></author>
   <entry>
     <title>builds.log</title>
@@ -13,6 +13,20 @@
     <id>https://jenniferied.github.io/epic-jam-2026-devlog/#/builds</id>
     <updated>2026-11-14T12:00:00+01:00</updated>
     <summary>Every build of the jam so far, with the branches, features and fixes that went into it.</summary>
+  </entry>
+  <entry>
+    <title>day-4.log</title>
+    <link href="https://jenniferied.github.io/epic-jam-2026-devlog/#/day-4"/>
+    <id>https://jenniferied.github.io/epic-jam-2026-devlog/#/day-4</id>
+    <updated>2026-11-15T12:00:00+01:00</updated>
+    <summary>One compile line, clothes on everyone, Shipping builds, a live playtest with 120 notes, and the submission.</summary>
+  </entry>
+  <entry>
+    <title>day-3.log</title>
+    <link href="https://jenniferied.github.io/epic-jam-2026-devlog/#/day-3"/>
+    <id>https://jenniferied.github.io/epic-jam-2026-devlog/#/day-3</id>
+    <updated>2026-11-14T12:00:00+01:00</updated>
+    <summary>Build 1 starts. An escort, a cell with two cellmates who talk back through NVIDIA ACE, a kit-built castle and end credits. Then two GPU driver hangs, a hard reboot and a new way of working.</summary>
   </entry>
   <entry>
     <title>day-2.log: builds, overload and one decision board</title>

@@ -9,7 +9,7 @@ status: live
 summary: Every build of the jam so far, with the branches, features and fixes that went into it.
 ---
 ```recap
-**What this is:** a generated page, not a diary entry. A script reads the game repository (tags, merges, branches) and the build notes and redraws this after every integration. Last run Sat 14.11. 23:07, latest build 0.12.0. The short texts are AI summaries of the build notes.
+**What this is:** a generated page, not a diary entry. A script reads the game repository (tags, merges, branches) and the build notes and redraws this after every integration. Last run Sun 15.11. 22:58, latest build 0.12.0. The short texts are AI summaries of the build notes.
 ```
 
 Each agent works on its own branch. Only the orchestrator merges, and a build is what came out of one integration. Every branch of the jam has one row, grouped by area: the bar runs from the fork to the last merge, the label after it names the build it shipped in, dashed bars were never merged. Vertical lines are builds. Each day entry shows the same chart cut to that day.
@@ -18,16 +18,213 @@ Each agent works on its own branch. Only the orchestrator merges, and a build is
 builds.html | All branches of the jam by area, with the builds they shipped in. Scroll the chart sideways; hover or tap a row or build. | 2600
 ```
 
+## Build 0.14.2 (in progress)
+```specs
+when: Sun 15.11. 22:49
+commit: in progress / c25e948
+branches: 164
+```
+
+**Branches:** `b09-headwear`, `b1-scars`, `b1-loadinglive`, `b1-credits2`, `b1-dress2`, `b1-fix4`, `b1-ms2`, `b1-perf1`, `b1-rain`, `b1-talknpc`, `b1-headwear`, `b1-fix5`, `b1-opening`, `b1-lineup`, `b1-cell2`, `b1-gp6`, `b1-music3`, `b1-uipages`, `b1-story2`, `b1-cloth2`, `b1-sel3d`, `b1-uipages2`, `b1-credits3`, `b1-startmusic`, `b1-castle`, `b1-rooms`, `b1-worldlevel`, `b1-fix6`, `b1-hairhq`, `b1-credits4`, `b1-ui7`, `b1-island3`, `b1-ace2`, `b1-eyeshape`, `b1-midmusic`, `b1-headwear2s`, `b1-boundprops`, `b1-fetch4`, `b1-shirt3`, `b1-shirt3-hosetrim`, `b1-castheadwear`, `b1-dcut`, `b1-onemap`, `b1-shirtmat`, `b1-ui8`, `b1-import5`, `b1-hatfit`, `b1-dcut2`, `rain`, `b1-dcut3`, `b1-fix7`, `b1-outfits`, `b1-castmask`, `b1-muzzleclosed`, `b1-outfits2`, `b1-shirtmat-assets`, `b1-dcut4`, `b1-load2`, `b1-cell3`, `b1-greet1`, `b1-ui9`, `b1-rocks2`, `b1-cell4`, `b1-dress1`, `b1-grass3`, `b1-mix2`, `b1-cell5`, `b1-rocks3`, `b1-ui10`, `b1-grass4`, `toll`, `bf14b292`, `b1-cell6`, `b1-dress3`, `b1-cell7`, `b1-grass5`, `b1-grass6`, `b1-dress4`, `b1-ui11`, `b1-fix8`, `b1-ui12`, `b1-temp1`, `b1-cell8`, `b1-dress5`, `b1-grass7`, `b1-ui13`, `b1-cell9`, `b1-pkgfix`, `b1-ui14`, `b1-cell10`, `b1-cell11`, `b1-rob1`, `b1-cell12`, `b1-dress6`, `b1-grass8`, `b1-cell13`, `b1-creator5`, `b1-load3`, `b1-mix3`, `b1-ui15`, `b1-dress7`, `b1-fix9`, `b1-grass9`, `b1-ui16`, `b1-voice2`, `b1-ace3`, `b1-mix4`, `b1-ui17`, `b1-dress8`, `b1-fix10`, `b1-cell14`, `b1-fix11`, `b1-ui18`, `b1-cell15`, `b1-ui19`, `b1-names1`, `b1-ui20`, `b1-ui21`, `b1-ui22`, `b1-dress9`, `b1-grass10`, `b1-ui23`, `b1-ui24`, `b1-load4`, `b1-dress10`, `b1-mix5`, `b1-ui25`, `b1-coif2`, `b1-fix12`, `b1-ui26`, `b1-input2`, `b1-consolidate`, `b1-input3`, `b1-load5`, `b1-coif3`, `b1-input4`, `b1-ui27`, `b1-fix13`, `b1-cell16`, `b1-fix14`, `b1-cell17`, `b1-ui28`, `b1-fix15`, `b1-ui29`, `b1-dress11`, `b1-fix16`, `b1-names2`, `b1-ui30`, `b1-dress12`, `b1-names3`, `b1-fix17`, `b1-mix6`, `b1-ui31`, `b1-fix18`, `b1-grass11`, `b1-input5`, `b1-ui32`, `b1-grass12`, `b1-dress13`, `b1-lic1`, `b1-ui33`, `b1-dress14`, `b1-grass13`, `b1-dress15`
+
+**Features**
+
+- Headwear module: 16 helmets, masks and hats fitted per body (b09-headwear)
+- scar layer, on by default (b1-scars)
+- live loading object instead of video loops (b1-loadinglive)
+- end credits v2: CB-01 … CB-10, FQ-30 (b1-credits2)
+- dress2: DR-01 round: chapel roof raised above the vault, belongings room = factory weapon hall as a stone building with slate roof (painting inside), chest lid closed, … (b1-dress2)
+- b1-fix4: English glosses of the Latin labels on hover and key/pad focus (talk values, humour state, role, Body page systems), framing hint, DefaultGlosses.ini (b1-fix4)
+- int-0.13.0: FPS visualiser in the debug view (serif readout with cap and worst frame, frame-time graph (b1-ms2)
+- Version 0.14.0 for the next package (b0131 still showed 0.13.0 (b1-perf1)
+- Credits: branch history section (git graph of the game repo that draws itself while scrolling, days as milestones, closing line (b1-rain)
+- DefaultStory.ini C_Unbind lines: same text on both sides, fix4 durations kept (b1-talknpc)
+- PlayerHeadwear=mask_ironplates (b1-headwear)
+- fix round 5: bound hands pose + cuffs, pad glyphs, waiting tutorial, mask off at chest, chest face focus, deny tones, UI fades, credits v2 music, guards in helmets, texts (b1-fix5)
+- opening camera flight over the sea, DN.Opening.Flight (b1-opening)
+- outfit levels DN.Appearance.Outfits 0|1|2, basic shirt on all bodies (b1-lineup)
+- story cell scaled at load x1.5 planar, wall decals, second silent rat (b1-cell2)
+- steal while sneaking and unseen, hand orbs, still start ring, looks as options with preview, armillary drift (b1-gp6)
+- round-3 music in the game: weights, sunset/nightfall cues, menu piece, loading music per entry (b1-music3)
+- Corpus and Res pause pages (b1-uipages)
+- middle cutscene per route and outro as story sequences, NPC exchanges in free roam (b1-story2)
+- Cloth follow-up (written, NOT compiled): cloth wetness path (CF-15), continuous shoe Darkness (CF-12), shirt-masked body field, sock tint (b1-cloth2)
+- real 3D selectors rendered in a small offscreen scene (b1-sel3d)
+- turning figure on the Corpus page: atlas frames, Q/R and right stick, auto-turn, DN.UI.FigureTurn (b1-uipages2)
+- credits: Made with AI and The code, counted (b1-credits3)
+- The Long Night Breaks at the game logo, logo waits for input, DN.Frontend.StartMusic (b1-startmusic)
+- M_DN_IntakePBR: both sides set the instanced + Nanite usage flags (b1-castle)
+- 106 imported props under /Game/DarkestNight/WorldAssets, content only (b1-rooms)
+- island stage 2 on L_Island: ways, trees, PBR ground, terrain r5, navigation (b1-worldlevel)
+- fix6: simple lip sync tier (L9, DN.LipSync 0|1|2, default 1): jaw and upper lip from TTS loudness or a syllable curve (b1-fix6)
+- High-quality strand hair for the main characters, cards as the fallback (b1-hairhq)
+- credits: scroll control, end page, playlist, HUD off, skip prompt, objects alternating, embers, tools (b1-credits4)
+- Corpus point orbs, perks and numbers (b1-ui7)
+- escort road dressing: 22 props in ten groups beside the road (b1-island3)
+- ACE topic judge, speak prompt, player line (b1-ace2)
+- pupil shape as its own choice, EG-02 (b1-eyeshape)
+- middle cutscene on a 72 s clock with combat_dnb_classical_3, ducked under the narrator (b1-midmusic)
+- headwear material two-sided, MK-01/KB-15 (b1-headwear2s)
+- props rebuilt for the bent-arm pose, F5-03 (b1-boundprops)
+- winalt: L_World_Castle 04:07 with materials, place maps, island ground pass, ground textures, reveal kit r2 unplaced (b1-fetch4)
+- shirt v3 on all 19 bodies, headwear group lists, shortened brimmed helm (b1-shirt3)
+- hose cut off under the shirt on all bodies, SU-01 (b1-shirt3-hosetrim)
+- per-character headwear (b1-castheadwear)
+- Director's Cut slice, no bars, ember bursts, armillary part transforms, branch history (b1-dcut)
+- castle on L_Island as always-loaded sublevel L_CastleStory, ground splice, story markers, road, navigation, no grass inside the walls, Nanite tessellation (b1-onemap)
+- shirt material chosen at runtime per group and player (b1-shirtmat)
+- tutorial checklist, hand light on demand, transparent dial face (b1-ui8)
+- 148 meshes from winalt: props round 2, castle kit round 4, trials (b1-import5)
+- felt hood and chaperon a little larger, KB-14/KB-16 (b1-hatfit)
+- branch history: thicker, bigger, what changed, red notes, quotes, blood (b1-dcut2)
+- rain particle bounds follow the view (rain)
+- credits: asset ledger sourced vs made, branch history round 3 (b1-dcut3)
+- story guards dressed, grass LOD distance scale, stone and timber for stair house and guard room, slower clock after the gate cut (b1-fix7)
+- player shirts carry hose and shoe colours: Start, Peasant grey, Royal purple (b1-outfits)
+- moon and sun cast masks, twin looks (b1-castmask)
+- closed muzzle cage with leather coif and straps, player default mask (b1-muzzleclosed)
+- barefoot start outfit, peasant red-brown hose (b1-outfits2)
+- royal shirt round 3 (b1-shirtmat-assets)
+- credits: speed control, skip confirm, soundtrack section, full branch graph with day/night and sleep gaps (b1-dcut4)
+- live loading screen at story cuts with real preloading (b1-load2)
+- cell 2.25 plan and tidied, sleep bed fixed, riddle lines rewritten, inscription light, riddle skip after 4 min, brighter stone light (b1-cell3)
+- outfit-aware greetings, regard line in the creator, player look in the ACE prompt (b1-greet1)
+- item floats, orb hints, Da Vinci ghost on Corpus, darker pause, pause Debug page with story jumps (b1-ui9)
+- solid Megascans rocks replace the PCG rocks on L_Island, bases buried, 55 more (b1-rocks2)
+- cell: one table lantern, four wall torches, Megascans granite/cobble floor (b1-cell4)
+- castle dressing: painting to the belongings room, real props for boxes, chapel walkable, barracks yard, gate pillars, oak chest with lid, blockout out of L_Island, … (b1-dress1)
+- grass: bushier Quixel sets, LOD1 near, no cards near, 25 % less, faster streaming (b1-grass3)
+- voice duck on every spoken line, story voice +4 dB, NPC voice volume 1.6, DN.Mix.Record (b1-mix2)
+- cell floor: inner ring back as before, granite band behind the pillars (b1-cell5)
+- one mossy rock family, lighter tints, 85 rocks in rows below the castle, close-up rocks moved left (b1-rocks3)
+- debug keys page, photo mode on F2 with bars and look titles (b1-ui10)
+- grass4: grass variation from the landscape material, a little more grass, Nanite grass and darker foliage by script (card GR-02) (b1-grass4)
+- 15 roof instances and the lantern bracket out of L_CastleStory (toll)
+- dress2: DR-01 round: chapel roof raised above the vault, belongings room = factory weapon hall as a stone building with slate roof (painting inside), chest lid closed, … (bf14b292)
+- b1-cell6: bevelled floor plates, gallery arcade, upper shell and railings (Blender on winalt, work/agents/cell3/cell6/cell6_bevel.py in the jam repo) swapped into … (b1-cell6)
+- guard hall lights 21 -> 6 (b1-dress3)
+- cell uniform 2.25, slimmer pillars with wall-stone band, varied floor plates, stair collision ramp (b1-cell7)
+- no grass in the gatehouse side room, landing beach fade lower, willow out of the shrubs (b1-grass5)
+- grass6: Nanite off, Quixel grass with real LODs (no card), greener foliage tint, fuller shrubs in forest and edge without overlap (card GR-04) (b1-grass6)
+- ground beside the castle approach raised, hall lights, hall prop spots (b1-dress4)
+- photo mode key hint, noble guard escaped-patients lines (b1-ui11)
+- b1-fix8: retarget IK pass for NPCs at every detail level (bNPCRetargetIKAllDetail), so far NPCs no longer walk with spread arms (b1-fix8)
+- tutorial zoom row, landing hint as checklist, 180 s cap, real axis tries (b1-ui12)
+- temperature on top of Calor: fog, cellar, beach, night wind, sun, fire lights, sprint, drying, solar/lunar jolt, NPC and player comments (b1-temp1)
+- cell exit walkable: door void without collision, CellExit over the landing (b1-cell8)
+- grey wedge = one-column landscape ridge at the moat edge, lowered (b1-dress5)
+- old approach mask faded at the raised castle approach, path colour a bit darker (b1-grass7)
+- debug jump rows first, photo mode hides prompts/compass/stats, tutorial card hidden in cuts, foley bank guard, credits direction switch (b1-ui13)
+- cell: fixed exposure EV 0.5, granite floor family, pillars wall stone, softer torches (b1-cell9)
+- kit and assembly components saved by the cook: castle and trees in packages (b1-pkgfix)
+- debug always in the pause menu (b1-ui14)
+- riddle descent: floor opens, spiral stair, guided walk (b1-cell10)
+- detailed slab floor, 8 hinged petals open the descent live (b1-cell11)
+- step rescue, riddle skip tap split, window keys, focus pause, cut teardown, fall recovery, cold floor 25 %, death/water/fall damage (b1-rob1)
+- spiral stair 3 turns to an oak door, grind sound, exposure fixed down the shaft (b1-cell12)
+- guard hall cut point HallIn (b1-dress6)
+- crest road smoothing heightmap, bush draw distances, grass cull, free-roam marker (b1-grass8)
+- sliding plates under the lip, pillar UVs, arch stone, gallery ring restored (b1-cell13)
+- creator 3-point light, no rain grade in the creator, eye glow boost, ember layers (b1-creator5)
+- loading: synchronized cut, live 3D only, prewarm in menu, longer minimums, NPC setup budget, weather preload (b1-load3)
+- standard mix levels, cutscene music cut, middle score on the music channel (b1-mix3)
+- playtest: start menu input/mouse/side wheel, mic notices, title fade, creator rows/zoom/rotate/colours, shared selector (b1-ui15)
+- landing props, right-side trees, path lanterns, harbour + bobbing boats (b1-dress7)
+- bound pose weight 1.0 for the rope, sword draw while visible, townsfolk walk along the road (b1-fix9)
+- grass prewarm in the creator, wet grass, crossing terrain noise, per-quality grass, HighDetail LODs without cards, clumpier sets, more shrubs at the start (b1-grass9)
+- tutorial: zoom to first person and back, diamond marks fill and fade (b1-ui16)
+- recorded NPC takes by gender with ACE TTS fallback (b1-voice2)
+- mic indicator, menu voice commands, sentence case, townsfolk reply fallback, TTS for every unrecorded line, model preload on talk, speak hint, SpeakMic tutorial, free … (b1-ace3)
+- footsteps +5.8 dB, surface gain (b1-mix4)
+- energy arcs thicker, closer zoom, talk panel menu navigation, start/pause star gap, Res symbols clearer (b1-ui17)
+- entrance/sunset path heightmap d8, flat stone and floors, ashlar to wall stone, gate lanterns, stables door, closed doorways, market back, hall exterior, leading lights (b1-dress8)
+- patient escort: lead guard waits, returns, fetches (b1-fix10)
+- cell: no fill lights, EV 2.0, moon shaft, calm wall stone (b1-cell14)
+- cellmate idle rounds, Mira sits on the bench (b1-fix11)
+- Favor/Suspicio bars with glow, +/- floats, friend line (b1-ui18)
+- wall-base ring closes the gap, cell fall reload, chains/floating props, moon by phase, sun slit + stone moved to fit the shafts (b1-cell15)
+- hand lights: energy gate, dimmer, on/off hint, unlock at Clothes (b1-ui19)
+- names + titles, name learning, crowd identities, voice by body, first-talk tutorial (b1-names1)
+- UI context modes / hand light hold (b1-ui20)
+- UI context modes / hand light hold (b1-ui21)
+- tutorial serif + higher, tutorial bound to save/step, compact debug view top right, LUT link + arrows, easter egg on Debug page, dimmer spheres, free-roam card (b1-ui22)
+- baked dry-stone walls for vaulting/climbing as d7 stage (b1-dress9)
+- whole-island step smoothing heightmap g10, landscape Nanite + tessellation displacement scripts (b1-grass10)
+- traversal tutorial card in free roam (b1-ui23)
+- Corpus · Res menu: Q/E tabs, tab icons, smaller art, pause entry icon, cell menu row (b1-ui24)
+- uniform loading frame: bars, grain, vignette, fade, steer hint, mouse drag (b1-load4)
+- moat: level water planes with Easy Waterscape material, chamfered baked moat walls (b1-dress10)
+- cutscene pieces, music cutscene hold, one-live-track guard, ambience/warmth settle after load, context cold lines (b1-mix5)
+- session reset incl (b1-ui25)
+- coif refit per player body, variant meshes with old-fit fallback (b1-coif2)
+- beat clocks on one story day, cut straight into the cell shots, loading hold until the cell is dressed (b1-fix12)
+- save screenshots + place/time in load list and loading inset, device notices bottom right (b1-ui26)
+- controller parity: menu keys, LUT panel on pad, photo A, debug chords, shoulder swap, LT/RT values (b1-input2)
+- idle lets go of cellmates on the descent (b1-consolidate)
+- glyph audit: readable key names, bound keys in prompts/hints, glyph rows on controls page, story windows, end card, tutorial rows (b1-input3)
+- framed zoom on loading objects (b1-load5)
+- COIF-03: closed muzzle cage variants without straps (assets re-exported (b1-coif3)
+- character-menu keys only in Gameplay, grace after modals (b1-input4)
+- ui27: playtest 0.14.0 item 105 (no autosave after a load (b1-ui27)
+- escort via gate straight to the stair door, lead stays 2-4.5 m ahead, guards match player speed (b1-fix13)
+- flatter 4-turn stair with 2.25 cm chamfers (b1-cell16)
+- b1-fix14: the cell riddle in one sleep to midnight (moon only), the player reads the carving, every bed and a lit rest place sleep there (b1-fix14)
+- bed script (b1-cell17)
+- ui28: playtest 0.14.0 item 109 (no visible falling copy of the player on a load) (b1-ui28)
+- b1-fix15: midnight marked on the dial with one hint line, lean riddle hints, free floor for cuts and debug jumps, dark hint not in lit rooms, outro stills (b1-fix15)
+- ui29: playtest 0.14.0 item 117 (credits: no bars, Director's Cut opens and scrolls up into the rest, jam note merged, skip hold slows and asks) (b1-ui29)
+- guard hall: flat banners out, painting + shields, grindstone out, one table, flames on torches, fewer lights (b1-dress11)
+- first-person head re-hide, free roam always in the guard hall (b1-fix16)
+- P2: guard look group with helmets/livery, two named guards in the yard, twins at the inner gate (b1-names2)
+- credits texts per her item 118, STOP speed, back everywhere, music follows speed, learnings (b1-ui30)
+- lookout flagstone path, market back from the street, escort corridor clear (b1-dress12)
+- entry guards and twins talkable without TalkToEveryone (b1-names3)
+- P2 story flesh-outs: step back at the opening floor, carving glow, Not so fast, guards notice clothes, wake card, guard speed reset (b1-fix17)
+- story foley, music story arc, narration lightning (b1-mix6)
+- breath fog, warmth vignette, band pulse, glyph help rows, her learnings in the credits (b1-ui31)
+- modal stack, riddle flags survive load, quit-fade lock, exit-crash guards, pause-menu riddle skip (b1-fix18)
+- displacement wire via C++ helper (b1-grass11)
+- quick menu + Wait screens (b1-input5)
+- credits as one scroll strip, DN.Credits.OneScroll (b1-ui32)
+- tessellation per quality level (b1-grass12)
+- traverse walls by the hall door, sunset viewpoint at the lookout (b1-dress13)
+- third-party licence and notice files (b1-lic1)
+- NVIDIA DLSS / ACE notice first in the start menu, held 2x (b1-ui33)
+- traverse walls: wider search, current heightmap, fallback (b1-dress14)
+- Surface detail setting Auto/Off/On (b1-grass13)
+- untextured W4 harbour rocks swapped for textured ones (b1-dress15)
+
+**Fixes**
+
+- Opening lightning: fixed bolt seed, struck behind the castle from the opening camera (her cover wish
+- grass12 fix: r.Nanite.DicingRate is not a scalability cvar (ensure in every editor start)
+- ui32 compile fix: strip block was spliced into the stars line
+- mix6 fixes: shadowed name, cell music low on CellShots (watcher N9)
+- d7_island: same globals view fix
+- int-0.13.0: compile fixes after 43 merges (include order, death letterbox calls, creator settings name clash, shadowed locals, PlaySound macro from …
+- b1-fix12: fixed story-beat clocks on one day (BeatClocks) and the cut into the cell fades straight into the cell shots
+- b1-cell14: cell lit only by its torches and lantern plus a moon shaft, darker fixed exposure, one calm stone for walls/pillars/arches (playtest item …
+- dress8 (playtest 36-43 + her screenshots 18:35-18:42
+- b1-cell9 round 8: fixed cell exposure (PP_Exposure histogram min = max = EV 0.5, bias 0
+- ui13: night QA fixes (debug jump rows first, photo mode hides prompt/compass, credits Up = faster, tutorial card hidden in cuts, silent foley bank …
+- int-0.13.0: b1-load2 compile fixes (class closing brace, missing include)
+
+**Tests:** not packaged yet
+
+**Decisions (board codes):** AD-02, BX-05, BX-06, BX-07, BX-08, BX-09, CB-01, CB-10, EG-01, EG-02, FQ-03, FQ-05, FQ-10, FQ-12, FQ-28, FQ-29, FQ-30, FQ-32, HB-08, HM-03, KB-01, KB-05, KB-08, KB-10, KB-11, KB-14, KB-15, KB-16, KB-20, KB-23, KB-24, KB-26, KL-01, LV-01, LV-06, MK-01, OP-01, OP-02, ST-01, ST-05, ST-06, ST-08, SU-01, SU-06, SU-08, SU-11, SU-12, WA-B01, WA-B02, WA-B03, WA-B04, WA-B05, WA-B06
+
 ## Build 0.12.0
 Build 1 package: the story in the real cell, levelling and routines, looks to validate, fix rounds 2 and 3, her board answers
 
 ```specs
 when: Sat 14.11. 23:07
 commit: build-0.12.0 / cc2e126
-branches: 18
+package: 10924 MB, Win64 Development
+result: PASS (all editor and package tests of the new areas, each alone on the GPU)
+branches: 16
 ```
 
-**Branches:** `b1-look`, `c4-brain`, `c4-corpus`, `unit-pilot`, `c5-named`, `c7-exercitatio`, `char-batch`, `b1-npcanims`, `c6-routines`, `b1-cell`, `b1-corpus`, `b1-hairhq`, `b1-cellstory`, `b1-credits2`, `b1-look2`, `b1-talknpc`, `b1-fix2`, `b1-fix3`
+**Branches:** `b1-look`, `c4-brain`, `c4-corpus`, `unit-pilot`, `c5-named`, `c7-exercitatio`, `char-batch`, `b1-npcanims`, `c6-routines`, `b1-cell`, `b1-corpus`, `b1-hairhq`, `b1-cellstory`, `b1-look2`, `b1-fix2`, `b1-fix3`
 
 **Features**
 
