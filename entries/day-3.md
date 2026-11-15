@@ -289,6 +289,10 @@ assets/img/day3/11-15-013653-shot.jpg | 15.11. 01:36: Game window while fix6 lan
 assets/img/day3/11-15-043654-shot.jpg | 15.11. 04:36: Game window (line-up / key places): closer group shots of guards and farmers; clothing follow-up (hose feet, wool twill, Mira's own clothing body) merged into… | Game window (line-up / key places): closer group shots of guards and farmers; clothing follow-up… | 1600 x 900
 assets/img/day3/11-15-043656-clip.jpg | 15.11. 04:36 (still from a clip): 15 s of int-0.13.0 with the clothing follow-up and the NPC line-up. | 15 s of int-0.13.0 with the clothing follow-up and the NPC line-up. | 1600 x 900
 assets/img/day3/11-15-050653-shot.jpg | 15.11. 05:06: Game window on int-0.13.0: start music at the logo now begins 12 s in so the drop lands about 10 s after the logo. | Game window on int-0.13.0: start music at the logo now begins 12 s in so the drop lands about 10 s… | 1600 x 900
+assets/img/day3/11-15-080319-milestone.jpg | 15.11. 08:03: Shirt v3 round 3 is in Unreal as a two-size parametric outfit on all 19 bodies (branch b1-shirt3); the whole cast seen in the line-up editor with hose, shoes,… | Shirt v3 round 3 is in Unreal as a two-size parametric outfit on all 19 bodies (branch b1-shirt3);… | 1600 x 900
+assets/img/day3/11-15-083706-shot.jpg | 15.11. 08:37: Game window with the new UI fixes: transparent sundial face on the time HUD (UIN-04) and a tutorial checklist whose rows vanish when done (UIN-05). | Game window with the new UI fixes: transparent sundial face on the time HUD (UIN-04) and a… | 1600 x 900
+assets/img/day3/11-15-083708-clip.jpg | 15.11. 08:37 (still from a clip): 15 s of the game with the time HUD and tutorial checklist changes. | 15 s of the game with the time HUD and tutorial checklist changes. | 1600 x 900
+assets/img/day3/11-15-090737-milestone.jpg | 15.11. 09:07: Credits: Director's Cut section (knife slices the title), branch history and three-accounts middle cutscene run in the editor build; 148 winalt meshes… | Credits: Director's Cut section (knife slices the title), branch history and three-accounts middle… | 1600 x 900
 ```
 
 ```timeline
