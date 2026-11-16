@@ -9,15 +9,23 @@ The words are mine, dictated at odd hours. AI helped condense them and pulled th
 
 The little dragon is Funke. It lives in a terminal pane next to my code and guards my scope.
 
-## Play Darkest Night
+## Play Darkest Night — the main Glass Box making-of is in the credits
+
+**THIS WEBSITE IS SUPPLEMENTARY GLASS BOX MATERIAL. THE MAIN GLASS BOX PRESENTATION IS THE IN-GAME END CREDITS.**
 
 [Download the game and read the current instructions on itch.io](https://jenniferied.itch.io/darkest-night).
 
-Playing is the best way to experience the atmosphere, music and systems described here. Start a new game and watch the opening cutscene for the story and cinematic direction. The end credits are also part of the documentation: they show development images, the branch history, tools and the people behind the game. This is a rough jam prototype; the game page carries the available download and current notes.
+Playing is the best way to experience the atmosphere, music and systems described here. Start a new game and watch the opening cutscene for the story and cinematic direction. **The end credits are the main making-of documentation:** they show development images, the branch history, tools and the people behind the game. This is a rough jam prototype; the game page carries the available download and current notes.
 
 1. Open the itch.io page above and check its platform, requirements and known issues.
 2. Download the Windows build, extract the complete archive to a local folder, then launch the game executable from that folder.
 3. Choose New Game and follow the on-screen prompts. On keyboard and mouse, use WASD to move, the mouse to look, E to interact and Esc for the pause menu. Follow the game's prompts for further controls.
+4. **Watch the main Glass Box presentation:** after New Game, wait until a cutscene has finished and you have control. Press **Esc → Debug**, set **Story point** to **Closing**, then choose **Jump there**. The closing sequence leads into the end credits. You can also reach them by playing through the story.
+
+### Watching the credits
+
+**The credits are the main event; this website is the supplementary reading.** They present development images, the branch history, generated-versus-used asset counts, the AI crew, tools, music and the making of the game. Use the **mouse wheel or Up/Down arrows** to scroll, or the **controller stick**. **Hold a key/button only when you want to skip the credits.** The route above is also included as the final step in the itch.io installation instructions.
+
 
 ## What existed before the jam
 

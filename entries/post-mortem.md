@@ -22,6 +22,8 @@ The descriptive sidebar titles for Day 3 and Day 4, the homepage play instructio
 
 The website shell, Funke, prep entries, prep illustrations and development tooling existed before the game-development window, as detailed on the homepage and in the preparation entries. Playing the game, watching its opening and reading its end credits provides another view of the work alongside this written record: [Darkest Night on itch.io](https://jenniferied.itch.io/darkest-night).
 
+The homepage and itch.io instructions were subsequently clarified at Jennifer's request: **the in-game end credits are the main Glass Box making-of presentation; the website is supplementary material.** The instructions give the shortcut **Esc → Debug → Story point: Closing → Jump there**, followed by the closing sequence and credits, and explain scrolling versus holding to skip. The shortcut wording was checked against the integrated source and story configuration; it was not newly playtested.
+
 ## What was made
 
 ```specs
