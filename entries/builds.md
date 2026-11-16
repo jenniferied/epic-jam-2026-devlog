@@ -6,6 +6,9 @@ date: 2026-11-14
 day: builds
 phase: jam
 status: live
+cover: assets/img/builds-cover-branches.jpg
+cover_alt: The branch-history timeline in the game's end credits
+cover_caption: Builds — the branch history in the game's end credits. *
 summary: Every build of the jam so far, with the branches, features and fixes that went into it.
 ---
 ```recap
@@ -886,3 +889,6 @@ branches: 2
 - Mac: start crash in 1 of 5 launches (exit 139, no log)
 
 **Tests:** Win64 and Mac packages: start marker, input smoke (66 checks), save/load/slots and DLSS/TSR status pass.
+
+
+`*` Title image added to this devlog after the jam, on 16 November 2026, using existing project material. This marks the website addition, not the source image creation or capture date.

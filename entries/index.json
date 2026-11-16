@@ -62,22 +62,28 @@
   },
   {
    "slug": "day-3",
-   "title": "day-3.log",
+   "title": "day-3.log: a castle, talking cellmates and two GPU crashes",
    "date": "2026-11-14",
    "day": "day 3",
    "phase": "jam",
    "status": "live",
    "summary": "Build 1 starts. An escort, a cell with two cellmates who talk back through NVIDIA ACE, a kit-built castle and end credits. Then two GPU driver hangs, a hard reboot and a new way of working.",
+   "cover": "assets/img/day3/11-14-073138-imported-pie-overview.jpg",
+   "cover_alt": "The modular castle in Unreal, seen from above",
+   "cover_caption": "Day 3 — the modular castle in Unreal. *",
    "file": "day-3.md"
   },
   {
    "slug": "day-4",
-   "title": "day-4.log",
+   "title": "day-4.log: the final cut, a live playtest and the deadline",
    "date": "2026-11-15",
    "day": "day 4",
    "phase": "jam",
    "status": "live",
    "summary": "One compile line, clothes on everyone, Shipping builds, a live playtest with 120 notes, and the submission.",
+   "cover": "assets/img/day3/keyart_lightning.jpg",
+   "cover_alt": "Director's Cut key art with opening lightning and an armillary sphere",
+   "cover_caption": "Day 4 — Director's Cut lightning key art. *",
    "file": "day-4.md"
   },
   {
@@ -98,6 +104,9 @@
    "phase": "jam",
    "status": "live",
    "summary": "Every build of the jam so far, with the branches, features and fixes that went into it.",
+   "cover": "assets/img/builds-cover-branches.jpg",
+   "cover_alt": "The branch-history timeline in the game's end credits",
+   "cover_caption": "Builds — the branch history in the game's end credits. *",
    "file": "builds.md"
   },
   {

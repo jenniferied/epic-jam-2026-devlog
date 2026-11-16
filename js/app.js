@@ -119,7 +119,7 @@
     const md = Md.render(await body("readme.md"), ctx);
     galleries = md.galleries;
     const logs = entries.filter((e) => !e.home && !isPage(e));
-    const cards = logs.filter((e) => e.status !== "draft").map((e) => `<a href="#/${e.slug}" class="card">${e.cover ? `<img src="${Md.esc(e.cover)}" alt="" loading="lazy" width="1344" height="768">` : ""}<span class="d">${Md.esc(e.day)} · ${fmtDate(e.date)}</span><span class="t">${Md.esc(e.title)}</span>${e.summary ? `<span class="s">${Md.esc(e.summary)}</span>` : ""}</a>`).join("");
+    const cards = logs.filter((e) => e.status !== "draft").map((e) => `<a href="#/${e.slug}" class="card">${e.cover ? `<img src="${Md.esc(e.cover)}" alt="" loading="lazy" width="1344" height="768">` : ""}${e.cover_caption ? `<span class="d">${Md.esc(e.cover_caption)}</span>` : ""}<span class="d">${Md.esc(e.day)} · ${fmtDate(e.date)}</span><span class="t">${Md.esc(e.title)}</span>${e.summary ? `<span class="s">${Md.esc(e.summary)}</span>` : ""}</a>`).join("");
     const upcoming = logs.filter((e) => e.status === "draft").map((e) => `<a href="#/${e.slug}"><b>${Md.esc(e.day)}</b>${fmtDate(e.date)}</a>`).join("");
     el.reader.innerHTML = `<article class="article">
       <div class="crumbs"><span class="ps1">~/devlog $</span> cat README.md</div>
@@ -142,8 +142,8 @@
     const md = Md.render(src, ctx);
     galleries = md.galleries;
     const draft = e.status === "draft", page = isPage(e);
-    if (e.cover) galleries.push([{ src: e.cover, alt: e.cover_alt || "", caption: t("cover.credit"), w: 1344, h: 768 }]);
-    const cover = e.cover ? `<figure class="cover"><button class="thumb" type="button" data-gallery="${galleries.length - 1}" data-index="0" aria-label="${Md.esc(e.cover_alt || "")}"><img src="${Md.esc(e.cover)}" alt="${Md.esc(e.cover_alt || "")}" width="1344" height="768" decoding="async" fetchpriority="high"></button></figure>` : "";
+    if (e.cover) galleries.push([{ src: e.cover, alt: e.cover_alt || "", caption: e.cover_caption || t("cover.credit"), w: 1344, h: 768 }]);
+    const cover = e.cover ? `<figure class="cover"><button class="thumb" type="button" data-gallery="${galleries.length - 1}" data-index="0" aria-label="${Md.esc(e.cover_alt || "")}"><img src="${Md.esc(e.cover)}" alt="${Md.esc(e.cover_alt || "")}" width="1344" height="768" decoding="async" fetchpriority="high"></button>${e.cover_caption ? `<figcaption>${Md.esc(e.cover_caption)}</figcaption>` : ""}</figure>` : "";
     const minutes = Math.max(1, Math.round(src.split(/\s+/).length / 200));
     el.reader.innerHTML = `<article class="article">
       <div class="crumbs"><span class="ps1">~/devlog $</span> less entries/${Md.esc(e.file)} <button type="button" class="only-mobile" data-back>${Md.esc(t("entry.back"))}</button></div>

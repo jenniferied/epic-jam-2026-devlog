@@ -14,6 +14,14 @@ summary: What four days of solo jamming with a crowd of AI agents produced, what
 **What this entry covers:** the volume of what was made, the concept art I kept, what did not make it, the features as they stand, and the lessons. My own verdict is still to come.
 ```
 
+## Editorial note — additions after the jam, 16 November 2026
+
+After submission, Jennifer requested three missing website title images: Day 3 (the modular castle), Day 4 (the lightning key art) and Builds (the branch-history credits). These use existing project material. Each caption ends with `*`; the accompanying note says that the image was added to the website after the jam. This does not change or backdate the source image's creation or capture date.
+
+The descriptive sidebar titles for Day 3 and Day 4, the homepage play instructions and itch.io link, and the preparation disclosure were also added after the jam. These are editorial additions to the documentation, not extra game development presented as in-jam work. Marking them is transparency, not a statement that the organizers approved post-deadline edits.
+
+The website shell, Funke, prep entries, prep illustrations and development tooling existed before the game-development window, as detailed on the homepage and in the preparation entries. Playing the game, watching its opening and reading its end credits provides another view of the work alongside this written record: [Darkest Night on itch.io](https://jenniferied.itch.io/darkest-night).
+
 ## What was made
 
 ```specs

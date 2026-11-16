@@ -11,7 +11,7 @@ from xml.sax.saxutils import escape
 ROOT = Path(__file__).resolve().parent.parent
 BASE = "https://jenniferied.github.io/epic-jam-2026-devlog/"
 FIELDS = ("slug", "title", "date", "day", "phase", "status")
-OPTIONAL = ("summary", "cover", "cover_alt", "kind")  # kind: page = undated page, listed but not in the feed
+OPTIONAL = ("summary", "cover", "cover_alt", "cover_caption", "kind")  # kind: page = undated page, listed but not in the feed
 
 
 def front_matter(text):

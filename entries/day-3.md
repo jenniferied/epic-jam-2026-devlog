@@ -1,11 +1,14 @@
 ---
-title: day-3.log
+title: day-3.log: a castle, talking cellmates and two GPU crashes
 slug: day-3
 order: 6
 date: 2026-11-14
 day: day 3
 phase: jam
 status: live
+cover: assets/img/day3/11-14-073138-imported-pie-overview.jpg
+cover_alt: The modular castle in Unreal, seen from above
+cover_caption: Day 3 — the modular castle in Unreal. *
 summary: Build 1 starts. An escort, a cell with two cellmates who talk back through NVIDIA ACE, a kit-built castle and end credits. Then two GPU driver hangs, a hard reboot and a new way of working.
 ---
 ```recap
@@ -310,3 +313,6 @@ assets/img/day3/11-15-002310-commit.jpg | 15.11. 00:23: Beides ist umgesetzt: - 
 ```embed
 builds.html?day=3 | Branches of day 3: every branch active that day, by area, with the build it shipped in. Hover or tap a row. | 1100
 ```
+
+
+`*` Title image added to this devlog after the jam, on 16 November 2026, using existing project material. This marks the website addition, not the source image creation or capture date.

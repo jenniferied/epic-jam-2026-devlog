@@ -1,11 +1,14 @@
 ---
-title: day-4.log
+title: day-4.log: the final cut, a live playtest and the deadline
 slug: day-4
 order: 7
 date: 2026-11-15
 day: day 4
 phase: jam
 status: live
+cover: assets/img/day3/keyart_lightning.jpg
+cover_alt: Director's Cut key art with opening lightning and an armillary sphere
+cover_caption: Day 4 — Director's Cut lightning key art. *
 summary: One compile line, clothes on everyone, Shipping builds, a live playtest with 120 notes, and the submission.
 ---
 
@@ -145,3 +148,6 @@ assets/img/day4/11-16-013149-clip.jpg | 16.11. 01:31 (still from a clip): Play-i
 ```embed
 builds.html?day=4 | Branches of day 4: every branch active that day, by area, with the build it shipped in. Hover or tap a row. | 1000
 ```
+
+
+`*` Title image added to this devlog after the jam, on 16 November 2026, using existing project material. This marks the website addition, not the source image creation or capture date.
