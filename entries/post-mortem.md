@@ -16,7 +16,7 @@ summary: What four days of solo jamming with a crowd of AI agents produced, what
 
 ## Editorial note — additions after the jam, 16 November 2026
 
-After submission, Jennifer requested three missing website title images: Day 3 (the modular castle), Day 4 (the lightning key art) and Builds (the branch-history credits). These use existing project material. Each caption ends with `*`; the accompanying note says that the image was added to the website after the jam. This does not change or backdate the source image's creation or capture date.
+After submission, Jennifer requested three missing website title images: Day 3 (the modular castle), Day 4 (a four-image collage of Jennifer's playtest screenshots: grass spikes, floating props, unfinished stairs and a warmly lit interior) and Builds (the branch-history credits). These use existing project material. Each caption ends with `*`; the accompanying note says that the image was added to the website after the jam. This does not change or backdate the source image's creation or capture date.
 
 The descriptive sidebar titles for Day 3 and Day 4, the homepage play instructions and itch.io link, and the preparation disclosure were also added after the jam. These are editorial additions to the documentation, not extra game development presented as in-jam work. Marking them is transparency, not a statement that the organizers approved post-deadline edits.
 

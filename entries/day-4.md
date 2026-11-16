@@ -6,9 +6,9 @@ date: 2026-11-15
 day: day 4
 phase: jam
 status: live
-cover: assets/img/day3/keyart_lightning.jpg
-cover_alt: Director's Cut key art with opening lightning and an armillary sphere
-cover_caption: Day 4 — Director's Cut lightning key art. *
+cover: assets/img/day-4-cover-development-collage.jpg
+cover_alt: Four playtest screenshots: grass spikes, floating props, unfinished white stairs, and a warmly lit interior
+cover_caption: Day 4 — three development problems and a warmly lit interior, from Jennifer's playtest screenshots. *
 summary: One compile line, clothes on everyone, Shipping builds, a live playtest with 120 notes, and the submission.
 ---
 
